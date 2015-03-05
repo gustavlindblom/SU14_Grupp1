@@ -197,13 +197,38 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503051621381_Initial.cs" />
+    <Compile Include="Migrations\201503051621381_Initial.Designer.cs">
+      <DependentUpon>201503051621381_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503051740558_ConfigurationTest.cs" />
+    <Compile Include="Migrations\201503051740558_ConfigurationTest.Designer.cs">
+      <DependentUpon>201503051740558_ConfigurationTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503051746348_Couplings.cs" />
+    <Compile Include="Migrations\201503051746348_Couplings.Designer.cs">
+      <DependentUpon>201503051746348_Couplings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503051749060_CouplingsV2.cs" />
+    <Compile Include="Migrations\201503051749060_CouplingsV2.Designer.cs">
+      <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\BookCoupling.cs" />
+    <Compile Include="Models\BookDataContext.cs" />
+    <Compile Include="Models\BookDetailDTO.cs" />
+    <Compile Include="Models\BookDTO.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
@@ -275,6 +300,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503051621381_Initial.resx">
+      <DependentUpon>201503051621381_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503051740558_ConfigurationTest.resx">
+      <DependentUpon>201503051740558_ConfigurationTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503051746348_Couplings.resx">
+      <DependentUpon>201503051746348_Couplings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503051749060_CouplingsV2.resx">
+      <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
