@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Boken.Models
 {
-    public class BookDataContext : DbContext
+    public class DataContext : DbContext
     {
         // You can add custom code to this file. Changes will not be overwritten.
         // 
@@ -15,15 +15,13 @@ namespace Boken.Models
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
     
-        public BookDataContext() : base("name=BookDataContext")
+        public DataContext() : base("name=DataContext")
         {
         }
 
-        public System.Data.Entity.DbSet<Boken.Models.Book> Books { get; set; }
-
         public System.Data.Entity.DbSet<Boken.Models.Author> Authors { get; set; }
 
-        public System.Data.Entity.DbSet<Boken.Models.Genre> Genres { get; set; }
+        public System.Data.Entity.DbSet<Boken.Models.Book> Books { get; set; }
 
         public System.Data.Entity.DbSet<Boken.Models.BookCoupling> BookCouplings { get; set; }
     

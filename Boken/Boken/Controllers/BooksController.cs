@@ -14,7 +14,7 @@ namespace Boken.Controllers
 {
     public class BooksController : ApiController
     {
-        private BookDataContext db = new BookDataContext();
+        private DataContext db = new DataContext();
 
         // GET: api/Books
         public IQueryable<BookDTO> GetBooks()
@@ -27,7 +27,8 @@ namespace Boken.Controllers
                 foreach (BookCoupling bc in db.BookCouplings.Where(bc => bc.BookId == b.Id))
                     authors.Add(db.Authors.FirstOrDefault(a => a.Id == bc.AuthorId));
 
-                BookDTO book = new BookDTO() {
+                BookDTO book = new BookDTO()
+                {
                     Id = b.Id,
                     Tile = b.Title,
                     Authors = authors
@@ -49,8 +50,8 @@ namespace Boken.Controllers
             }
 
             List<Author> authors = new List<Author>();
-                foreach (BookCoupling bc in db.BookCouplings.Where(bc => bc.BookId == book.Id))
-                    authors.Add(db.Authors.FirstOrDefault(a => a.Id == bc.AuthorId));
+            foreach (BookCoupling bc in db.BookCouplings.Where(bc => bc.BookId == book.Id))
+                authors.Add(db.Authors.FirstOrDefault(a => a.Id == bc.AuthorId));
 
             BookDetailDTO bookDetail = new BookDetailDTO()
             {

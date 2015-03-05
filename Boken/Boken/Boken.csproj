@@ -197,6 +197,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuthorsController.cs" />
+    <Compile Include="Controllers\BookCouplingsController.cs" />
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -219,15 +221,19 @@
     <Compile Include="Migrations\201503051749060_CouplingsV2.Designer.cs">
       <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503051842101_CrisisManagement.cs" />
+    <Compile Include="Migrations\201503051842101_CrisisManagement.Designer.cs">
+      <DependentUpon>201503051842101_CrisisManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookCoupling.cs" />
-    <Compile Include="Models\BookDataContext.cs" />
     <Compile Include="Models\BookDetailDTO.cs" />
     <Compile Include="Models\BookDTO.cs" />
+    <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -317,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201503051749060_CouplingsV2.resx">
       <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503051842101_CrisisManagement.resx">
+      <DependentUpon>201503051842101_CrisisManagement.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
