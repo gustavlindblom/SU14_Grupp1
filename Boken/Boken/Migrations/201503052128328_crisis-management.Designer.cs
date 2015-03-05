@@ -7,13 +7,13 @@ namespace Boken.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class CrisisManagement : IMigrationMetadata
+    public sealed partial class crisismanagement : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CrisisManagement));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(crisismanagement));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503051842101_CrisisManagement"; }
+            get { return "201503052128328_crisis-management"; }
         }
         
         string IMigrationMetadata.Source

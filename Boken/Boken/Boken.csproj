@@ -221,9 +221,9 @@
     <Compile Include="Migrations\201503051749060_CouplingsV2.Designer.cs">
       <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503051842101_CrisisManagement.cs" />
-    <Compile Include="Migrations\201503051842101_CrisisManagement.Designer.cs">
-      <DependentUpon>201503051842101_CrisisManagement.cs</DependentUpon>
+    <Compile Include="Migrations\201503052128328_crisis-management.cs" />
+    <Compile Include="Migrations\201503052128328_crisis-management.Designer.cs">
+      <DependentUpon>201503052128328_crisis-management.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -336,8 +336,8 @@
     <EmbeddedResource Include="Migrations\201503051749060_CouplingsV2.resx">
       <DependentUpon>201503051749060_CouplingsV2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503051842101_CrisisManagement.resx">
-      <DependentUpon>201503051842101_CrisisManagement.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503052128328_crisis-management.resx">
+      <DependentUpon>201503052128328_crisis-management.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
