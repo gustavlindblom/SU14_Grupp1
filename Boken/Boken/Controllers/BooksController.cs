@@ -30,7 +30,7 @@ namespace Boken.Controllers
                 BookDTO book = new BookDTO()
                 {
                     Id = b.Id,
-                    Tile = b.Title,
+                    Title = b.Title,
                     Authors = authors
                 };
                 books.Add(book);
