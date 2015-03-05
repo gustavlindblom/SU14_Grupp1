@@ -13,5 +13,6 @@ namespace Boken.Models
         public decimal Price { get; set; }
         public DateTime Year { get; set; }
         public List<Author> Authors { get; set; }
+        public string Description { get; set; }
     }
 }
