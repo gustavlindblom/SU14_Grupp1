@@ -2,3 +2,18 @@
     min-height: 2000px;
     padding-top: 70px;
 }
+
+nav {
+    padding-right:150px;
+    margin-left:250px;
+    margin-right:250px;
+}
+
+.navbar {    
+    border:1px groove gray;
+    border-radius:10px;
+}
+
+#Loginbutton {
+    margin-top:7px;
+}
