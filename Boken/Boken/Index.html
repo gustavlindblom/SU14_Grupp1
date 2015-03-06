@@ -40,25 +40,7 @@
                         <li><a href="#">Författare <span class="sr-only">(current)</span></a></li>
                         <li><a href="">Böcker</a></li>
                         <li><a href="">Genre</a></li>
-                        <li class="dropdown">
-                            <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="">Action</a></li>
-                                <li><a href="">Another action</a></li>
-                                <li><a href="">Something else here</a></li>
-                                <li class="divider"></li>
-                                <li><a href="">Separated link</a></li>
-                                <li class="divider"></li>
-                                <li><a href="">One more separated link</a></li>
-                            </ul>
-                        </li>
                     </ul>
-                    <form class="navbar-form navbar-left" role="search">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                        </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </form>
                     <form class="navbar-form navbar-left" role="search">
                         <div>
                             <button type="button" class="btn btn-default" id="loginButton">Logga in</button>
@@ -70,27 +52,49 @@
     </header>
 
 
-    <main class="container">
-        <div class="panel panel-default">
-            <!-- Default panel contents -->
-            <div class="panel-heading">Panel heading</div>
+    <main>
+        <div class="container" id="filterContainer">
+            <form class="navbar-form navbar-left" role="search" id="filterForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-expanded="true">
+                        Filter
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="filterDropdown">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bok</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Författare</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Genre</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pris</a></li>
+                    </ul>
+                </div>
+                </div>
+                
+            </form>
+        </div>
+        
+        <div class="container" >
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">Panel heading</div>
 
-            <!-- Table -->
-            <table class="table">
-                <tr>
-                    <th>...</th>
-                    <th>...</th>
-                    <th>...</th>
-                </tr>
-            </table>
-        </div>
-        <div class="row" >
-            <a href="#/add-book" class="col-md-10">Add book</a>
-        </div>
-        <div class="row" ng-view>
+                Table
+                <table class="table">
+                    <tr>
+                        <th>...</th>
+                        <th>...</th>
+                        <th>...</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <a href="#/add-book" class="col-md-10">Add book</a>
+            </div>
+            <div class="row" ng-view>
 
+            </div>
         </div>
-       
 
 
     </main>
