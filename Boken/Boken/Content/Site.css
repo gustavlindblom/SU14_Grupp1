@@ -1,12 +1,13 @@
 ﻿body {
     min-height: 2000px;
     padding-top: 70px;
+    position:relative;
 }
 
 nav {
    padding-left:150px;
-    margin-left:250px;
-    margin-right:250px;
+    margin-left:380px;
+    margin-right:380px;
 }
 
 .navbar {    
@@ -21,5 +22,16 @@ div ul li:hover {
     background-color:ActiveCaption;
 }
 
-.container{
+footer{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:75px;
+    background-color:ActiveCaption;
+}
+
+#footerText{
+    padding-top:5px;
+    color:black;
 }
