@@ -4,7 +4,7 @@
 }
 
 nav {
-    padding-right:150px;
+   padding-left:150px;
     margin-left:250px;
     margin-right:250px;
 }
@@ -15,4 +15,11 @@ nav {
 }
 
 #loginButton {
+}
+
+div ul li:hover {
+    background-color:ActiveCaption;
+}
+
+.container{
 }
