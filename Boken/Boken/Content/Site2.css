@@ -1,30 +1,27 @@
-﻿body { 
-    padding-top: 70px;
-    height: 100%;
-    min-height: 100vh;
-    position: relative;
+﻿
+html {
+  position: relative;
+  min-height: 100%;
 }
-
-linje{
-    width:100%;
+body {
+  /* Margin bottom by footer height */
+   padding-top: 70px;
+   margin-bottom: 60px;
 }
-
-
-/* positioning the footer relative to the body */
-footer {
-  
-  /* by using position: absolute; (and position: relative; on body)*/
+.footer {
   position: absolute;
-  /* and giving it bottom, left and right "coordinates" */
   bottom: 0;
-  left: 0;
-  right: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
   height: 50px;
-  display: block;
+  background-color: #252525;
+  color: #cccccc ;
+  border-color: #62686d;
 }
 
-
-
+.footer div p {
+    padding-top: 5px;
+}
 
 
 

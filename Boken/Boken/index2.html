@@ -1,6 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
-<head>
+<head style="color: ">
     <title>Boken</title>
     <meta charset="utf-8">
     <!-- set base href so that angular knows -->
@@ -23,7 +23,7 @@
 </head>
 <body ng-app="myAppName">
     <header class="container">
-        <nav class="navbar navbar-default navbar-fixed-top">
+        <nav class="navbar navbar-default navbar-fixed-top ">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
@@ -54,10 +54,11 @@
 
 
     <main class="container">
-        <div class="container-fluid row" id="filterContainer">
-            <form class="col-lg-2 col-md-3" role="search" id="filterForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+        <div class="page-header">
+            <div class="container-fluid" id="filterContainer">
+                <form class="row" role="search" id="filterForm">
+                    <div class="form-group col-lg-3 col-md-3">
+                        <input type="text" class="form-control" placeholder="Search">
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-expanded="true">
                                 Filter
@@ -70,11 +71,12 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pris</a></li>
                             </ul>
                         </div>
-                </div>
-                
-            </form>
+                    </div>
+
+                </form>
+            </div>
         </div>
-        
+        <!--  Panel -->
         <div class="container-fluid" >
             <div class="panel panel-default">
                 <!-- Default panel contents -->
@@ -91,24 +93,29 @@
                 </div>
                 <div class="panel-footer">Och en fot på panelen</div>
                 </div>
-                
-            </div>
-            <div class="row">
-                <a href="#/add-book" class="col-md-10">Add book</a>
-            </div>
-           <!--  <div class="row" ng-view> 
+              </div>
+        <!-- Panel slut -->
 
-            </div>-->
-        </div>
+          <div class="container-fluid">
+                <a href="#/add-book" class="col-md-10">Add book</a>
+         </div>
+
 
         
     </main>
-    <footer class="container footer ">
-        <div class="linje"></div>
-        <div class="row ">
-            <p class="text-muted" id="footerText">Boken AB</p>
-            <p class="text-muted" id="footerText">Lorem Ipsomgatan 22, 24623 Malmö</p>
+
+    <footer class="footer">
+        <div class="container">
+            
+                <p class="text-muted" id="footerText">
+                    Boken AB<br>
+                    Lorem Ipsomgatan 22, 24623 Malmö
+                </p>
+            
+            
         </div>
     </footer>
+
+    
 </body>
 </html>
