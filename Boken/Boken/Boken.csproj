@@ -245,10 +245,13 @@
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrapTheme.css" />
+    <Content Include="Content\Site2.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="index2.html" />
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
     <Content Include="Scripts\angular-mocks.js" />

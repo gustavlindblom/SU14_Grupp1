@@ -1,0 +1,32 @@
+﻿body { 
+    padding-top: 70px;
+    height: 100%;
+    min-height: 100vh;
+    position: relative;
+}
+
+linje{
+    width:100%;
+}
+
+
+/* positioning the footer relative to the body */
+footer {
+  
+  /* by using position: absolute; (and position: relative; on body)*/
+  position: absolute;
+  /* and giving it bottom, left and right "coordinates" */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  display: block;
+}
+
+
+
+
+
+
+
+
