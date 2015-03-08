@@ -1,7 +1,8 @@
 ﻿body {
-    min-height: 2000px;
+    min-height: 100vh;
     padding-top: 70px;
     position:relative;
+    height:100%;
 }
 
 nav {
@@ -29,6 +30,7 @@ footer{
     right:0;
     height:75px;
     background-color:ActiveCaption;
+    display:block;
 }
 
 #footerText{

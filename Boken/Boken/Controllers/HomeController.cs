@@ -10,7 +10,7 @@ namespace Boken.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "Boken";
 
             return View();
         }
