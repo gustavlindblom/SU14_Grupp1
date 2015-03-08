@@ -13,7 +13,7 @@
     <script src="Scripts/ui-bootstrap-tpls-0.12.1.js"></script>
     <script src="Scripts/jquery-1.10.2.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/app.js"></script>
+    <!--<script src="Scripts/app.js"></script>-->
     <script src="Scripts/homeController.js"></script>
     <script src="Scripts/bookformController.js"></script>
     <script src="Scripts/services.js"></script>
@@ -53,47 +53,70 @@
 
 
     <main>
-        <div class="container" id="filterContainer">
-            <form class="navbar-form navbar-left" role="search" id="filterForm">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-expanded="true">
-                        Filter
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="filterDropdown">
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bok</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Författare</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Genre</a></li>
-                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pris</a></li>
-                    </ul>
-                </div>
-                </div>
-                
-            </form>
+        <div class="page-header">
+            <div class="container" id="filterContainer">
+                <form class="navbar-form navbar-left" role="search" id="filterForm">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="filterDropdown" data-toggle="dropdown" aria-expanded="true">
+                                Filter
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu" aria-labelledby="filterDropdown">
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Bok</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Författare</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Genre</a></li>
+                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Pris</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         </div>
         
         <div class="container" >
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <div class="panel-heading">Panel heading</div>
-
-                Table
+                <div class="panel-heading">Rubrik</div>
                 <table class="table">
                     <tr>
-                        <th>...</th>
-                        <th>...</th>
-                        <th>...</th>
+                        <th></th>
+                        <th>Titel</th>
+                        <th>Författare</th>
+                        <th>Genre</th>
+                        <th>Pris</th>
+                    </tr>
+                    <tr>
+                        <td>Bild</td>
+                        <td>Hobbit</td>
+                        <td>J.R.R. Tolkien</td>
+                        <td>Fantasy</td>
+                        <td>500$</td>
+                    </tr>
+                    <tr>
+                        <td>Bild</td>
+                        <td>Harry Potter</td>
+                        <td>J.K Rowling</td>
+                        <td>Fantasy</td>
+                        <td>30$</td>
+                    </tr>
+                    <tr>
+                        <td>Bild</td>
+                        <td>Ölrövhönans Äventyr</td>
+                        <td>Niklas Strömberg</td>
+                        <td>Självbiografi</td>
+                        <td>1$</td>
                     </tr>
                 </table>
             </div>
-            <div class="row">
+            <!--<div class="row">
                 <a href="#/add-book" class="col-md-10">Add book</a>
             </div>
-            <div class="row" ng-view>
+            <div class="row">
 
-            </div>
+            </div>-->
         </div>
 
 
