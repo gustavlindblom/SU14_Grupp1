@@ -14,33 +14,16 @@ namespace Boken.Controllers
 {
     public class BooksController : ApiController
     {
-        private DataContext db = new DataContext();
+        private BookDataContext db = new BookDataContext();
 
         // GET: api/Books
-        public IQueryable<BookDTO> GetBooks()
+        public IQueryable<Book> GetBooks()
         {
-            List<BookDTO> books = new List<BookDTO>();
-
-            foreach (Book b in db.Books)
-            {
-                List<Author> authors = new List<Author>();
-                foreach (BookCoupling bc in db.BookCouplings.Where(bc => bc.BookId == b.Id))
-                    authors.Add(db.Authors.FirstOrDefault(a => a.Id == bc.AuthorId));
-
-                BookDTO book = new BookDTO()
-                {
-                    Id = b.Id,
-                    Title = b.Title,
-                    Authors = authors
-                };
-                books.Add(book);
-            }
-
-            return books.AsQueryable();
+            return db.Books;
         }
 
         // GET: api/Books/5
-        [ResponseType(typeof(BookDTO))]
+        [ResponseType(typeof(Book))]
         public IHttpActionResult GetBook(int id)
         {
             Book book = db.Books.Find(id);
@@ -49,20 +32,7 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            List<Author> authors = new List<Author>();
-            foreach (BookCoupling bc in db.BookCouplings.Where(bc => bc.BookId == book.Id))
-                authors.Add(db.Authors.FirstOrDefault(a => a.Id == bc.AuthorId));
-
-            BookDetailDTO bookDetail = new BookDetailDTO()
-            {
-                Id = book.Id,
-                Title = book.Title,
-                ISBN = book.ISBN,
-                Price = book.Price,
-                Authors = authors
-            };
-
-            return Ok(bookDetail);
+            return Ok(book);
         }
 
         // PUT: api/Books/5

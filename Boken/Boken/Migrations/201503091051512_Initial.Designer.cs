@@ -13,7 +13,7 @@ namespace Boken.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201503051621381_Initial"; }
+            get { return "201503091051512_Initial"; }
         }
         
         string IMigrationMetadata.Source

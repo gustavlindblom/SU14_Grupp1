@@ -14,12 +14,28 @@ namespace Boken.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Biography = c.String(),
-                        Picture = c.Binary(),
-                        Book_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Books", t => t.Book_Id)
-                .Index(t => t.Book_Id);
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.BookAuthorCouplings",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        AuthorId = c.Int(nullable: false),
+                        BookId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.BookGenreCouplings",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        BookId = c.Int(nullable: false),
+                        GenreId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Books",
@@ -27,9 +43,12 @@ namespace Boken.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
+                        Summary = c.String(),
                         ISBN = c.String(),
+                        Year = c.Int(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Year = c.DateTime(nullable: false),
+                        InStock = c.Int(nullable: false),
+                        ImagePath = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -40,22 +59,17 @@ namespace Boken.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
                         Description = c.String(),
-                        Book_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Books", t => t.Book_Id)
-                .Index(t => t.Book_Id);
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Genres", "Book_Id", "dbo.Books");
-            DropForeignKey("dbo.Authors", "Book_Id", "dbo.Books");
-            DropIndex("dbo.Genres", new[] { "Book_Id" });
-            DropIndex("dbo.Authors", new[] { "Book_Id" });
             DropTable("dbo.Genres");
             DropTable("dbo.Books");
+            DropTable("dbo.BookGenreCouplings");
+            DropTable("dbo.BookAuthorCouplings");
             DropTable("dbo.Authors");
         }
     }

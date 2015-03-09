@@ -6,6 +6,7 @@ app.controller("homeController", ["$scope", "restService", "Books", function($sc
   $scope.$on("restSuccess", function(event, data) {
     console.log("restSuccess triggered: ", data);
     $scope.output = JSON.stringify(data, null, '\t');
+    $scope.books = data;
   });
 
   //CRUD (POST, GET, PUT, DELETE)

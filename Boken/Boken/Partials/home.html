@@ -1,6 +1,7 @@
 <section class="row">
   <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-0 col-lg-offset-0">
     <div class="alert alert-warning" ng-if="restMessage">
+        
       <strong>{{restMessage}}</strong>
     </div>
     <form>
@@ -26,6 +27,12 @@
   </div>
   <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-0 col-lg-offset-0">
     <h2>Output:</h2>
-    <pre>{{output}}</pre>
+      <div class="panel panel-default" ng-repeat="book in books">
+          <ul class="list-group">
+              <li class="list-group-item"><label>Title:&nbsp;</label>{{book.Title}}</li>
+              <li class="list-group-item" ng-if="book.Authors.length > 1"><label>Authors:&nbsp;</label><span ng-repeat="author in book.Authors"><a href="">{{author.Name}}</a> </span></li>
+              <li class="list-group-item" ng-if="book.Authors.length == 1"><label>Author:&nbsp;</label><a href="">{{book.Authors[0].Name}}</a></li>
+          </ul>
+      </div>
   </div>
 </section>

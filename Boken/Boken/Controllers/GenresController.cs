@@ -12,44 +12,44 @@ using Boken.Models;
 
 namespace Boken.Controllers
 {
-    public class BookCouplingsController : ApiController
+    public class GenresController : ApiController
     {
-        private DataContext db = new DataContext();
+        private BookDataContext db = new BookDataContext();
 
-        // GET: api/BookCouplings
-        public IQueryable<BookCoupling> GetBookCouplings()
+        // GET: api/Genres
+        public IQueryable<Genre> GetGenres()
         {
-            return db.BookCouplings;
+            return db.Genres;
         }
 
-        // GET: api/BookCouplings/5
-        [ResponseType(typeof(BookCoupling))]
-        public IHttpActionResult GetBookCoupling(int id)
+        // GET: api/Genres/5
+        [ResponseType(typeof(Genre))]
+        public IHttpActionResult GetGenre(int id)
         {
-            BookCoupling bookCoupling = db.BookCouplings.Find(id);
-            if (bookCoupling == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            return Ok(bookCoupling);
+            return Ok(genre);
         }
 
-        // PUT: api/BookCouplings/5
+        // PUT: api/Genres/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBookCoupling(int id, BookCoupling bookCoupling)
+        public IHttpActionResult PutGenre(int id, Genre genre)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != bookCoupling.Id)
+            if (id != genre.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(bookCoupling).State = EntityState.Modified;
+            db.Entry(genre).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace Boken.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BookCouplingExists(id))
+                if (!GenreExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace Boken.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/BookCouplings
-        [ResponseType(typeof(BookCoupling))]
-        public IHttpActionResult PostBookCoupling(BookCoupling bookCoupling)
+        // POST: api/Genres
+        [ResponseType(typeof(Genre))]
+        public IHttpActionResult PostGenre(Genre genre)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.BookCouplings.Add(bookCoupling);
+            db.Genres.Add(genre);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = bookCoupling.Id }, bookCoupling);
+            return CreatedAtRoute("DefaultApi", new { id = genre.Id }, genre);
         }
 
-        // DELETE: api/BookCouplings/5
-        [ResponseType(typeof(BookCoupling))]
-        public IHttpActionResult DeleteBookCoupling(int id)
+        // DELETE: api/Genres/5
+        [ResponseType(typeof(Genre))]
+        public IHttpActionResult DeleteGenre(int id)
         {
-            BookCoupling bookCoupling = db.BookCouplings.Find(id);
-            if (bookCoupling == null)
+            Genre genre = db.Genres.Find(id);
+            if (genre == null)
             {
                 return NotFound();
             }
 
-            db.BookCouplings.Remove(bookCoupling);
+            db.Genres.Remove(genre);
             db.SaveChanges();
 
-            return Ok(bookCoupling);
+            return Ok(genre);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace Boken.Controllers
             base.Dispose(disposing);
         }
 
-        private bool BookCouplingExists(int id)
+        private bool GenreExists(int id)
         {
-            return db.BookCouplings.Count(e => e.Id == id) > 0;
+            return db.Genres.Count(e => e.Id == id) > 0;
         }
     }
 }

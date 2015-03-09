@@ -14,12 +14,11 @@ namespace Boken.Controllers
 {
     public class AuthorsController : ApiController
     {
-        private DataContext db = new DataContext();
+        private BookDataContext db = new BookDataContext();
 
         // GET: api/Authors
         public IQueryable<Author> GetAuthors()
         {
-            // Test
             return db.Authors;
         }
 
