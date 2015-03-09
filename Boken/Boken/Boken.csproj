@@ -251,6 +251,7 @@
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
     <Content Include="Partials\MikaelSandbox\HtmlPage1.html" />
+    <Content Include="Partials\modal.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
