@@ -17,9 +17,34 @@ namespace Boken.Controllers
         private BookDataContext db = new BookDataContext();
 
         // GET: api/Books
-        public IQueryable<Book> GetBooks()
+        public IQueryable<BookDTO> GetBooks()
         {
-            return db.Books;
+            List<BookDTO> books = new List<BookDTO>();
+            
+            List<Author> authors = new List<Author>();
+            List<Genre> genres = new List<Genre>();
+            foreach (Book b in db.Books)
+            {
+                authors.Clear();
+                genres.Clear();
+
+                foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == b.Id))
+                    authors.Add(db.Authors.FirstOrDefault(a => a.Id == bac.AuthorId));
+
+                foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == b.Id))
+                    genres.Add(db.Genres.FirstOrDefault(g => g.Id == bgc.GenreId));
+
+                books.Add(new BookDTO()
+                {
+                    Id = b.Id,
+                    Title = b.Title,
+                    Authors = authors.ToArray(),
+                    Genres = genres.ToArray(),
+                    Price = b.Price,
+                    ImagePath = b.ImagePath
+                });
+            }
+            return books.AsQueryable();
         }
 
         // GET: api/Books/5

@@ -218,6 +218,8 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookAuthorCoupling.cs" />
     <Compile Include="Models\BookDataContext.cs" />
+    <Compile Include="Models\BookDetailDTO.cs" />
+    <Compile Include="Models\BookDTO.cs" />
     <Compile Include="Models\BookGenreCoupling.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
