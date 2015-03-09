@@ -227,6 +227,12 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Application\app.js" />
+    <Content Include="Application\bookformController.js" />
+    <Content Include="Application\homeController.js" />
+    <Content Include="Application\main.js" />
+    <Content Include="Application\pageformController.js" />
+    <Content Include="Application\services.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
