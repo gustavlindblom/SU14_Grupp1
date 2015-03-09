@@ -1,14 +1,13 @@
-﻿body {
-    min-height: 100vh;
+﻿
+body {
+    min-height: 100%;
     padding-top: 70px;
     position:relative;
-    height:100%;
+    height:100vh;
 }
 
 nav {
-   padding-left:150px;
-    margin-left:380px;
-    margin-right:380px;
+   padding-left:20%;
 }
 
 .navbar {    
@@ -41,6 +40,11 @@ footer{
 #filterContainer{
 
 }
+
+.white:hover {
+    color:slategray;
+}
+
 
 .page-header{
     margin-left:20%;
