@@ -229,6 +229,7 @@
   <ItemGroup>
     <Content Include="Application\app.js" />
     <Content Include="Application\bookformController.js" />
+    <Content Include="Application\genrelistController.js" />
     <Content Include="Application\homeController.js" />
     <Content Include="Application\main.js" />
     <Content Include="Application\pageformController.js" />

@@ -88,6 +88,19 @@ app.service("Books", ["restService", function (restService) {
     return bookServant;
 }]);
 
+// creating Genres service (ns)
+app.service("Genres", ["restService", function (restService) {
+    var genreServant = {
+        get: function (Id) {
+            var restUrl = Id ? "genres/" + Id : "genres/";
+            restService.restCall(restUrl, "GET", {});
+        }
+        // plats för post, put och delete
+    };
+    return genreServant;
+}]);
+
+
 //creating Authors service
 app.service("Authors", ["restService", function (restService) {
     var authorServant = {
