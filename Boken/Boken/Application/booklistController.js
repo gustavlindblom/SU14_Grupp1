@@ -1,5 +1,13 @@
-﻿app.controller("booklistController", ["$scope", "BookStore",  function ($scope, BookStore) {
+﻿app.controller("booklistController", ["$scope", "Books", function ($scope, Books) {
     console.log("I'm alive!");
+
+    $scope.$on("restSuccess", function (event, data) {  
+    console.log("restSuccess triggered: ", data);
+    $scope.output = JSON.stringify(data, null, '\t');
+    $scope.books = data;
+    Books.get();
+   
+    });
 }]);
 
 /*
@@ -57,43 +65,43 @@
 
 
 
-app.controller("BooksController", ["$scope", "BookStore", "Books", function ($scope, BookStore, Books) {
+//app.controller("BooksController", ["$scope", "BookStore", "Books", function ($scope, BookStore, Books) {
 
-    //get ALL posts
-    console.log("Är du här?")
-    Books.GetBooks(); //service method call without inparameter
-    //get ALL pages
-    //exampleService.getPages();
-    //get menu id 2
-    //exampleService.getMenus(2); //service method call with inparameter
-    //get ALL media
-   // exampleService.getMedia();
+//    //get ALL posts
+//    console.log("Är du här?")
+//    Books.GetBooks(); //service method call without inparameter
+//    //get ALL pages
+//    //exampleService.getPages();
+//    //get menu id 2
+//    //exampleService.getMenus(2); //service method call with inparameter
+//    //get ALL media
+//   // exampleService.getMedia();
 
-}]);
+//}]);
 
-console.log(Books.GetBooks());
-
-
+////console.log(Books.GetBooks());
 
 
-function q() {
-    console.log(Books.GetBooks())
+
+
+////function q() {
+////    console.log(Books.GetBooks())
     
-}
-q();
+////}
+////q();
 
 
-var uri = "api/books"
+//var uri = "api/books"
 
-$(document).ready(function ($http) {
-    console.log("Haalå?")
-    // Send an AJAX request
-    $.getJSON(uri)
-        .done(function (data) {
-            // On success, 'data' contains a list of products.
-            $.each(data, function (key, item) {
-                // Add a list item for the product.
-                $('<li>', { text: formatItem(item) }).appendTo($('#products'));
-            });
-        });
-});
+//$(document).ready(function ($http) {
+//    console.log("Haalå?")
+//    // Send an AJAX request
+//    $.getJSON(uri)
+//        .done(function (data) {
+//            // On success, 'data' contains a list of products.
+//            $.each(data, function (key, item) {
+//                // Add a list item for the product.
+//                $('<li>', { text: formatItem(item) }).appendTo($('#products'));
+//            });
+//        });
+//});
