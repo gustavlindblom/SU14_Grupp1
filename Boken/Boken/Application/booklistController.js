@@ -1,6 +1,8 @@
-﻿app.controller("homeController", ["$scope", "restService", "Books", function($scope, restService, Books) {
+﻿app.controller("booklistController", ["$scope", "BookStore",  function ($scope, BookStore) {
     console.log("I'm alive!");
+}]);
 
+/*
     //using $rootScope.on to listen for new data from restCall .success()
     $scope.$on("restSuccess", function(event, data) {
         console.log("restSuccess triggered: ", data);
@@ -24,7 +26,7 @@
         }
 
         //send call and recieve true || false from restService method
-        var callSent = restService.restCall($scope.callUrl, $scope.callMethod, data);
+        var callSent = BookStore.restCall($scope.callUrl, $scope.callMethod, data);
 
         //if callSent === true the request was sent with valid data
         if (callSent) {
@@ -38,7 +40,7 @@
     //we can make models accessible to the entire app using $rootScope!
     //$scope.hello is set in restService helloWorld using $rootScope
     console.log("rootScope1: ", $scope.hello);
-    restService.helloWorld();
+    BookStore.helloWorld();
     console.log("rootScope2: ", $scope.hello);
 
     //a static GET request to see if our service is alive
@@ -46,6 +48,7 @@
     //replacing restService with Books (also a service)
     Books.get();
 }]);
+*/
 
 
 

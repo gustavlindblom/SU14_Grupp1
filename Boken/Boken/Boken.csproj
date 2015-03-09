@@ -243,6 +243,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Partials\booklist.html" />
     <Content Include="Partials\index2.html" />
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
@@ -254,7 +255,7 @@
     <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\bookformController.js" />
-    <Content Include="Scripts\BooksController.js" />
+    <Content Include="Application\booklistController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\HelpPage\Views\Web.config" />

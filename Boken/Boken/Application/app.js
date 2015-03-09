@@ -11,7 +11,7 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
     })
     .when("/books", {
         templateUrl: "partials/booklist.html",
-        controller: "booklistController"
+        controller: "bookformController"
     })
     .when("/genres", {
         templateUrl: "partials/genrelist.html",

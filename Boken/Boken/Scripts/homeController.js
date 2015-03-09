@@ -46,5 +46,5 @@ app.controller("homeController", ["$scope", "restService", "Books", function($sc
   //a static GET request to see if our service is alive
   //restService.restCall("books", "GET", {});
   //replacing restService with Books (also a service)
-  Books.get();
+  console.log(Books.get());
 }]);
