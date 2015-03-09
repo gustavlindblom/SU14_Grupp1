@@ -242,6 +242,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Partials\booklist.html" />
     <Content Include="Partials\index2.html" />
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
