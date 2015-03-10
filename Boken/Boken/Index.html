@@ -25,16 +25,13 @@
     <script src="Application/headerController.js"></script>
 </head>
 <body ng-app="BookStore">
-    <header ng-include="'Partials/header.html'" ng-controller="headerController" class="container">
-        
-    </header>
+    <header ng-include="'Partials/header.html'" ng-controller="headerController" class="container"></header>
 
     <main class="container" ng-view>
-             
+
     </main>
 
-    <footer ng-include="'Partials/footer.html'" class="footer">
-    </footer>
+    <footer ng-include="'Partials/footer.html'" class="footer"></footer>
 
     <!-- modal html -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
