@@ -48,19 +48,21 @@
 
 </div>
 
+
     <!-- modal html -->
 <div class="modal fade" id="genreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Här kommer det att komma massa fin info...</h4>
+                <h4 class="modal-title" id="myModalLabel">{{textModal.Name}}</h4>
             </div>
             <div class="modal-body">
-                <div ng-></div>
-                och nu kanske pappa Niklas blir glad och vill äta lunch! {{genre.Name}}
+                {{textModal.Description}}
             </div>
             <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
+                <button type="button" class="btn btn-primary">Spara ändringar</button>
             </div>
         </div>
     </div>
