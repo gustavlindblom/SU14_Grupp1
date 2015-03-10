@@ -10,12 +10,8 @@
 
     $scope.showAuthors = function (author) {
 
-        var detail = author;
+        $scope.textModal = author;
         
-        console.log(detail.Name);
-        $scope.textModal = detail;
-        
-        return detail;
     };
     Authors.get();
 }]);
