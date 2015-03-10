@@ -70,7 +70,7 @@ app.service("Books", ["restService", function (restService) {
     var bookServant = {
         get: function (Id) {
             var restUrl = Id ? "books/" + Id : "books/";
-            restService.restCall(restUrl, "GET", {});
+            restService.restCall(restUrl, "GET", {}, "gotBooks");
         },
         post: function (data) {
             var restUrl = "books/";
@@ -118,7 +118,7 @@ app.service("Authors", ["restService", function (restService) {
     var authorServant = {
         get: function (Id) {
             var restUrl = Id ? "authors/" + Id : "authors/";
-            restService.restCall(restUrl, "GET", {});
+            restService.restCall(restUrl, "GET", {}, "gotAuthorlist");
         },
         post: function (data) {
             var restUrl = "authors/";
