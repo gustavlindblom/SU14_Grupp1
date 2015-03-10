@@ -43,7 +43,7 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
                 data: data,
                 responseType: "json"
             }).success(function (data) {
-                console.log("restCall success: ", data);
+                console.log("restCall success Kuken: ", data);
                 //using $rootscope to distribute a model (data) to all
                 //$scopes in the app
                 // $rootScope.output = JSON.stringify(data, null, '\t');
