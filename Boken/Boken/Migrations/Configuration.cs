@@ -50,14 +50,11 @@ namespace Boken.Migrations
 
             // Book-Author couplings
             context.BookAuthorCouplings.AddOrUpdate(
-                new BookAuthorCoupling() { Id = 1, AuthorId = 1, BookId = 1 },
-                new BookAuthorCoupling() { Id = 2, AuthorId = 4, BookId = 1 },
+                new BookAuthorCoupling() { Id = 1, AuthorId = 3, BookId = 1 },
                 new BookAuthorCoupling() { Id = 3, AuthorId = 5, BookId = 2 },
                 new BookAuthorCoupling() { Id = 4, AuthorId = 2, BookId = 3 },
                 new BookAuthorCoupling() { Id = 5, AuthorId = 2, BookId = 4 },
-                new BookAuthorCoupling() { Id = 6, AuthorId = 3, BookId = 5 },
-                new BookAuthorCoupling() { Id = 7, AuthorId = 3, BookId = 5 },
-                new BookAuthorCoupling() { Id = 8, AuthorId = 3, BookId = 5 },
+                new BookAuthorCoupling() { Id = 6, AuthorId = 1, BookId = 5 },
                 new BookAuthorCoupling() { Id = 9, AuthorId = 3, BookId = 6 },
                 new BookAuthorCoupling() { Id = 10, AuthorId = 3, BookId = 7 },
                 new BookAuthorCoupling() { Id = 11, AuthorId = 3, BookId = 8 },
@@ -69,14 +66,11 @@ namespace Boken.Migrations
 
             // Book-Genre couplings
             context.BookGenreCouplings.AddOrUpdate(
-                new BookGenreCoupling() { Id = 1, GenreId = 1, BookId = 1 },
-                new BookGenreCoupling() { Id = 2, GenreId = 4, BookId = 1 },
+                new BookGenreCoupling() { Id = 1, GenreId = 3, BookId = 1 },
                 new BookGenreCoupling() { Id = 3, GenreId = 1, BookId = 2 },
                 new BookGenreCoupling() { Id = 4, GenreId = 2, BookId = 3 },
                 new BookGenreCoupling() { Id = 5, GenreId = 2, BookId = 4 },
-                new BookGenreCoupling() { Id = 6, GenreId = 3, BookId = 5 },
-                new BookGenreCoupling() { Id = 7, GenreId = 3, BookId = 5 },
-                new BookGenreCoupling() { Id = 8, GenreId = 3, BookId = 5 },
+                new BookGenreCoupling() { Id = 6, GenreId = 1, BookId = 5 },
                 new BookGenreCoupling() { Id = 9, GenreId = 3, BookId = 6 },
                 new BookGenreCoupling() { Id = 10, GenreId = 3, BookId = 7 },
                 new BookGenreCoupling() { Id = 11, GenreId = 3, BookId = 8 },
