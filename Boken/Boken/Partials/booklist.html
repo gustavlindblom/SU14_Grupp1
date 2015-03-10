@@ -15,8 +15,8 @@
                     <tbody>
                         <tr ng-repeat="book in books" >
                             <td><img ng-src="{{book.ImagePath}}" width="50"/></td>
-                            <td>{{book.Title}}</td>
-                            <td class="btnGenrelist" ng-click="showBook(book)" data-toggle="modal" data-target="#bookModal"><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
+                            <td class="btnGenrelist" ng-click="showBook(book)" data-toggle="modal" data-target="#bookModal">{{book.Title}}</td>
+                            <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
                             <td><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
                             <td>{{book.Price}}</td>
                         </tr>
