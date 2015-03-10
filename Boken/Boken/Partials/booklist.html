@@ -13,10 +13,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="book in books">
+                        <tr ng-repeat="book in books" >
                             <td><img ng-src="{{book.ImagePath}}" width="50"/></td>
                             <td>{{book.Title}}</td>
-                            <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
+                            <td class="btnGenrelist" ng-click="showBook(book)" data-toggle="modal" data-target="#bookModal"><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
                             <td><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
                             <td>{{book.Price}}</td>
                         </tr>
@@ -44,3 +44,25 @@
             </div>
         </div>
     </div>
+
+<!-- modal html -->
+<div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">{{textModal.Title}}</h4>
+            </div>
+            <div class="modal-body">
+
+                
+                <h3>Bokinfo</h3>
+                <div ng->
+                    {{textModal.Price}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

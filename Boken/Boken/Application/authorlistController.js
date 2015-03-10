@@ -8,7 +8,7 @@
     });
     
 
-    $scope.showAuthors = function (author) {
+    $scope.showAuthor = function (author) {
 
         $scope.textModal = author;
         
