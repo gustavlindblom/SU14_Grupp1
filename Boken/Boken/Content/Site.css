@@ -15,14 +15,13 @@ body {
     cursor:pointer;
 }
 
-nav {
-   padding-left:20%;
+#test {
+   display:inline-block;
+   float:none;
+   text-align:center;
+
 }
 
-.navbar {    
-    border:1px groove gray;
-    border-radius:10px;
-}
 
 #loginButton {
 }
