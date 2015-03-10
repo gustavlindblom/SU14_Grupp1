@@ -24,7 +24,7 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
             //sharing the rootScope property hello to all child $scopes
             $rootScope.hello = "Hello";
         },
-        restCall: function (url, method, data) {
+        restCall: function (url, method, data, broadcastName) {
             if (method != "GET" && method != "DELETE") {
                 //using a function only accessible INSIDE out service
                 //to check if data is valid
@@ -43,14 +43,15 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
                 data: data,
                 responseType: "json"
             }).success(function (data) {
-                console.log("restCall success Kuken: ", data);
                 //using $rootscope to distribute a model (data) to all
                 //$scopes in the app
                 // $rootScope.output = JSON.stringify(data, null, '\t');
                 // (all scopes now have the propery "output")
 
                 //using $rootScope to broadcast data to any "listeners" in the app
-                $rootScope.$broadcast("restSuccess", data);
+                broadcastName = broadcastName ? broadcastName : "restSuccess";
+                console.log("restCall success Kuken: ", data, " now broadcasting on: ", broadcastName);
+                $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
             });
 
@@ -93,7 +94,7 @@ app.service("Genres", ["restService", function (restService) {
     var genreServant = {
         get: function (Id) {
             var restUrl = Id ? "genres/" + Id : "genres/";
-            restService.restCall(restUrl, "GET", {});
+            restService.restCall(restUrl, "GET", {}, "gotGenres");
         },
         post: function (data) {
             var restUrl = "genres/";
