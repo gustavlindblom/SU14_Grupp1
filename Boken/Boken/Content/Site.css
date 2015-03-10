@@ -11,6 +11,10 @@ body {
 
 }
 
+.hoverHome:hover{
+    cursor:pointer;
+}
+
 nav {
    padding-left:20%;
 }

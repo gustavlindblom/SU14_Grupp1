@@ -25,6 +25,10 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
         templateUrl: "partials/bookform.html",
         controller: "bookformController"
     })
+      .when("/login", {
+          templateUrl: "partials/booklist.html",
+          controller: "headerController"
+      })
     .otherwise({
       redirectTo: "/"
     });
