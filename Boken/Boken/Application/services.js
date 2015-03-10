@@ -70,7 +70,7 @@ app.service("Books", ["restService", function (restService) {
     var bookServant = {
         get: function (Id) {
             var restUrl = Id ? "books/" + Id : "books/";
-            restService.restCall(restUrl, "GET", {});
+            restService.restCall(restUrl, "GET", {}, "gotBooks");
         },
         post: function (data) {
             var restUrl = "books/";
