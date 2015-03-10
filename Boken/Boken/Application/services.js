@@ -1,10 +1,7 @@
-//nothing to see here (yet), move along citizen...
+
 app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) {
-    //we don't have to return all code in a service,
-    //we can also have functions/variables that are only accessible
-    //inside the service itself but still affect output/results
-    //in the controller
-    function checkData(data) {
+
+    function checkData(data) {                                
         console.log("typeof", typeof data);
         if (typeof data == "String") {
             try {
@@ -19,16 +16,12 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
     }
 
     var restServant = {
-        helloWorld: function () {
-            console.log("Hello World!");
-            //sharing the rootScope property hello to all child $scopes
-            $rootScope.hello = "Hello";
-        },
+
         restCall: function (url, method, data, broadcastName) {
             if (method != "GET" && method != "DELETE") {
-                //using a function only accessible INSIDE out service
+                //using a function only accessible INSIDE our service
                 //to check if data is valid
-                //data = checkData(data);
+                data = checkData(data);             // kommenterade in detta (ns)
             }
             if (data === false) {
                 //if data is not valid (FALSE), return false
@@ -39,7 +32,6 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
             $http({
                 url: "/api/" + url,
                 method: method,
-                // DO NOT STRINGIFY DATA WHEN SENDING IT WITH $http
                 data: data,
                 responseType: "json"
             }).success(function (data) {
@@ -48,9 +40,9 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
                 // $rootScope.output = JSON.stringify(data, null, '\t');
                 // (all scopes now have the propery "output")
 
-                //using $rootScope to broadcast data to any "listeners" in the app
+                //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
-                console.log("restCall success Kuken: ", data, " now broadcasting on: ", broadcastName);
+                console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
             });
@@ -118,7 +110,7 @@ app.service("Authors", ["restService", function (restService) {
     var authorServant = {
         get: function (Id) {
             var restUrl = Id ? "authors/" + Id : "authors/";
-            restService.restCall(restUrl, "GET", {}, "gotAuthorlist");
+            restService.restCall(restUrl, "GET", {}, "gotAuthors");
         },
         post: function (data) {
             var restUrl = "authors/";
