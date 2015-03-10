@@ -18,7 +18,8 @@ namespace Boken.Migrations
             // set up dummy data to always be present
             // Authors
             context.Authors.AddOrUpdate(
-                    new Author() { Id = 1, Name = "Stephen King", Biography = "Stephen King skriver minst en bok i veckan. Han är fan inte klok." },
+                    new Author() { Id = 1, Name = "Stephen King", Biography = "Stephen Edwin King, född 21 september 1947 i Portland i Maine, är en amerikansk författare, som skrivit många böcker som har legat på bästsäljarlistorna." +
+                                "Han är framförallt verksam inom skräckgenren. Flera av hans böcker har filmatiserats. Han är också känd under pseudonymen Richard Bachman." },
                     new Author() { Id = 2, Name = "Dan Brown", Biography = "Daniel 'Dan' Brown, född 22 juni 1964 i Exeter, New Hampshire, är en amerikansk författare. Hans mesta känd romaner är" +
                                 "förmodligen bästsäljarna Änglar och demoner (2000) och Da Vinci-koden (2003). Han har även gett ut två skivor på eget skivbolag." },
                     new Author() { Id = 3, Name = "J.R.R. Tolkien", Biography = "Tolkien har gjort sig ett namn som en av de största inom fantasy-genren och han var den "+
@@ -29,7 +30,7 @@ namespace Boken.Migrations
                                 "är vid tidpunkten mycket känd för läsaren, och på detta sätt får läsaren en inlevelsefull känsla av hur fruktansvärt och mäktigt monstret är." },
                     new Author() { Id = 4, Name = "Niklas Gustavsson", Biography = "En av de absolut bästa författare någonsin, med sina inspirerande böcker så som: Ölrövhönans äventyr i vattnadalen,"+
                                 "Vilken öl i röven?. Niklas Gustavsson slutar aldrig förbrylla sina läsare med djupa, känslosamma berättelser om kärlek, BDSM och öl." },
-                    new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Den näst klokaste historikern på halva Österlen." }
+                    new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Skriver skitböcker. Vem köper dom?? Bränn möget." }
                 );
 
             // Genres
@@ -42,11 +43,11 @@ namespace Boken.Migrations
 
             // Books
             context.Books.AddOrUpdate(
-                    new Book() { Id = 1, Title = "Sagan om Ringen", Year = 1948, Price = 49.9m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "http://image.bokus.com/images2/9789172632189_200", Summary = "Hobbitar är bara små på utsidan." },
+                    new Book() { Id = 1, Title = "Sagan om Ringen", Year = 1948, Price = 49.9m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "http://image.bokus.com/images2/9789172632189_200", Summary = "Sagan om ringen eller Härskarringen, i nyöversättning Ringarnas herre (originaltitel The Lord of the Rings), är en fantasyroman av J.R.R. Tolkien. Den utgavs på engelska för första gången 1954–1955 uppdelad i tre volymer med titlarna The Fellowship of the Ring, The Two Towers och The Return of the King. Tolkien hade redan 1937 i Bilbo, en hobbits äventyr, introducerat både härskarringen, och flera av huvudfigurerna i trilogin." },
                     new Book() { Id = 2, Title = "Skånes Historia", Year = 1999, Price = 79.9m, ISBN = "345-371-251-121", InStock = 12, ImagePath = "http://www.esff.se/dok/dok_info/skane.gif", Summary = "Jäevlett vikte bog ti å läesa. Ellår iallafall glo på bildårna." },
-                    new Book() { Id = 3, Title = "Da Vinci Kodden", Year = 2006, Price = 69.9m, ISBN = "123-762-33-1274", InStock = 67, ImagePath = "http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/300px-Da_Vinci_Vitruve_Luc_Viatour.jpg", Summary = "Leonardo da Vinci gjorde visst mer än bara uppfinna grejer." },
-                    new Book() { Id = 4, Title = "Änglar och Demoner", Year = 1004, Price = 69.9m, ISBN = "373-37-4532-136", InStock = 247, ImagePath = "https://nilmasbokhylla.files.wordpress.com/2012/03/c3a4nglar-och-demoner.jpg", Summary = "En faktisk bok." },
-                    new Book() { Id = 5, Title = "Det", Year = 1986, Price = 99.9m, ISBN = "532-234-137-1251", InStock = 12, ImagePath = "http://s1.discshop.se/img/front_large/33066/det_stephen_kings.jpg", Summary = "Det är en clown. Och en rymdspindel." },
+                    new Book() { Id = 3, Title = "Da Vinci Kodden", Year = 2006, Price = 69.9m, ISBN = "123-762-33-1274", InStock = 67, ImagePath = "http://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/300px-Da_Vinci_Vitruve_Luc_Viatour.jpg", Summary = "Da Vinci-koden är en roman av den amerikanske författaren Dan Brown. Den följer en professor i religionssymbolik, Robert Langdon, som blir indragen i en mordutredning i Paris och upptäcker en kamp mellan Prieuré de Sion och Opus Dei över huruvida Jesus från Nasaret var gift och hade barn med Maria Magdalena." },
+                    new Book() { Id = 4, Title = "Änglar och Demoner", Year = 1004, Price = 69.9m, ISBN = "373-37-4532-136", InStock = 247, ImagePath = "https://nilmasbokhylla.files.wordpress.com/2012/03/c3a4nglar-och-demoner.jpg", Summary = "Änglar och demoner är en bestseller-roman av den amerikanske författaren Dan Brown, utgiven 2000. Den handlar om Harvard-professorn Robert Langdon och dennes ständiga kamp mot klockan under jakten på en mördare tillhörande Illuminati" },
+                    new Book() { Id = 5, Title = "Det", Year = 1986, Price = 99.9m, ISBN = "532-234-137-1251", InStock = 12, ImagePath = "http://s1.discshop.se/img/front_large/33066/det_stephen_kings.jpg", Summary = "Det (engelsk originaltitel It) är en roman från 1986 av Stephen King. Den gavs ut i svensk översättning 1987.[1] Boken har även filmatiserats." },
                     new Book() { Id = 6, Title = "Boktitel 6", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "http://image.bokus.com/images2/9789172632189_200", Summary = "Hobbitar är bara små på utsidan." },
                     new Book() { Id = 7, Title = "Boktitel 7", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "http://image.bokus.com/images2/9789172632189_200", Summary = "Hobbitar är bara små på utsidan." },
                     new Book() { Id = 8, Title = "Boktitel 8", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "http://image.bokus.com/images2/9789172632189_200", Summary = "Hobbitar är bara små på utsidan." },
