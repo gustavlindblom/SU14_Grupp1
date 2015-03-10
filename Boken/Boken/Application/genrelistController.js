@@ -6,6 +6,9 @@
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.genres = data;
     });
-        Genres.get();
+    Genres.get();
+
+
+
 }]);
 
