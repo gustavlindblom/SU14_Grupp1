@@ -1,0 +1,50 @@
+﻿
+<div class="container-fluid " ng-show="genres">
+    <div class="panel panel-primary">
+        <!-- Default panel contents -->
+        <div class="panel-heading">GENRE</div>
+
+        <div class="panel-body">
+            <table class="table">
+                <tr>
+                <thead>
+                    <tr> <th>Genre</th>  <th>Utdrag</th> </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="genre in genres"> <td>{{genre.Name}}</td> <td>{{genre.Description}}</td>   </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Panel footer -->
+
+        <nav class="genre pag-sm">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- footer slut -->
+    </div>
+
+</div>
+
+
+
+
+
+
