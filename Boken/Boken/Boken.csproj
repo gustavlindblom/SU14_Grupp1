@@ -230,6 +230,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Application\app.js" />
+    <Content Include="Application\authorlistController.js" />
     <Content Include="Application\bookformController.js" />
     <Content Include="Application\genrelistController.js" />
     <Content Include="Application\homeController.js" />
@@ -245,6 +246,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
+    <Content Include="Partials\authorlist.html" />
     <Content Include="Partials\booklist.html" />
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\MikaelSandbox\index2.html" />
