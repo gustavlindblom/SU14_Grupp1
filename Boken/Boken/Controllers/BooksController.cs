@@ -41,7 +41,8 @@ namespace Boken.Controllers
                     Authors = authors.ToArray(),
                     Genres = genres.ToArray(),
                     Price = b.Price,
-                    ImagePath = b.ImagePath
+                    ImagePath = b.ImagePath,
+                    Summary = b.Summary
                 });
             }
             return books.AsQueryable();
