@@ -6,9 +6,12 @@
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.genres = data;
     });
+    
+
+    $scope.showGenre = function (genre) {
+        $scope.textModal = genre;
+        };
+
     Genres.get();
 
-
-
 }]);
-

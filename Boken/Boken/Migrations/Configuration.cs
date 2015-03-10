@@ -19,9 +19,16 @@ namespace Boken.Migrations
             // Authors
             context.Authors.AddOrUpdate(
                     new Author() { Id = 1, Name = "Stephen King", Biography = "Stephen King skriver minst en bok i veckan. Han är fan inte klok." },
-                    new Author() { Id = 2, Name = "Dan Brown", Biography = "Dan Brown skriver bästsäljare. Dan Brown gillar att upprepa sig. Dan Brown får betalt per ord." },
-                    new Author() { Id = 3, Name = "J.R.R. Tolkien", Biography = "Sagan om Ringen. Nuff said." },
-                    new Author() { Id = 4, Name = "Niklas Gustavsson", Biography = "En av de klokaste historikerna på hela Österlen." },
+                    new Author() { Id = 2, Name = "Dan Brown", Biography = "Daniel 'Dan' Brown, född 22 juni 1964 i Exeter, New Hampshire, är en amerikansk författare. Hans mesta känd romaner är" +
+                                "förmodligen bästsäljarna Änglar och demoner (2000) och Da Vinci-koden (2003). Han har även gett ut två skivor på eget skivbolag." },
+                    new Author() { Id = 3, Name = "J.R.R. Tolkien", Biography = "Tolkien har gjort sig ett namn som en av de största inom fantasy-genren och han var den "+
+                                "som mer eller mindre grundade den i sin moderna form. Med sina böcker, och då främst kanske trilogin Sagan om ringen, har han väckt beundran hos " +
+                                "miljontals läsare världen över. Kännetecknande för hans verk är dess detaljrikedom och den ibland närmast ogreppbara blandningen av folkslag, språk och kulturer." +
+                                "När han skulle visa någons grovhet, eller hur hemskt och fruktansvärt något var, tog han på ett magnifikt sätt hjälp av rollpersonerna i boken, som läsaren redan" +
+                                "bekantat sig med. Ett exempel är när brödraskapet möter en balrog, då han istället för att fiktivt beskriva denna best, låter trollkarlen Gandalf bli orolig. Gandalf "+
+                                "är vid tidpunkten mycket känd för läsaren, och på detta sätt får läsaren en inlevelsefull känsla av hur fruktansvärt och mäktigt monstret är." },
+                    new Author() { Id = 4, Name = "Niklas Gustavsson", Biography = "En av de absolut bästa författare någonsin, med sina inspirerande böcker så som: Ölrövhönans äventyr i vattnadalen,"+
+                                "Vilken öl i röven?. Niklas Gustavsson slutar aldrig förbrylla sina läsare med djupa, känslosamma berättelser om kärlek, BDSM och öl." },
                     new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Den näst klokaste historikern på halva Österlen." }
                 );
 
