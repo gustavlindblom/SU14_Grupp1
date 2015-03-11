@@ -236,7 +236,7 @@
     <Content Include="Application\headerController.js" />
     <Content Include="Application\homeController.js" />
     <Content Include="Application\main.js" />
-    <Content Include="Application\pageformController.js" />
+    <Content Include="Application\modalController.js" />
     <Content Include="Application\services.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />

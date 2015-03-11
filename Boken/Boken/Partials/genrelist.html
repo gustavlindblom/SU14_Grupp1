@@ -1,5 +1,10 @@
 ﻿
-<div class="container-fluid " ng-show="genres">
+
+<button class="btn btn-default" ng-click="open()">Open me!</button>
+
+
+
+<div class="container-fluid ">
     <div class="panel panel-primary">
         <!-- Default panel contents -->
         <div class="panel-heading">GENRE</div>
@@ -13,7 +18,7 @@
 
                 <tbody>
                     <tr class="listFocus cursor" ng-repeat="genre in genres">
-                        <td ng-click="showGenre(genre)" data-toggle="modal" data-target="#genreModal">
+                        <td>
 
                             {{genre.Name}}
                         </td>
@@ -51,23 +56,6 @@
 
 
     <!-- modal html -->
-<div class="modal fade" id="genreModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">{{textModal.Name}}</h4>
-            </div>
-            <div class="modal-body">
-                {{textModal.Description}}
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Stäng</button>
-                <button type="button" class="btn btn-primary">Spara ändringar</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
