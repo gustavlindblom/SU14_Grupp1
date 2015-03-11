@@ -10,7 +10,12 @@
 
     $scope.showGenre = function (genre) {
         $scope.textModal = genre;
-        };
+    };
+
+    $scope.selectedGenre = function (genre) {
+        console.log("Choosen category: " + genre.Name);
+        return genre.Id;
+    };
 
     Genres.get();
 
