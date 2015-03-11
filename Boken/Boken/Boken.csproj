@@ -252,10 +252,8 @@
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\header.html" />
-    <Content Include="Partials\MikaelSandbox\index2.html" />
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
-    <Content Include="Partials\MikaelSandbox\HtmlPage1.html" />
     <Content Include="Partials\modal.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
