@@ -1,10 +1,11 @@
 ﻿app.controller("booklistController", ["$scope", "Books", function ($scope, Books) {
     console.log("books loaded");
-    
+
     $scope.$on("gotBooks", function (event, data) {
         console.log("gotBooks triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.books = data;
+        console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));
     });
 
     $scope.showBook = function (book) {
@@ -12,9 +13,54 @@
         $scope.textModal = book;
 
     };
-     Books.get();
 
-     
+    // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
+    $scope.filterBooksByAuthor = function (data, authorId, genreId) {
+        var booksByAuthor = [];
+
+        console.log(data)
+
+        for (var i = 0; i < data.length; i++) {
+            var book = data[i];
+            for (var j = 0; j < book.Authors.length; j++) {
+                var author = book.Authors[j];
+                if (author.Id == authorId) {
+                    if (genreId) {
+                        for (var h = 0; h < book.Genres.length; h++) {
+                            var genre = book.Genres[h];
+                            if (genre.Id == genreId)
+                                booksByAuthor.push(book);
+                        }
+                    } else {
+                        booksByAuthor.push(book);
+                    }
+                }
+            }
+        }
+
+        //for (var book in data) {
+        //    console.log(book);
+        //    for (var author in book.Authors)
+        //    {
+        //        console.log(author);
+        //        if (author.Id == authorId) {
+        //            if (genreId) {
+        //                for (var genre in book.Genres)
+        //                {
+        //                    if (genre.Id == genreId) {
+        //                        booksByAuthor.push(book);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //};
+        return booksByAuthor;
+    };
+
+
+    Books.get();
+
 }]);
 
 

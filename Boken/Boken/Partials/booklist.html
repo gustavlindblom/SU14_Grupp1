@@ -1,49 +1,63 @@
-﻿    <div class="col-md-12">
-        <div class="panel panel-default">
-            <div class="panel-heading">Books page X</div>
-            <div class="panel-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>&nbsp;</th>
-                            <th>Titel</th>
-                            <th>Författare</th>
-                            <th>Genre</th>
-                            <th>Pris</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="listFocus cursor" ng-repeat="book in books">
-                            <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
-                            <td ng-click="showBook(book)" data-toggle="modal" data-target="#bookModal">{{book.Title}}</td>
-                            <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
-                            <td><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
-                            <td>{{book.Price}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="panel-footer">
-                    <ul class="pagination">
-                        <li>
-                            <a href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                            </a>
-                        </li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li>
-                            <a href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                            </a>
-                        </li>
-                    </ul>
+﻿<div class="col-md-12">
+
+
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <h2>Böcker</h2>  <!-- Single button -->
+            <div class="btn-group ewq" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
+                    Genre  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
+                    <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
+                </ul>
             </div>
         </div>
+
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Titel</th>
+                        <th>Författare</th>
+                        <th>Genre</th>
+                        <th>Pris</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="listFocus cursor" ng-repeat="book in books">
+                        <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
+                        <td ng-click="showBook(book)" data-toggle="modal" data-target="#bookModal">{{book.Title}}</td>
+                        <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
+                        <td><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
+                        <td>{{book.Price}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="panel-footer">
+            <ul class="pagination">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
+</div>
 
 <!-- modal html -->
 <div class="modal fade" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -56,7 +70,7 @@
             </div>
             <div class="modal-body">
 
-                
+
                 <h3>Bokinfo</h3>
                 <div ng->
                     {{textModal.Summary}}

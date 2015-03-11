@@ -84,3 +84,18 @@ pag-sm{
 .listFocus:hover {
     background-color:ButtonFace;
 }
+
+.ddGenre{
+    width:200px;
+    text-align:left;
+}
+
+.ddGenreItems{
+
+   text-align:center;
+}
+
+
+.mainbody{
+    margin-top:100px;
+}
