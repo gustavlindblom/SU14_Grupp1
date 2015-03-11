@@ -12,10 +12,11 @@
                 </thead>
 
                 <tbody>
-                    <tr ng-repeat="genre in genres">
-                        <td class="btnGenrelist" ng-click="showGenre(genre)" data-toggle="modal" data-target="#genreModal" >
-                           
-                            {{genre.Name}}</td>
+                    <tr class="listFocus cursor" ng-repeat="genre in genres">
+                        <td ng-click="showGenre(genre)" data-toggle="modal" data-target="#genreModal">
+
+                            {{genre.Name}}
+                        </td>
                         <td>{{genre.Description}}</td>
                     </tr>
                 </tbody>

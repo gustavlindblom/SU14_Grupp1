@@ -77,3 +77,10 @@ pag-sm{
 
 }
 
+.cursor {
+    cursor:pointer;
+}
+
+.listFocus:hover {
+    background-color:ButtonFace;
+}
