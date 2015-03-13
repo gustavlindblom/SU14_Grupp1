@@ -1,7 +1,7 @@
 
 app.service("restService", ["$http", "$rootScope", "$location", function ($http, $rootScope, $location) {
 
-    function checkData(data) {                                
+    function checkData(data) {
         console.log("typeof", typeof data);
         if (typeof data == "String") {
             try {
@@ -46,10 +46,31 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 // (all "listeners" have now recieved our stringified data)
             }).error(function (data, thrownError) {
                 console.log("Errormessage: ", data, thrownError);
+                var msg = "";
+                if (thrownError == 401) {
+                    msg = "unauthorized";
+                }
+                else if (thrownError == 400) {
+                    msg = "bad request";
+                }
+                else if (thrownError == 403) {
+                    msg = "forbidden";
+                }
+                else if (thrownError == 404) {
+                    msg = "not found";
+                }
+                else if (thrownError == 500) {
+                    msg = "internal server error";
+                }
+                else {
+                    msg = "Google it, bi-yatch";
+                };
+
                 $rootScope.thrownError = thrownError;
+                $rootScope.msg = msg;
+                console.log(msg);
                 $location.path('/error');
             });
-            
 
             //return true for logical purposes in the controller
             return true;
