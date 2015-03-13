@@ -231,6 +231,7 @@
   <ItemGroup>
     <Content Include="Application\app.js" />
     <Content Include="Application\authorlistController.js" />
+    <Content Include="Application\authorModalController.js" />
     <Content Include="Application\bookformController.js" />
     <Content Include="Application\genrelistController.js" />
     <Content Include="Application\headerController.js" />

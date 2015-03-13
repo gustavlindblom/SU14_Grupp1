@@ -8,21 +8,15 @@
     });
     
 
-    $scope.showAuthor = function (author) {
-
-        $scope.textModal = author;
-        
-    };
     // ----- Modal ----- //
     $scope.open = function (author) {
         var modalInstance = $modal.open({
             templateUrl: 'partials/authorModal.html',
-            controller: 'modalController',
-            //size: size, 
+            controller: 'authorModalController',
             resolve: {
-                items: function () {
+                id: function () {
 
-                    return author;
+                    return author.Id;
                 }
             }
         });
