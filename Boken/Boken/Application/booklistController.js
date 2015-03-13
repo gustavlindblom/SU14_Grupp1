@@ -1,4 +1,4 @@
-﻿app.controller("booklistController", ["$scope", "Books", function ($scope, Books) {
+﻿app.controller("booklistController", ["$scope", "Books", "$modal", "$log", function ($scope, Books, $modal, $log) {
     console.log("books loaded");
 
     $scope.$on("gotBooks", function (event, data) {
@@ -7,12 +7,6 @@
         $scope.books = data;
         console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));
     });
-
-    $scope.showBook = function (book) {
-
-        $scope.textModal = book;
-
-    };
 
     // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
     $scope.filterBooksByAuthor = function (data, authorId, genreId) {
@@ -58,6 +52,29 @@
         return booksByAuthor;
     };
 
+    // ----- Modal ----- //
+
+
+    $scope.open = function (book) {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/bookModal.html',
+            controller: 'bookModalController',
+
+            resolve: {
+                id: function () {
+                    return book.Id;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+
+        });
+    };
+    //----------------------------//
 
     Books.get();
 

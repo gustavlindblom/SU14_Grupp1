@@ -1,54 +1,60 @@
 ﻿
-
-<div class="container-fluid ">
-    <div class="panel panel-primary">
-        <!-- Default panel contents -->
-        <div class="panel-heading">GENRE</div>
-
-        <div class="panel-body">
-            <table class="table">
-                <tr>
-                <thead>
-                    <tr> <th>Genre</th>  <th>Utdrag</th> </tr>
-                </thead>
-
-                <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in genres">
-                        <td ng-click="open(genre)" >
-
-                            {{genre.Name}}
-                        </td>
-                        <td>{{genre.Description}}</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <!-- Panel footer -->
-        
-        <nav class="genre pag-sm">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
-        <!-- footer slut -->
-    </div>
-
+<!-- Progresbar  -->
+<div class="container-fluid " ng-if="!genres">
+    <h4>Hämtar lista av genres</h4>
 </div>
+<!-- ----------- -->
+
+
+    <div class="container-fluid ">
+        <div class="panel panel-primary" ng-if="genres">
+            <!-- Default panel contents -->
+            <div class="panel-heading">GENRE</div>
+
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                    <thead>
+                        <tr> <th>Genre</th>  <th>Utdrag</th> </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr class="listFocus cursor" ng-repeat="genre in genres">
+                            <td ng-click="open(genre)">
+
+                                {{genre.Name}}
+                            </td>
+                            <td>{{genre.Description}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- Panel footer -->
+
+            <nav class="genre pag-sm">
+                <ul class="pagination">
+                    <li>
+                        <a href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li>
+                        <a href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- footer slut -->
+        </div>
+
+    </div>
 
 
     <!-- modal html -->
