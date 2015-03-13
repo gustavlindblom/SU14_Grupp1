@@ -5,11 +5,15 @@
     <div class="panel panel-default" ng-if="books">
         <div class="panel-heading">
             <h2>Böcker</h2>  <!-- Single button -->
+           
             <div class="btn-group ewq" dropdown is-open="status.isopen">
+                <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                <button type="button" class="btn btn-default" style="">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
                 
-                    <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic">
-                    <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
-                        Genre  <span class="caret"></span>
+                    <button type="button" class="btn btn-primary dropdown-toggle ddGenre"  dropdown-toggle ng-disabled="disabled">
+                        Genre <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
                         <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
