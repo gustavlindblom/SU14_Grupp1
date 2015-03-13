@@ -37,10 +37,12 @@ app.controller("homeController", ["$scope", "restService", "Books", function ($s
 
   };
 
-  var images = ['/Content/Image/saganomringen.jpg', '/Content/Image/c3a4nglar-och-demoner.jpg'];
+  var imagePath = '/Content/Image/';
+
+  var images = [imagePath + 'saganomringen.jpg', imagePath + 'anglarodemoner.jpg', imagePath + 'davinci.jpg', imagePath + 'Det.jpg'];
 
   
-      $scope.myInterval = 1000;
+      $scope.myInterval = 5000;
       var slides = $scope.slides = [];
 
       $scope.addSlide = function () {
@@ -50,7 +52,7 @@ app.controller("homeController", ["$scope", "restService", "Books", function ($s
 
           });
       };
-      for (var i = 0; i < 2; i++) {
+      for (var i = 0; i < 4; i++) {
           $scope.addSlide();
       }
   

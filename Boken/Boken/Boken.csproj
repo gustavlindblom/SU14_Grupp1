@@ -242,7 +242,9 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrapTheme.css" />
-    <Content Include="Content\Image\c3a4nglar-och-demoner.jpg" />
+    <Content Include="Content\Image\anglarodemoner.jpg" />
+    <Content Include="Content\Image\davinci.jpg" />
+    <Content Include="Content\Image\Det.jpg" />
     <Content Include="Content\Image\saganomringen.jpg" />
     <Content Include="Content\Site2.css" />
     <Content Include="favicon.ico" />

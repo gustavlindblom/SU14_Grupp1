@@ -1,4 +1,4 @@
-<section class="row">
+<!--<section class="row">
   <div class="col-xs-10 col-sm-10 col-md-6 col-lg-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-0 col-lg-offset-0">
     <div class="alert alert-warning" ng-if="restMessage">
         
@@ -35,10 +35,15 @@
           </ul>
       </div>
   </div>
-</section>
+</section>-->
+
+<div>
+    <h2 class="alert alert-info" style="text-align:center;">Senaste nytt</h2>
+</div>
+
 
 <div ng-controller="homeController">
-    <div style="height: 305px; width:250px;">
+    <div style="height: 305px; width:350px; margin-left:45vh;">
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active">
                 <img ng-src="{{slide.image}}" style="margin:auto;">
