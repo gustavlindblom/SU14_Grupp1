@@ -231,11 +231,9 @@
   <ItemGroup>
     <Content Include="Application\app.js" />
     <Content Include="Application\authorlistController.js" />
-    <Content Include="Application\bookformController.js" />
     <Content Include="Application\genrelistController.js" />
     <Content Include="Application\headerController.js" />
     <Content Include="Application\homeController.js" />
-    <Content Include="Application\main.js" />
     <Content Include="Application\modalController.js" />
     <Content Include="Application\services.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
@@ -253,7 +251,6 @@
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\header.html" />
-    <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
     <Content Include="Partials\modal.html" />
     <Content Include="Scripts\angular-mocks.js" />
