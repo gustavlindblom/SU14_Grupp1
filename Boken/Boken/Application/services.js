@@ -62,6 +62,9 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 else if (thrownError == 500) {
                     msg = "internal server error";
                 }
+                else if (thrownError == 0) {
+                    msg = "starta VS!!!";
+                }
                 else {
                     msg = "Google it, bi-yatch";
                 };
