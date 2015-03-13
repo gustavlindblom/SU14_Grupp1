@@ -10,8 +10,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="author in authors">
-                        <td ng-click="showAuthor(author)" data-toggle="modal" data-target="#authorModal">{{author.Name}}</td>
+                    <tr class="listFocus cursor" ng-repeat="author in authors" >
+                        <td ng-click="open(author)"  data-toggle="modal" data-target="#authorModal">{{author.Name}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -39,7 +39,7 @@
 </div>
 
 <!-- modal html -->
-<div class="modal fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="authorModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -58,4 +58,4 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->

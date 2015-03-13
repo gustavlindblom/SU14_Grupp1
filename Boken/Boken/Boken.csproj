@@ -248,6 +248,7 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Partials\authorlist.html" />
+    <Content Include="Partials\authorModal.html" />
     <Content Include="Partials\booklist.html" />
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
