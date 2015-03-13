@@ -1,7 +1,9 @@
-﻿app.controller("modalController", ["$scope", "$modalInstance", "items", function ($scope, $modalInstance, genre) {
+﻿app.controller("modalController", ["$scope", "Genres", "$modalInstance", "id", function ($scope, Genres, $modalInstance, id) {
     
-    $scope.genre = genre;
-    
+    $scope.$on("gotGenre", function (event, data) {
+        console.log("modal controller: ", data);
+        $scope.items = data;
+    });
 
     $scope.ok = function () {
         
@@ -12,4 +14,6 @@
         
         $modalInstance.dismiss('cancel');
     };
+
+    Genres.get(id);
 }]);
