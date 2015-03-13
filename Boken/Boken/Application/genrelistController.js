@@ -20,7 +20,7 @@
     // ----- Modal ----- //
     $scope.open = function (genre) {
         var modalInstance = $modal.open({
-            templateUrl: 'partials/modal.html', 
+            templateUrl: 'partials/genreModal.html', 
             controller: 'modalController', 
             //size: size, 
             resolve: { 
