@@ -254,7 +254,7 @@
     <Content Include="Partials\header.html" />
     <Content Include="Partials\bookform.html" />
     <Content Include="Partials\home.html" />
-    <Content Include="Partials\modal.html" />
+    <Content Include="Partials\genreModal.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
