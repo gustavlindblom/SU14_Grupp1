@@ -6,7 +6,7 @@ window.onerror = function (message, file, lineNumber) {
 }
 
 //app declaration and dependency injection
-var app = angular.module("BookStore", ["ngRoute", "ui.bootstrap"]);
+var app = angular.module("BookStore", ["ngRoute", "ui.bootstrap", "angularSpinner"]);
 
 //app config
 app.config(["$routeProvider", "$locationProvider", function($routeProvider, $locationProvider) {

@@ -1,5 +1,5 @@
 //"myAppName" controller.
-app.controller("homeController", ["$scope", "restService", "Books", function($scope, restService, Books) {
+app.controller("homeController", ["$scope", "restService", "Books", function ($scope, restService, Books) {
   console.log("I'm alive!");
 
   //using $rootScope.on to listen for new data from restCall .success()
