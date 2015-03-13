@@ -85,8 +85,9 @@ app.service("Books", ["restService", function (restService) {
 app.service("Genres", ["restService", function (restService) {
     var genreServant = {
         get: function (Id) {
+            var broadcast = Id ? "gotGenre" : "gotGenres";
             var restUrl = Id ? "genres/" + Id : "genres/";
-            restService.restCall(restUrl, "GET", {}, "gotGenres");
+            restService.restCall(restUrl, "GET", {}, broadcast);
         },
         post: function (data) {
             var restUrl = "genres/";

@@ -1,3 +1,10 @@
+window.onerror = function (message, file, lineNumber) {
+    /*
+        Tell the user something has happened 
+    */
+    return false; // Keep showing errors in the console, otherwise set to true
+}
+
 //app declaration and dependency injection
 var app = angular.module("BookStore", ["ngRoute", "ui.bootstrap"]);
 
