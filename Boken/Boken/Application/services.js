@@ -47,8 +47,9 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
-            }).error(function (data) {
-                console.log("Errormessage ", data);
+            }).error(function (data, thrownError) {
+                console.log("Errormessage: ", data, thrownError);
+                $rootScope.thrownError = thrownError;
                 $location.path('/error');
             });
             
