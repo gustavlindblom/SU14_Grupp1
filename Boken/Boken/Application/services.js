@@ -61,8 +61,9 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
 app.service("Books", ["restService", function (restService) {
     var bookServant = {
         get: function (Id) {
+            var broadcast = Id ? "gotBook" : "gotBooks";
             var restUrl = Id ? "books/" + Id : "books/";
-            restService.restCall(restUrl, "GET", {}, "gotBooks");
+            restService.restCall(restUrl, "GET", {}, broadcast);
         },
         post: function (data) {
             var restUrl = "books/";

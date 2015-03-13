@@ -234,6 +234,7 @@
     <Content Include="Application\authorModalController.js" />
     <Content Include="Application\bookformController.js" />
     <Content Include="Application\genrelistController.js" />
+    <Content Include="Application\bookModalController.js" />
     <Content Include="Application\headerController.js" />
     <Content Include="Application\homeController.js" />
     <Content Include="Application\main.js" />
@@ -251,6 +252,7 @@
     <Content Include="Partials\authorlist.html" />
     <Content Include="Partials\authorModal.html" />
     <Content Include="Partials\booklist.html" />
+    <Content Include="Partials\bookModal.html" />
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\header.html" />
