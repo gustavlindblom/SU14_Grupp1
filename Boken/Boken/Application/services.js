@@ -37,10 +37,7 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 data: data,
                 responseType: "json"
             }).success(function (data) {
-                //using $rootscope to distribute a model (data) to all
-                //$scopes in the app
-                // $rootScope.output = JSON.stringify(data, null, '\t');
-                // (all scopes now have the propery "output")
+
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";

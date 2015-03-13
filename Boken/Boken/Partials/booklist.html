@@ -1,8 +1,8 @@
 ﻿<div class="col-md-12">
-
-
-    <div class="panel panel-default">
-
+    <!-- Loading symbol  -->
+    <div id="center" style="position:fixed;top:50%;left:50%" ng-if="!books"><span us-spinner></span></div>
+    <!-- ----------- -->
+    <div class="panel panel-default" ng-if="books">
         <div class="panel-heading">
             <h2>Böcker</h2>  <!-- Single button -->
             <div class="btn-group ewq" dropdown is-open="status.isopen">
@@ -23,14 +23,14 @@
                 <thead>
                     <tr>
                         <th>&nbsp;</th>
-                        <th>Titel</th>
-                        <th>Författare</th>
-                        <th>Genre</th>
-                        <th>Pris</th>
+                        <th ng-click="sortByTitle()">Titel</th>
+                        <th ng-click="sortByAuthor()">Författare</th>
+                        <th ng-click="sortByGenre()">Genre</th>
+                        <th ng-click="sortByPrice()">Pris</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="book in books" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
+                    <tr class="listFocus cursor" ng-repeat="book in books | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
                         <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
                         <td>{{book.Title}}</td>
                         <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>

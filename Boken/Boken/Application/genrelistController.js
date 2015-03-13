@@ -12,12 +12,12 @@
     // ----- Modal ----- //
    
     
-    $scope.open = function (genre) {
+    $scope.open = function (size, genre) {
         
          var modalInstance = $modal.open({
             templateUrl: 'partials/modal.html', 
             controller: 'modalController', 
-             
+            size : size,
             resolve: { 
                 id: function () {
                     return genre.Id;
