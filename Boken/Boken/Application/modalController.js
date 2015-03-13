@@ -2,7 +2,7 @@
     
     $scope.$on("gotGenre", function (event, data) {
         console.log("modal controller: ", data);
-        $scope.items = data;
+        $scope.genre = data;
     });
 
     $scope.ok = function () {
