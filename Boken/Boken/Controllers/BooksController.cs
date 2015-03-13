@@ -41,15 +41,14 @@ namespace Boken.Controllers
                     Authors = authors.ToArray(),
                     Genres = genres.ToArray(),
                     Price = b.Price,
-                    ImagePath = b.ImagePath,
-                    Summary = b.Summary
+                    ImagePath = b.ImagePath
                 });
             }
             return books.AsQueryable();
         }
 
         // GET: api/Books/5
-        [ResponseType(typeof(Book))]
+        [ResponseType(typeof(BookDetailDTO))]
         public IHttpActionResult GetBook(int id)
         {
             Book book = db.Books.Find(id);
@@ -58,7 +57,30 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            return Ok(book);
+            List<Author> authors = new List<Author>();
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id))
+                authors.Add(db.Authors.FirstOrDefault(a => a.Id == bac.AuthorId));
+
+            List<Genre> genres = new List<Genre>();
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id))
+                genres.Add(db.Genres.FirstOrDefault(g => g.Id == bgc.GenreId));
+
+            BookDetailDTO bookDetail = new BookDetailDTO()
+            {
+                Id = book.Id,
+                Title = book.Title,
+                Authors = authors.ToArray(),
+                Genres = genres.ToArray(),
+                Year = book.Year,
+                Price = book.Price,
+                ISBN = book.ISBN,
+                ImagePath = book.ImagePath,
+                Summary = book.Summary,
+                InStock = book.InStock
+            };
+
+
+            return Ok(bookDetail);
         }
 
         // PUT: api/Books/5

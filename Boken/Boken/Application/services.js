@@ -1,5 +1,5 @@
 
-app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) {
+app.service("restService", ["$http", "$rootScope", "$location", function ($http, $rootScope, $location) {
 
     function checkData(data) {                                
         console.log("typeof", typeof data);
@@ -25,6 +25,8 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
             }
             if (data === false) {
                 //if data is not valid (FALSE), return false
+                //$http({ url: "/partials/error.html"})
+                //$rootScope.GoTo("'/error'");
                 return false;
             }
 
@@ -42,7 +44,11 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
                 console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
+            }).error(function (data) {
+                console.log("Errormessage ", data);
+                $location.path('/error');
             });
+            
 
             //return true for logical purposes in the controller
             return true;
@@ -58,8 +64,9 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
 app.service("Books", ["restService", function (restService) {
     var bookServant = {
         get: function (Id) {
+            var broadcast = Id ? "gotBook" : "gotBooks";
             var restUrl = Id ? "books/" + Id : "books/";
-            restService.restCall(restUrl, "GET", {}, "gotBooks");
+            restService.restCall(restUrl, "GET", {}, broadcast);
         },
         post: function (data) {
             var restUrl = "books/";

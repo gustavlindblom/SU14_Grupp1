@@ -15,7 +15,6 @@
             controller: 'authorModalController',
             resolve: {
                 id: function () {
-
                     return author.Id;
                 }
             }
