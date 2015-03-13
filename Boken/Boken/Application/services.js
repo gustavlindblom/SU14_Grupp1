@@ -1,5 +1,5 @@
 
-app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) {
+app.service("restService", ["$http", "$rootScope", "$location", function ($http, $rootScope, $location) {
 
     function checkData(data) {                                
         console.log("typeof", typeof data);
@@ -25,6 +25,8 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
             }
             if (data === false) {
                 //if data is not valid (FALSE), return false
+                //$http({ url: "/partials/error.html"})
+                //$rootScope.GoTo("'/error'");
                 return false;
             }
 
@@ -35,17 +37,18 @@ app.service("restService", ["$http", "$rootScope", function ($http, $rootScope) 
                 data: data,
                 responseType: "json"
             }).success(function (data) {
-                //using $rootscope to distribute a model (data) to all
-                //$scopes in the app
-                // $rootScope.output = JSON.stringify(data, null, '\t');
-                // (all scopes now have the propery "output")
+
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
                 console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
+            }).error(function (data) {
+                console.log("Errormessage ", data);
+                $location.path('/error');
             });
+            
 
             //return true for logical purposes in the controller
             return true;
