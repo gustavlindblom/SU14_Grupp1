@@ -13,8 +13,8 @@
                 </thead>
 
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in genres">
-                        <td ng-click="open()" >
+                    <tr class="listFocus cursor" ng-repeat="genre in genres" ng-click="open(genre)">
+                        <td >
 
                             {{genre.Name}}
                         </td>

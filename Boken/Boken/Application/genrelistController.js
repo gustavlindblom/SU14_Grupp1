@@ -18,15 +18,15 @@
 
 
     // ----- Modal ----- //
-    $scope.open = function (size) {
+    $scope.open = function (genre) {
         var modalInstance = $modal.open({
             templateUrl: 'partials/modal.html', 
             controller: 'modalController', 
-            size: size, 
+            //size: size, 
             resolve: { 
                 items: function () {
                     
-                    return $scope.genre;
+                    return genre;
                 }
             }
         });
