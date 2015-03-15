@@ -1,23 +1,29 @@
-﻿
-<!-- Loading symbol  -->
-<div id="center" style="position:fixed;top:50%;left:50%" ng-if="!genres"><span us-spinner></span></div>
+﻿<!-- Loading symbol  -->
+<div class="center" ng-if="!genres"><span us-spinner></span></div>
 <!-- ----------- -->
 
 
-<div class="container-fluid col-lg-4 col-md-4 col-lg-offset-3 col-md-offset-3">
+<div class="container-fluid ">
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
         <div class="panel-heading">GENRE</div>
 
+
         <div class="panel-body">
             <table class="table">
 
+                <thead>
+                    <tr>
+                        <th>Genre</th>
+                        <th>Utdrag</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr class="listFocus cursor" ng-repeat="genre in genres" ng-click="open('lg',genre)">
                         <td>
                             {{genre.Name}}
                         </td>
-
+                        <td>{{genre.Description}}...</td>
                     </tr>
                 </tbody>
             </table>

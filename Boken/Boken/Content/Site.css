@@ -104,3 +104,10 @@ pag-sm{
     text-align: center;
     
 }
+
+.center{ 
+   position:fixed;
+   top:50%;
+   left:50%;
+
+}
