@@ -1,6 +1,17 @@
 ﻿app.controller("booklistController", ["$scope", "Books", "$modal", "$log", function ($scope, Books, $modal, $log) {
     console.log("books loaded");
 
+    $scope.bigTotalItems = Books.length();          // nytt!
+    $scope.bigCurrentPage = 1;
+    $scope.itemsPP = 10;
+
+    $scope.$watch("bigCurrentPage", function (newValue, oldValue) {
+        console.log("bigCurrentPage: ", newValue);
+        var showIndex = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+        console.log("showIndex: " + showIndex + " - " + (showIndex + $scope.itemsPP - 1));
+    });
+
+
     $scope.sort = "Title";
 
     $scope.$on("gotBooks", function (event, data) {

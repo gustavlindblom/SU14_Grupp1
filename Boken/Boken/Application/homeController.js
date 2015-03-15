@@ -37,6 +37,26 @@ app.controller("homeController", ["$scope", "restService", "Books", function ($s
 
   };
 
+  var imagePath = '/Content/Image/';
+
+  var images = [imagePath + 'saganomringen.jpg', imagePath + 'anglarodemoner.jpg', imagePath + 'davinci.jpg', imagePath + 'Det.jpg'];
+
+  
+      $scope.myInterval = 5000;
+      var slides = $scope.slides = [];
+
+      $scope.addSlide = function () {
+          var newWidth = slides.length + 1;
+          slides.push({
+              image: images[i] ,
+
+          });
+      };
+      for (var i = 0; i < 4; i++) {
+          $scope.addSlide();
+      }
+  
+
   //we can make models accessible to the entire app using $rootScope!
   //$scope.hello is set in restService helloWorld using $rootScope
   //console.log("rootScope1: ", $scope.hello);

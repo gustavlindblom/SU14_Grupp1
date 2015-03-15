@@ -5,16 +5,20 @@
     <div class="panel panel-default" ng-if="books">
         <div class="panel-heading">
             <h2>Böcker</h2>  <!-- Single button -->
+
             <div class="btn-group ewq" dropdown is-open="status.isopen">
-                
-                    <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic">
-                    <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
-                        Genre  <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
-                        <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
-                    </ul>
-               
+                <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                <button type="button" class="btn btn-default" style="">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+
+                <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
+                    Genre <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
+                    <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
+                </ul>
+
             </div>
         </div>
 
@@ -40,8 +44,9 @@
                 </tbody>
             </table>
         </div>
-        <div class="panel-footer">
-            <ul class="pagination">
+        <div class="panel-footer">          <!-- ny rad för paginering -->
+            <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            <!--<ul class="pagination">
                 <li>
                     <a href="#" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
@@ -57,7 +62,7 @@
                         <span aria-hidden="true">&raquo;</span>
                     </a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
     </div>
 </div>
