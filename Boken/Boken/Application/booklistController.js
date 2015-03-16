@@ -9,11 +9,13 @@
         $scope.books = data;
         console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));  // kan tas bort sen, vid städning
     });
-
+    // controller för paginering
+    //app.controller("pageController", ["$scope", function ($scope) {
     $scope.$on("gotBooks", function () {
         $scope.TotalItems = $scope.books.length;          // nytt! Funkar, fanimej!
         console.log("TotalItems: " + $scope.TotalItems);
     });
+    $scope.pagArr = [];
     $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;
     $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
@@ -26,6 +28,10 @@
         $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
         $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
         console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
+        $scope.$on("gotBooks", function () {
+            $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
+        });
+        console.log("pagArr: ", $scope.pagArr);
     });
 
     app.filter('slice', function () {
@@ -38,7 +44,7 @@
         $scope.bigCurrentPage = $scope.newValue;
         console.log($scope.bigCurrentPage);
     }
-
+    //}]);             // slut på paginering
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";

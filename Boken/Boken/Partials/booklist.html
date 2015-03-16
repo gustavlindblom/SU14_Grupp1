@@ -1,6 +1,6 @@
 ﻿<div class="col-md-12">
     <!-- Loading symbol  -->
-    <div class="center"  ng-if="!books"><span us-spinner></span></div>
+    <div class="center" ng-if="!books"><span us-spinner></span></div>
     <!-- ----------- -->
     <div class="panel panel-default" ng-if="books">
         <div class="panel-heading">
@@ -34,7 +34,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="book in books.slice(startshow,endshow) | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
+                    <tr class="listFocus cursor" ng-repeat="book in pagArr | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
                         <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
                         <td>{{book.Title}}</td>
                         <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
@@ -45,10 +45,9 @@
             </table>
         </div>
         <div class="panel-footer">
-
-            <!-- ny rad för paginering -->
-            <pagination total-items="TotalItems" ng-model="bigCurrentPage" ng-change="pageChanged()" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
-
+            <!--<div ng-controller="pageController">-->
+                <pagination total-items="TotalItems" ng-model="bigCurrentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            <!--</div>-->
         </div>
     </div>
 </div>
