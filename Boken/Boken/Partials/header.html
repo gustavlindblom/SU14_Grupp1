@@ -17,9 +17,16 @@
             <button class="navbar-btn btn btn-default" ng-click="GoTo('/books')">Böcker</button>
             <button class="navbar-btn btn btn-default" ng-click="GoTo('/genres')">Genre</button>
         </div><!-- /.navbar-collapse -->
-        <form class="navbar-form navbar-right" role="button">
-            <div>
-                <button type="button" class="btn btn-default" id="loginButton" ng-click="GoTo('/login')">Logga in</button>
+        <form class="navbar-form navbar-right">
+            <!-- Log in function in dropdown menu-->
+            <div class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    Logga in <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="#" ng-click="loginStatus(1)">Admin</a></li>
+                    <li><a href="#" ng-click="loginStatus(2)">Slav</a></li>
+                </ul>
             </div>
         </form>
     </div><!-- /.container-fluid -->
