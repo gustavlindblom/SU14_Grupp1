@@ -2,36 +2,44 @@
     <!-- Loading symbol  -->
     <div class="center" ng-if="!books"><span us-spinner></span></div>
     <!-- ----------- -->
+
     <div class="panel panel-default" ng-if="books">
         <div class="panel-heading">
             <h2>Böcker</h2>  <!-- Single button -->
 
-            <div class="btn-group ewq" dropdown is-open="status.isopen">
-                <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic;  ">
-                <button type="button" class="btn btn-default" style="" >
-                    <span class="glyphicon glyphicon-search"></span>
-                </button>
-
-                <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
-                    Genre <span class="caret" ></span>
-                </button>
-                <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
-                    <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
-                </ul>
-
+            <div class="btn-group" >
+                <input type="text" ng-model="selected" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                <input type="text" ng-model="selectedgenre" class="form-control" placeholder="Skriv genre här..." style="font-style:italic;  ">
+                <button type="button" class="btn btn-default" ng-click="filterBooksByAuthor(selected,selectedgenre)"><span class="glyphicon glyphicon-search"></span> </button>
             </div>
         </div>
+        <!--
+                <div class="btn-group ewq" dropdown is-open="status.isopen">
+                    <input type="text" ng-model="dynamicPopover" class="form-control" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                    <button type="button" class="btn btn-default" style="">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
 
+                    <button type="button" class="btn btn-primary dropdown-toggle ddGenre" dropdown-toggle ng-disabled="disabled">
+                        Genre <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu cursor" role="menu" ng-controller="genrelistController">
+                        <li ng-repeat="genre in genres" class="ddGenreItems" ng-click="selectedGenre(genre)">{{genre.Name}}</li>
+                    </ul>
 
+                </div>
+            </div> -->
         <!-- --------------------------------------------- -->
-        <div class='container-fluid' >
 
-            <h4 ng-click="filterBooksByAuthor(selected,selectedgenre)">Mikael testar</h4>
-            <pre >Model: {{selected | json}}</pre>
-            <input id="ok"  type="text" ng-model="selected" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" class="form-control">
-            <input  type="text" ng-model="selectedgenre"  class="form-control">
-        </div>
+        <!--
+                <div class='container-fluid'>
 
+                    <h4 ng-click="filterBooksByAuthor(selected,selectedgenre)">Mikael testar</h4>
+                    <pre>Model: {{selected | json}}</pre>
+                    <input id="ok" type="text" ng-model="selected" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" class="form-control">
+                    <input type="text" ng-model="selectedgenre" class="form-control">
+                </div>
+        -->
         <!-- --------------------------------------------------->
 
 
@@ -47,7 +55,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="book in pagArr | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
+                    <tr class="listFocus cursor" ng-repeat="book in books | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
                         <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
                         <td>{{book.Title}}</td>
                         <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
@@ -59,7 +67,7 @@
         </div>
         <div class="panel-footer">
             <!--<div ng-controller="pageController">-->
-                <pagination total-items="TotalItems" ng-model="bigCurrentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            <pagination total-items="TotalItems" ng-model="bigCurrentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
             <!--</div>-->
         </div>
     </div>

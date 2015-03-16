@@ -1,13 +1,15 @@
 ﻿app.controller("booklistController", ["$scope", "Books", "Authors", "$modal", "$log", function ($scope, Books, Authors, $modal, $log) {
     console.log("books loaded");
 
+    var allBooks;
+
     $scope.sort = "Title";
 
     $scope.$on("gotBooks", function (event, data) {
         console.log("gotBooks triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
-        $scope.books = data;
-        console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));  // kan tas bort sen, vid städning
+        allBooks = $scope.books = data;
+        
     });
     // controller för paginering
     //app.controller("pageController", ["$scope", function ($scope) {
@@ -100,6 +102,8 @@
     // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
     $scope.filterBooksByAuthor = function (selected, selectedgenre) {
         
+        $scope.books = allBooks;
+
         console.log("författare: ", selected, selectedgenre)
         var booksByAuthor = [];
         var data = $scope.books;
