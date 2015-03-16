@@ -19,6 +19,12 @@ namespace Boken.Controllers
         // GET: api/Genres
         public IQueryable<Genre> GetGenres()
         {
+            foreach (Genre genre in db.Genres)
+            {
+                var length = genre.Description.Length;
+                var incerpt = genre.Description.Substring(0, ( length >= 50 ? 50 : length));
+                genre.Description = incerpt;
+            }
             return db.Genres;
         }
 
