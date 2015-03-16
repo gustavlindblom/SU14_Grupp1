@@ -1,25 +1,36 @@
 ﻿app.controller("booklistController", ["$scope", "Books", "$modal", "$log", function ($scope, Books, $modal, $log) {
     console.log("books loaded");
 
-    $scope.bigTotalItems = Books.length();          // nytt!
-    $scope.bigCurrentPage = 1;
-    $scope.itemsPP = 10;
-
-    $scope.$watch("bigCurrentPage", function (newValue, oldValue) {
-        console.log("bigCurrentPage: ", newValue);
-        var showIndex = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-        console.log("showIndex: " + showIndex + " - " + (showIndex + $scope.itemsPP - 1));
-    });
-
-
     $scope.sort = "Title";
 
     $scope.$on("gotBooks", function (event, data) {
         console.log("gotBooks triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.books = data;
-        console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));
+        console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));  // kan tas bort sen, vid städning
     });
+
+    $scope.$on("gotBooks", function () {
+        $scope.TotalItems = $scope.books.length;          // nytt! Funkar, fanimej!
+        console.log("TotalItems: " + $scope.TotalItems);
+    });
+    $scope.CurrentPage = 1;
+    $scope.itemsPP = 5;
+    $scope.startshow = ($scope.CurrentPage - 1) * $scope.itemsPP;
+    $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+    console.log($scope.startshow, $scope.endshow);
+
+    $scope.$watch("CurrentPage", function (newValue, oldValue) {
+        console.log("CurrentPage: ", newValue);
+        $scope.startshow = ($scope.CurrentPage - 1) * $scope.itemsPP;
+        $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+        console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
+    });
+
+    app.filter('slice', function () {
+        return $scope.books.slice(showIndex, maxIndex);
+    });
+
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
@@ -121,7 +132,7 @@
     //----------------------------//
 
     Books.get();
-    
+
 }]);
 
 
