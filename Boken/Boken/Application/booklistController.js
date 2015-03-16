@@ -109,53 +109,108 @@
         var data = $scope.books;
         var genreId = selectedgenre;
         var authorId = selected;
-
+        var finns = false;
+        // om författare inte är tom
         if (authorId !== undefined )
-            {
-                for (var book of data) 
-                {
-                    for (var a of book.Authors) 
-                    {
-                        if (a.Name.includes(authorId) ) 
-                        {
-                            console.log("Inne i författare");
-                            if(genreId !== undefined) 
-                            {
-                                console.log("hej hej", authorId, genreId);
-                                for (var g of book.Genres)
-                                {
-                                    if (g.Name.includes(genreId)) 
-                                    {
-                                        booksByAuthor.push(book);
-                                    }
-                                }   
-                            }
-                            else 
-                            {
-                                booksByAuthor.push(book);
-                        }
-                        }
-                    }
-                }
-            }
-        else 
         {
-            for (var book of data) 
-                {
-                    for (var g of book.Genres) 
+            //för varje bok
+            for (var i = 0; i < data.length; i++) 
+            {
+                // console.log("första");
+                //för varje författare i boken
+                for (var j = 0; j < data[i].Authors.length; j++) 
+                    //{console.log("Andra");
+                    // om bokes författares namn innehåller sökvärde
+                    if (data[i].Authors[j].Name.indexOf(authorId) >= 0)
                     {
-                        if (g.Name.includes(genreId)) 
+                        //console.log("tredje");
+                        //om genre är ifylld
+                        if(genreId !== undefined) 
                         {
-                            console.log("Inne i författare");
-                        booksByAuthor.push(book);
+                            console.log("fjärde");
+                            for (var h = 0; h < data[i].Genre.length; h++) 
+                            {
+                                if (g.Name.toLowerCase().includes(genreId)) 
+                                {
+                                    booksByAuthor.push(data[i]);
+                                }
+                            }   
+                        }
+                            // om ingen genre är ifylld
+                        else 
+                        {
+                            console.log("femte");
+                            //om bokksByAuthpr innehåller böcker
+                            if (booksByAuthor.length > 0) 
+                                {   
+                                console.log(booksByAuthor.length);
+                                // för varje bok
+                                    for (var k = 0; k < booksByAuthor.length; k++) 
+                                    {
+
+                                        console.log("sjätte");
+                                        // om boken finns i listan
+                                        if (booksByAuthor[k] === data[i])
+                                        {
+                                            // ändravi finns till true
+                                            finns = true; console.log("den finns", data[i])
+                                        }
+                                        // om finns är false
+                                        if (!finns)
+                                        {
+                                            console.log("nej den finns inte");
+                                            // lägger vi till boken
+                                            booksByAuthor.push(data[i]);
+                                            // ändra finns till false
+                                            
+                                        }
+                                        console.log("finns: ", finns);
+                                        finns = false;
+                                    }
+                                }
+                                
+                            else
+                            {
+                                console.log("första gången");
+                                booksByAuthor.push(data[i]);
+                            }
+                            //    if (booksByAuthor[i] === data[i])
+                            //    {console.log("sjunde")
+                            //        finns = true; console.log("sdf")
+                            //    }
+                            //    if (!finns)
+                            //    {console.log("åttonde")
+                            //        booksByAuthor.push(data[i]);
+                            //        finns = false;
+                            //    }
+                            //}
+
+
+                               
+                        }
                     }
-                }
             }
         }
-
-                $scope.books = booksByAuthor;
     
-    };
+
+        //else 
+        //{
+        //    for (var book of data) 
+        //        {
+        //            for (var g of book.Genres) 
+        //            {
+        //                if (g.Name.toLowerCase().includes(genreId)) 
+        //                {
+                          
+        //                  booksByAuthor.push(book);
+                          
+        //                }
+        //            }
+        //        }
+        //}
+        console.log(booksByAuthor)
+     $scope.books = booksByAuthor;
+     };
 
     // ----- Modal ----- //
 
