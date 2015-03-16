@@ -1,4 +1,4 @@
-﻿app.controller('headerController', ['$scope', '$location', function ($scope, $location) { 
+﻿app.controller('headerController', ['$scope', '$location', '$rootScope', function ($scope, $location, $rootScope) { 
     $scope.GoTo = function (url) {
         $location.url(url);
     }
