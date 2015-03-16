@@ -14,22 +14,30 @@
         $scope.TotalItems = $scope.books.length;          // nytt! Funkar, fanimej!
         console.log("TotalItems: " + $scope.TotalItems);
     });
-    $scope.CurrentPage = 1;
+    $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;
-    $scope.startshow = ($scope.CurrentPage - 1) * $scope.itemsPP;
+    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
     $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
     console.log($scope.startshow, $scope.endshow);
 
-    $scope.$watch("CurrentPage", function (newValue, oldValue) {
-        console.log("CurrentPage: ", newValue);
-        $scope.startshow = ($scope.CurrentPage - 1) * $scope.itemsPP;
+    $scope.$watch("bigCurrentPage", function (newValue, oldValue) {     // bigCurrentPage ändras aldrig. FAN!
+        console.log("bigCurrentPage: ", newValue, oldValue);
+        $scope.bigCurrentPage = newValue;
+        $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
         $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
         console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
     });
 
     app.filter('slice', function () {
-        return $scope.books.slice(showIndex, maxIndex);
+        return function (arr, start, end) {
+            return arr.slice(start, end);
+        };
     });
+
+    var pageChanged = function () {
+        $scope.bigCurrentPage = $scope.newValue;
+        console.log($scope.bigCurrentPage);
+    }
 
 
     $scope.sortByTitle = function () {
