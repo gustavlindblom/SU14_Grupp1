@@ -66,18 +66,18 @@ namespace Boken.Migrations
                 new BookAuthorCoupling() { Id = 9, AuthorId = 3, BookId = 6 },
                 new BookAuthorCoupling() { Id = 10, AuthorId = 3, BookId = 7 },
                 new BookAuthorCoupling() { Id = 11, AuthorId = 3, BookId = 8 },
-                new BookAuthorCoupling() { Id = 12, AuthorId = 3, BookId = 9 },
-                new BookAuthorCoupling() { Id = 13, AuthorId = 3, BookId = 10 },
-                new BookAuthorCoupling() { Id = 14, AuthorId = 3, BookId = 11 },
+                new BookAuthorCoupling() { Id = 12, AuthorId = 5, BookId = 9 },
+                new BookAuthorCoupling() { Id = 13, AuthorId = 4, BookId = 10 },
+                new BookAuthorCoupling() { Id = 14, AuthorId = 5, BookId = 11 },
                 new BookAuthorCoupling() { Id = 15, AuthorId = 3, BookId = 11 }
                 );
 
             // Book-Genre couplings
             context.BookGenreCouplings.AddOrUpdate(
                 new BookGenreCoupling() { Id = 1, GenreId = 3, BookId = 1 },
-                new BookGenreCoupling() { Id = 3, GenreId = 1, BookId = 2 },
+                new BookGenreCoupling() { Id = 3, GenreId = 3, BookId = 2 },
                 new BookGenreCoupling() { Id = 4, GenreId = 2, BookId = 3 },
-                new BookGenreCoupling() { Id = 5, GenreId = 2, BookId = 4 },
+                new BookGenreCoupling() { Id = 5, GenreId = 3, BookId = 4 },
                 new BookGenreCoupling() { Id = 6, GenreId = 1, BookId = 5 },
                 new BookGenreCoupling() { Id = 9, GenreId = 3, BookId = 6 },
                 new BookGenreCoupling() { Id = 10, GenreId = 3, BookId = 7 },
@@ -85,7 +85,7 @@ namespace Boken.Migrations
                 new BookGenreCoupling() { Id = 12, GenreId = 3, BookId = 9 },
                 new BookGenreCoupling() { Id = 13, GenreId = 3, BookId = 10 },
                 new BookGenreCoupling() { Id = 14, GenreId = 3, BookId = 11 },
-                new BookGenreCoupling() { Id = 15, GenreId = 3, BookId = 11 }
+                new BookGenreCoupling() { Id = 15, GenreId = 2, BookId = 11 }
                 );
         }
     }
