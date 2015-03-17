@@ -5,7 +5,25 @@
         console.log("gotGenres triggered: ", data);
         $scope.output = JSON.stringify(data, null, '\t'); 
         $scope.genres = data;
+        $scope.totalItems = $scope.genres.length;
+        $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     });
+
+    // Början på paginering
+    $scope.pagArr = [];
+    $scope.bigCurrentPage = 1;
+    $scope.itemsPP = 5;
+    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+    $scope.endshow = ($scope.startshow + $scope.itemsPP);
+
+    $scope.pageChanged = function (currScope) {
+        $scope.bigCurrentPage = currScope.bigCurrentPage;
+        $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+        $scope.endshow = ($scope.startshow + $scope.itemsPP);
+        $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
+    }
+    // slut på paginering
+
 
     //  ------------ Mikael Testar ---------------//
 

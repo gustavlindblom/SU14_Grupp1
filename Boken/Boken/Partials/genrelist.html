@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in genres" ng-click="open('lg',genre)">
+                    <tr class="listFocus cursor" ng-repeat="genre in pagArr" ng-click="open('lg',genre)">
                         <td>
                             {{genre.Name}}
                         </td>
@@ -30,25 +30,11 @@
         </div>
         <!-- Panel footer -->
 
-        <nav class="genre pag-sm col-md-offset-2 col-lg-offset-2">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <div class="panel-footer">
+            <!--<div ng-controller="pageController">-->
+            <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            <!--</div>-->
+        </div>
 
         <!-- footer slut -->
     </div>
