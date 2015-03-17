@@ -91,6 +91,13 @@
 
     // --- filtrering ---   //
     $scope.filterBooks = function (author, genre) {
+        if (!author && !genre) {
+            $scope.books = allBooks;
+            $scope.currentPage = 1;
+            $scope.totalItems = $scope.books.length;
+            $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+            return;
+        }
         console.log("kommer in");
         $scope.books = allBooks;
         newBooksArr = [];
