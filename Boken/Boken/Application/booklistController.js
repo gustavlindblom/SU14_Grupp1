@@ -92,96 +92,53 @@
         }
     }
 
-    // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
-    $scope.filterBooksByAuthor = function (selected, selectedgenre) {
-        
+    // --- filtrering ---   //
+    $scope.filterBooks = function (author, genre) {
+        console.log("kommer in");
         $scope.books = allBooks;
+        newBooksArr = [];
+        var dataArr = $scope.books;
 
-        console.log("författare: ", selected, selectedgenre)
-        var booksByAuthor = [];
-        var data = $scope.books;
-        var genreId = selectedgenre;
-        var authorId = selected;
-
-        if((authorId === undefined && genreId === undefined) || (authorId === "" && genreId === "") || (authorId === undefined && genreId === "") || (authorId === "" && genreId === undefined))
+         
+        for (var i = 0; i < dataArr.length; i++) 
         {
-           console.log("båda fel");
-            return;
-        }
-        else
-            {
-      
-
-        if (authorId !== undefined || authorId !== "")
-            {
-            console.log("authorId ej und");
-                for (var book of data) 
-                {
-                    for (var a of book.Authors) 
-                    {
-                        if (a.Name.toLowerCase().indexOf(authorId.toLowerCase()) >= 0) 
-                        {
-                            console.log("Inne i författare", a.Name, authorId);
-                            if(genreId !== undefined) 
-                            {
-                                console.log("hej hej", authorId, genreId);
-                                for (var g of book.Genres)
-                                {
-                                    if (g.Name.toLowerCase().indexOf(genreId.toLowerCase()) >= 0) 
-                                    {
-
-                                        booksByAuthor.push(book);
-                                        console.log("push genre");
-                                    }
-                                }   
-                            }
-                            else 
-                            {
-                                if(booksByAuthor.indexOf(book) >= 0)
-                                {
-                                    console.log("nope");
-                                    continue
-                                }
-                                else 
-                                console.log("pushar");
-                                booksByAuthor.push(book);
-                        }
-                        }
-                    }
-                }
-            }
-        else 
-        {
-            for (var book of data) 
-                {
-                    for (var g of book.Genres) 
-                    {
-                        if (g.Name.toLowerCase().indexOf(genreId.toLowerCase()) >= 0) 
-                        {
-                            console.log("Inne i else");
-                             if(booksByAuthor.indexOf(book) >= 0)
-                        {
-                                    console.log("nope");
-                                    continue
-                                }
-                                else 
-                                console.log("pushar");
-                        booksByAuthor.push(book);
-                    
-                    }
-                }
-            }
-        }
-
-        $scope.books = booksByAuthor;
-        $scope.currentPage = 1;
-        $scope.totalItems = $scope.books.length;
-        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-        console.log("ewqewq ", booksByAuthor);
-}
-
+            //console.log(dataArr[i]);
+            filter(dataArr[i], author, genre);
     
-};
+        }
+        console.log("den nya arr ", newBooksArr)
+
+        $scope.books = newBooksArr;
+                // -- spara --- //
+                $scope.currentPage = 1;
+                $scope.totalItems = $scope.books.length;
+                $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+                // --- ---- --- //
+    }
+
+    var filter = function (objekt, authorName, genreName) 
+    {
+        if (authorName && genreName) {
+            objekt.Authors.forEach(function (author) {
+                objekt.Genres.forEach(function (genre) {
+                    if (genre.Name.toLowerCase().indexOf(genreName.toLowerCase()) >= 0 && author.Name.toLowerCase().indexOf(authorName.toLowerCase()) >= 0)
+                        if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
+                })
+            });
+        } else if (authorName) {
+            objekt.Authors.forEach(function (author) {
+                if (author.Name.toLowerCase().indexOf(authorName.toLowerCase()) >= 0)
+                    if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
+            });
+        } else if (genreName) {
+            objekt.Genres.forEach(function (genre) {
+                if (genre.Name.toLowerCase().indexOf(genreName.toLowerCase()) >= 0)
+                    if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
+            });
+        }
+    }
+
+    // ---------------------------------//
 
 $scope.open = function (book) {
 
