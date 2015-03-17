@@ -8,9 +8,9 @@
             <h2>Böcker</h2>  <!-- Single button -->
 
             <div class="btn-group" >
-                <input type="text" ng-model="selected" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  ">
-                <input type="text" ng-model="selectedgenre" class="form-control" typeahead="genre.Name for genre in genres | filter:$viewValue | limitTo:8" placeholder="Skriv genre här..." style="font-style:italic;  ">
-                <button type="button" class="btn btn-default" ng-click="filterBooksByAuthor(selected,selectedgenre)"><span class="glyphicon glyphicon-search"></span> </button>
+                <input type="text" ng-model="author" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                <input type="text" ng-model="genre" class="form-control" typeahead="genre.Name for genre in genres | filter:$viewValue | limitTo:8" placeholder="Skriv genre här..." style="font-style:italic;  ">
+                <button type="button" class="btn btn-default" ng-click="filterBooks(author,genre)"><span class="glyphicon glyphicon-search"></span> </button>
             </div>
         </div>
         <!--
