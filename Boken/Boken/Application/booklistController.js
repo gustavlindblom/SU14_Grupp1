@@ -155,7 +155,27 @@
 
                 $scope.books = booksByAuthor;
     
-    };
+};
+
+// ------ Niklas & Gustavs loop ---- //
+//for (var i = 0; i < data.length; i++) {
+//    var book = $scope.books[i];
+//    for (var j = 0; j < book.Authors.length; j++) {
+//        var author = book.Authors[j];
+//        if (author.Id == authorId) {
+//            if (genreId) {
+//                for (var h = 0; h < book.Genres.length; h++) {
+//                    var genre = book.Genres[h];
+//                    if (genre.Id == genreId)
+//                        booksByAuthor.push(book);
+//                }
+//            } else {
+//                booksByAuthor.push(book);
+//            }
+//        }
+//    }
+//}
+// ---- slut ------ //
 
     // ----- Modal ----- //
 
