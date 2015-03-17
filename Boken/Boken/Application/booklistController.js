@@ -1,4 +1,4 @@
-﻿app.controller("booklistController", ["$scope", "Books", "Authors", "$modal", "$log", function ($scope, Books, Authors, $modal, $log) {
+﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", function ($scope, Books, Authors, Genres, $modal, $log) {
     console.log("books loaded");
 
     var allBooks;
@@ -99,6 +99,23 @@
     };
     //-----------------------------//
 
+
+    //------Hämtar lista av genre -------------//
+
+    $scope.$on("gotGenres", function (event, data) {
+        console.log("gotGenres triggered: ", data);
+        $scope.output = JSON.stringify(data, null, '\t'); 
+        $scope.genres = data;
+    });
+
+    Genres.get();
+
+    $scope.genreslist = function() {
+        var genrelist = [];
+        for(var g in genres){
+            genrelist.push(g.Name);
+        }
+    }
 
     // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
     $scope.filterBooksByAuthor = function (selected, selectedgenre) {
