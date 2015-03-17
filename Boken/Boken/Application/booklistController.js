@@ -9,6 +9,7 @@
         $scope.books = data;
         console.log("function returns: ", $scope.filterBooksByAuthor(data, 4));  // kan tas bort sen, vid städning
     });
+    // Början på paginering
     // controller för paginering
     //app.controller("pageController", ["$scope", function ($scope) {
     $scope.$on("gotBooks", function () {
@@ -19,14 +20,14 @@
     $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;
     $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-    $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+    $scope.endshow = ($scope.startshow + $scope.itemsPP);
     console.log($scope.startshow, $scope.endshow);
 
     $scope.$watch("bigCurrentPage", function (newValue, oldValue) {     // bigCurrentPage ändras aldrig. FAN!
         console.log("bigCurrentPage: ", newValue, oldValue);
         $scope.bigCurrentPage = newValue;
         $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-        $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+        $scope.endshow = $scope.startshow + ($scope.itemsPP - 1);
         console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
         $scope.$on("gotBooks", function () {
             $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
@@ -44,7 +45,7 @@
         $scope.bigCurrentPage = $scope.newValue;
         console.log($scope.bigCurrentPage);
     }
-    //}]);             // slut på paginering
+    //}]);  // slut på pageController           // slut på paginering
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
