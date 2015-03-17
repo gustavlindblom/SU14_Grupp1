@@ -173,8 +173,11 @@
             }
         }
 
-                $scope.books = booksByAuthor;
-                console.log("ewqewq ", booksByAuthor);
+        $scope.books = booksByAuthor;
+        $scope.currentPage = 1;
+        $scope.totalItems = $scope.books.length;
+        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+        console.log("ewqewq ", booksByAuthor);
 }
 
     
