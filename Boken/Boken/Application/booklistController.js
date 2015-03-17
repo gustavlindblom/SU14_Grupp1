@@ -1,53 +1,37 @@
 ﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", function ($scope, Books, Authors, Genres, $modal, $log) {
-    console.log("books loaded");
-
     var allBooks;
-
+    $scope.currentPage = 1;
+    $scope.numPerPage = 5;
+    $scope.maxSize = 5;
     $scope.sort = "Title";
 
     $scope.$on("gotBooks", function (event, data) {
-        console.log("gotBooks triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
         allBooks = $scope.books = data;
-        
+        $scope.totalItems = data.length;
+        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
     });
-    // Början på paginering
-    // controller för paginering
-    //app.controller("pageController", ["$scope", function ($scope) {
-    $scope.$on("gotBooks", function () {
-        $scope.TotalItems = $scope.books.length;          // nytt! Funkar, fanimej!
-        console.log("TotalItems: " + $scope.TotalItems);
-    });
-    $scope.pagArr = [];
-    $scope.bigCurrentPage = 1;
-    $scope.itemsPP = 5;
-    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-    $scope.endshow = ($scope.startshow + $scope.itemsPP);
-    console.log($scope.startshow, $scope.endshow);
+    Books.get();
 
-    $scope.$watch("bigCurrentPage", function (newValue, oldValue) {     // bigCurrentPage ändras aldrig. FAN!
-        console.log("bigCurrentPage: ", newValue, oldValue);
-        $scope.bigCurrentPage = newValue;
-        $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-        $scope.endshow = $scope.startshow + ($scope.itemsPP - 1);
-        console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
-        $scope.$on("gotBooks", function () {
-            $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
-        });
-        console.log("pagArr: ", $scope.pagArr);
-    });
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.totalItems / $scope.numPerPage);
+    };
 
-    app.filter('slice', function () {
-        return function (arr, start, end) {
-            return arr.slice(start, end);
+    $scope.previousPage = function () {
+        if ($scope.currentPage != 1) {
+            $scope.currentPage--;
         };
-    });
 
-    var pageChanged = function () {
-        $scope.bigCurrentPage = $scope.newValue;
-        console.log($scope.bigCurrentPage);
-    }
-    //}]);  // slut på pageController           // slut på paginering
+        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.currentPage != Math.ceil(($scope.books.length / $scope.numPerPage))) {
+            $scope.currentPage++;
+        }
+
+        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+    };
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
@@ -80,10 +64,6 @@
             return book.Price;
     }
 
-
-
-    //------Hämtar lista av författare -------------//
-    
     $scope.$on("gotAuthors", function (event, data) {
         console.log("gotAuthors triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
@@ -97,17 +77,12 @@
             authorlist.push(a.Name)
         }
     };
-    //-----------------------------//
-
-
-    //------Hämtar lista av genre -------------//
 
     $scope.$on("gotGenres", function (event, data) {
         console.log("gotGenres triggered: ", data);
         $scope.output = JSON.stringify(data, null, '\t'); 
         $scope.genres = data;
     });
-
     Genres.get();
 
     $scope.genreslist = function() {
@@ -205,52 +180,26 @@
     
 };
 
-// ------ Niklas & Gustavs loop ---- //
-//for (var i = 0; i < data.length; i++) {
-//    var book = $scope.books[i];
-//    for (var j = 0; j < book.Authors.length; j++) {
-//        var author = book.Authors[j];
-//        if (author.Id == authorId) {
-//            if (genreId) {
-//                for (var h = 0; h < book.Genres.length; h++) {
-//                    var genre = book.Genres[h];
-//                    if (genre.Id == genreId)
-//                        booksByAuthor.push(book);
-//                }
-//            } else {
-//                booksByAuthor.push(book);
-//            }
-//        }
-//    }
-//}
-// ---- slut ------ //
+$scope.open = function (book) {
 
-    // ----- Modal ----- //
+    var modalInstance = $modal.open({
+        templateUrl: 'partials/bookModal.html',
+        controller: 'bookModalController',
 
-
-    $scope.open = function (book) {
-
-        var modalInstance = $modal.open({
-            templateUrl: 'partials/bookModal.html',
-            controller: 'bookModalController',
-
-            resolve: {
-                id: function () {
-                    return book.Id;
-                }
+        resolve: {
+            id: function () {
+                return book.Id;
             }
-        });
+        }
+    });
 
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
+    modalInstance.result.then(function (selectedItem) {
+        $scope.selected = selectedItem;
+    }, function () {
 
-        });
-    };
-    //----------------------------//
+    });
+};
 
-    Books.get();
-    
 }]);
 
 

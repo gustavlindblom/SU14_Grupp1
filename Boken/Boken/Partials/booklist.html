@@ -55,7 +55,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="book in books | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
+                    <tr class="listFocus cursor" ng-repeat="book in pagArr | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
                         <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
                         <td>{{book.Title}}</td>
                         <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
@@ -66,9 +66,13 @@
             </table>
         </div>
         <div class="panel-footer">
-            <!--<div ng-controller="pageController">-->
-            <pagination total-items="TotalItems" ng-model="bigCurrentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
-            <!--</div>-->
+            <button ng-disabled="currentPage == 1" ng-click="previousPage()">
+                Previous
+            </button>
+            {{currentPage}}/{{numberOfPages()}}
+            <button ng-disabled="currentPage >= books.length/numPerPage" ng-click="nextPage()">
+                Next
+            </button>
         </div>
     </div>
 </div>
