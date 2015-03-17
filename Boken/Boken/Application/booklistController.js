@@ -11,6 +11,7 @@
         $scope.totalItems = $scope.books.length;
         $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
     });
+    Books.get();
 
     // Början på paginering
     $scope.pagArr = [];
@@ -27,8 +28,7 @@
     }
     // slut på paginering
 
-        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-    };
+
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
