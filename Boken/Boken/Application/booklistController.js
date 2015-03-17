@@ -137,7 +137,7 @@
             {
       
 
-        if (authorId !== undefined )
+        if (authorId !== undefined || authorId !== "")
             {
             console.log("authorId ej und");
                 for (var book of data) 
