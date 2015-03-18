@@ -30,7 +30,8 @@ namespace Boken.Migrations
                                 "är vid tidpunkten mycket känd för läsaren, och på detta sätt får läsaren en inlevelsefull känsla av hur fruktansvärt och mäktigt monstret är." },
                     new Author() { Id = 4, Name = "Niklas Gustavsson", Biography = "En av de absolut bästa författare någonsin, med sina inspirerande böcker så som: Ölrövhönans äventyr i vattnadalen,"+
                                 "Vilken öl i röven?. Niklas Gustavsson slutar aldrig förbrylla sina läsare med djupa, känslosamma berättelser om kärlek, BDSM och öl." },
-                    new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Skriver skitböcker. Vem köper dom?? Bränn möget." }
+                    new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Skriver skitböcker. Vem köper dom?? Bränn möget." },
+                    new Author() { Id = 6, Name = "Lena PH", Biography = "Lena syr sina egna kläder." }
                 );
 
             // Genres

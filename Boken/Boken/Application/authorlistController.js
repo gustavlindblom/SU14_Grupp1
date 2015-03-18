@@ -46,10 +46,24 @@
     };
     //----------------------------//
 
-    $scope.deleteAuthor = function () {
+    $scope.deleteAuthor = function (author) {
+
         confirm("Är du säker på att du vill ta bort denna författare?");
+        console.log("tar bort FF : ", author);
+        console.log("med id : ", author.Id);
+        try {
+            Author.delete(author.Id);
+            alert("Författaren är skjuten i huvudet och finns inte längre!");
+        }
+        catch(err)
+        {
+            alert("ta bort funkar inte " + err);
+        }
+
+        console.log($scope.authors);
     };
 
+    
     Authors.get();
 }]);
 
