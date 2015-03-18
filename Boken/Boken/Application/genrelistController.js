@@ -1,4 +1,4 @@
-app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", function ($scope, Genres, $modal, $log) {
+app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$route", function ($scope, Genres, $modal, $log, $route) {
     console.log("genrelistController is working!");
 
     $scope.$on("gotGenres", function (event, data) {
@@ -66,8 +66,8 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", fun
                 alert("Något gick fel:  " + err);
             }
         }
-
-        console.log($scope.genres);
+        Genres.get();
+        $route.reload();
     };
 
     //---------Slut delete -------------------//

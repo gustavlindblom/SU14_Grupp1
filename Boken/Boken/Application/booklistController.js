@@ -1,4 +1,4 @@
-﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", function ($scope, Books, Authors, Genres, $modal, $log) {
+﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", "$route", function ($scope, Books, Authors, Genres, $modal, $log, $route) {
     var allBooks;
     $scope.currentPage = 1;
     $scope.numPerPage = 5;
@@ -180,8 +180,8 @@
                 alert("Något gick fel:  " + err);
             }
         }
-
-        console.log($scope.books);
+        Books.get();
+        $route.reload();
     };
 
     //---------Slut delete -------------------//

@@ -1,4 +1,4 @@
-﻿app.controller("authorlistController", ["$scope", "Authors", "$modal", "$log", "$location", function ($scope, Authors, $modal, $log, $location) {
+﻿app.controller("authorlistController", ["$scope", "Authors", "$modal", "$log", "$location", "$route", function ($scope, Authors, $modal, $log, $location, $route) {
     console.log("authors loaded");
 
     $scope.$on("gotAuthors", function (event, data) {
@@ -67,8 +67,8 @@
                 alert("Något gick fel:  " + err);
             }
         }
-
-        console.log($scope.authors);
+        Authors.get();
+        $route.reload();
     };
 
     //---------Slut delete -------------------//
