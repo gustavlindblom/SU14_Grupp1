@@ -237,7 +237,6 @@
     <Content Include="Application\genreDetailController.js" />
     <Content Include="Application\headerController.js" />
     <Content Include="Application\homeController.js" />
-    <Content Include="Application\modalController.js" />
     <Content Include="Application\services.js" />
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
