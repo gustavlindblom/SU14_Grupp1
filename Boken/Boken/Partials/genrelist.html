@@ -6,9 +6,9 @@
 <div class="container-fluid ">
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
-        <div class="panel-heading">GENRE</div>
-
-
+        <div class="panel-heading">
+            <h2>Genre</h2>
+        </div>
         <div class="panel-body">
             <table class="table">
 
@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in pagArr" >
+                    <tr class="listFocus cursor" ng-repeat="genre in pagArr">
                         <td ng-click="open('lg',genre)">
                             {{genre.Name}}
                         </td>

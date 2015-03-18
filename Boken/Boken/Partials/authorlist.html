@@ -1,9 +1,11 @@
 ﻿<div class="col-md-12">
     <!-- Loading symbol  -->
-    <div class="center"ng-if="!authors"><span us-spinner></span></div>
+    <div class="center" ng-if="!authors"><span us-spinner></span></div>
     <!-- ----------- -->
     <div class="panel panel-default">
-        <div class="panel-heading">Författare</div>
+        <div class="panel-heading">
+            <h2>Författare</h2>
+        </div>
         <div class="panel-body">
             <table class="table">
                 <thead>
@@ -13,7 +15,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class=" cursor" ng-repeat="author in pagArr" >
+                    <tr class=" cursor" ng-repeat="author in pagArr">
                         <td class="listFocus" ng-click="open(author)" data-toggle="modal" data-target="#authorModal">{{author.Name}}</td>
                         <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteAuthor(author)"><span class="glyphicon glyphicon-trash"></span></td>
                     </tr>
