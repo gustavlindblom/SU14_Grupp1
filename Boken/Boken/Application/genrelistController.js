@@ -1,9 +1,8 @@
 app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$route", function ($scope, Genres, $modal, $log, $route) {
-    console.log("genrelistController is working!");
 
     // -- Hämtar lista med genres -- //
     $scope.$on("gotGenres", function (event, data) {
-        console.log("gotGenres triggered: ", data);
+        //console.log("gotGenres triggered: ", data);
         $scope.output = JSON.stringify(data, null, '\t'); 
         $scope.genres = data;
         $scope.totalItems = $scope.genres.length;

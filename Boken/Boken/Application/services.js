@@ -41,7 +41,7 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
-                console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
+                //console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
             }).error(function (data, thrownError) {
