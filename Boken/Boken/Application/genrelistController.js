@@ -49,6 +49,29 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", fun
     };
     //---------Slut Modal -------------------//
 
+
+    // ----- Delete ----------------------- //
+
+    $scope.deleteGenre = function (genre) {
+
+        if(confirm("Är du säker på att du vill ta bort denna Genre?"));
+        {
+            console.log("tar bort FF : ", genre);
+            console.log("med id : ", genre.Id);
+            try {
+                Genres.delete(genre.Id);
+                alert("Genren finns inte längre!");
+            }
+            catch (err) {
+                alert("Något gick fel:  " + err);
+            }
+        }
+
+        console.log($scope.genres);
+    };
+
+    //---------Slut delete -------------------//
+
     Genres.get();
 
 }]);
