@@ -1,34 +1,52 @@
-﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", function ($scope, Books, Authors, Genres, $modal, $log) {
+﻿app.controller("booklistController", ["$scope", "Books", "Authors", "$modal", "$log", function ($scope, Books, Authors, $modal, $log) {
+    console.log("books loaded");
+
     var allBooks;
-    $scope.currentPage = 1;
-    $scope.numPerPage = 5;
-    $scope.maxSize = 5;
+
     $scope.sort = "Title";
 
     $scope.$on("gotBooks", function (event, data) {
+        console.log("gotBooks triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
         allBooks = $scope.books = data;
-        $scope.totalItems = $scope.books.length;
-        $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
+        
     });
-    Books.get();
-
-    // Början på paginering
+    // controller för paginering
+    //app.controller("pageController", ["$scope", function ($scope) {
+    $scope.$on("gotBooks", function () {
+        $scope.TotalItems = $scope.books.length;          // nytt! Funkar, fanimej!
+        console.log("TotalItems: " + $scope.TotalItems);
+    });
     $scope.pagArr = [];
     $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;
     $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-    $scope.endshow = ($scope.startshow + $scope.itemsPP);
+    $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+    console.log($scope.startshow, $scope.endshow);
 
-    $scope.pageChanged = function (currScope) {
-        $scope.bigCurrentPage = currScope.bigCurrentPage;
+    $scope.$watch("bigCurrentPage", function (newValue, oldValue) {     // bigCurrentPage ändras aldrig. FAN!
+        console.log("bigCurrentPage: ", newValue, oldValue);
+        $scope.bigCurrentPage = newValue;
         $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-        $scope.endshow = ($scope.startshow + $scope.itemsPP);
-        $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
+        $scope.endshow = ($scope.startshow + $scope.itemsPP - 1);
+        console.log("Displaying: " + $scope.startshow + " - " + $scope.endshow);
+        $scope.$on("gotBooks", function () {
+            $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
+        });
+        console.log("pagArr: ", $scope.pagArr);
+    });
+
+    app.filter('slice', function () {
+        return function (arr, start, end) {
+            return arr.slice(start, end);
+        };
+    });
+
+    var pageChanged = function () {
+        $scope.bigCurrentPage = $scope.newValue;
+        console.log($scope.bigCurrentPage);
     }
-    // slut på paginering
-
-
+    //}]);             // slut på paginering
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
@@ -61,6 +79,10 @@
             return book.Price;
     }
 
+
+
+    //------Hämtar lista av författare -------------//
+    
     $scope.$on("gotAuthors", function (event, data) {
         console.log("gotAuthors triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
@@ -74,81 +96,130 @@
             authorlist.push(a.Name)
         }
     };
+    //-----------------------------//
 
-    $scope.$on("gotGenres", function (event, data) {
-        console.log("gotGenres triggered: ", data);
-        $scope.output = JSON.stringify(data, null, '\t'); 
-        $scope.genres = data;
-    });
-    Genres.get();
 
-    $scope.genreslist = function() {
-        var genrelist = [];
-        for(var g in genres){
-            genrelist.push(g.Name);
-        }
-    }
-
-    // --- filtrering ---   //
-    $scope.filterBooks = function (author, genre) {
-        if (!author && !genre) {
-            $scope.books = allBooks;
-            $scope.currentPage = 1;
-            $scope.totalItems = $scope.books.length;
-            $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-            return;
-        }
-        console.log("kommer in");
+    // authorId hämtas från fritextfältet, genreId hämtas ifrån DD, data är inlästa listan av böcker
+    $scope.filterBooksByAuthor = function (selected, selectedgenre) {
+        
         $scope.books = allBooks;
-        newBooksArr = [];
-        var dataArr = $scope.books;
 
-
-        for (var i = 0; i < dataArr.length; i++) 
+        console.log("författare: ", selected, selectedgenre)
+        var booksByAuthor = [];
+        var data = $scope.books;
+        var genreId = selectedgenre;
+        var authorId = selected;
+        var finns = false;
+        // om författare inte är tom
+        if (authorId !== undefined )
         {
-            //console.log(dataArr[i]);
-            filter(dataArr[i], author, genre);
-    
-        }
-        console.log("den nya arr ", newBooksArr)
-      
-        $scope.books = newBooksArr;
-                // -- spara --- //
-                $scope.currentPage = 1;
-                $scope.totalItems = $scope.books.length;
-                $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-                // --- ---- --- //
-    }
-
-    var filter = function (objekt, authorName, genreName) 
+            //för varje bok
+            for (var i = 0; i < data.length; i++) 
             {
-        if (authorName && genreName) {
-            objekt.Authors.forEach(function (author) {
-                objekt.Genres.forEach(function (genre) {
-                    if (genre.Name.toLowerCase().indexOf(genreName.toLowerCase()) >= 0 && author.Name.toLowerCase().indexOf(authorName.toLowerCase()) >= 0)
-                        if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
-                })
-            });
-        } else if (authorName) {
-            objekt.Authors.forEach(function (author) {
-                if (author.Name.toLowerCase().indexOf(authorName.toLowerCase()) >= 0)
-                    if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
-            });
-        } else if (genreName) {
-            objekt.Genres.forEach(function (genre) {
-                if (genre.Name.toLowerCase().indexOf(genreName.toLowerCase()) >= 0)
-                    if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
-            });
-        }
-}
+                // console.log("första");
+                //för varje författare i boken
+                for (var j = 0; j < data[i].Authors.length; j++) 
+                    //{console.log("Andra");
+                    // om bokes författares namn innehåller sökvärde
+                    if (data[i].Authors[j].Name.indexOf(authorId) >= 0)
+                    {
+                        //console.log("tredje");
+                        //om genre är ifylld
+                        if(genreId !== undefined) 
+                        {
+                            console.log("fjärde");
+                            for (var h = 0; h < data[i].Genre.length; h++) 
+                            {
+                                if (g.Name.toLowerCase().includes(genreId)) 
+                                {
+                                    booksByAuthor.push(data[i]);
+                                }
+                            }   
+                        }
+                            // om ingen genre är ifylld
+                        else 
+                        {
+                            console.log("femte");
+                            //om bokksByAuthpr innehåller böcker
+                            if (booksByAuthor.length > 0) 
+                                {   
+                                console.log(booksByAuthor.length);
+                                // för varje bok
+                                    for (var k = 0; k < booksByAuthor.length; k++) 
+                                    {
 
-    // ---------Slut Filtrering ------------------------//
+                                        console.log("sjätte");
+                                        // om boken finns i listan
+                                        if (booksByAuthor[k] === data[i])
+                                        {
+                                            // ändravi finns till true
+                                            finns = true; console.log("den finns", data[i])
+                                        }
+                                        // om finns är false
+                                        if (!finns)
+                                        {
+                                            console.log("nej den finns inte");
+                                            // lägger vi till boken
+                                            booksByAuthor.push(data[i]);
+                                            // ändra finns till false
+                                            
+                                        }
+                                        console.log("finns: ", finns);
+                                        finns = false;
+                                    }
+                                }
+                                
+                            else
+                            {
+                                console.log("första gången");
+                                booksByAuthor.push(data[i]);
+                            }
+                            //    if (booksByAuthor[i] === data[i])
+                            //    {console.log("sjunde")
+                            //        finns = true; console.log("sdf")
+                            //    }
+                            //    if (!finns)
+                            //    {console.log("åttonde")
+                            //        booksByAuthor.push(data[i]);
+                            //        finns = false;
+                            //    }
+                            //}
+
+
+                               
+                        }
+                    }
+            }
+        }
+    
+
+        //else 
+        //{
+        //    for (var book of data) 
+        //        {
+        //            for (var g of book.Genres) 
+        //            {
+        //                if (g.Name.toLowerCase().includes(genreId)) 
+        //                {
+                          
+        //                  booksByAuthor.push(book);
+                          
+        //                }
+        //            }
+        //        }
+        //}
+        console.log(booksByAuthor)
+     $scope.books = booksByAuthor;
+     };
+
+    // ----- Modal ----- //
+
 
     $scope.open = function (book) {
 
         var modalInstance = $modal.open({
-            templateUrl: 'partials/bookDetail.html',
-            controller: 'bookDetailController',
+            templateUrl: 'partials/bookModal.html',
+            controller: 'bookModalController',
 
             resolve: {
                 id: function () {
@@ -163,6 +234,9 @@
 
         });
     };
+    //----------------------------//
+
+    Books.get();
     
 }]);
 
