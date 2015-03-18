@@ -163,7 +163,7 @@ app.service("Authors", ["restService", function (restService) {
 
 app.service("Login", ["$rootScope", function ($rootScope) {
     $rootScope.DDtext = "Logga in";
-    $rootScope.loggedin = "";
+    $rootScope.loggedin = "0";
     this.loginStatus = function (id) {
         if (id == 1) {
 
@@ -177,6 +177,12 @@ app.service("Login", ["$rootScope", function ($rootScope) {
             $rootScope.loggedin = [id];
             $rootScope.DDtext = "Lager"
             console.log("Lager: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
+        }
+        else if (id == 0) {
+            $rootScope.DDtext = "Logga in";
+            $rootScope.loggedin = [id];
+            console.log("Logged out!");
             return $rootScope.loggedin;
         }
     };

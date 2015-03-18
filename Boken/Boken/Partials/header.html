@@ -24,8 +24,9 @@
                     {{DDtext}} <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li ng-click="loginStatus(1)">Admin</li>
-                    <li ng-click="loginStatus(2)">Lager</li>
+                    <li ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</li>
+                    <li ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</li>
+                    <li ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</li>
                 </ul>
             </div>
         </form>
