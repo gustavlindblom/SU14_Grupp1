@@ -28,8 +28,8 @@
     // ----- Modal ----- //
     $scope.open = function (author) {
         var modalInstance = $modal.open({
-            templateUrl: 'partials/authorModal.html',
-            controller: 'authorModalController',
+            templateUrl: 'partials/authorDetail.html',
+            controller: 'authorDetailController',
             resolve: {
                 id: function () {
                     return author.Id;

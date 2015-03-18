@@ -142,13 +142,13 @@
         }
 }
 
-    // ---------------------------------//
+    // ---------Slut Filtrering ------------------------//
 
     $scope.open = function (book) {
 
         var modalInstance = $modal.open({
-            templateUrl: 'partials/bookModal.html',
-            controller: 'bookModalController',
+            templateUrl: 'partials/bookDetail.html',
+            controller: 'bookDetailController',
 
             resolve: {
                 id: function () {
