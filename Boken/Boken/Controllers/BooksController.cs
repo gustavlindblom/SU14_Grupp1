@@ -148,14 +148,14 @@ namespace Boken.Controllers
             db.Books.Remove(book);
             foreach (BookGenreCoupling bgc in db.BookGenreCouplings)    // tar bort bokens genrekopplingar
             {
-                if (bgc.GenreId == id)
+                if (bgc.BookId == id)
                 {
                     bgcc.DeleteBookGenreCoupling(bgc.Id);
                 }
             }
             foreach (BookAuthorCoupling bac in db.BookAuthorCouplings)  // tar bort bokens authorkopplingar
             {     
-                if (bac.AuthorId == id)
+                if (bac.BookId == id)
                 {
                     bacc.DeleteBookAuthorCoupling(bac.Id);
                 }
