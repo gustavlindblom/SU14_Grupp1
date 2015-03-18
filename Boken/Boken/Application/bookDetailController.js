@@ -1,4 +1,4 @@
-﻿app.controller("bookModalController", ["$scope", "Books", "$modalInstance", "id", function ($scope, Books, $modalInstance, id) {
+﻿app.controller("bookDetailController", ["$scope", "Books", "$modalInstance", "id", function ($scope, Books, $modalInstance, id) {
 
     $scope.$on("gotBook", function (event, data) {
         console.log("book modal controller: ", data);

@@ -231,9 +231,10 @@
   <ItemGroup>
     <Content Include="Application\app.js" />
     <Content Include="Application\authorlistController.js" />
-    <Content Include="Application\authorModalController.js" />
+    <Content Include="Application\authorDetailController.js" />
     <Content Include="Application\genrelistController.js" />
-    <Content Include="Application\bookModalController.js" />
+    <Content Include="Application\bookDetailController.js" />
+    <Content Include="Application\genreDetailController.js" />
     <Content Include="Application\headerController.js" />
     <Content Include="Application\homeController.js" />
     <Content Include="Application\modalController.js" />
@@ -252,7 +253,7 @@
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Partials\authorlist.html" />
-    <Content Include="Partials\authorModal.html" />
+    <Content Include="Partials\authorDetail.html" />
     <Content Include="Partials\booklist.html" />
     <Content Include="Partials\bookModal.html" />
     <Content Include="Partials\Error.html" />
@@ -260,7 +261,7 @@
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\header.html" />
     <Content Include="Partials\home.html" />
-    <Content Include="Partials\modal.html" />
+    <Content Include="Partials\genreDetail.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-resource.js" />
     <Content Include="Scripts\angular-route.js" />
