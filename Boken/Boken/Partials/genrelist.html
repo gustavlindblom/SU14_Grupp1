@@ -16,6 +16,7 @@
                     <tr>
                         <th>Genre</th>
                         <th>Utdrag</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,7 +24,14 @@
                         <td>
                             {{genre.Name}}
                         </td>
-                        <td>{{genre.Description}}...</td>
+                        <td>
+                            {{genre.Description}}...
+                        </td>
+                        <td>
+                            <button class="btn btn-default">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

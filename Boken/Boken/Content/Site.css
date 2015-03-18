@@ -111,3 +111,9 @@ pag-sm{
    left:50%;
 
 }
+
+textarea {
+    max-width: 500px; 
+    max-height: 400px;
+    
+}
