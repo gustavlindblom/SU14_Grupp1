@@ -1,4 +1,4 @@
-﻿<nav class="navbar navbar-default navbar-fixed-top">
+﻿<nav class="navbar navbar-default navbar-fixed-top header">
     <div class="container-fluid col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -8,14 +8,19 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hoverHome" ng-click="GoTo('index.html')">Startsida</a>
+            <a class="navbar-brand hoverHome home" ng-click="GoTo('index.html')" style="color:black; font-size:20px; height:50px;">Startsida</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-left" id="test">
-            <button class="navbar-btn btn btn-default" ng-click="GoTo('/authors')">Författare</button>
-            <button class="navbar-btn btn btn-default" ng-click="GoTo('/books')">Böcker</button>
-            <button class="navbar-btn btn btn-default" ng-click="GoTo('/genres')">Genre</button>
+        <div class="collapse navbar-collapse navbar-left">
+            <ul class="nav navbar-nav cursor">
+                <li><a id="headerItems" ng-click="GoTo('/authors')">Författare</a></li>
+                <li><a id="headerItems" ng-click="GoTo('/books')">Böcker</a></li>
+                <li><a id="headerItems" ng-click="GoTo('/genres')">Genre</a></li>
+            </ul>
+            <!--<button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/authors')">Författare</button>
+            <button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/books')">Böcker</button>
+            <button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/genres')">Genre</button>-->
         </div><!-- /.navbar-collapse -->
         <form class="navbar-form navbar-right">
             <!--Dropdown for creating new items-->
@@ -34,10 +39,10 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
                     {{DDtext}} <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</li>
-                    <li ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</li>
-                    <li ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</li>
+                <ul class="dropdown-menu cursor" role="menu">
+                    <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</li>
+                    <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</li>
+                    <li class="listFocus" ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</li>
                 </ul>
             </div>
         </form>

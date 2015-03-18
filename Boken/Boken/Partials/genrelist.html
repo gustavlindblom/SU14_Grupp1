@@ -6,9 +6,9 @@
 <div class="container-fluid ">
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
-        <div class="panel-heading">GENRE</div>
-
-
+        <div class="panel-heading">
+            <h2>Genre</h2>
+        </div>
         <div class="panel-body">
             <table class="table">
 
@@ -20,8 +20,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in pagArr" ng-click="open('lg',genre)">
-                        <td>
+                    <tr class="listFocus cursor" ng-repeat="genre in pagArr">
+                        <td ng-click="open('lg',genre)">
                             {{genre.Name}}
                         </td>
                         <td>
@@ -32,6 +32,7 @@
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                             </button>
                         </td>
+                        <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteAuthor(author)"><span class="glyphicon glyphicon-trash"></span></td>
                     </tr>
                 </tbody>
             </table>

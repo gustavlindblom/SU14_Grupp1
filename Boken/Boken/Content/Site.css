@@ -1,70 +1,98 @@
-﻿html {
+﻿/*HTML*/
+html {
     position: relative;
     min-height: 100%;
 }
 
+/*------------*/
 
-body {
+/*Body*/
+body{
     min-height: 100%;
     padding-top: 70px;
     margin-bottom: 60px;
+    background-image:url("/Content/Image/bakgrund.jpeg");
+    background-size: 400px;
+    background-repeat:no-repeat;
+    background-position:left;
 
+}
+
+/*------------*/
+
+/*Header*/
+.header {
+    background-color:transparent;
+    height:50px;
+}
+
+#headerItems {
+   display:inline-block;
+   float:none;
+   text-align:center;
+   background-color:transparent;
+   height:49px;
+   color:black;
+   border-left:1px groove gray;
+}
+
+#headerItems:hover{
+    background-color:gray;
 }
 
 .hoverHome:hover{
     cursor:pointer;
 }
 
-#test {
-   display:inline-block;
-   float:none;
-   text-align:center;
-
+.page-header{
+    margin-left:20%;
+    margin-right:20%;
 }
 
+/*------------*/
 
-#loginButton {
+/*Main*/
+.mainbody{
+    margin-top:50px;
 }
 
-div ul li:hover {
-    background-color:ActiveCaption;
-}
+/*------------*/
 
+/*Footer*/
 footer{
     position:absolute;
     bottom:0;
     left:0;
     right:0;
     height:50px;
-    background-color:ActiveCaption;
+    background-color:black;
     display:block;
 }
 
 #footerText{
     padding-top:5px;
-    color:black;
+    color:white;
 }
 
-#filterContainer{
+/*------------*/
+
+/*Övrigt*/
+.listFocus:hover {
+    background-color:ButtonFace;
+}
+
+.cursor {
+    cursor:pointer;
+}
+
+.center{ 
+   position:fixed;
+   top:50%;
+   left:50%;
 
 }
 
-.white:hover {
-    color:slategray;
-}
-
-
-.page-header{
-    margin-left:20%;
-    margin-right:20%;
-}
-
-#nextPreviousDiv{
-    margin-left:auto;
-    margin-right:auto;
-    width:140px;
-    display:flex;
-}
+/*------------*/
 
 /*Mikael css*/
 pag-sm{
@@ -72,43 +100,10 @@ pag-sm{
     right: 0;
 }
 
-.btnGenrelist {
- cursor:pointer;
-
-}
-
-.cursor {
-    cursor:pointer;
-}
-
-.listFocus:hover {
-    background-color:ButtonFace;
-}
-
-.ddGenre{
-    width:200px;
-    text-align:left;
-}
-
-.ddGenreItems{
-
-   text-align:center;
-}
-
-
-.mainbody{
-    margin-top:100px;
-}
-
 .pInGenreModal{
     text-align: center;
-    
 }
 
-.center{ 
-   position:fixed;
-   top:50%;
-   left:50%;
 
 }
 
