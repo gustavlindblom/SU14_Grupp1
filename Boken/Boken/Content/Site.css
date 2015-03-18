@@ -101,7 +101,14 @@ pag-sm{
 }
 
 .pInGenreModal{
-    text-align: center;    
+    text-align: center;
 }
 
 
+}
+
+textarea {
+    max-width: 500px; 
+    max-height: 400px;
+    
+}

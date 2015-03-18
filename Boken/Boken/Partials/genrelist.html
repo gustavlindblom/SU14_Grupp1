@@ -16,6 +16,7 @@
                     <tr>
                         <th>Genre</th>
                         <th>Utdrag</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -23,8 +24,14 @@
                         <td ng-click="open('lg',genre)">
                             {{genre.Name}}
                         </td>
-                        <td>{{genre.Description}}...</td>
-                        <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteGenre(genre)"><span class="glyphicon glyphicon-trash"></span></td>
+                        <td>
+                            {{genre.Description}}...
+                        </td>
+                        <td>
+                            <button class="btn btn-default">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
