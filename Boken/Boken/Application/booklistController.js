@@ -11,7 +11,7 @@
         $scope.totalItems = $scope.books.length;
         $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
     });
-    Books.get();
+    
 
     // Början på paginering
     $scope.pagArr = [];
@@ -163,7 +163,29 @@
 
         });
     };
-    
+
+    // ----- Delete ----------------------- //
+
+    $scope.deleteBook = function (book) {
+
+        if (confirm("Är du säker på att du vill ta bort denna bok?"));
+        {
+            console.log("tar bort bok : ", book);
+            console.log("med id : ", book.Id);
+            try {
+                Books.delete(book.Id);
+                alert("Boken finns inte längre!");
+            }
+            catch (err) {
+                alert("Något gick fel:  " + err);
+            }
+        }
+
+        console.log($scope.books);
+    };
+
+    //---------Slut delete -------------------//
+    Books.get();
 }]);
 
 

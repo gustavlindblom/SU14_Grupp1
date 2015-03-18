@@ -56,7 +56,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", fun
 
         if(confirm("Är du säker på att du vill ta bort denna Genre?"));
         {
-            console.log("tar bort FF : ", genre);
+            console.log("tar bort genre : ", genre);
             console.log("med id : ", genre.Id);
             try {
                 Genres.delete(genre.Id);
