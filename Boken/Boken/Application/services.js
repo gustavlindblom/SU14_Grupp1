@@ -21,7 +21,7 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
             if (method != "GET" && method != "DELETE") {
                 //using a function only accessible INSIDE our service
                 //to check if data is valid
-                data = checkData(data);             // kommenterade in detta (ns)
+                //data = checkData(data);             // kommenterade in detta (ns)
             }
             if (data === false) {
                 //if data is not valid (FALSE), return false

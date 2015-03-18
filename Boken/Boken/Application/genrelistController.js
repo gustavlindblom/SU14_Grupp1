@@ -1,6 +1,7 @@
 app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$route", function ($scope, Genres, $modal, $log, $route) {
     console.log("genrelistController is working!");
 
+    // -- Hämtar lista med genres -- //
     $scope.$on("gotGenres", function (event, data) {
         console.log("gotGenres triggered: ", data);
         $scope.output = JSON.stringify(data, null, '\t'); 
@@ -8,8 +9,10 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.totalItems = $scope.genres.length;
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     });
+    Genres.get();
+    // --- slut ------------------------//
 
-    // Början på paginering ------------//
+    //--- Början på paginering ---------//
     $scope.pagArr = [];
     $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;
@@ -22,10 +25,10 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.endshow = ($scope.startshow + $scope.itemsPP);
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     }
-    // ----------- slut på paginering -----//
+    // --- slut på paginering ----------//
 
 
-    // ----- Modal ----------------------- //
+    // ----- Modal -------------------- //
    
     $scope.open = function (size, genre) {
         
@@ -41,7 +44,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         });
 
         modalInstance.result.then(function (selectedItem) {
-         
+            console.log("Kommer vi hit någon gång?");
             $scope.selected = selectedItem;
         }, function () {
 
@@ -72,6 +75,6 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     //---------Slut delete -------------------//
 
-    Genres.get();
+    
 
 }]);

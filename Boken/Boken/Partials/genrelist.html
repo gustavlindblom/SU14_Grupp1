@@ -7,7 +7,7 @@
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h2>Genre</h2>
+           <p>Genre</p> 
         </div>
         <div class="panel-body">
             <table class="table">
@@ -16,7 +16,6 @@
                     <tr>
                         <th>Genre</th>
                         <th>Utdrag</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,12 +26,13 @@
                         <td>
                             {{genre.Description}}...
                         </td>
-                        <td>
-                            <button class="btn btn-default">
-                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                            </button>
+                        <!--
+                        <td class="listFocus navbar-right" ng-show="loggedin == 1">
+                            <span class="glyphicon glyphicon-edit" ng-click="open(genre)" aria-hidden="true"></span>&nbsp;
+                            <span class="glyphicon glyphicon-trash" ng-click="deleteAuthor(author)">
+                            </span>
                         </td>
-                        <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteAuthor(author)"><span class="glyphicon glyphicon-trash"></span></td>
+                        -->
                     </tr>
                 </tbody>
             </table>
