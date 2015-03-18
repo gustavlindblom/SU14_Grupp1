@@ -159,3 +159,25 @@ app.service("Authors", ["restService", function (restService) {
 
     return authorServant;
 }]);
+
+
+app.service("Login", ["$rootScope", function ($rootScope) {
+    $rootScope.DDtext = "Logga in";
+    $rootScope.loggedin = "";
+    this.loginStatus = function (id) {
+        if (id == 1) {
+
+            $rootScope.loggedin = [id];
+            $rootScope.DDtext = "Admin";
+            console.log("Admin: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
+        }
+        else if (id == 2) {
+
+            $rootScope.loggedin = [id];
+            $rootScope.DDtext = "Lager"
+            console.log("Lager: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
+        }
+    };
+}]);
