@@ -18,8 +18,19 @@
             <button class="navbar-btn btn btn-default" ng-click="GoTo('/genres')">Genre</button>
         </div><!-- /.navbar-collapse -->
         <form class="navbar-form navbar-right">
+            <!--Dropdown for creating new items-->
+            <div ng-if="loggedin == 1" class="btn-group" dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                    Skapa ny... <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>... bok</li>        <!-- ng-click ="tom modal för skapandet av book   -->
+                    <li>... genre</li>      <!-- ng-click ="tom modal för skapandet av genre  -->
+                    <li>... författare</li> <!-- ng-click ="tom modal för skapandet av author -->
+                </ul>
+            </div>
             <!-- Log in function in dropdown menu-->
-            <div class="btn-group" dropdown is-open="status.isopen">
+            <div class="btn-group" dropdown is-open="status2.isopen">
                 <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
                     {{DDtext}} <span class="caret"></span>
                 </button>
