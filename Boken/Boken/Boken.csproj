@@ -255,6 +255,7 @@
     <Content Include="Partials\authorModal.html" />
     <Content Include="Partials\booklist.html" />
     <Content Include="Partials\bookModal.html" />
+    <Content Include="Partials\Error.html" />
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
     <Content Include="Partials\header.html" />
