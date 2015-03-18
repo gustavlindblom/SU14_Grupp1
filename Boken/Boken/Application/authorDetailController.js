@@ -7,12 +7,10 @@ $scope.$on("gotAuthor", function (event, data) {
 
 
 
-$scope.ok = function () {
 
-    if (confirm("Är du säker på att du vill ta bort denna författare?"))
-    {
+$scope.ok = function () {
+   
         $modalInstance.close();
-    }
  };
 
 $scope.cancel = function () {
