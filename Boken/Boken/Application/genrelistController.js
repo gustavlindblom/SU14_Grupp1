@@ -9,7 +9,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     });
 
-    // Början på paginering
+    // Början på paginering ------------//
     $scope.pagArr = [];
     $scope.bigCurrentPage = 1;
     $scope.itemsPP = 5;

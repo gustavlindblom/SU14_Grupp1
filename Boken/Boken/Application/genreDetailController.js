@@ -7,20 +7,26 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         $scope.genre = $scope.orgGenre = data;
         console.log("Skriver ut ny genre:", $scope.orgGenre)
     });
-    $scope.orgGenre = angular.copy($scope.genre)
-    
-    
 
+
+
+    $scope.orgGenre = angular.copy($scope.genre)
     $scope.save = function () {
 
-        var orgGenre = $scope.orgGenre
+        var orgGenre = {
+            Id: $scope.Id,
+            Description: $scope.Description,
+            Name: $scope.Name
+         };
+        orgGenre = $scope.orgGenre;
         console.log("skriver ut från save orgGenre id: ", orgGenre.Id, "objektet: ", orgGenre)
-        
-        //console.log("skriver ut vad jag skíckar:", Genres.put(orgGenre.Id, orgGenre));
+        var id = orgGenre.Id;
+        //console.log("skriver ut vad jag skíckar med put:",
+            Genres.put(orgGenre.Id, orgGenre);
 
 
 
-        $modalInstance.close();
+       // $modalInstance.close();
     };
     
     $scope.cancel = function () {
