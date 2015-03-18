@@ -39,14 +39,16 @@
 
 
         modalInstance.result.then(function (selectedItem) {
-
-
             $scope.selected = selectedItem;
         }, function () {
 
         });
     };
     //----------------------------//
+
+    $scope.deleteAuthor = function () {
+        confirm("Är du säker på att du vill ta bort denna författare?");
+    };
 
     Authors.get();
 }]);

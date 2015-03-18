@@ -5,10 +5,15 @@ $scope.$on("gotAuthor", function (event, data) {
     $scope.author = data;
 });
 
+
+
 $scope.ok = function () {
 
-    $modalInstance.close();
-};
+    if (confirm("Är du säker på att du vill ta bort denna författare?"))
+    {
+        $modalInstance.close();
+    }
+ };
 
 $scope.cancel = function () {
 
