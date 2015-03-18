@@ -8,9 +8,10 @@
             <h2>Böcker</h2>  <!-- Single button -->
 
             <div class="btn-group" >
-                <input type="text" ng-model="selected" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  ">
-                <input type="text" ng-model="selectedgenre"   class="form-control" placeholder="Skriv genre här..." style="font-style:italic;  ">
-                <button type="button" class="btn btn-default" ng-click="filterBooksByAuthor(selected,selectedgenre)"><span class="glyphicon glyphicon-search"></span> </button>
+                <input type="text" ng-model="author" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  ">
+                <input type="text" ng-model="genre" class="form-control" typeahead="genre.Name for genre in genres | filter:$viewValue | limitTo:8" placeholder="Skriv genre här..." style="font-style:italic;  ">
+                <button type="button" class="btn btn-default" ng-click="filterBooks(author,genre)"><span class="glyphicon glyphicon-search"></span> </button>
+                <button class="navbar-btn btn btn-default" ng-if="loggedin == 1">Skapa ny bok</button>
             </div>
         </div>
         <!--
@@ -55,19 +56,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="listFocus cursor" ng-repeat="book in books | orderBy:customSort" ng-click="open(book)" data-toggle="modal" data-target="#bookModal">
-                        <td><img ng-src="{{book.ImagePath}}" width="50" /></td>
-                        <td>{{book.Title}}</td>
-                        <td><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
-                        <td><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
-                        <td>{{book.Price}}</td>
+                    <tr class="listFocus cursor" ng-repeat="book in pagArr | orderBy:customSort"  data-toggle="modal" data-target="#bookModal">
+                        <td ng-click="open(book)"><img ng-src="{{book.ImagePath}}" width="50" /></td>
+                        <td ng-click="open(book)">{{book.Title}}</td>
+                        <td ng-click="open(book)"><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
+                        <td ng-click="open(book)"><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
+                        <td ng-click="open(book)">{{book.Price}}</td>
+                        <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteBook(book)" ><span class="glyphicon glyphicon-trash"></span></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="panel-footer">
             <!--<div ng-controller="pageController">-->
-            <pagination total-items="TotalItems" ng-model="bigCurrentPage" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
             <!--</div>-->
         </div>
     </div>

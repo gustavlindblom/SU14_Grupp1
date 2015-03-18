@@ -15,6 +15,8 @@ namespace Boken.Controllers
     public class BooksController : ApiController
     {
         private BookDataContext db = new BookDataContext();
+        public BookAuthorCouplingsController bacc = new BookAuthorCouplingsController();
+        public BookGenreCouplingsController bgcc = new BookGenreCouplingsController();
 
         // GET: api/Books
         public IQueryable<BookDTO> GetBooks()
@@ -144,6 +146,20 @@ namespace Boken.Controllers
             }
 
             db.Books.Remove(book);
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings)    // tar bort bokens genrekopplingar
+            {
+                if (bgc.BookId == id)
+                {
+                    bgcc.DeleteBookGenreCoupling(bgc.Id);
+                }
+            }
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings)  // tar bort bokens authorkopplingar
+            {     
+                if (bac.BookId == id)
+                {
+                    bacc.DeleteBookAuthorCoupling(bac.Id);
+                }
+            }
             db.SaveChanges();
 
             return Ok(book);

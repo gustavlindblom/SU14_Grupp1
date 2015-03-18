@@ -1,4 +1,4 @@
-﻿app.controller("authorlistController", ["$scope", "Authors", "$modal", "$log", function ($scope, Authors, $modal, $log) {
+﻿app.controller("authorlistController", ["$scope", "Authors", "$modal", "$log", "$location", "$route", function ($scope, Authors, $modal, $log, $location, $route) {
     console.log("authors loaded");
 
     $scope.$on("gotAuthors", function (event, data) {
@@ -8,6 +8,10 @@
         $scope.totalItems = $scope.authors.length;
         $scope.pagArr = $scope.authors.slice($scope.startshow, $scope.endshow);
     });
+
+    $scope.GoTo = function (url) {
+        $location.url(url);
+    }
 
     // Början på paginering
     $scope.pagArr = [];
@@ -46,22 +50,28 @@
     };
     //----------------------------//
 
+
+    // ----- Delete ----------------------- //
+
     $scope.deleteAuthor = function (author) {
 
-        confirm("Är du säker på att du vill ta bort denna författare?");
-        console.log("tar bort FF : ", author);
-        console.log("med id : ", author.Id);
-        try {
-            Author.delete(author.Id);
-            alert("Författaren är skjuten i huvudet och finns inte längre!");
-        }
-        catch(err)
+        if(confirm("Är du säker på att du vill ta bort denna författare och alla böcker skrivna av den författaren?"));
         {
-            alert("ta bort funkar inte " + err);
+            console.log("tar bort FF : ", author);
+            console.log("med id : ", author.Id);
+            try {
+                Authors.delete(author.Id);
+                alert("Författaren finns inte längre!");
+            }
+            catch (err) {
+                alert("Något gick fel:  " + err);
+            }
         }
-
-        console.log($scope.authors);
+        Authors.get();
+        $route.reload();
     };
+
+    //---------Slut delete -------------------//
 
     
     Authors.get();

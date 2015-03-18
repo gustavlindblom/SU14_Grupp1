@@ -15,6 +15,7 @@ namespace Boken.Controllers
     public class GenresController : ApiController
     {
         private BookDataContext db = new BookDataContext();
+        public BookGenreCouplingsController bgcc = new BookGenreCouplingsController();
 
         // GET: api/Genres
         public IQueryable<Genre> GetGenres()
@@ -102,6 +103,13 @@ namespace Boken.Controllers
             }
 
             db.Genres.Remove(genre);
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings)    // tar bort genrens kopplingar
+            {
+                if (bgc.GenreId == id)
+                {
+                    bgcc.DeleteBookGenreCoupling(bgc.Id);
+                }
+            }
             db.SaveChanges();
 
             return Ok(genre);

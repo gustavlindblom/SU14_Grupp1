@@ -1,4 +1,4 @@
-app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", function ($scope, Genres, $modal, $log) {
+app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$route", function ($scope, Genres, $modal, $log, $route) {
     console.log("genrelistController is working!");
 
     $scope.$on("gotGenres", function (event, data) {
@@ -48,6 +48,29 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", fun
         });
     };
     //---------Slut Modal -------------------//
+
+
+    // ----- Delete ----------------------- //
+
+    $scope.deleteGenre = function (genre) {
+
+        if(confirm("Är du säker på att du vill ta bort denna Genre?"));
+        {
+            console.log("tar bort genre : ", genre);
+            console.log("med id : ", genre.Id);
+            try {
+                Genres.delete(genre.Id);
+                alert("Genren finns inte längre!");
+            }
+            catch (err) {
+                alert("Något gick fel:  " + err);
+            }
+        }
+        Genres.get();
+        $route.reload();
+    };
+
+    //---------Slut delete -------------------//
 
     Genres.get();
 
