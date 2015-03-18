@@ -2,19 +2,19 @@
     $scope.GoTo = function (url) {
         $location.url(url);
     }
-
+    $rootScope.loggedin = "";
     $rootScope.loginStatus = function (id) {
         if (id == 1) {
             
-            var loggedin = [id];
-            console.log("Admin: " + loggedin);
-            return loggedin;
+            $rootScope.loggedin = [id];
+            console.log("Admin: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
         }
         else if (id == 2) {
             
-            var loggedin = [id];
-            console.log("Slav: " + loggedin);
-            return loggedin;
+            $rootScope.loggedin = [id];
+            console.log("Slav: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
         }
     };
 }
