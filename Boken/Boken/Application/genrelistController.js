@@ -53,7 +53,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             $route.reload();
             $scope.selected = selectedItem;
         }, function () {
-
+            
         });
     };
     //---------Slut Modal -------------------//

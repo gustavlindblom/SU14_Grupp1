@@ -17,9 +17,12 @@
 <!-- redigeringsläge -->
 <div ng-if="view == 1">
     <div class="modal-body">
-
         <p>
-            <textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
+            Namn<br />
+            <textarea ng-model="genre.Name">  </textarea>
+        </p>
+        <p>
+            Beskrivning<textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
         </p>
 
     </div>
@@ -29,19 +32,39 @@
     </div>
 </div>
 <!-- ------------------->
-
 <!--  standard läge-->
 <div ng-if="view == 0">
     <div class="modal-body" ng-if="view == 0">
         <pre>{{genre.Description}}</pre>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" ng-if="view == 0" ng-click="cancel()">St&auml;ng</button>
+        <button class="btn btn-warning" ng-click="cancel()">St&auml;ng</button>
     </div>
 </div>
 <!--  ---------------  -->
 
-<!-- ----- Delete ----------------------- -->
+<!-- Skapa nytt läge -->
+<div ng-if="view == 4">
+    <div class="modal-body">
+        <p>
+            Namn<br />
+            <textarea ng-model="genre.Name">  </textarea>
+        </p>
+        <p>
+            Beskrivning<textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
+        </p>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2)">Spara</button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+
+
+
+
+<!-- ----- Delete ------->
 
 <div ng-if="view == 3">
     <div class="modal-body">
@@ -57,21 +80,20 @@
     </div>
 </div>
 
-<!--    //---------Slut delete -------------------// -->
+<!------------Slut delete ------ -->
 
-
-<!-- bekräftelseläge------------------------>
+<!----- bekräftelseläge------------>
 <div ng-if="view == 2">
     <div class="modal-body">
-        
-            Vill du uppdatera <strong>{{genre.Name}}</strong> med dessa uppgifter?
-            
-            <pre>{{genre.Description}}</pre>
-        
+
+        Vill du uppdatera <strong>{{genre.Name}}</strong> med dessa uppgifter?
+
+        <pre>{{genre.Description}}</pre>
+
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary"  ng-click="save()">Ja</button>
-        <button class="btn btn-warning"  ng-click="editView(1)">Nej</button>
+        <button class="btn btn-primary" ng-click="save()">Ja</button>
+        <button class="btn btn-warning" ng-click="editView(1)">Nej</button>
     </div>
 </div>
 <!-- ------------------------------------------->

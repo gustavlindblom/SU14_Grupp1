@@ -9,7 +9,7 @@ html {
 /*Body*/
 body{
     min-height: 100%;
-    padding-top: 70px;
+    padding-top: 60px;
     margin-bottom: 60px;
     background-image:url("/Content/Image/bakgrund.jpeg");
     background-size: 400px;
@@ -70,7 +70,7 @@ footer{
 }
 
 #footerText{
-    padding-top:5px;
+    
     color:white;
 }
 
