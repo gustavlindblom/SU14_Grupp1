@@ -15,8 +15,6 @@ namespace Boken.Controllers
     public class BooksController : ApiController
     {
         private BookDataContext db = new BookDataContext();
-        public BookAuthorCouplingsController bacc = new BookAuthorCouplingsController();
-        public BookGenreCouplingsController bgcc = new BookGenreCouplingsController();
 
         // GET: api/Books
         public IQueryable<BookDTO> GetBooks()
@@ -87,7 +85,7 @@ namespace Boken.Controllers
 
         // PUT: api/Books/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBook(int id, Book book)
+        public IHttpActionResult PutBook(int id, BookDetailDTO book)
         {
             if (!ModelState.IsValid)
             {
@@ -145,21 +143,10 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id)) db.BookGenreCouplings.Remove(bgc);
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id)) db.BookAuthorCouplings.Remove(bac);
+
             db.Books.Remove(book);
-            foreach (BookGenreCoupling bgc in db.BookGenreCouplings)    // tar bort bokens genrekopplingar
-            {
-                if (bgc.BookId == id)
-                {
-                    bgcc.DeleteBookGenreCoupling(bgc.Id);
-                }
-            }
-            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings)  // tar bort bokens authorkopplingar
-            {     
-                if (bac.BookId == id)
-                {
-                    bacc.DeleteBookAuthorCoupling(bac.Id);
-                }
-            }
             db.SaveChanges();
 
             return Ok(book);
