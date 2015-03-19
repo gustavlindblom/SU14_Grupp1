@@ -1,6 +1,6 @@
-app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "id", function ($scope, Genres, $modalInstance, id) {
+app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "id", "editView", function ($scope, Genres, $modalInstance, id, editView) {
     
-    $scope.editView = "0"; // sätter redigeringsläge till false.
+    $scope.editView = editView; //"0"; // sätter redigeringsläge till false.
 
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {

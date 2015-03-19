@@ -3,7 +3,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
     // -- Hämtar lista med genres -- //
     $scope.$on("gotGenres", function (event, data) {
         //console.log("gotGenres triggered: ", data);
-        $scope.output = JSON.stringify(data, null, '\t'); 
+        $scope.output = JSON.stringify(data, null, '\t');
         $scope.genres = data;
         $scope.totalItems = $scope.genres.length;
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
@@ -28,16 +28,19 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
 
     // ----- Modal -------------------- //
-   
-    $scope.open = function (size, genre) {
-        
-			var modalInstance = $modal.open({
+
+    $scope.open = function (size, genre, loggedin) {
+        var modalInstance = $modal.open({
             templateUrl: 'partials/genreDetail.html',
             controller: 'genreDetailController',
-            size : size,
-            resolve: { 
+            size: size,
+            resolve: {
                 id: function () {
                     return genre.Id;
+                },
+                editView: function () {
+                    console.log("modal open editView: ", $scope.setEdit(loggedin));
+                    return $scope.setEdit(loggedin);
                 }
             }
         });
@@ -50,13 +53,21 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         });
     };
     //---------Slut Modal -------------------//
+    $scope.setEdit = function (loggedin) {
+        if (loggedin == 1) {
+            return 1;
+        }
+        else {
+            return 0;
+        };
+    };
 
 
     // ----- Delete ----------------------- //
 
     $scope.deleteGenre = function (genre) {
 
-        if(confirm("Är du säker på att du vill ta bort genren " + genre.Name + "?"));
+        if (confirm("Är du säker på att du vill ta bort genren " + genre.Name + "?"));
         {
             console.log("tar bort genre : ", genre);
             console.log("med id : ", genre.Id);
@@ -74,6 +85,6 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     //---------Slut delete -------------------//
 
-    
+
 
 }]);
