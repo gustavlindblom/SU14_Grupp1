@@ -5,17 +5,17 @@
         <button class="btn btn-default pull-right" ng-click="cancel()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
         </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 0" ng-click="editStatus(1)">
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 1" ng-click="editStatus(0)">
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
             <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
         </button>
     </h3>
 
 </div>
 <!-- redigeringsläge -->
-<div ng-if="editView == 1">
+<div ng-if="view == 1">
     <div class="modal-body">
 
         <p>
@@ -24,24 +24,24 @@
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-if="editView == 1" ng-click="editStatus(2)">Spara</button>
-        <button class="btn btn-warning" ng-if="editView == 1" ng-click="cancel()">Avbryt</button>
+        <button class="btn btn-primary" ng-click="editView(2)">Spara</button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
 <!-- ------------------->
 
 <!--  standard läge-->
-<div ng-if="editView == 0">
-    <div class="modal-body" ng-if="editView == 0">
+<div ng-if="view == 0">
+    <div class="modal-body" ng-if="view == 0">
         <pre>{{genre.Description}}</pre>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" ng-if="editView == 0" ng-click="cancel()">St&auml;ng</button>
+        <button class="btn btn-warning" ng-if="view == 0" ng-click="cancel()">St&auml;ng</button>
     </div>
 </div>
 
 <!-- bekräftelseläge-->
-<div ng-if="editView == 2">
+<div ng-if="view == 2">
     <div class="modal-body">
         
             Vill du uppdatera <strong>{{genre.Name}}</strong> med dessa uppgifter?
@@ -50,8 +50,8 @@
         
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-if="editView == 2" ng-click="save()">Ja</button>
-        <button class="btn btn-warning" ng-if="editView == 2" ng-click="editStatus(1)">Nej</button>
+        <button class="btn btn-primary"  ng-click="save()">Ja</button>
+        <button class="btn btn-warning"  ng-click="editView(1)">Nej</button>
     </div>
 </div>
 <!-- ------------------->

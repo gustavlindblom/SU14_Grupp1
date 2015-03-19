@@ -55,7 +55,9 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         });
 
         modalInstance.result.then(function (selectedItem) {
-            console.log("Kommer vi hit någon gång?");
+            console.log("Kommer vi hit någon  gång gång?");
+            Genres.get();
+            $route.reload();
             $scope.selected = selectedItem;
         }, function () {
 

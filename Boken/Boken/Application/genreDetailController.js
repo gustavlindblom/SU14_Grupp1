@@ -1,7 +1,7 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
     //console.log("params in modal", params);
     console.log("view nummer:", param.view)
-    $scope.editView = param.view; //"0"; // sätter redigeringsläge till false.
+    $scope.view = param.view; //"0"; // sätter redigeringsläge till false.
 
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
@@ -30,10 +30,10 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     
     // --- togglar redigeringsläge ---//
     
-    $scope.editStatus = function (id) {
-            if (id == 1) { $scope.editView = [id]; }
-            if (id == 0) { $scope.editView = [id]; }
-            if (id == 2) { $scope.editView = [id]; }
+    $scope.editView = function (id) {
+            if (id == 1) { $scope.view = [id]; }
+            if (id == 0) { $scope.view = [id]; }
+            if (id == 2) { $scope.view = [id]; }
     };
     // --- slut ---------------------//
 
