@@ -39,8 +39,28 @@
         <button class="btn btn-warning" ng-if="view == 0" ng-click="cancel()">St&auml;ng</button>
     </div>
 </div>
+<!--  ---------------  -->
 
-<!-- bekräftelseläge-->
+<!-- ----- Delete ----------------------- -->
+
+<div ng-if="view == 3">
+    <div class="modal-body">
+
+        Vill du radera  <strong>{{genre.Name}}</strong>?
+
+        <pre>{{genre.Description}}</pre>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="delete()">Ja</button>
+        <button class="btn btn-warning" ng-click="editView(1)">Nej</button>
+    </div>
+</div>
+
+<!--    //---------Slut delete -------------------// -->
+
+
+<!-- bekräftelseläge------------------------>
 <div ng-if="view == 2">
     <div class="modal-body">
         
@@ -54,4 +74,4 @@
         <button class="btn btn-warning"  ng-click="editView(1)">Nej</button>
     </div>
 </div>
-<!-- ------------------->
+<!-- ------------------------------------------->

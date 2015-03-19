@@ -44,13 +44,6 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
                     console.log("param:", params)
                     return params;
                     }
-
-                //    return genre.Id;
-                //},
-                //view: function () {
-                //    //console.log("modal open editView: ", $scope.setEdit(loggedin));
-                //    return view;
-                //}
             }
         });
 
@@ -74,27 +67,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
     };
 
 
-    // ----- Delete ----------------------- //
 
-    $scope.deleteGenre = function (genre) {
-
-        if (confirm("Är du säker på att du vill ta bort genren " + genre.Name + "?"));
-        {
-            console.log("tar bort genre : ", genre);
-            console.log("med id : ", genre.Id);
-            try {
-                Genres.delete(genre.Id);
-                alert("Genren" + genre.Name + "och dess referenser är borttagna.");
-            }
-            catch (err) {
-                alert("Något gick fel:  " + err);
-            }
-        }
-        Genres.get();
-        $route.reload();
-    };
-
-    //---------Slut delete -------------------//
 
 
 
