@@ -56,7 +56,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     $scope.deleteGenre = function (genre) {
 
-        if(confirm("Är du säker på att du vill ta bort denna Genre?"));
+        if(confirm("Är du säker på att du vill ta bort genren " + genre.Name + "?"));
         {
             console.log("tar bort genre : ", genre);
             console.log("med id : ", genre.Id);

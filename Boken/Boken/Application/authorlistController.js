@@ -55,7 +55,7 @@
 
     $scope.deleteAuthor = function (author) {
 
-        if(confirm("Är du säker på att du vill ta bort denna författare och alla böcker skrivna av den författaren?"));
+        if(confirm("Är du säker på att du vill ta bort" + author.Name + "och alla böcker han/hon skrivit?"));
         {
             console.log("tar bort FF : ", author);
             console.log("med id : ", author.Id);

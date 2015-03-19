@@ -168,7 +168,7 @@
 
     $scope.deleteBook = function (book) {
 
-        if (confirm("Är du säker på att du vill ta bort denna bok?"));
+        if (confirm("Är du säker på att du vill ta bort "+ book.Title + "?"));
         {
             console.log("tar bort bok : ", book);
             console.log("med id : ", book.Id);
