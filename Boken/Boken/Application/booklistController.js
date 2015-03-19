@@ -174,7 +174,7 @@
             console.log("med id : ", book.Id);
             try {
                 Books.delete(book.Id);
-                alert("Boken finns inte längre!");
+                alert("Boken " + book.Title + " och dess referenser är borttagna.");
             }
             catch (err) {
                 alert("Något gick fel:  " + err);

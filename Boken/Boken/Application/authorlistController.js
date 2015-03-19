@@ -61,7 +61,7 @@
             console.log("med id : ", author.Id);
             try {
                 Authors.delete(author.Id);
-                alert("Författaren finns inte längre!");
+                alert("Författaren " + author.Name + " och hans/hennes böcker är borttagna.");
             }
             catch (err) {
                 alert("Något gick fel:  " + err);
