@@ -1,7 +1,6 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
-    //console.log("params in modal", params);
-    console.log("view nummer:", param.view)
-    $scope.view = param.view; //"0"; // sätter redigeringsläge till false.
+
+    $scope.view = param.view; // sätter viken vy som ska visa.
 
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
@@ -12,21 +11,40 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
 
     // --- spara & Avbryt knapparnas funktioner -- //
 
-    $scope.preSave = function () {
-
-
-        //save($scope.genre.Id, $scope.genre);
-        $modalInstance.close();
-    };
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
-         $modalInstance.close();
+
+         
     };
     
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
     //-------------------------//
+
+    // ----- Delete ----------------------- //
+
+    $scope.delete = function (genre) {
+
+            try {
+                Genres.delete(genre.Id);
+                alert("Genren" + genre.Name + "och dess referenser är borttagna.");
+            }
+            catch (err) {
+                alert("Något gick fel:  " + err);
+            }
+        
+            $modalInstance.close();
+    };
+
+    //---------Slut delete -------------------//
+
+
+
+
+
+
+
     
     // --- togglar redigeringsläge ---//
     
