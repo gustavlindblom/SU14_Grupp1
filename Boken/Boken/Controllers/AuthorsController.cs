@@ -15,10 +15,7 @@ namespace Boken.Controllers
     public class AuthorsController : ApiController
     {
         private BookDataContext db = new BookDataContext();
-        public BookAuthorCouplingsController bacc = new BookAuthorCouplingsController();
-        public BooksController bc = new BooksController();
-        public BookGenreCouplingsController bgcc = new BookGenreCouplingsController();
-
+        
         // GET: api/Authors
         public IQueryable<Author> GetAuthors()
         {
@@ -98,22 +95,15 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            db.Authors.Remove(author);
-
-            foreach(BookAuthorCoupling bac in db.BookAuthorCouplings) {     // tar bort authors kopplingar:
-                if (bac.AuthorId == id)
-                {
-                    bc.DeleteBook(bac.BookId);                              // <- tar bort boken kopplingen gäller
-                    bacc.DeleteBookAuthorCoupling(bac.Id);                  // <- tar bort bookauthorcoupling för boken
-                    foreach (BookGenreCoupling bgc in db.BookGenreCouplings)
-                    {
-                        if (bgc.BookId == bac.BookId)
-                        {
-                            bgcc.DeleteBookGenreCoupling(bgc.Id);           // <- tar bort bookgenrecouplings för boken
-                        }
-                    }
-                }
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.AuthorId == id))
+            {
+                db.BookAuthorCouplings.Remove(bac);
+                int bookId = bac.BookId;
+                db.Books.Remove(db.Books.FirstOrDefault(x => x.Id == bookId));
+                foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == bookId)) db.BookGenreCouplings.Remove(bgc);
             }
+
+            db.Authors.Remove(author);
             db.SaveChanges();
 
             return Ok(author);
