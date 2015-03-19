@@ -1,12 +1,13 @@
-app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "id", "editView", function ($scope, Genres, $modalInstance, id, editView) {
-    
-    $scope.editView = editView; //"0"; // sätter redigeringsläge till false.
+app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
+    //console.log("params in modal", params);
+    console.log("view nummer:", param.view)
+    $scope.editView = param.view; //"0"; // sätter redigeringsläge till false.
 
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
         $scope.genre = $scope.orgGenre = data;
      });
-    Genres.get(id);
+    Genres.get(param.id);
     // --- slut ---------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //

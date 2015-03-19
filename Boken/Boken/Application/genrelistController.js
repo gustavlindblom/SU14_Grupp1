@@ -29,19 +29,28 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     // ----- Modal -------------------- //
 
-    $scope.open = function (size, genre, loggedin) {
+    $scope.open = function ( genre, view) {
+        console.log("genre", genre, "view", view);
         var modalInstance = $modal.open({
             templateUrl: 'partials/genreDetail.html',
             controller: 'genreDetailController',
-            size: size,
+            //size: size,
             resolve: {
-                id: function () {
-                    return genre.Id;
-                },
-                editView: function () {
-                    console.log("modal open editView: ", $scope.setEdit(loggedin));
-                    return $scope.setEdit(loggedin);
-                }
+                param: function () {
+                    params = {
+                        id: genre.Id,
+                        view: view
+                    }
+                    console.log("param:", params)
+                    return params;
+                    }
+
+                //    return genre.Id;
+                //},
+                //view: function () {
+                //    //console.log("modal open editView: ", $scope.setEdit(loggedin));
+                //    return view;
+                //}
             }
         });
 
