@@ -62,7 +62,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             console.log("med id : ", genre.Id);
             try {
                 Genres.delete(genre.Id);
-                alert("Genren finns inte längre!");
+                alert("Genren" + genre.Name + "och dess referenser är borttagna.");
             }
             catch (err) {
                 alert("Något gick fel:  " + err);
