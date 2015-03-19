@@ -10,6 +10,13 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     // --- slut ---------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //
+
+    $scope.preSave = function () {
+
+
+        //save($scope.genre.Id, $scope.genre);
+        $modalInstance.close();
+    };
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
          $modalInstance.close();
@@ -23,12 +30,9 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     // --- togglar redigeringsläge ---//
     
     $scope.editStatus = function (id) {
-            if (id == 1) {
-                $scope.editView = [id];
-                }
-            if (id == 0) {
-                $scope.editView = [id];
-               }
+            if (id == 1) { $scope.editView = [id]; }
+            if (id == 0) { $scope.editView = [id]; }
+            if (id == 2) { $scope.editView = [id]; }
     };
     // --- slut ---------------------//
 

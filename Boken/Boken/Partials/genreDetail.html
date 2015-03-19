@@ -1,34 +1,57 @@
-    <div class="modal-header">
-        <h3 class="modal-title">
-            {{genre.Name}}
-        
-                <button class="btn btn-default pull-right" ng-click="cancel()">
-                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                </button>
-                <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 0" ng-click="editStatus(1)">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </button>
-                <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 1" ng-click="editStatus(0)">
-                    <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-                </button>
-            </h3>
+<div class="modal-header">
+    <h3 class="modal-title">
+        {{genre.Name}}
 
-    </div>
+        <button class="btn btn-default pull-right" ng-click="cancel()">
+            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 0" ng-click="editStatus(1)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && editView == 1" ng-click="editStatus(0)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+    </h3>
+
+</div>
+<!-- redigeringsläge -->
+<div ng-if="editView == 1">
     <div class="modal-body">
-        <h4></h4>
-        <p ng-if=" editView == 0">
-            {{genre.Description}}
-        </p>
-        <p ng-if="editView == 1">
-            <!-- Namnet på genre:
-            <input type="text" ng-model="genre.Name" />
-            Beskrvning av genre: -->
+
+        <p>
             <textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
         </p>
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-if="editView == 1" ng-click="save()">Spara</button>
+        <button class="btn btn-primary" ng-if="editView == 1" ng-click="editStatus(2)">Spara</button>
         <button class="btn btn-warning" ng-if="editView == 1" ng-click="cancel()">Avbryt</button>
-        <button class="btn btn-warning" ng-if="editView == 0" ng-click="cancel()">STÄNG</button>
     </div>
+</div>
+<!-- ------------------->
+
+<!--  standard läge-->
+<div ng-if="editView == 0">
+    <div class="modal-body" ng-if="editView == 0">
+        <pre>{{genre.Description}}</pre>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-if="editView == 0" ng-click="cancel()">St&auml;ng</button>
+    </div>
+</div>
+
+<!-- bekräftelseläge-->
+<div ng-if="editView == 2">
+    <div class="modal-body">
+        
+            Vill du uppdatera <strong>{{genre.Name}}</strong> med dessa uppgifter?
+            
+            <pre>{{genre.Description}}</pre>
+        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-if="editView == 2" ng-click="save()">Ja</button>
+        <button class="btn btn-warning" ng-if="editView == 2" ng-click="editStatus(1)">Nej</button>
+    </div>
+</div>
+<!-- ------------------->
