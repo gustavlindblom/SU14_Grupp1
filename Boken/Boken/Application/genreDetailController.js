@@ -24,11 +24,11 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
 
     // ----- Delete ----------------------- //
 
-    $scope.delete = function (genre) {
-
+    $scope.delete = function () {
+        
             try {
-                Genres.delete(genre.Id);
-                alert("Genren" + genre.Name + "och dess referenser är borttagna.");
+                Genres.delete($scope.genre.Id);
+                alert("Genren" + $scope.genre.Name + "och dess referenser är borttagna.");
             }
             catch (err) {
                 alert("Något gick fel:  " + err);
