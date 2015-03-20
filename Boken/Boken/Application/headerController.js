@@ -5,9 +5,12 @@
         $location.url(url);
     }
 
-    // ------- Öppna vy för att skapa bok ---- //
-    $scope.openCreateBook = function () {
+    $scope.open = function (id) {
 
+        console.log(id);
+        if (id == "book")
+        {
+            console.log("inne i bok");
         var modalInstance = $modal.open({
             templateUrl: 'partials/createBook.html',
             controller: 'createBookModalController',
@@ -16,6 +19,30 @@
 
             }
         });
+        }
+        else if (id == "author")
+        {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/createAuthor.html',
+                controller: 'createAuthorModalController',
+
+                resolve: {
+
+                }
+            });
+        }
+        else if (id == "genre")
+        {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/createGenre.html',
+                controller: 'createGenreModalController',
+
+                resolve: {
+
+                }
+            });
+        }
+        
 
         modalInstance.result.then(function (selectedItem) {
             $scope.selected = selectedItem;
@@ -24,7 +51,7 @@
         });
     };
     // --------------------------------------//
-
+   
     // ----- öppna vy för att skapa ny genre--- //
 
     //$scope.createNewGenre = function ( view) {
