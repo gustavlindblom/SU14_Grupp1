@@ -29,32 +29,61 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     // ----- Modal -------------------- //
 
-    $scope.open = function ( genre, view) {
+    $scope.open = function ( view,  genre) {
         console.log("genre", genre, "view", view);
-        var modalInstance = $modal.open({
-            templateUrl: 'partials/genreDetail.html',
-            controller: 'genreDetailController',
-            //size: size,
-            resolve: {
-                param: function () {
-                    params = {
-                        id: genre.Id,
-                        view: view
-                    }
-                    console.log("param:", params)
-                    return params;
-                    }
-            }
-        });
 
-        modalInstance.result.then(function (selectedItem) {
-            console.log("Kommer vi hit någon  gång gång?");
-            Genres.get();
-            $route.reload();
-            $scope.selected = selectedItem;
-        }, function () {
+        if (genre) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/genreDetail.html',
+                controller: 'genreDetailController',
+                //size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            id: genre.Id,
+                            view: view
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon  gång gång?");
+                Genres.get();
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+        if (!genre) {
+             var modalInstance = $modal.open({
+                    templateUrl: 'partials/genreDetail.html',
+                    controller: 'genreDetailController',
+                    //size: size,
+                    resolve: {
+                        param: function () {
+                            params = {
+                                  view: view
+                            }
+                            console.log("param:", params)
+                            return params;
+                        }
+                    }
+                });
             
-        });
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon  gång gång?");
+                Genres.get();
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+
+
     };
     //---------Slut Modal -------------------//
     $scope.setEdit = function (loggedin) {

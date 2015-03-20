@@ -1,7 +1,7 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visa.
-
+    $scope.newGenre = {};
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
         $scope.genre = $scope.orgGenre = data;
@@ -22,6 +22,16 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     };
     //-------------------------//
 
+    //---------------skapa ny -------//
+    $scope.create = function () {
+        console.log($scope.newGenre)
+        Genres.post($scope.newGenre);
+        $modalInstance.close();
+    };
+
+
+
+    // ---------------------------------//
     // ----- Delete ----------------------- //
 
     $scope.delete = function () {

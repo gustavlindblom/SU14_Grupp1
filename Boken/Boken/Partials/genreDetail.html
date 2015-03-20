@@ -1,7 +1,7 @@
 <div class="modal-header">
     <h3 class="modal-title">
         <span ng-if=" view != 4" >{{genre.Name}} </span>
-        <span ng-if=" view == 4">{{newGenre.Name}} </span>
+        <span  ng.model="newGenre.Name"></span>
 
         <button class="btn btn-default pull-right" ng-click="cancel()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -49,15 +49,15 @@
     <div class="modal-body">
         <p>
             Namn<br />
-            <textarea ng-model="genre.Name">  </textarea>
+            <textarea ng-model="newGenre.Name">  </textarea>
         </p>
         <p>
-            Beskrivning<textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
+            Beskrivning<textarea rows="4" cols="70" ng-model="newGenre.Description">  </textarea>
         </p>
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Spara</button>
+        <button class="btn btn-primary" ng-click="create()">Skapa ny Genre</button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
