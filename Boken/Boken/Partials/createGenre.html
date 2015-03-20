@@ -1,0 +1,37 @@
+﻿<div class="modal-body">
+    <p>
+        <label>Författare:</label>
+        <input class="input-group" placeholder="Namn..." style="font-style:italic;" />
+    </p>
+    <div>
+        <label>Sammanfattning:</label>
+        <input class="input-group" placeholder="Beskrivning..." style="font-style:italic;" />
+    </div>
+    <div>
+        <label>Genre:</label>
+        <span class="glyphicon glyphicon-plus listFocus" ng-click="addGenre()"></span>
+        <div id="addGenreId">
+            <!--Här läggs till nya textboxes varje gång du trycker på plus(glyphicon)-->
+        </div>
+
+    </div>
+    <p>
+        <label>Utgivningsår</label><input class="input-group" placeholder="YYYY..." style="font-style:italic;" />
+    </p>
+    <p>
+        <label>ISBN</label><input class="input-group" placeholder="Tex:894134564-65 ..." style="font-style:italic;" />
+    </p>
+    <p>
+        <label>Pris</label><input class="input-group" placeholder="SEK..." style="font-style:italic;" />
+    </p>
+    <p>
+        <label>I lager</label><input class="input-group" placeholder="Antal i lager..." style="font-style:italic;" />
+    </p>
+    <div>
+
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" ng-click="ok()">Spara</button>
+    <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+</div>

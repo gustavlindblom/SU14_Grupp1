@@ -16,7 +16,14 @@
                 <tbody>
                     <tr class=" cursor" ng-repeat="author in pagArr">
                         <td class="listFocus" ng-click="open(author)" data-toggle="modal" data-target="#authorModal">{{author.Name}}</td>
-                        <td class="listFocus navbar-right" ng-if="loggedin == 1" ng-click="deleteAuthor(author)"><span class="glyphicon glyphicon-trash"></span></td>
+                        <td class="listFocus navbar-right" ng-if="loggedin == 1">
+                            <span class="glyphicon glyphicon-edit" ng-click="open(author, 1)" aria-hidden="true"></span>
+                        </td>
+                        <td class="listFocus navbar-right" ng-show="loggedin == 1">
+
+                            <span class="glyphicon glyphicon-trash" ng-click="open(author, 3)">
+                            </span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
