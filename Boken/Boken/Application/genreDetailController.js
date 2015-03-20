@@ -1,7 +1,7 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visa.
-    $scope.action = param.action; // talar om vilken handling användaren vill utföra i modalen (1 = edit, 3 = delete, 4 = create)
+    $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
     $scope.newGenre = {};
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
@@ -36,13 +36,12 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     // ----- Delete ------------------- //
 
     $scope.delete = function () {
-        
             try {
                 Genres.delete($scope.genre.Id);
-                alert("Genren" + $scope.genre.Name + "och dess referenser är borttagna.");
+                //alert("Genren" + $scope.genre.Name + "och dess referenser är borttagna.");
             }
             catch (err) {
-                alert("Något gick fel:  " + err);
+                //alert("Något gick fel:  " + err);
             }
         
             $modalInstance.close();
