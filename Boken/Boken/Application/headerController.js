@@ -1,4 +1,4 @@
-﻿app.controller('headerController', ['$scope', '$location', 'Login', '$modal', function ($scope, $location, Login, $modal) {
+﻿app.controller('headerController', ['$scope', '$location', 'Login', '$modal', "Genres", function ($scope, $location, Login, $modal, Genres) {
     $scope.loginStatus = Login.loginStatus;
 
     $scope.GoTo = function (url) {
@@ -75,6 +75,8 @@
         modalInstance.result.then(function (selectedItem) {
             console.log("Skapa en ny genre:");
             $scope.selected = selectedItem;
+            Genres.get();
+            //$route.reload();
         }, function () {
 
         });

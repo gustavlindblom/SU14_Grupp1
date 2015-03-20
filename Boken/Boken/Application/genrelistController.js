@@ -6,6 +6,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.genres = data;
         $scope.totalItems = $scope.genres.length;
+        console.log("gotGenres rapporterar totalItems: ", $scope.totalItems);
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     });
     Genres.get();
@@ -51,7 +52,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             });
             modalInstance.result.then(function (selectedItem) {
                 console.log("Kommer vi hit någon  gång gång?");
-                Genres.get();
+                //Genres.get();
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
@@ -77,7 +78,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             
             modalInstance.result.then(function (selectedItem) {
                 console.log("Kommer vi hit någon  gång gång?");
-                Genres.get();
+                //Genres.get();
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {

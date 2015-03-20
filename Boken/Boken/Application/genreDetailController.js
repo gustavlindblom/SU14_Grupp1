@@ -28,7 +28,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.create = function () {
         console.log($scope.newGenre)
         Genres.post($scope.newGenre);
-        Genres.get();
         $modalInstance.close();
     };
     // ----------slut ------------------//
@@ -43,7 +42,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
             catch (err) {
                 //alert("Något gick fel:  " + err);
             }
-            Genres.get();
             $modalInstance.close();
     };
 
