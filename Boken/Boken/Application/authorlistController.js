@@ -28,26 +28,62 @@
     }
     // slut på paginering
     
-
-    // ----- Modal ----- //
-    $scope.open = function (author) {
+    $scope.open = function (author, view) {
+        console.log("author", author, "view", view);
         var modalInstance = $modal.open({
             templateUrl: 'partials/authorDetail.html',
             controller: 'authorDetailController',
+            //size: size,
             resolve: {
-                id: function () {
-                    return author.Id;
+                param: function () {
+                    params = {
+                        id: author.Id,
+                        view: view
+                    }
+                    console.log("param:", params)
+                    return params;
                 }
             }
         });
 
-
         modalInstance.result.then(function (selectedItem) {
+            console.log("Kommer vi hit någon  gång gång?");
+            Authors.get();
+            $route.reload();
             $scope.selected = selectedItem;
         }, function () {
 
         });
     };
+    //---------Slut Modal -------------------//
+    $scope.setEdit = function (loggedin) {
+        if (loggedin == 1) {
+            return 1;
+        }
+        else {
+            return 0;
+        };
+    };
+
+    // ----- Modal ----- //
+    //$scope.open = function (author) {
+    //    var modalInstance = $modal.open({
+    //        templateUrl: 'partials/authorDetail.html',
+    //        controller: 'authorDetailController',
+    //        resolve: {
+    //            id: function () {
+    //                return author.Id;
+    //            }
+    //        }
+    //    });
+
+
+    //    modalInstance.result.then(function (selectedItem) {
+    //        $scope.selected = selectedItem;
+    //    }, function () {
+
+    //    });
+    //};
     //----------------------------//
 
 

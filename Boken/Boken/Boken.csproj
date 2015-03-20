@@ -259,6 +259,7 @@
     <Content Include="Partials\authorDetail.html" />
     <Content Include="Partials\bookDetail.html" />
     <Content Include="Partials\booklist.html" />
+    <Content Include="Partials\createAuthor.html" />
     <Content Include="Partials\createBook.html" />
     <Content Include="Partials\createGenre.html" />
     <Content Include="Partials\Error.html" />
