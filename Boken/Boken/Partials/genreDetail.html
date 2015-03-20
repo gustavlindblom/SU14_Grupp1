@@ -87,7 +87,11 @@
 <div ng-if="view == 2">
     <div class="modal-body">
 
-        Vill du uppdatera <strong>{{genre.Name}}</strong> med dessa uppgifter?
+        Vill du 
+        <span ng-if="action == 1">uppdatera </span>
+        <span ng-if="action == 4">skapa </span>
+        <span ng-if="action == 3">ta bort </span> 
+        <strong>{{genre.Name}}</strong> med dessa uppgifter?
 
         <pre>{{genre.Description}}</pre>
 

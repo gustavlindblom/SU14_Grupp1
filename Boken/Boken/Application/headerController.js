@@ -54,7 +54,7 @@
    
     // ----- öppna vy för att skapa ny genre--- //
 
-    $scope.createNewGenre = function ( view) {
+    $scope.createNewGenre = function ( view, action) {
         //console.log("genre", genre, "view", view);
         var modalInstance = $modal.open({
             templateUrl: 'partials/genreDetail.html',
@@ -63,7 +63,8 @@
             resolve: {
                 param: function () {
                     params = {
-                        view: view
+                        view: view,
+                        action: action
                     }
                     console.log("param:", params)
                     return params;

@@ -29,7 +29,7 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     // ----- Modal -------------------- //
 
-    $scope.open = function ( view,  genre) {
+    $scope.open = function ( view,  genre, action ) {
         console.log("genre", genre, "view", view);
 
         if (genre) {
@@ -41,7 +41,8 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
                     param: function () {
                         params = {
                             id: genre.Id,
-                            view: view
+                            view: view,
+                            action: action
                         }
                         console.log("param:", params)
                         return params;

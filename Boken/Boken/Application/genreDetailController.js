@@ -1,6 +1,7 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visa.
+    $scope.action = param.action; // talar om vilken handling användaren vill utföra i modalen (1 = edit, 3 = delete, 4 = create)
     $scope.newGenre = {};
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {

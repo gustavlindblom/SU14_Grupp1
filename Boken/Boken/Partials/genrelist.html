@@ -27,18 +27,18 @@
                 </thead>
                 <tbody>
                     <tr class="listFocus cursor" ng-repeat="genre in pagArr">
-                        <td ng-click="open(genre, 0)">
+                        <td ng-click="open(0, genre, 0)">
                             {{genre.Name}}
                         </td>
-                        <td ng-click="open(genre, 0)">
+                        <td ng-click="open(0, genre, 0)">
                             {{genre.Description}}...
                         </td>
 
                         <td class="" ng-show="loggedin == 1">
-                            <span class="glyphicon glyphicon-edit" ng-click="open(1, genre)" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-edit" ng-click="open(1, genre, 1)" aria-hidden="true"></span>
                         </td>
                         <td class="" ng-show="loggedin == 1">
-                            <span class="glyphicon glyphicon-trash" ng-click="open(3, genre)" aria-hidden="true">
+                            <span class="glyphicon glyphicon-trash" ng-click="open(3, genre, 3)" aria-hidden="true">
                             </span>
                         </td>
 
