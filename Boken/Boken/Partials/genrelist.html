@@ -16,7 +16,7 @@
                     <tr>
                         <th>Genre</th>
                         <th>Utdrag</th>
-                        <th></th><th></th>
+                        <th ng-show="loggedin == 1"></th><thng-show ="loggedin == 1"></thng-show>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,12 +28,11 @@
                             {{genre.Description}}...
                         </td>
 
-                        <td class="listFocus navbar-right" ng-if="loggedin == 1">
+                        <td class="" ng-show="loggedin == 1">
                             <span class="glyphicon glyphicon-edit" ng-click="open(genre, 1)" aria-hidden="true"></span>
                         </td>
-                        <td class="listFocus navbar-right" ng-show="loggedin == 1">
-                            
-                            <span class="glyphicon glyphicon-trash" ng-click="open(genre, 3)">
+                        <td class="" ng-show="loggedin == 1">
+                            <span class="glyphicon glyphicon-trash" ng-click="open(genre, 3)" aria-hidden="true">
                             </span>
                         </td>
 
