@@ -80,7 +80,7 @@
     </div>
 </div>
 
-<!------------Slut delete ------ -->
+<!------------Slut delete --------->
 <!----- bekräftelseläge------------>
 <div ng-if="view == 2">
     <div class="modal-body">
@@ -90,9 +90,10 @@
         <span ng-if="action == 4">skapa </span>
         <span ng-if="action == 3">ta bort </span>
         <span ng-if="action != 4">
-            <strong>{{genre.Name}}</strong> med dessa uppgifter?
-
-            <pre>{{genre.Description}}</pre>
+            <strong>{{genre.Name}}</strong>
+            <span ng-if="action !=3"> med dessa uppgifter?</span>
+            <span ng-if="action == 3"> och alla dess referenser permanent?</span>
+            <pre ng-if="action != 3">{{genre.Description}}</pre>
         </span>
         <span ng-if="action == 4">
             <strong>{{newGenre.Name}}</strong> med dessa uppgifter?
@@ -103,7 +104,7 @@
         <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
         <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
         <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
-        <button class="btn btn-warning" ng-click="editView(1)">Nej</button>
+        <button class="btn btn-warning" ng-click="editView($scope.action)">Nej</button>
     </div>
 </div>
 <!-- ------------------------------------------->
