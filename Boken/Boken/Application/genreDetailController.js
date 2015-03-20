@@ -13,7 +13,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
 
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
-
+        $modalInstance.close();
          
     };
     
