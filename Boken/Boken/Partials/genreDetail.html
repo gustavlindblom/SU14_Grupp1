@@ -89,7 +89,7 @@
         <span ng-if="action == 1">uppdatera </span>
         <span ng-if="action == 4">skapa </span>
         <span ng-if="action == 3">ta bort </span>
-        <span ng-if="action == !4">
+        <span ng-if="action != 4">
             <strong>{{genre.Name}}</strong> med dessa uppgifter?
 
             <pre>{{genre.Description}}</pre>
