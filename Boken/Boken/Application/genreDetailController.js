@@ -11,6 +11,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     // --- slut ---------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //
+    //     stänger även ner modalen 
 
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
@@ -23,18 +24,16 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     };
     //-------------------------//
 
-    //---------------skapa ny -------//
+    //---------skapa ny -------//
     $scope.create = function () {
         console.log($scope.newGenre)
         Genres.post($scope.newGenre);
         //$scope.view = 2;    // niklas
         $modalInstance.close();
     };
+    // ----------slut ------------------//
 
-
-
-    // ---------------------------------//
-    // ----- Delete ----------------------- //
+    // ----- Delete ------------------- //
 
     $scope.delete = function () {
         
@@ -49,17 +48,19 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
             $modalInstance.close();
     };
 
-    //---------Slut delete -------------------//
+    //---------Slut delete -------------//
 
-
-
-
-
-
-
-    
-    // --- togglar redigeringsläge ---//
-    
+    // --- togglar mellan olika vyer ---//
+    /*
+     * View:
+     *  0 - visa upp
+     *  1 - redigering
+     *  2 - bekräftelse
+     *  3 - radera
+     *  4 - skapa nytt
+     * 
+     */
+      
     $scope.editView = function (id) {
             if (id == 1) { $scope.view = [id]; }
             if (id == 0) { $scope.view = [id]; }
