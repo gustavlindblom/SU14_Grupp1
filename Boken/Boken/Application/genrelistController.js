@@ -66,7 +66,8 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
                     resolve: {
                         param: function () {
                             params = {
-                                  view: view
+                                view: view,
+                                action: action
                             }
                             console.log("param:", params)
                             return params;

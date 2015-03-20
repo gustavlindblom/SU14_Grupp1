@@ -27,6 +27,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.create = function () {
         console.log($scope.newGenre)
         Genres.post($scope.newGenre);
+        //$scope.view = 2;    // niklas
         $modalInstance.close();
     };
 
