@@ -1,7 +1,9 @@
 <div class="modal-header">
     <h3 class="modal-title">
-        <span ng-if=" view != 4">{{genre.Name}} </span>
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{genre.Name}} </span>
         <span ng-if=" view == 4">Skapa en ny genre</span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{genre.Name}}</strong>?</span>
+
 
         <button class="btn btn-default pull-right" ng-click="cancel()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -18,48 +20,48 @@
 <!-- redigeringsläge -->
 <div ng-if="view == 1">
     <div class="modal-body">
-        <p>
-            <label>Titel</label>
-            <input class="input-group" ng-model="genre.Name" placeholder="Namn..." style="font-style:italic;" />
-        </p>
-        <p>
-            <label>Beskrivning</label>
-            <textarea class="input-group" rows="4" cols="70" ng-model="genre.Description" style="font-style:italic;"></textarea>
-        </p>
-
+        <div class="form-group">
+            <label for="genreName">Titel</label>
+            <input type="text" class="form-control" ng-model="genre.Name" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+        </div>
+        <div class="form-group">
+            <label for="genreDescription">Beskrivning</label>
+            <textarea type="text " class="form-control" ng-model="genre.Description" style="font-style:italic;" id="genreDescription"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Spara</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Spara</button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
+
 </div>
 <!-- ------------------->
 <!--  standard läge-->
 <div ng-if="view == 0">
-    <div class="modal-body">
-        <label>Beskrivning</label>
-        <pre>{{genre.Description}}</pre>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancel()">St&auml;ng</button>
+    <div class="modal-body" ng-if="view == 0">
+        <div class="form-group"
+             <p>{{genre.Description}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">St&auml;ng</button>
+        </div>
     </div>
 </div>
 <!--  ---------------  -->
 <!-- Skapa nytt läge -->
 <div ng-if="view == 4">
     <div class="modal-body">
-        <p>
-            <label>Namn</label>
-            <textarea ng-model="newGenre.Name"></textarea>
-        </p>
-        <p>
-            <label>Beskrivning</label>
-            <textarea rows="4" cols="70" ng-model="newGenre.Description">  </textarea>
-        </p>
-
+        <div class="form-group">
+            <label for="genreName">Titel</label>
+            <input type="text" class="form-control" ng-model="genre.Name" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+        </div>
+        <div class="form-group">
+            <label for="genreDescription">Beskrivning</label>
+            <textarea type="text " class="form-control" ng-model="genre.Description" style="font-style:italic;" id="genreDescription"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Skapa</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
@@ -72,13 +74,19 @@
 <div ng-if="view == 3">
     <div class="modal-body">
 
-        Vill du radera <strong>{{genre.Name}}</strong>?
-
-        <pre>{{genre.Description}}</pre>
+        <div class="form-group">
+            <label for="genreName">Titel</label>
+            <span type="text" class="form-control" style="font-style:italic;" id="genreName">{{genre.Name}}</span>
+        </div>
+        <div class="form-group">
+            <label for="genreDescription">Beskrivning</label>
+            <span type="text " class="form-control" style="font-style:italic;" id="genreDescription">{{genre.Description}}</span>
+        </div>
+        <p class="form-control"></p>
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Ja</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
         <button class="btn btn-warning" ng-click="cancel()">Nej</button>
     </div>
 </div>
@@ -87,27 +95,28 @@
 <!----- bekräftelseläge------------>
 <div ng-if="view == 2">
     <div class="modal-body">
+        {{text}}
+        <strong>{{genre.Name}}</strong>
+        <span> {{text2}}</span>
+        <div class="well">
+            <div class="form-group">
+                <label>Titel:</label>
+                <pre>{{genre.Name}}</pre>
+            </div>
 
-        Vill du verkligen
-        <span ng-if="action == 1">uppdatera </span>
-        <span ng-if="action == 4">skapa </span>
-        <span ng-if="action == 3">ta bort </span>
-        <span ng-if="action != 4">
-            <strong>{{genre.Name}}</strong>
-            <span ng-if="action !=3"> med följande innehåll?</span>
-            <span ng-if="action == 3"> och alla dess referenser permanent?</span>
-            <pre ng-if="action != 3">{{genre.Description}}</pre>
-        </span>
-        <span ng-if="action == 4">
-            <strong>{{newGenre.Name}}</strong> med dessa uppgifter?
-            <pre>{{newGenre.Description}}</pre>
-        </span>
+            <div class="form-group">
+                <label>Beskrivning:</label>
+                <pre>{{genre.Description}}</pre>
+            </div>
+            </span>
+        </div>
+
     </div>
     <div class="modal-footer">
         <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
         <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
         <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
-        <button class="btn btn-warning" ng-click="editView($scope.action)">Nej</button>
+        <button class="btn btn-warning" ng-click="editView($scope.action)">Nej</button>     <!-- siffran i editView() ska vara antingen action eller param.view ... men detta verkar inte fungera -->
     </div>
 </div>
 <!-- ------------------------------------------->
