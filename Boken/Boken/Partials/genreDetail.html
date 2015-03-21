@@ -19,11 +19,12 @@
 <div ng-if="view == 1">
     <div class="modal-body">
         <p>
-            Namn<br />
-            <textarea ng-model="genre.Name">  </textarea>
+            <label>Titel</label>
+            <input class="input-group" ng-model="genre.Name" placeholder="Namn..." style="font-style:italic;" />
         </p>
         <p>
-            Beskrivning<textarea rows="4" cols="70" ng-model="genre.Description">  </textarea>
+            <label>Beskrivning</label>
+            <textarea class="input-group" rows="4" cols="70" ng-model="genre.Description" style="font-style:italic;" ></textarea>
         </p>
 
     </div>
@@ -36,10 +37,11 @@
 <!--  standard läge-->
 <div ng-if="view == 0">
     <div class="modal-body" ng-if="view == 0">
+        <label>Beskrivning</label>
         <pre>{{genre.Description}}</pre>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancel()">Stäng</button>
+        <button class="btn btn-warning" ng-click="cancel()">St&auml;ng</button>
     </div>
 </div>
 <!--  ---------------  -->
@@ -47,11 +49,10 @@
 <div ng-if="view == 4">
     <div class="modal-body">
         <p>
-            Namn<br />
-            <textarea ng-model="newGenre.Name">  </textarea>
-        </p>
-        <p>
-            Beskrivning<textarea rows="4" cols="70" ng-model="newGenre.Description">  </textarea>
+            <label>Namn</label>
+            <textarea ng-model="newGenre.Name"></textarea>
+            <label>Beskrivning</label>
+            <textarea rows="4" cols="70" ng-model="newGenre.Description">  </textarea>
         </p>
 
     </div>
