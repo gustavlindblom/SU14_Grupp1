@@ -89,14 +89,14 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     };
     //---------Slut Modal -------------------//
-    $scope.setEdit = function (loggedin) {
-        if (loggedin == 1) {
-            return 1;
-        }
-        else {
-            return 0;
-        };
-    };
+    //$scope.setEdit = function (loggedin) {
+    //    if (loggedin == 1) {
+    //        return 1;
+    //    }
+    //    else {
+    //        return 0;
+    //    };
+    //};
 
 
 

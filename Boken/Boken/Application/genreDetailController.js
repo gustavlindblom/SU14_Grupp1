@@ -1,6 +1,6 @@
 app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
 
-    $scope.view = param.view; // sätter viken vy som ska visa.
+    $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
     $scope.newGenre = {};
     // --- Hämtar genren ------ //
@@ -16,7 +16,8 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
         $modalInstance.close();
-         
+        console.log("$scope.action: ", $scope.action);
+        //console.log(action);
     };
     
     $scope.cancel = function () {
