@@ -24,7 +24,7 @@
         </p>
         <p>
             <label>Beskrivning</label>
-            <textarea class="input-group" rows="4" cols="70" ng-model="genre.Description" style="font-style:italic;" ></textarea>
+            <textarea class="input-group" rows="4" cols="70" ng-model="genre.Description" style="font-style:italic;"></textarea>
         </p>
 
     </div>
@@ -36,7 +36,7 @@
 <!-- ------------------->
 <!--  standard läge-->
 <div ng-if="view == 0">
-    <div class="modal-body" ng-if="view == 0">
+    <div class="modal-body">
         <label>Beskrivning</label>
         <pre>{{genre.Description}}</pre>
     </div>
@@ -51,6 +51,8 @@
         <p>
             <label>Namn</label>
             <textarea ng-model="newGenre.Name"></textarea>
+        </p>
+        <p>
             <label>Beskrivning</label>
             <textarea rows="4" cols="70" ng-model="newGenre.Description">  </textarea>
         </p>
@@ -105,7 +107,7 @@
         <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
         <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
         <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
-        <button class="btn btn-warning" ng-click="editView($scope.action)">Nej</button>     <!-- siffran i editView() ska vara antingen action eller param.view ... men detta verkar inte fungera -->
+        <button class="btn btn-warning" ng-click="editView($scope.action)">Nej</button>
     </div>
 </div>
 <!-- ------------------------------------------->

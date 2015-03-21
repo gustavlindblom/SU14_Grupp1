@@ -52,7 +52,6 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             });
             modalInstance.result.then(function (selectedItem) {
                 console.log("Kommer vi hit någon  gång gång?");
-                //Genres.get();
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
@@ -78,7 +77,6 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
             
             modalInstance.result.then(function (selectedItem) {
                 console.log("Kommer vi hit någon  gång gång?");
-                //Genres.get();
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
@@ -89,18 +87,5 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
 
     };
     //---------Slut Modal -------------------//
-    //$scope.setEdit = function (loggedin) {
-    //    if (loggedin == 1) {
-    //        return 1;
-    //    }
-    //    else {
-    //        return 0;
-    //    };
-    //};
-
-
-
-
-
 
 }]);

@@ -5,7 +5,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.newGenre = {};
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
-        $scope.genre = $scope.orgGenre = data;
+        $scope.genre = data;
      });
     Genres.get(param.id);
     // --- slut ---------------//
@@ -16,8 +16,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
         $modalInstance.close();
-        console.log("$scope.action: ", $scope.action);
-        //console.log(action);
     };
     
     $scope.cancel = function () {

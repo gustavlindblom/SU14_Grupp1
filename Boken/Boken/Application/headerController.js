@@ -82,6 +82,34 @@
         });
     };
     //---------Slut ---- -------------------//
-}
-]);
+
+    // ---------- skapa ny författare ---------//
+    $scope.createNewAuthor = function (view, action) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/authorDetail.html',
+            controller: 'authorDetailController',
+            //size: size,
+            resolve: {
+                param: function () {
+                    params = {
+                        view: view,
+                        action: action
+                    }
+                    console.log("param:", params)
+                    return params;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            console.log("Skapa en ny författare:");
+            $scope.selected = selectedItem;
+            Authors.get();
+            //$route.reload();
+        }, function () {
+
+        });
+    };
+    //------------ slut ------------------//
+}]);
 
