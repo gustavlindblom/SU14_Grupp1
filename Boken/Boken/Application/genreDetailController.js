@@ -16,8 +16,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
         $modalInstance.close();
-        console.log("$scope.action: ", $scope.action);
-        //console.log(action);
     };
 
     $scope.cancel = function () {
@@ -25,7 +23,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     };
     //-------------------------//
 
-    // testar
+    // --- logik för att bestämma vad som skrivs ut i bekräftelse
     $scope.text = "";
     $scope.text2 = "";
     $scope.editText = function () {
@@ -35,24 +33,19 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         if (a == 4) text += "skapa "
         if (a == 3) text += "ta bort ";
         text += "genre: "
-        //if (a != 4) text += genre.nametoUpperCase();
 
-        //if ($scope.action != 4){
         var text2 = "";
         if (a != 3) text2 = "med foljande innehall?"
         if (a == 3) text2 = "och alla dess referenser permanent?";
         if (a == 4) text2 = "med dessa uppgifter?";
         $scope.text2 = text2;
-
-        //-------------
-        console.log(text);
         $scope.text = text;
     }
-    console.log($scope.confirmText1);
+    // ------------------------//
+    
     //---------skapa ny -------//
     $scope.create = function () {
-        console.log($scope.newGenre)
-        Genres.post($scope.newGenre);
+        Genres.post($scope.genre);
         $modalInstance.close();
     };
     // ----------slut ------------------//
