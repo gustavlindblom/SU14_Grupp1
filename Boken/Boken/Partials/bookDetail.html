@@ -1,8 +1,7 @@
 <div class="modal-header">
-    <h3 class="modal-title">{{book.Title}}
-        <span ng-if=" view == 0 || view == 1 || view == 2">{{book.Name}} </span>
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{book.Title}} </span>
         <span ng-if=" view == 4">Skapa en ny Bok</span>
-        <span ng-if=" view == 3">Vill du radera <strong>{{book.Name}}</strong>?</span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{book.Title}}</strong>?</span>
 
         <button class="btn btn-default pull-right" ng-click="cancel()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -23,13 +22,14 @@
             <input type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" />
         </div>
         <div class="form-group">
-            <label for="bookSummary">Sammanfattning:</label>
-            <textarea type="text" style="height:100px;" class="form-control" ng-model="book.Summary" style="font-style:italic;" id="bookSummary"></textarea>
-        </div>
-        <div class="form-group">
             <label for="bookAuthor">Författare:</label>
             <textarea type="text " class="form-control" ng-model="book.Authors" style="font-style:italic;" id="bookAuthor"></textarea>
         </div>
+        <div class="form-group">
+            <label for="bookSummary">Sammanfattning:</label>
+            <textarea type="text" style="height:100px;" class="form-control" ng-model="book.Summary" style="font-style:italic;" id="bookSummary"></textarea>
+        </div>
+       
         <div class="form-group">
             <label for="bookGenre">Genre:</label>
             <textarea type="text " class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></textarea>
@@ -169,9 +169,6 @@
         <div>
             <img ng-src="{{book.ImagePath}}" width=300 />
         </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 
     <div class="modal-footer">
