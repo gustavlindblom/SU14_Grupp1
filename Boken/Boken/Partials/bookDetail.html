@@ -184,17 +184,40 @@
 <div ng-if="view == 2">
     <div class="modal-body">
         {{text}}
-        <strong>{{author.Name}}</strong>
+        <strong>{{book.Title}}</strong>
         <span> {{text2}}</span>
         <div class="well">
             <div class="form-group">
                 <label>Namn:</label>
-                <pre>{{author.Name}}</pre>
+                <pre>{{book.Title}}</pre>
             </div>
-
             <div class="form-group">
-                <label>Biografi:</label>
-                <pre>{{author.Biography}}</pre>
+                <label>Författare:</label>
+                <pre>{{book.Authors}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Sammanfattning:</label>
+                <pre>{{book.Summary}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Genre:</label>
+                <pre>{{book.Genres}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Utgivninsår:</label>
+                <pre>{{book.Year}}</pre>
+            </div>
+            <div class="form-group">
+                <label>ISBN:</label>
+                <pre>{{book.ISBN}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Pris:</label>
+                <pre>{{book.Price}}</pre>
+            </div>
+            <div class="form-group">
+                <label>I lager:</label>
+                <pre>{{book.InStock}}</pre>
             </div>
         </div>
     </div>
