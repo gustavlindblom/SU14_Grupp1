@@ -144,47 +144,109 @@
 
     // ---------Slut Filtrering ------------------------//
 
-    $scope.open = function (book) {
+    //$scope.open = function (book) {
 
-        var modalInstance = $modal.open({
-            templateUrl: 'partials/bookDetail.html',
-            controller: 'bookDetailController',
+    //    var modalInstance = $modal.open({
+    //        templateUrl: 'partials/bookDetail.html',
+    //        controller: 'bookDetailController',
 
-            resolve: {
-                id: function () {
-                    return book.Id;
-                }
-            }
-        });
+    //        resolve: {
+    //            id: function () {
+    //                return book.Id;
+    //            }
+    //        }
+    //    });
 
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
+    //    modalInstance.result.then(function (selectedItem) {
+    //        $scope.selected = selectedItem;
+    //    }, function () {
 
-        });
-    };
+    //    });
+    //};
 
     // ----- Delete ----------------------- //
 
-    $scope.deleteBook = function (book) {
+    //$scope.deleteBook = function (book) {
 
-        if (confirm("Är du säker på att du vill ta bort "+ book.Title + "?"));
-        {
-            console.log("tar bort bok : ", book);
-            console.log("med id : ", book.Id);
-            try {
-                Books.delete(book.Id);
-                alert("Boken " + book.Title + " och dess referenser är borttagna.");
-            }
-            catch (err) {
-                alert("Något gick fel:  " + err);
-            }
-        }
-        Books.get();
-        $route.reload();
-    };
+    //    if (confirm("Är du säker på att du vill ta bort "+ book.Title + "?"));
+    //    {
+    //        console.log("tar bort bok : ", book);
+    //        console.log("med id : ", book.Id);
+    //        try {
+    //            Books.delete(book.Id);
+    //            alert("Boken " + book.Title + " och dess referenser är borttagna.");
+    //        }
+    //        catch (err) {
+    //            alert("Något gick fel:  " + err);
+    //        }
+    //    }
+    //    Books.get();
+    //    $route.reload();
+    //};
 
     //---------Slut delete -------------------//
+   
+
+
+    // ----- Modal -------------------- //
+
+    $scope.open = function (view, book, action) {
+        console.log("book", book, "view", view);
+
+        if (book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                //size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            id: book.Id,
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon gång gång?");
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+        if (!book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                //size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon  gång gång?");
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+
+
+    };
+    //---------Slut Modal -------------------//
     Books.get();
 }]);
 
