@@ -1,7 +1,8 @@
 <div class="modal-header">
     <h3 class="modal-title">
-        <span ng-if=" view != 4">{{author.Name}} </span>
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{author.Name}} </span>
         <span ng-if=" view == 4">Skapa en ny författare</span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{author.Name}}</strong>?</span>
 
         <button class="btn btn-default pull-right" ng-click="cancel()">
             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -18,48 +19,47 @@
 <!-- redigeringsläge -->
 <div ng-if="view == 1">
     <div class="modal-body">
-        <p>
-            <label>Namn</label>
-            <input class="input-group" ng-model="author.Name" placeholder="Namn..." style="font-style:italic;" />
-        </p>
-        <p>
-            <label>Biografi</label>
-            <textarea class="input-group" rows="4" cols="70" ng-model="author.Biography" style="font-style:italic;"></textarea>
-        </p>
-
+        <div class="form-group">
+            <label for="authorName">Titel</label>
+            <input type="text" class="form-control" ng-model="author.Name" placeholder="Namn..." style="font-style:italic;" id="authorName" />
+        </div>
+        <div class="form-group">
+            <label for="authorBiography">Biografi</label>
+            <textarea type="text " class="form-control" ng-model="author.Description" style="font-style:italic;" id="authorBiography"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Spara</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Spara</button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
 <!-- ------------------->
 <!--  standard läge-->
 <div ng-if="view == 0">
-    <div class="modal-body" ng-if="view == 0">
-        <label>Biografi</label>
-        <pre>{{author.Biography}}</pre>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-warning" ng-click="cancel()">Stäng</button>
+    <div class="modal-body">
+        <div class="form-group"
+             <p>{{author.Biography}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Stäng</button>
+        </div>
     </div>
 </div>
 <!--  ---------------  -->
 <!-- Skapa nytt läge -->
 <div ng-if="view == 4">
     <div class="modal-body">
-        <p>
-            <label>Namn</label>
-            <textarea ng-model="newAuthor.Name"></textarea>
-        </p>
-        <p>
-            <label>Biografi</label>
-            <textarea rows="4" cols="70" ng-model="newAuthor.Biography">  </textarea>
-        </p>
-
+        <div class="form-group">
+            <label for="authorName">Titel</label>
+            <input type="text" class="form-control" ng-model="author.Name" placeholder="Namn..." style="font-style:italic;" id="authorName" />
+        </div>
+        <div class="form-group">
+            <label for="authorBiography">Biografi</label>
+            <textarea type="text " class="form-control" ng-model="author.Biography" style="font-style:italic;" id="authorBiography"></textarea>
+        </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Skapa</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
@@ -71,14 +71,19 @@
 
 <div ng-if="view == 3">
     <div class="modal-body">
-
-        Vill du radera <strong>{{author.Name}}</strong>?
-
-        <pre>{{author.Biography}}</pre>
+        <div class="form-group">
+            <label for="authorName">Titel</label>
+            <span type="text" class="form-control" style="font-style:italic;" id="authorName">{{author.Name}}</span>
+        </div>
+        <div class="form-group">
+            <label for="authorBiography">Biografi</label>
+            <span type="text " class="form-control" style="font-style:italic;" id="authorBiography">{{author.Biography}}</span>
+        </div>
+        <!--<p class="form-control"></p>-->
 
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2)">Ja</button>
+        <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
         <button class="btn btn-warning" ng-click="cancel()">Nej</button>
     </div>
 </div>
@@ -87,21 +92,20 @@
 <!----- bekräftelseläge------------>
 <div ng-if="view == 2">
     <div class="modal-body">
+        {{text}}
+        <strong>{{author.Name}}</strong>
+        <span> {{text2}}</span>
+        <div class="well">
+            <div class="form-group">
+                <label>Namn:</label>
+                <pre>{{author.Name}}</pre>
+            </div>
 
-        Vill du verkligen
-        <span ng-if="action == 1">uppdatera </span>
-        <span ng-if="action == 4">skapa </span>
-        <span ng-if="action == 3">ta bort </span>
-        <span ng-if="action != 4">
-            <strong>{{author.Name}}</strong>
-            <span ng-if="action !=3"> med följande innehåll?</span>
-            <span ng-if="action == 3"> och alla hans/hennes böcker permanent?</span>
-            <pre ng-if="action != 3">{{author.Biography}}</pre>
-        </span>
-        <span ng-if="action == 4">
-            <strong>{{newAuthor.Name}}</strong> med dessa uppgifter?
-            <pre>{{newAuthor.Biography}}</pre>
-        </span>
+            <div class="form-group">
+                <label>Biografi:</label>
+                <pre>{{author.Biography}}</pre>
+            </div>
+        </div>
     </div>
     <div class="modal-footer">
         <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>

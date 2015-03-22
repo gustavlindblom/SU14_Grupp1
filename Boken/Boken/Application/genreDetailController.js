@@ -5,7 +5,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.genre = {};
     // --- Hämtar genren ------ //
     $scope.$on("gotGenre", function (event, data) {
-        $scope.genre = $scope.orgGenre = data;
+        $scope.genre = data;
     });
     Genres.get(param.id);
     // --- slut ---------------//
@@ -32,7 +32,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         if (a == 1) text += "uppdatera "
         if (a == 4) text += "skapa "
         if (a == 3) text += "ta bort ";
-        text += "genre: "
+        text += "genren "
 
         var text2 = "";
         if (a != 3) text2 = "med foljande innehall?"
@@ -55,10 +55,8 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.delete = function () {
         try {
             Genres.delete($scope.genre.Id);
-            //alert("Genren" + $scope.genre.Name + "och dess referenser är borttagna.");
         }
         catch (err) {
-            //alert("Något gick fel:  " + err);
         }
         $modalInstance.close();
     };

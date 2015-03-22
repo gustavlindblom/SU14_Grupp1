@@ -23,9 +23,28 @@
     };
     //-------------------------//
 
+    // --- logik för att bestämma vad som skrivs ut i bekräftelse
+    $scope.text = "";
+    $scope.text2 = "";
+    $scope.editText = function () {
+        var a = $scope.action;
+        var text = "Vill du verkligen "
+        if (a == 1) text += "uppdatera "
+        if (a == 4) text += "skapa "
+        if (a == 3) text += "ta bort ";
+        text += "författaren "
+
+        var text2 = "";
+        if (a != 3) text2 = "med foljande innehall?"
+        if (a == 3) text2 = "och alla hans/hennes böcker permanent?";
+        if (a == 4) text2 = "med dessa uppgifter?";
+        $scope.text2 = text2;
+        $scope.text = text;
+    }
+    // ------------------------//
+
     //---------skapa ny -------//
     $scope.create = function () {
-        console.log($scope.newAuthor)
         Authors.post($scope.newAuthor);
         $modalInstance.close();
     };
