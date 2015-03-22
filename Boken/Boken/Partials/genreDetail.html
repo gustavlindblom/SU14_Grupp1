@@ -13,19 +13,22 @@
 <div ng-if="view == 1 || view == 4">
 
     <div class="modal-body">
-        <form name="form" novalidate>
-            <label for="genreName"> Titel
-                <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
-                <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
-            </label>
-            <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+        <div class="form-group">
+            <form name="form" novalidate>
+                <label for="genreName">
+                    Titel
+                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
+                    <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
+                </label>
+                <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
 
-            <label for="genreDescription">
-                Beskrivning
-                <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
-            </label>
-            <textarea type="text " class="form-control" ng-model="genre.Description" name="D" required style="font-style:italic;" id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
-        </form>
+                <label for="genreDescription">
+                    Beskrivning
+                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
+                </label>
+                <textarea type="text " class="form-control" style="resize:none; font-style:italic; " ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
+            </form>
+        </div>
     </div>
     <div class="modal-footer">
         <button ng-if="view == 1" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid " ng-click="editView(2); editText()"> Spara </button>
