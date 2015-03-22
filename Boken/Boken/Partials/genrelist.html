@@ -19,8 +19,8 @@
                     <tr>
                         <th>Genre</th>
                         <th>Utdrag</th>
-                        <th ng-show="loggedin == 1"></th>
-                        <th ng-show="loggedin == 1"></th>
+                        <th ng-show="loggedin == 1">Ändra</th>
+                        <th ng-show="loggedin == 1">Ta bort</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                             {{genre.Name}}
                         </td>
                         <td ng-click="open(0, genre, 0)">
-                            {{genre.Description}}...
+                            {{genre.Description | limitTo: 115}}...
                         </td>
 
                         <td class="" ng-show="loggedin == 1">
