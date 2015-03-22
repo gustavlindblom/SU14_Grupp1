@@ -4,15 +4,8 @@
         <span ng-if=" view == 4">Skapa en ny genre</span>
         <span ng-if=" view == 3">Vill du radera <strong>{{genre.Name}}</strong>?</span>
 
-        <button class="btn btn-default pull-right" ng-click="cancel()">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </button>
+        <button popover="Redigera" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+        <button popover="Avsluta redigering" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
     </h3>
 
 </div>
@@ -21,23 +14,17 @@
 
     <div class="modal-body">
         <form name="form" novalidate>
-            <label>
-                Titel
+            <label for="genreName"> Titel
                 <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
                 <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
             </label>
             <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
 
-
-
             <label for="genreDescription">
                 Beskrivning
-                <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid">
-                    <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span>
-                </span>
+                <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
             </label>
             <textarea type="text " class="form-control" ng-model="genre.Description" name="D" required style="font-style:italic;" id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
-
         </form>
     </div>
     <div class="modal-footer">
