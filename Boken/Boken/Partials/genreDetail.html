@@ -16,8 +16,8 @@
     </h3>
 
 </div>
-<!-- redigeringsläge -->
-<div ng-if="view == 1">
+<!-- redigerings- & skapa nytt läge -->
+<div ng-if="view == 1 || view == 4">
 
     <div class="modal-body">
         <form name="form" novalidate>
@@ -41,10 +41,8 @@
         </form>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid ||
-                form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()">
-            Skapa
-        </button>
+        <button ng-if="view == 1" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid " ng-click="editView(2); editText()"> Spara </button>
+        <button ng-if="view == 4" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()"> Skapa </button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
@@ -61,42 +59,6 @@
     </div>
 </div>
 <!--  ---------------  -->
-<!-- Skapa nytt läge -->
-<div ng-if="view == 4">
-    
-        <div class="modal-body">
-            <form name="form" novalidate>
-                <label>
-                    Titel
-                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Ni måste ange en titel</span></span>
-                    <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
-                </label>
-                <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
-
-
-
-                <label for="genreDescription">
-                    Beskrivning
-                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid">
-                        <span ng-show="form.D.$error.required">Ni måste skriva en beskrivning</span>
-                    </span>
-                </label>
-                <textarea type="text " class="form-control" ng-model="genre.Description" name="D" required style="font-style:italic;" id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
-
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid ||
-                form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()">
-                Skapa
-            </button>
-            <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
-        </div>
-    
-</div>
-
-
-
 
 <!-- ----- Delete ------->
 
