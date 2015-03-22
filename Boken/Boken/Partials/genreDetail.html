@@ -1,4 +1,4 @@
-<div class="modal-header">
+Ôªø<div class="modal-header">
     <h3 class="modal-title">
         <span ng-if=" view == 0 || view == 1 || view == 2">{{genre.Name}} </span>
         <span ng-if=" view == 4">Skapa en ny genre</span>
@@ -16,7 +16,7 @@
     </h3>
 
 </div>
-<!-- redigeringsl‰ge -->
+<!-- redigeringsl√§ge -->
 <div ng-if="view == 1">
     <div class="modal-body">
         <div class="form-group">
@@ -34,19 +34,19 @@
     </div>
 </div>
 <!-- ------------------->
-<!--  standard l‰ge-->
+<!--  standard l√§ge-->
 <div ng-if="view == 0">
     <div class="modal-body">
         <div class="form-group"
              <p>{{genre.Description}}</p>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-warning" ng-click="cancel()">St‰ng</button>
+            <button class="btn btn-warning" ng-click="cancel()">St√§ng</button>
         </div>
     </div>
 </div>
 <!--  ---------------  -->
-<!-- Skapa nytt l‰ge -->
+<!-- Skapa nytt l√§ge -->
 <div ng-if="view == 4">
     <div class="modal-body">
         <div class="form-group">
@@ -89,7 +89,7 @@
 </div>
 
 <!------------Slut delete --------->
-<!----- bekr‰ftelsel‰ge------------>
+<!----- bekr√§ftelsel√§ge------------>
 <div ng-if="view == 2">
     <div class="modal-body">
         {{text}}
