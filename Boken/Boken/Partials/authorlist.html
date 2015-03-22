@@ -9,7 +9,7 @@
         <div class="panel-heading">
             <p>
                 Författare
-                <span class="glyphicon glyphicon-plus listfocus navbar-right" ng-show="loggedin == 1" ng-click="open(4, author, 4)" aria-hidden="true" />
+                <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
             </p>
         </div>
         <div class="panel-body">
@@ -19,8 +19,8 @@
                     <tr>
                         <th>Författare</th>
                         <th>Biografi</th>
-                        <th ng-show="loggedin == 1"></th>
-                        <th ng-show="loggedin == 1"></th>
+                        <th ng-show="loggedin == 1">Ändra</th>
+                        <th ng-show="loggedin == 1">Ta bort</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +29,7 @@
                             {{author.Name}}
                         </td>
                         <td ng-click="open(0, author, 0)">
-                            {{author.Biography}}...
+                            {{author.Biography | limitTo: 115}}...
                         </td>
 
                         <td class="" ng-show="loggedin == 1">
