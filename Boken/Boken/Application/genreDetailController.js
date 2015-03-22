@@ -76,9 +76,12 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
      */
 
     $scope.editView = function (id) {
-        if (id == 1) { $scope.view = [id]; }
         if (id == 0) { $scope.view = [id]; }
+        if (id == 1) { $scope.view = [id]; }
         if (id == 2) { $scope.view = [id]; }
+        if (id == 3) { $scope.view = [id]; }
+        if (id == 4) { $scope.view = [id]; }
+        if (id == 5) { $scope.view = $scope.action; }
     };
     // --- slut ---------------------//
 
