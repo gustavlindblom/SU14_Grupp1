@@ -1,50 +1,82 @@
 ﻿<nav class="navbar navbar-default navbar-fixed-top header">
     <div class="container-fluid col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
-        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- Startsida och toggle-knapp -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand hoverHome home" ng-click="GoTo('index.html')" style="color:black; font-size:20px; height:50px;">Startsida</a>
-        </div>
+           <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed"> 
+           <!--      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> -->
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand hoverHome home" ng-click="GoTo('index.html')" style="color:black; font-size:20px; height:50px;">Startsida</a>
+</div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-left">
-            <ul class="nav navbar-nav cursor">
-                <li><a id="headerItems" ng-click="GoTo('/authors')">Författare</a></li>
-                <li><a id="headerItems" ng-click="GoTo('/books')">Böcker</a></li>
-                <li><a id="headerItems" ng-click="GoTo('/genres')">Genre</a></li>
-            </ul>
-            <!--<button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/authors')">Författare</button>
+        <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+           <!-- <div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1"> -->
+                <ul class="nav navbar-nav cursor ">
+                    <li><a id="headerItems" ng-click="GoTo('/authors')">Författare</a></li>
+                    <li><a id="headerItems" ng-click="GoTo('/books')">Böcker</a></li>
+                    <li><a id="headerItems" ng-click="GoTo('/genres')">Genre</a></li>
+                </ul>
+                <!--<button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/authors')">Författare</button>
             <button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/books')">Böcker</button>
             <button class="navbar-btn btn btn-default" id="headerButtons" ng-click="GoTo('/genres')">Genre</button>-->
-        </div><!-- /.navbar-collapse -->
-        <form class="navbar-form navbar-right">
-            <!--Dropdown for creating new items-->
-            <div ng-if="loggedin == 1" class="btn-group" dropdown is-open="status.isopen">
-                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                    Skapa ny... <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu cursor" role="menu">
-                    <li class="listFocus" ng-click="createNewBook(4,4)">... bok</li>        <!-- ng-click ="tom modal för skapandet av book   -->
-                    <li class="listFocus" ng-click="createNewGenre(4,4)">... Genre</li>      <!-- ng-click ="tom modal för skapandet av genre  -->
-                    <li class="listFocus" ng-click="createNewAuthor(4,4)">... författare</li> <!-- ng-click ="tom modal för skapandet av author -->
-                </ul>
-            </div>
-            <!-- Log in function in dropdown menu-->
-            <div class="btn-group" dropdown is-open="status2.isopen">
-                <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                    {{DDtext}} <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu cursor" role="menu">
-                    <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</li>
-                    <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</li>
-                    <li class="listFocus" ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</li>
-                </ul>
-            </div>
-        </form>
-    </div><!-- /.container-fluid -->
+
+                <form class="nav navbar-form navbar-right">
+                    <!--Dropdown for creating new items-->
+                    <div ng-if="loggedin == 1" class="btn-group" dropdown is-open="status.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                            Skapa ny... <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" ng-click="createNewBook(4,4)">Bok</a></li>
+                            <li><a href="#" ng-click="createNewGenre(4,4)">Genre</a></li>
+                            <li><a href="#" ng-click="createNewAuthor(4,4)">Författare</a></li>
+                        </ul>
+                    </div>
+                    <!-- Log in function in dropdown menu-->
+                    <div class="btn-group" dropdown is-open="status2.isopen">
+                        <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+                            {{DDtext}} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#" ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</a></li>
+                            <li><a href="#" ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</a></li>
+                            <li><a href="#" ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</a></li>
+                        </ul>
+                    </div>
+                    <!--    ----------------    -->
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
 </nav>
+
+
+<!------------------->
+<!--
+<div ng-if="loggedin == 1" class="btn-group" dropdown is-open="status.isopen">
+    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        Skapa ny... <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li class="listFocus" ng-click="createNewBook(4,4)">... bok</li>        <!-- ng-click ="tom modal för skapandet av book   
+        <li class="listFocus" ng-click="createNewGenre(4,4)">... Genre</li>      <!-- ng-click ="tom modal för skapandet av genre  
+        <li class="listFocus" ng-click="createNewAuthor(4,4)">... författare</li> <!-- ng-click ="tom modal för skapandet av author 
+    </ul>
+</div>
+
+
+
+<div class="btn-group" dropdown is-open="status2.isopen">
+    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
+        {{DDtext}} <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu cursor" role="menu">
+        <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</li>
+        <li class="listFocus" ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</li>
+        <li class="listFocus" ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</li>
+    </ul>
+</div>
+    -->

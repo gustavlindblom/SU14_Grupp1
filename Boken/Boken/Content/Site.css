@@ -22,7 +22,7 @@ body{
 
 /*Header*/
 .header {
-    background-color:transparent;
+   /* background-color:transparent; */
     height:50px;
 }
 
@@ -30,7 +30,7 @@ body{
    display:inline-block;
    float:none;
    text-align:center;
-   background-color:transparent;
+   background-color:AppWorkspace;
    height:49px;
    color:black;
    border-left:1px groove gray;
