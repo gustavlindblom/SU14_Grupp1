@@ -48,7 +48,7 @@ namespace Boken.Controllers
             }
             bookRatingPairs = bookRatingPairs.OrderByDescending(kvp => kvp.Value.TotalRating / kvp.Value.Votes).ToList();
             var topRatedBooks = new List<Book>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < (bookRatingPairs.Count > 10 ? 10 : bookRatingPairs.Count); i++)
                 topRatedBooks.Add(bookRatingPairs[i].Key);
 
             return Ok(new GenreDetailDTO() { Id = genre.Id, Name = genre.Name, Description = genre.Description, TopRatedBooks = topRatedBooks });
