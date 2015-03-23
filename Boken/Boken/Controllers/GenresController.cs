@@ -29,7 +29,7 @@ namespace Boken.Controllers
         }
 
         // GET: api/Genres/5
-        [ResponseType(typeof(Genre))]
+        [ResponseType(typeof(GenreDetailDTO))]
         public IHttpActionResult GetGenre(int id)
         {
             Genre genre = db.Genres.Find(id);
@@ -38,7 +38,20 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            return Ok(genre);
+            List<KeyValuePair<Book, Rating>> bookRatingPairs = new List<KeyValuePair<Book, Rating>>();
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.GenreId == genre.Id))
+            {
+                var book = db.Books.FirstOrDefault(b => b.Id == bgc.BookId);
+                var rating = db.Ratings.FirstOrDefault(r => r.Id == book.RatingId);
+
+                bookRatingPairs.Add(new KeyValuePair<Book, Rating>(book, rating));
+            }
+            bookRatingPairs = bookRatingPairs.OrderByDescending(kvp => kvp.Value.TotalRating / kvp.Value.Votes).ToList();
+            var topRatedBooks = new List<Book>();
+            for (int i = 0; i < 10; i++)
+                topRatedBooks.Add(bookRatingPairs[i].Key);
+
+            return Ok(new GenreDetailDTO() { Id = genre.Id, Name = genre.Name, Description = genre.Description, TopRatedBooks = topRatedBooks });
         }
 
         // PUT: api/Genres/5
