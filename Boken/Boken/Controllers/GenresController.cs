@@ -38,6 +38,7 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
+            // Perform Linq magic to retrieve the top rated books in the genre
             List<KeyValuePair<Book, Rating>> bookRatingPairs = new List<KeyValuePair<Book, Rating>>();
             foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.GenreId == genre.Id))
             {
@@ -51,7 +52,7 @@ namespace Boken.Controllers
             for (int i = 0; i < (bookRatingPairs.Count > 10 ? 10 : bookRatingPairs.Count); i++)
                 topRatedBooks.Add(bookRatingPairs[i].Key);
 
-            return Ok(new GenreDetailDTO() { Id = genre.Id, Name = genre.Name, Description = genre.Description, TopRatedBooks = topRatedBooks });
+            return Ok(new GenreDetailDTO() { Id = genre.Id, Name = genre.Name, Description = genre.Description, TopRatedBooks = topRatedBooks.ToArray() });
         }
 
         // PUT: api/Genres/5

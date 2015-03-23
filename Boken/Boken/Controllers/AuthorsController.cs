@@ -23,7 +23,7 @@ namespace Boken.Controllers
         }
 
         // GET: api/Authors/5
-        [ResponseType(typeof(Author))]
+        [ResponseType(typeof(AuthorDetailDTO))]
         public IHttpActionResult GetAuthor(int id)
         {
             Author author = db.Authors.Find(id);
@@ -32,7 +32,21 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            return Ok(author);
+            // Perform Linq magic to retrieve the top rated books of the author
+            List<KeyValuePair<Book, Rating>> bookRatingPairs = new List<KeyValuePair<Book, Rating>>();
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.AuthorId == author.Id))
+            {
+                var book = db.Books.FirstOrDefault(b => b.Id == bac.BookId);
+                var rating = db.Ratings.FirstOrDefault(r => r.Id == book.RatingId);
+
+                bookRatingPairs.Add(new KeyValuePair<Book, Rating>(book, rating));
+            }
+            bookRatingPairs = bookRatingPairs.OrderByDescending(kvp => kvp.Value.TotalRating / kvp.Value.Votes).ToList();
+            var topRatedBooks = new List<Book>();
+            for (int i = 0; i < (bookRatingPairs.Count > 10 ? 10 : bookRatingPairs.Count); i++)
+                topRatedBooks.Add(bookRatingPairs[i].Key);
+
+            return Ok(new AuthorDetailDTO() { Id = author.Id, Name = author.Name, Biography = author.Biography, TopRatedBooks = topRatedBooks.ToArray() });
         }
 
         // PUT: api/Authors/5

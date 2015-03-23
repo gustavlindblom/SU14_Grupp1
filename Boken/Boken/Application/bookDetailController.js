@@ -1,4 +1,4 @@
-﻿app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", "$modalInstance", "param", function ($scope, Books, Authors, Genres, $modalInstance, param) {
+﻿app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", "Ratings", "$modalInstance", "param", function ($scope, Books, Authors, Genres, Ratings, $modalInstance, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
@@ -6,8 +6,14 @@
     // --- Hämtar författaren ------ //
     $scope.$on("gotBook", function (event, data) {
         $scope.book = data;
+        Ratings.get(data.Rating.Id);
     });
     Books.get(param.id);
+
+    $scope.$on("gotRating", function (event, data) {
+        console.log("Rating: ", data);
+        $scope.rating = data;
+    });
     // --- slut ---------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //
@@ -27,8 +33,7 @@
 
     // ---- rating ----- //
 
-    $scope.rate = 3,5;
-    $scope.max = 5;
+    $scope.maxRating = 10;
     $scope.isReadonly = true;
 
     //-------------------------//

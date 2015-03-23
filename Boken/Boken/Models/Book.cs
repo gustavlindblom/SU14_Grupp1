@@ -21,7 +21,5 @@ namespace Boken.Models
 
         // Foreign key
         public int RatingId { get; set; }
-        // Navigation property
-        public Rating Rating { get; set; }
     }
 }

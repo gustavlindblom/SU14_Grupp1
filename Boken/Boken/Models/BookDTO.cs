@@ -13,5 +13,6 @@ namespace Boken.Models
         public Genre[] Genres { get; set; }
         public decimal Price { get; set; }
         public string ImagePath { get; set; }
+        public Rating Rating { get; set; }
     }
 }

@@ -41,7 +41,8 @@ namespace Boken.Controllers
                     Authors = authors.ToArray(),
                     Genres = genres.ToArray(),
                     Price = b.Price,
-                    ImagePath = b.ImagePath
+                    ImagePath = b.ImagePath,
+                    Rating = db.Ratings.FirstOrDefault(x => x.Id == b.RatingId)
                 });
             }
             return books.AsQueryable();
@@ -76,7 +77,8 @@ namespace Boken.Controllers
                 ISBN = book.ISBN,
                 ImagePath = book.ImagePath,
                 Summary = book.Summary,
-                InStock = book.InStock
+                InStock = book.InStock,
+                Rating = db.Ratings.FirstOrDefault(x => x.Id == book.RatingId)
             };
 
 

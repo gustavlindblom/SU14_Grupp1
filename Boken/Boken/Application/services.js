@@ -160,6 +160,19 @@ app.service("Authors", ["restService", function (restService) {
     return authorServant;
 }]);
 
+// creating Ratings service
+app.service("Ratings", ["restService", function (restService) {
+    var ratingServant = {
+        get: function (Id) {
+            var broadcast = Id ? "gotRating" : "gotRatings";
+            var restUrl = Id ? "ratings/" + Id : "ratings/";
+            restService.restCall(restUrl, "GET", {}, broadcast);
+        },
+    };
+
+    return ratingServant;
+}]);
+
 
 app.service("Login", ["$rootScope", function ($rootScope) {
     $rootScope.DDtext = "Logga in";

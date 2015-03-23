@@ -17,5 +17,6 @@ namespace Boken.Models
         public decimal Price { get; set; }
         public int InStock { get; set; }
         public string ImagePath { get; set; }
+        public Rating Rating { get; set; }
     }
 }

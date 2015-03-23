@@ -7,13 +7,13 @@ namespace Boken.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.1-30610")]
-    public sealed partial class RatingTest : IMigrationMetadata
+    public sealed partial class Crisis : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RatingTest));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Crisis));
         
         string IMigrationMetadata.Id
         {
-            get { return "201503231348417_RatingTest"; }
+            get { return "201503231752594_Crisis"; }
         }
         
         string IMigrationMetadata.Source

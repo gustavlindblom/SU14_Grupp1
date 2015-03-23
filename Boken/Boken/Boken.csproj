@@ -208,14 +208,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503231348417_RatingTest.cs" />
-    <Compile Include="Migrations\201503231348417_RatingTest.Designer.cs">
-      <DependentUpon>201503231348417_RatingTest.cs</DependentUpon>
+    <Compile Include="Migrations\201503231752594_Crisis.cs" />
+    <Compile Include="Migrations\201503231752594_Crisis.Designer.cs">
+      <DependentUpon>201503231752594_Crisis.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\AuthorDetailDTO.cs" />
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\BookAuthorCoupling.cs" />
     <Compile Include="Models\BookDataContext.cs" />
@@ -356,8 +357,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503231348417_RatingTest.resx">
-      <DependentUpon>201503231348417_RatingTest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503231752594_Crisis.resx">
+      <DependentUpon>201503231752594_Crisis.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
