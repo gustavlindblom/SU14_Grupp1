@@ -10,6 +10,9 @@
     });
     Authors.get();
     // --- slut ------------------------//
+    $scope.$on("reloadList", function (event, data) {
+        $route.reload();
+    });
 
     //--- Början på paginering ---------//
     $scope.pagArr = [];

@@ -11,6 +11,9 @@
         $scope.totalItems = $scope.books.length;
         $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
     });
+    $scope.$on("reloadList", function (event, data) {
+        $route.reload();
+    });
     
 
     // Början på paginering
