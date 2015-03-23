@@ -63,6 +63,18 @@
         <p>
             <label>Författare:&nbsp;</label><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span>
         </p>
+
+
+        <!--RATING . ng-model är "average värder" och max är max helt enkelt. -->
+
+        <p>
+            <label>Rating:</label>
+            <rating ng-model="rate" max="max" readonly="isReadonly"></rating><label ng-model="rate">{{rate}}/5</label>
+        </p>
+
+        <!-- ------------------->
+
+
         <div>
             <img ng-src="{{book.ImagePath}}" width="150" />
             <label>Sammanfattning:</label>

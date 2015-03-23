@@ -23,6 +23,16 @@
     };
     //-------------------------//
 
+
+
+    // ---- rating ----- //
+
+    $scope.rate = 3,5;
+    $scope.max = 5;
+    $scope.isReadonly = true;
+
+    //-------------------------//
+
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
     $scope.addGenre = function () {
         document.getElementById('addGenreId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>';
