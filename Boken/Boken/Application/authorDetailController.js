@@ -46,6 +46,7 @@
     //---------skapa ny -------//
     $scope.create = function () {
         Authors.post($scope.author);
+        console.log("kommer detta före total items?");
         $modalInstance.close();
     };
     // ----------slut ------------------//

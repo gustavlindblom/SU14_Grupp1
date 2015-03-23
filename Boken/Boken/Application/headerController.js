@@ -1,4 +1,4 @@
-﻿app.controller('headerController', ['$scope', '$location', 'Login', '$modal', "Genres", function ($scope, $location, Login, $modal, Genres) {
+﻿app.controller('headerController', ['$scope', '$location', 'Login', '$modal', "Genres", "Authors", "Books", function ($scope, $location, Login, $modal, Genres, Authors, Books) {
     $scope.loginStatus = Login.loginStatus;
 
     $scope.GoTo = function (url) {

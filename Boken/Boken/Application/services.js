@@ -95,15 +95,15 @@ app.service("Books", ["restService", function (restService) {
         },
         post: function (data) {
             var restUrl = "books/";
-            restService.restCall(restUrl, "POST", data);
+            restService.restCall(restUrl, "POST", data, "reloadList");
         },
         put: function (Id, data) {
             var restUrl = "books/" + Id;
-            restService.restCall(restUrl, "PUT", data);
+            restService.restCall(restUrl, "PUT", data, "reloadList");
         },
         delete: function (Id) {
             var restUrl = "books/" + Id;
-            restService.restCall(restUrl, "DELETE", {});
+            restService.restCall(restUrl, "DELETE", {}, "reloadList");
         }
     };
 
@@ -120,15 +120,15 @@ app.service("Genres", ["restService", function (restService) {
         },
         post: function (data) {
             var restUrl = "genres/";
-            restService.restCall(restUrl, "POST", data);
+            restService.restCall(restUrl, "POST", data, "reloadList");
         },
         put: function (Id, data) {
             var restUrl = "genres/" + Id;
-            restService.restCall(restUrl, "PUT", data);
+            restService.restCall(restUrl, "PUT", data, "reloadList");
         },
         delete: function (Id) {
             var restUrl = "genres/" + Id;
-            restService.restCall(restUrl, "DELETE", {});
+            restService.restCall(restUrl, "DELETE", {}, "reloadList");
         }
     };
     return genreServant;
@@ -145,15 +145,15 @@ app.service("Authors", ["restService", function (restService) {
         },
         post: function (data) {
             var restUrl = "authors/";
-            restService.restCall(restUrl, "POST", data);
+            restService.restCall(restUrl, "POST", data, "reloadList");
         },
         put: function (Id, data) {
             var restUrl = "authors/" + Id;
-            restService.restCall(restUrl, "PUT", data);
+            restService.restCall(restUrl, "PUT", data, "reloadList");
         },
         delete: function (Id) {
             var restUrl = "authors/" + Id;
-            restService.restCall(restUrl, "DELETE", {});
+            restService.restCall(restUrl, "DELETE", {}, "reloadList");
         }
     };
 

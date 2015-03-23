@@ -11,6 +11,9 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
     });
     Genres.get();
     // --- slut ------------------------//
+    $scope.$on("reloadList", function (event, data) {
+        $route.reload();
+    });
 
     //--- Början på paginering ---------//
     $scope.pagArr = [];
