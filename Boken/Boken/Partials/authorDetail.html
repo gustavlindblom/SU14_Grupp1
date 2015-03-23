@@ -4,32 +4,35 @@
         <span ng-if=" view == 4">Skapa en ny författare</span>
         <span ng-if=" view == 3">Vill du radera <strong>{{author.Name}}</strong>?</span>
 
-        <button class="btn btn-default pull-right" ng-click="cancel()">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </button>
-        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </button>
+        <button popover="Redigera" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+        <button popover="Avsluta redigering" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
     </h3>
 
 </div>
-<!-- redigeringsläge -->
-<div ng-if="view == 1">
+<!-- redigerings- & skapa nytt läge -->
+<div ng-if="view == 1 || view == 4">
+
     <div class="modal-body">
         <div class="form-group">
-            <label for="authorName">Titel</label>
-            <input type="text" class="form-control" ng-model="author.Name" placeholder="Namn..." style="font-style:italic;" id="authorName" />
-        </div>
-        <div class="form-group">
-            <label for="authorBiography">Biografi</label>
-            <textarea type="text " class="form-control" ng-model="author.Description" style="font-style:italic;" id="authorBiography"></textarea>
+            <form name="form" novalidate>
+                <label for="authorName">
+                    Titel
+                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Författaren måste ha ett namn</span></span>
+                    <span class="error" ng-show="form.N.$error.minlength"> (Namnet måste vara minst 4 tecken.)</span>
+                </label>
+                <input type="text" class="form-control" name="N" ng-model="author.Name" required ng-minlength="4" placeholder="Namn..." style="font-style:italic;" id="authorName" />
+
+                <label for="authorBiography">
+                    Biografi
+                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Författaren behöver ha en biografi</span></span>
+                </label>
+                <textarea type="text " class="form-control" style="resize:none; font-style:italic; " ng-model="author.Biography" name="D" required id="authorBiography" placeholder="Plats för författarens biografi..."></textarea>
+            </form>
         </div>
     </div>
     <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2); editText()">Spara</button>
+        <button ng-if="view == 1" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid " ng-click="editView(2); editText()"> Spara </button>
+        <button ng-if="view == 4" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()"> Skapa </button>
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
     </div>
 </div>
@@ -46,27 +49,6 @@
     </div>
 </div>
 <!--  ---------------  -->
-<!-- Skapa nytt läge -->
-<div ng-if="view == 4">
-    <div class="modal-body">
-        <div class="form-group">
-            <label for="authorName">Titel</label>
-            <input type="text" class="form-control" ng-model="author.Name" placeholder="Namn..." style="font-style:italic;" id="authorName" />
-        </div>
-        <div class="form-group">
-            <label for="authorBiography">Biografi</label>
-            <textarea type="text " class="form-control" ng-model="author.Biography" style="font-style:italic;" id="authorBiography"></textarea>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
-        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
-    </div>
-</div>
-
-
-
-
 <!-- ----- Delete ------->
 
 <div ng-if="view == 3">
@@ -79,8 +61,6 @@
             <label for="authorBiography">Biografi</label>
             <span type="text " class="form-control" style="font-style:italic;" id="authorBiography">{{author.Biography}}</span>
         </div>
-        <!--<p class="form-control"></p>-->
-
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>

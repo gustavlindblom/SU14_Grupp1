@@ -40,7 +40,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         if (a == 4) text2 = "med dessa uppgifter?";
         $scope.text2 = text2;
         $scope.text = text;
-        console.log("bekräftafunktionen säger: ", $scope.action);
     }
     // ------------------------//
     

@@ -30,7 +30,7 @@
                                 {{genre.Name}}
                             </td>
                             <td ng-click="open(0, genre, 0)">
-                                {{genre.Description | limitTo: 115}}...
+                                {{genre.Description | limitTo: 110}}...
                             </td>
 
                             <td class="" ng-show="loggedin == 1">
@@ -40,8 +40,6 @@
                                 <span popover="Ta bort: {{genre.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-trash" ng-click="open(3, genre, 3)" aria-hidden="true">
                                 </span>
                             </td>
-
-
                         </tr>
                     </tbody>
                 </table>
@@ -51,9 +49,7 @@
 
         <div class="panel-footer">
             <div class="col-md-12 text-center">
-                <!--<div ng-controller="pageController">-->
                 <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
-                <!--</div>-->
             </div>
         </div>
         <!-- footer slut -->
