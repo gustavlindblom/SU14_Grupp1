@@ -19,12 +19,12 @@ namespace Boken.Controllers
         // GET: api/Genres
         public IQueryable<Genre> GetGenres()
         {
-            foreach (Genre genre in db.Genres)
-            {
-                var length = genre.Description.Length;
-                var incerpt = genre.Description.Substring(0, ( length >= 50 ? 50 : length));
-                genre.Description = incerpt;
-            }
+            //foreach (Genre genre in db.Genres)
+            //{
+            //    var length = genre.Description.Length;
+            //    var incerpt = genre.Description.Substring(0, ( length >= 50 ? 50 : length));
+            //    genre.Description = incerpt;
+            //}
             return db.Genres;
         }
 
@@ -114,6 +114,7 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.GenreId == id)) db.BookGenreCouplings.Remove(bgc);
             db.Genres.Remove(genre);
             db.SaveChanges();
 

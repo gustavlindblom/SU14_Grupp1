@@ -6,50 +6,52 @@
 <div class="container-fluid ">
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
-        <div class="panel-heading">GENRE</div>
-
-
+        <div class="panel-heading">
+            <p>
+                Genre
+                <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
+            </p>
+        </div>
         <div class="panel-body">
-            <table class="table">
+            <div class=table-responsive">
+                <table class="table">
 
-                <thead>
-                    <tr>
-                        <th>Genre</th>
-                        <th>Utdrag</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="listFocus cursor" ng-repeat="genre in genres" ng-click="open('lg',genre)">
-                        <td>
-                            {{genre.Name}}
-                        </td>
-                        <td>{{genre.Description}}...</td>
-                    </tr>
-                </tbody>
-            </table>
+                    <thead>
+                        <tr>
+                            <th>Genre</th>
+                            <th>Utdrag</th>
+                            <th ng-show="loggedin == 1">Ändra</th>
+                            <th ng-show="loggedin == 1">Ta bort</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="listFocus cursor" ng-repeat="genre in pagArr">
+                            <td ng-click="open(0, genre, 0)">
+                                {{genre.Name}}
+                            </td>
+                            <td ng-click="open(0, genre, 0)">
+                                {{genre.Description | limitTo: 110}}...
+                            </td>
+
+                            <td class="" ng-show="loggedin == 1">
+                                <span popover="Ändra: {{genre.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-edit" ng-click="open(1, genre, 1)" aria-hidden="true"></span>
+                            </td>
+                            <td class="" ng-show="loggedin == 1">
+                                <span popover="Ta bort: {{genre.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-trash" ng-click="open(3, genre, 3)" aria-hidden="true">
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <!-- Panel footer -->
 
-        <nav class="genre pag-sm col-md-offset-2 col-lg-offset-2">
-            <ul class="pagination">
-                <li>
-                    <a href="#" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
-                    <a href="#" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
+        <div class="panel-footer">
+            <div class="col-md-12 text-center">
+                <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            </div>
+        </div>
         <!-- footer slut -->
     </div>
 </div>

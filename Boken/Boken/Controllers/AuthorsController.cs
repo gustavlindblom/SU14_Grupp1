@@ -15,7 +15,7 @@ namespace Boken.Controllers
     public class AuthorsController : ApiController
     {
         private BookDataContext db = new BookDataContext();
-
+        
         // GET: api/Authors
         public IQueryable<Author> GetAuthors()
         {
@@ -93,6 +93,14 @@ namespace Boken.Controllers
             if (author == null)
             {
                 return NotFound();
+            }
+
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.AuthorId == id))
+            {
+                db.BookAuthorCouplings.Remove(bac);
+                int bookId = bac.BookId;
+                db.Books.Remove(db.Books.FirstOrDefault(x => x.Id == bookId));
+                foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == bookId)) db.BookGenreCouplings.Remove(bgc);
             }
 
             db.Authors.Remove(author);

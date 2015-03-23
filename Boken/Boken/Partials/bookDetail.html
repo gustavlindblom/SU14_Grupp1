@@ -1,0 +1,237 @@
+<div class="modal-header">
+    <span ng-if=" view == 0 || view == 1 || view == 2">{{book.Title}} </span>
+    <span ng-if=" view == 4"><strong>Skapa en ny Bok</strong></span>
+    <span ng-if=" view == 3">Vill du radera <strong>{{book.Title}}</strong>?</span>
+
+    <button class="btn btn-default pull-right" ng-click="cancel()">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
+    <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </button>
+    <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
+        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+    </button>
+    </h3>
+</div>
+<!-- redigeringsläge -->
+<div ng-if="view == 1">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="bookTitle">Titel:</label>
+            <input type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" />
+        </div>
+        <div class="form-group">
+            <label for="bookAuthor">Författare:</label>
+            <textarea type="text " class="form-control" ng-repeat="author in book.Authors" style="font-style:italic;" id="bookAuthor">{{author.Name}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookSummary">Sammanfattning:</label>
+            <textarea type="text" style="height:100px;" class="form-control" ng-model="book.Summary" style="font-style:italic;" id="bookSummary"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="bookGenre">Genre:</label>
+            <textarea type="text " class="form-control" ng-repeat="genre in book.Genres" style="font-style:italic;" id="bookGenre">{{genre.Name}}</textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookYear">Utgivningsår:</label>
+            <textarea type="text " class="form-control" ng-model="book.Year" style="font-style:italic;" id="bookYear"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookISBN">ISBN:</label>
+            <textarea type="text " class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookPrice">Pris:</label>
+            <textarea type="text " class="form-control" ng-model="book.Price" style="font-style:italic;" id="bookPrice"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookInStock">I lager:</label>
+            <textarea type="text " class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Spara</button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+<!-- ------------------->
+<!-- standardläge -->
+<div ng-if="view == 0">
+    <div class="modal-body">
+        <p>
+            <label>Författare:&nbsp;</label><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span>
+        </p>
+        <div>
+            <img ng-src="{{book.ImagePath}}" width="150" />
+            <label>Sammanfattning:</label>
+            <div class="well well-lg">{{book.Summary}}</div>
+        </div>
+        <div>
+            
+        </div>
+        <div>
+            <label ng-if="book.Genres.length == 1">Genre:&nbsp;</label>
+            <label ng-if="book.Genres.length > 1">Genrer: </label>
+            <span ng-repeat="genre in book.Genres">{{genre.Name}}&nbsp;</span>
+        </div>
+        <p>
+            <label>Utgivningsår:&nbsp;</label>{{book.Year}}
+        </p>
+        <p>
+            <label>ISBN:&nbsp;</label>{{book.ISBN}}
+        </p>
+        <p>
+            <label>Pris:&nbsp;</label>{{book.Price}} SEK
+        </p>
+        <p>
+            <label>I lager:&nbsp;</label>{{book.InStock}} exemplar
+        </p>
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+<!-- ------------------->
+<!-- Skapa nyttläge -->
+<div ng-if="view == 4">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="bookTitle">Titel:</label>
+            <input type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" />
+        </div>
+        <div class="form-group">
+            <label for="bookSummary">Sammanfattning:</label>
+            <textarea type="text" placeholder="Sammanfattning..." style="height:100px;" class="form-control" ng-model="book.Summary" style="font-style:italic;" id="bookSummary"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="bookAuthor">Författare:</label>
+            <span class="glyphicon glyphicon-plus listFocus" ng-click="addAuthor()"></span>
+            <div id="addAuthorId">
+                <!--<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Authors" style="font-style:italic;" id="bookAuthor"></input>-->
+                <!--Här läggs till nya textboxes varje gång du trycker på plus(glyphicon)-->
+            </div>
+
+        </div>
+        <div class="form-group">
+            <label for="bookGenre">Genre:</label>
+            <span class="glyphicon glyphicon-plus listFocus" ng-click="addGenre()"></span>
+            <div id="addGenreId">
+                <!--<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>-->
+                <!--Här läggs till nya textboxes varje gång du trycker på plus(glyphicon)-->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="bookYear">Utgivningsår:</label>
+            <input type="text" placeholder="ÅÅÅÅ..." class="form-control" ng-model="book.Year" style="font-style:italic;" id="bookYear"></input>
+        </div>
+        <div class="form-group">
+            <label for="bookISBN">ISBN:</label>
+            <input type="text" placeholder="ISBN..." class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN"></input>
+        </div>
+        <div class="form-group">
+            <label for="bookPrice">Pris:</label>
+            <input type="text" placeholder="SEK..." class="form-control" ng-model="book.Price" style="font-style:italic;" id="bookPrice"></input>
+        </div>
+        <div class="form-group">
+            <label for="bookInStock">I lager:</label>
+            <input type="text" placeholder="Antal..." class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock"></input>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+<!-- ------------------->
+<!-- ----- Delete ------->
+
+<div ng-if="view == 3">
+    <div class="modal-body">
+        <p>
+            <label>Författare:&nbsp;</label><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span>
+        </p>
+        <div>
+            <label>Sammanfattning:</label>
+            <div class="well well-lg">{{book.Summary}}</div>
+        </div>
+        <div>
+            <label ng-if="book.Genres.length == 1">Genre:&nbsp;</label>
+            <label ng-if="book.Genres.length > 1">Genrer: </label>
+            <span ng-repeat="genre in book.Genres">{{genre.Name}}&nbsp;</span>
+        </div>
+        <p>
+            <label>Utgivningsår:&nbsp;</label>{{book.Year}}
+        </p>
+        <p>
+            <label>ISBN:&nbsp;</label>{{book.ISBN}}
+        </p>
+        <p>
+            <label>Pris:&nbsp;</label>{{book.Price}} SEK
+        </p>
+        <p>
+            <label>I lager:&nbsp;</label>{{book.InStock}} exemplar
+        </p>
+        <div>
+            <img ng-src="{{book.ImagePath}}" width=150 />
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
+        <button class="btn btn-warning" ng-click="cancel()">Nej</button>
+    </div>
+</div>
+
+<!------------Slut delete --------->
+<!----- bekräftelseläge------------>
+<div ng-if="view == 2">
+    <div class="modal-body">
+        {{text}}
+        <strong>{{book.Title}}</strong>
+        <span> {{text2}}</span>
+        <div class="well">
+            <div class="form-group">
+                <label>Namn:</label>
+                <pre>{{book.Title}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Författare:</label>
+                <pre>{{book.Authors}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Sammanfattning:</label>
+                <pre>{{book.Summary}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Genre:</label>
+                <pre>{{book.Genres}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Utgivninsår:</label>
+                <pre>{{book.Year}}</pre>
+            </div>
+            <div class="form-group">
+                <label>ISBN:</label>
+                <pre>{{book.ISBN}}</pre>
+            </div>
+            <div class="form-group">
+                <label>Pris:</label>
+                <pre>{{book.Price}}</pre>
+            </div>
+            <div class="form-group">
+                <label>I lager:</label>
+                <pre>{{book.InStock}}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
+        <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
+        <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
+        <button class="btn btn-warning" ng-click="editView(5)">Nej</button>
+    </div>
+</div>
+<!-- ------------------------------------------->

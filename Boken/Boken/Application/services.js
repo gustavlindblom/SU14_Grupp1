@@ -21,7 +21,7 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
             if (method != "GET" && method != "DELETE") {
                 //using a function only accessible INSIDE our service
                 //to check if data is valid
-                data = checkData(data);             // kommenterade in detta (ns)
+                //data = checkData(data);             // kommenterade in detta (ns)
             }
             if (data === false) {
                 //if data is not valid (FALSE), return false
@@ -41,7 +41,7 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
-                console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
+                //console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
                 // (all "listeners" have now recieved our stringified data)
             }).error(function (data, thrownError) {
@@ -158,4 +158,32 @@ app.service("Authors", ["restService", function (restService) {
     };
 
     return authorServant;
+}]);
+
+
+app.service("Login", ["$rootScope", function ($rootScope) {
+    $rootScope.DDtext = "Logga in";
+    $rootScope.loggedin = "0";
+    this.loginStatus = function (id) {
+        if (id == 1) {
+
+            $rootScope.loggedin = [id];
+            $rootScope.DDtext = "Admin";
+            console.log("Admin: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
+        }
+        else if (id == 2) {
+
+            $rootScope.loggedin = [id];
+            $rootScope.DDtext = "Lager"
+            console.log("Lager: " + $rootScope.loggedin);
+            return $rootScope.loggedin;
+        }
+        else if (id == 0) {
+            $rootScope.DDtext = "Logga in";
+            $rootScope.loggedin = [id];
+            console.log("Logged out!");
+            return $rootScope.loggedin;
+        }
+    };
 }]);

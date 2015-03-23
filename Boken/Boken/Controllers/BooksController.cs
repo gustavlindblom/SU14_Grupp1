@@ -85,7 +85,7 @@ namespace Boken.Controllers
 
         // PUT: api/Books/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutBook(int id, Book book)
+        public IHttpActionResult PutBook(int id, BookDetailDTO book)
         {
             if (!ModelState.IsValid)
             {
@@ -142,6 +142,9 @@ namespace Boken.Controllers
             {
                 return NotFound();
             }
+
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id)) db.BookGenreCouplings.Remove(bgc);
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id)) db.BookAuthorCouplings.Remove(bac);
 
             db.Books.Remove(book);
             db.SaveChanges();

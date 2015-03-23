@@ -1,4 +1,4 @@
-﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", function ($scope, Books, Authors, Genres, $modal, $log) {
+﻿app.controller("booklistController", ["$scope", "Books", "Authors", "Genres", "$modal", "$log", "$route", function ($scope, Books, Authors, Genres, $modal, $log, $route) {
     var allBooks;
     $scope.currentPage = 1;
     $scope.numPerPage = 5;
@@ -8,30 +8,27 @@
     $scope.$on("gotBooks", function (event, data) {
         $scope.output = JSON.stringify(data, null, '\t');
         allBooks = $scope.books = data;
-        $scope.totalItems = data.length;
-        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+        $scope.totalItems = $scope.books.length;
+        $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
     });
-    Books.get();
+    
 
-    $scope.numberOfPages = function () {
-        return Math.ceil($scope.totalItems / $scope.numPerPage);
-    };
+    // Början på paginering
+    $scope.pagArr = [];
+    $scope.bigCurrentPage = 1;
+    $scope.itemsPP = 5;
+    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+    $scope.endshow = ($scope.startshow + $scope.itemsPP);
 
-    $scope.previousPage = function () {
-        if ($scope.currentPage != 1) {
-            $scope.currentPage--;
-        };
+    $scope.pageChanged = function (currScope) {
+        $scope.bigCurrentPage = currScope.bigCurrentPage;
+        $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+        $scope.endshow = ($scope.startshow + $scope.itemsPP);
+        $scope.pagArr = $scope.books.slice($scope.startshow, $scope.endshow);
+    }
+    // slut på paginering
 
-        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-    };
 
-    $scope.nextPage = function () {
-        if ($scope.currentPage != Math.ceil(($scope.books.length / $scope.numPerPage))) {
-            $scope.currentPage++;
-        }
-
-        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-    };
 
     $scope.sortByTitle = function () {
         if ($scope.sort == "Title") $scope.sort = "-Title";
@@ -94,12 +91,19 @@
 
     // --- filtrering ---   //
     $scope.filterBooks = function (author, genre) {
+        if (!author && !genre) {
+            $scope.books = allBooks;
+            $scope.currentPage = 1;
+            $scope.totalItems = $scope.books.length;
+            $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+            return;
+        }
         console.log("kommer in");
         $scope.books = allBooks;
         newBooksArr = [];
         var dataArr = $scope.books;
 
-         
+
         for (var i = 0; i < dataArr.length; i++) 
         {
             //console.log(dataArr[i]);
@@ -107,7 +111,7 @@
     
         }
         console.log("den nya arr ", newBooksArr)
-
+      
         $scope.books = newBooksArr;
                 // -- spara --- //
                 $scope.currentPage = 1;
@@ -117,7 +121,7 @@
     }
 
     var filter = function (objekt, authorName, genreName) 
-    {
+            {
         if (authorName && genreName) {
             objekt.Authors.forEach(function (author) {
                 objekt.Genres.forEach(function (genre) {
@@ -136,30 +140,68 @@
                     if (newBooksArr.indexOf(objekt) == -1) newBooksArr.push(objekt);
             });
         }
-    }
+}
 
-    // ---------------------------------//
+    // ----- Modal -------------------- //
 
-$scope.open = function (book) {
+    $scope.open = function (view, book, action, size) {
+        console.log("book", book, "view", view);
 
-    var modalInstance = $modal.open({
-        templateUrl: 'partials/bookModal.html',
-        controller: 'bookModalController',
+        if (book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            id: book.Id,
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon gång gång?");
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
 
-        resolve: {
-            id: function () {
-                return book.Id;
-            }
+            });
         }
-    });
+        if (!book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                //size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
 
-    modalInstance.result.then(function (selectedItem) {
-        $scope.selected = selectedItem;
-    }, function () {
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon  gång gång?");
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
 
-    });
-};
+            });
+        }
 
+
+    };
+    //---------Slut Modal -------------------//
+    Books.get();
 }]);
 
 

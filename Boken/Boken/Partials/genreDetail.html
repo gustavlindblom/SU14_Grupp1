@@ -1,0 +1,97 @@
+﻿<div class="modal-header">
+    <h3 class="modal-title">
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{genre.Name}} </span>
+        <span ng-if=" view == 4">Skapa en ny genre</span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{genre.Name}}</strong>?</span>
+
+        <button popover="Redigera" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+        <button popover="Avsluta redigering" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+    </h3>
+
+</div>
+<!-- redigerings- & skapa nytt läge -->
+<div ng-if="view == 1 || view == 4">
+
+    <div class="modal-body">
+        <div class="form-group">
+            <form name="form" novalidate>
+                <label for="genreName">
+                    Titel
+                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
+                    <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
+                </label>
+                <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+
+                <label for="genreDescription">
+                    Beskrivning
+                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
+                </label>
+                <textarea type="text " class="form-control" style="resize:none; font-style:italic; " ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="view == 1" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid " ng-click="editView(2); editText()"> Spara </button>
+        <button ng-if="view == 4" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()"> Skapa </button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+<!-- ------------------->
+<!--  standard läge-->
+<div ng-if="view == 0">
+    <div class="modal-body">
+        <div class="form-group"
+             <p>{{genre.Description}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Stäng</button>
+        </div>
+    </div>
+</div>
+<!--  ---------------  -->
+<!-- ----- Delete ------->
+
+<div ng-if="view == 3">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="genreName">Titel</label>
+            <span type="text" class="form-control" style="font-style:italic;" id="genreName">{{genre.Name}}</span>
+        </div>
+        <div class="form-group">
+            <label for="genreDescription">Beskrivning</label>
+            <span type="text " class="form-control" style="font-style:italic;" id="genreDescription">{{genre.Description}}</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
+        <button class="btn btn-warning" ng-click="cancel()">Nej</button>
+    </div>
+</div>
+
+<!------------Slut delete --------->
+<!----- bekräftelseläge------------>
+<div ng-if="view == 2">
+    <div class="modal-body">
+        {{text}}
+        <strong>{{genre.Name}}</strong>
+        <span> {{text2}}</span>
+        <div class="well">
+            <div class="form-group">
+                <label>Titel:</label>
+                <pre>{{genre.Name}}</pre>
+            </div>
+
+            <div class="form-group">
+                <label>Beskrivning:</label>
+                <pre>{{genre.Description}}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
+        <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
+        <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
+        <button class="btn btn-warning" ng-click="editView(5)">Nej</button>
+    </div>
+</div>
+<!-- ------------------------------------------->

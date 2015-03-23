@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <h3 class="modal-title">
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{author.Name}} </span>
+        <span ng-if=" view == 4">Skapa en ny författare</span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{author.Name}}</strong>?</span>
+
+        <button popover="Redigera" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+        <button popover="Avsluta redigering" popover-trigger="mouseenter" class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span> </button>
+    </h3>
+
+</div>
+<!-- redigerings- & skapa nytt läge -->
+<div ng-if="view == 1 || view == 4">
+
+    <div class="modal-body">
+        <div class="form-group">
+            <form name="form" novalidate>
+                <label for="authorName">
+                    Titel
+                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Författaren måste ha ett namn</span></span>
+                    <span class="error" ng-show="form.N.$error.minlength"> (Namnet måste vara minst 4 tecken.)</span>
+                </label>
+                <input type="text" class="form-control" name="N" ng-model="author.Name" required ng-minlength="4" placeholder="Namn..." style="font-style:italic;" id="authorName" />
+
+                <label for="authorBiography">
+                    Biografi
+                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Författaren behöver ha en biografi</span></span>
+                </label>
+                <textarea type="text " class="form-control" style="resize:none; font-style:italic; " ng-model="author.Biography" name="D" required id="authorBiography" placeholder="Plats för författarens biografi..."></textarea>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="view == 1" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid " ng-click="editView(2); editText()"> Spara </button>
+        <button ng-if="view == 4" class="btn btn-primary" type="submit" ng-disabled="form.N.$dirty && form.N.$invalid || form.D.$dirty && form.D.$invalid || form.N.$pristine || form.D.$pristine " ng-click="editView(2); editText()"> Skapa </button>
+        <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
+    </div>
+</div>
+<!-- ------------------->
+<!--  standard läge-->
+<div ng-if="view == 0">
+    <div class="modal-body">
+        <div class="form-group"
+             <p>{{author.Biography}}</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" ng-click="cancel()">Stäng</button>
+        </div>
+    </div>
+</div>
+<!--  ---------------  -->
+<!-- ----- Delete ------->
+
+<div ng-if="view == 3">
+    <div class="modal-body">
+        <div class="form-group">
+            <label for="authorName">Titel</label>
+            <span type="text" class="form-control" style="font-style:italic;" id="authorName">{{author.Name}}</span>
+        </div>
+        <div class="form-group">
+            <label for="authorBiography">Biografi</label>
+            <span type="text " class="form-control" style="font-style:italic;" id="authorBiography">{{author.Biography}}</span>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
+        <button class="btn btn-warning" ng-click="cancel()">Nej</button>
+    </div>
+</div>
+
+<!------------Slut delete --------->
+<!----- bekräftelseläge------------>
+<div ng-if="view == 2">
+    <div class="modal-body">
+        {{text}}
+        <strong>{{author.Name}}</strong>
+        <span> {{text2}}</span>
+        <div class="well">
+            <div class="form-group">
+                <label>Namn:</label>
+                <pre>{{author.Name}}</pre>
+            </div>
+
+            <div class="form-group">
+                <label>Biografi:</label>
+                <pre>{{author.Biography}}</pre>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
+        <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
+        <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
+        <button class="btn btn-warning" ng-click="editView(5)">Nej</button>
+    </div>
+</div>
+<!-- ------------------------------------------->
