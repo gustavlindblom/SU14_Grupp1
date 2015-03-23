@@ -2,7 +2,7 @@
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
-    $scope.newBook = {};
+    $scope.book = {};
     // --- Hämtar författaren ------ //
     $scope.$on("gotBook", function (event, data) {
         $scope.book = data;
@@ -54,7 +54,7 @@
 
     //---------skapa ny -------//
     $scope.create = function () {
-        Books.post($scope.newBook);
+        Books.post($scope.book);
         $modalInstance.close();
     };
     // ----------slut ------------------//

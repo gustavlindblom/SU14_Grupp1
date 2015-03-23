@@ -64,8 +64,12 @@
             <label>Författare:&nbsp;</label><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span>
         </p>
         <div>
+            <img ng-src="{{book.ImagePath}}" width="150" />
             <label>Sammanfattning:</label>
             <div class="well well-lg">{{book.Summary}}</div>
+        </div>
+        <div>
+            
         </div>
         <div>
             <label ng-if="book.Genres.length == 1">Genre:&nbsp;</label>
@@ -84,9 +88,7 @@
         <p>
             <label>I lager:&nbsp;</label>{{book.InStock}} exemplar
         </p>
-        <div>
-            <img ng-src="{{book.ImagePath}}" width=300 />
-        </div>
+
     </div>
     <div class="modal-footer">
         <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
@@ -173,7 +175,7 @@
             <label>I lager:&nbsp;</label>{{book.InStock}} exemplar
         </p>
         <div>
-            <img ng-src="{{book.ImagePath}}" width=300 />
+            <img ng-src="{{book.ImagePath}}" width=150 />
         </div>
     </div>
 
