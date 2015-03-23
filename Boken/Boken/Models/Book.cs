@@ -8,6 +8,7 @@ namespace Boken.Models
 {
     public class Book
     {
+        [Key]
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -17,5 +18,10 @@ namespace Boken.Models
         public decimal Price { get; set; }
         public int InStock { get; set; }
         public string ImagePath { get; set; }
+
+        // Foreign key
+        public int RatingId { get; set; }
+        // Navigation property
+        public Rating Rating { get; set; }
     }
 }

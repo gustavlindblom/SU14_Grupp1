@@ -203,13 +203,14 @@
     <Compile Include="Controllers\BooksController.cs" />
     <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503091051512_Initial.cs" />
-    <Compile Include="Migrations\201503091051512_Initial.Designer.cs">
-      <DependentUpon>201503091051512_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201503231348417_RatingTest.cs" />
+    <Compile Include="Migrations\201503231348417_RatingTest.Designer.cs">
+      <DependentUpon>201503231348417_RatingTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -222,7 +223,10 @@
     <Compile Include="Models\BookDTO.cs" />
     <Compile Include="Models\BookGenreCoupling.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\GenreDetailDTO.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Rating.cs" />
+    <Compile Include="Models\RatingDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />
@@ -352,8 +356,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503091051512_Initial.resx">
-      <DependentUpon>201503091051512_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503231348417_RatingTest.resx">
+      <DependentUpon>201503231348417_RatingTest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

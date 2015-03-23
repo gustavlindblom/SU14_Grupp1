@@ -28,6 +28,8 @@ namespace Boken.Models
         public System.Data.Entity.DbSet<Boken.Models.BookAuthorCoupling> BookAuthorCouplings { get; set; }
 
         public System.Data.Entity.DbSet<Boken.Models.BookGenreCoupling> BookGenreCouplings { get; set; }
+
+        public System.Data.Entity.DbSet<Boken.Models.Rating> Ratings { get; set; }
     
     }
 }

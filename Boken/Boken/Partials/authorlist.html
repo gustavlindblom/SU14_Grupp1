@@ -28,19 +28,16 @@
                         <td ng-click="open(0, author, 0)">
                             {{author.Name}}
                         </td>
-                        <td ng-click="open(0, author, 0)">
-                            {{author.Biography | limitTo: 115}}...
-                        </td>
-
-                        <td class="" ng-show="loggedin == 1">
-                            <span class="glyphicon glyphicon-edit" ng-click="open(1, author, 1)" aria-hidden="true"></span>
+                        <td ng-click="open(0, author, 0)" ng-mouseover="{{author.Biography}}">
+                            {{author.Biography | limitTo: 110}}...
                         </td>
                         <td class="" ng-show="loggedin == 1">
-                            <span class="glyphicon glyphicon-trash" ng-click="open(3, author, 3)" aria-hidden="true">
+                            <span popover="Ändra: {{author.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-edit" ng-click="open(1, author, 1)" aria-hidden="true"></span>
+                        </td>
+                        <td class="" ng-show="loggedin == 1">
+                            <span popover="Ta bort: {{author.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-trash" ng-click="open(3, author, 3)" aria-hidden="true">
                             </span>
                         </td>
-
-
                     </tr>
                 </tbody>
             </table>
@@ -48,11 +45,10 @@
         <!-- Panel footer -->
 
         <div class="panel-footer">
-            <!--<div ng-controller="pageController">-->
-            <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
-            <!--</div>-->
+            <div class="col-md-12 text-center">
+                <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
+            </div>
         </div>
-
         <!-- footer slut -->
     </div>
 </div>
