@@ -1,26 +1,4 @@
-﻿//app.controller("bookDetailController", ["$scope", "Books", "$modalInstance", "id", function ($scope, Books, $modalInstance, id) {
-
-//    $scope.$on("gotBook", function (event, data) {
-//        console.log("book modal controller: ", data);
-//        $scope.book = data;
-//    });
-
-//    $scope.ok = function () {
-
-//        $modalInstance.close();
-//    };
-
-//    $scope.cancel = function () {
-
-//        $modalInstance.dismiss('cancel');
-//    };
-
-//    Books.get(id);
-
-//}]);
-
-
-app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", "$modalInstance", "param", function ($scope, Books, Authors, Genres, $modalInstance, param) {
+﻿app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", "$modalInstance", "param", function ($scope, Books, Authors, Genres, $modalInstance, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
@@ -44,6 +22,14 @@ app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", 
         $modalInstance.dismiss('cancel');
     };
     //-------------------------//
+
+    $scope.addGenre = function () {
+        document.getElementById('addGenreId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>';
+    };
+
+    $scope.addAuthor = function () {
+        document.getElementById('addAuthorId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Authors" style="font-style:italic;" id="bookAuthor"></input>';
+    };
 
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
     $scope.text = "";
