@@ -52,7 +52,7 @@ namespace Boken.Migrations
                     new Rating() { Id = 6, Votes = 10, TotalRating = 85 },
                     new Rating() { Id = 7, Votes = 10, TotalRating = 50 },
                     new Rating() { Id = 8, Votes = 10, TotalRating = 85 },
-                    new Rating() { Id = 9, Votes = 10, TotalRating = 99 },
+                    new Rating() { Id = 9, Votes = 10, TotalRating = 99},
                     new Rating() { Id = 10, Votes = 10, TotalRating = 100 },
                     new Rating() { Id = 11, Votes = 10, TotalRating = 85 }
                 );

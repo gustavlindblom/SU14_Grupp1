@@ -40,8 +40,14 @@
 <!--  standard läge-->
 <div ng-if="view == 0">
     <div class="modal-body">
-        <div class="form-group"
-             <p>{{genre.Description}}</p>
+        <div class="form-group">
+            <p>{{genre.Description}}</p>
+            <label>Topp 10 böcker i {{genre.Name}}</label>
+            <table>
+                <tr ng-repeat="book in genre.TopRatedBooks">
+                    <td><a href="" ng-click="openBook(0, book, 0)">{{book.Title}}</a></td>
+                </tr>
+            </table>
         </div>
         <div class="modal-footer">
             <button class="btn btn-warning" ng-click="cancel()">Stäng</button>

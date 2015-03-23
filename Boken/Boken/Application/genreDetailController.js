@@ -1,4 +1,4 @@
-app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "param", function ($scope, Genres, $modalInstance, param) {
+app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "$modal", "param", function ($scope, Genres, $modalInstance, $modal, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
@@ -12,6 +12,24 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
 
     // --- spara & Avbryt knapparnas funktioner -- //
     //     stänger även ner modalen 
+
+    $scope.openBook = function (view, book, action) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/bookDetail.html',
+            controller: 'bookDetailController',
+            resolve: {
+                param: function () {
+                    params = {
+                        id: book.Id,
+                        view: view,
+                        action: action
+                    }
+                    console.log("param:", params)
+                    return params;
+                }
+            }
+        });
+    }
 
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
