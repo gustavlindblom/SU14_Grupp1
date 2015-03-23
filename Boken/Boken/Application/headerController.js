@@ -111,5 +111,34 @@
         });
     };
     //------------ slut ------------------//
+
+    // ---------- skapa ny författare ---------//
+    $scope.createNewBook = function (view, action) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/bookDetail.html',
+            controller: 'bookDetailController',
+            //size: size,
+            resolve: {
+                param: function () {
+                    params = {
+                        view: view,
+                        action: action
+                    }
+                    console.log("param:", params)
+                    return params;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            console.log("Skapa en ny bok:");
+            $scope.selected = selectedItem;
+            Authors.get();
+            //$route.reload();
+        }, function () {
+
+        });
+    };
+    //------------ slut ------------------//
 }]);
 
