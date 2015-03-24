@@ -154,6 +154,7 @@
                 <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
             </ul>
         </div>
+        <div>
             <ul class="dropdown-menu cursor" role="menu">
                 <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
             </ul>
