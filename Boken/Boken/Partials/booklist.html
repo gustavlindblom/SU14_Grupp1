@@ -68,7 +68,7 @@
                             <td ng-click="open(0, book, 0, 'lg')"><span ng-repeat="author in book.Authors">{{author.Name}}&nbsp;</span></td>
                             <td ng-click="open(0, book, 0, 'lg')"><span ng-repeat="genre in book.Genres">{{genre.Name}}</span></td>
                             <td ng-click="open(0, book, 0, 'lg')">{{book.Price}}</td>
-                            <td class="" ng-show="loggedin == 1">
+                            <td class="" ng-show="loggedin == 1 || loggedin == 2">
                                 <span class="glyphicon glyphicon-edit" ng-click="open(1, book, 1)" aria-hidden="true"></span>
                             </td>
                             <td class="" ng-show="loggedin == 1">
