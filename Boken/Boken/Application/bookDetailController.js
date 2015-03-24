@@ -10,6 +10,13 @@
     });
     Books.get(param.id);
 
+    //$scope.$on("gotGenre", function (event, data) {
+    //    $scope.genre = data;
+    //});
+
+    //Genres.get();
+    //console.log($scope.genre);
+
     $scope.$on("gotRating", function (event, data) {
         console.log("Rating: ", data);
         $scope.rating = data;
@@ -39,8 +46,10 @@
     //-------------------------//
 
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
-    $scope.addGenre = function () {
-        document.getElementById('addGenreId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>';
+    $scope.addGenre = function (Name) {
+        
+        document.getElementById('addGenreId').innerHTML += ' <li> <span ng-repeat="genre in Genres">'+ Name + '&nbsp;</span></li>';
+        //document.getElementById('addGenreId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>';
     };
 
     $scope.addAuthor = function () {
