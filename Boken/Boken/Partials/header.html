@@ -1,5 +1,5 @@
 ﻿<nav class="navbar navbar-default navbar-fixed-top header">
-    <div class="container-fluid col-xs-12 col-sm-10 col-md-8 col-lg-6 col-xs-offset-0 col-sm-offset-1 col-md-offset-2 col-lg-offset-3">
+    <div class="container-fluid ">
         <!-- Startsida och toggle-knapp -->
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
@@ -8,42 +8,37 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand hoverHome home" ng-click="GoTo('index.html')" style="color:black; font-size:20px; height:50px;">Startsida</a>
+         <!--   <a class="navbar-brand" ng-click="GoTo('index.html')">Startsida</a> -->
         </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Innehåll som blir togglat på små skärmar -->
         <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
-            <ul class="nav navbar-nav cursor ">
-                <li><a id="headerItems" ng-click="GoTo('/authors')">Författare</a></li>
-                <li><a id="headerItems" ng-click="GoTo('/books')">Böcker</a></li>
-                <li><a id="headerItems" ng-click="GoTo('/genres')">Genre</a></li>
-            </ul>
+            <ul class="nav navbar-nav cursor">
+                <li><a ng-click="GoTo('index.html')">Startsida</a></li>
+                <li><a ng-click="GoTo('/authors')">Författare</a></li>
+                <li><a ng-click="GoTo('/books')">Böcker</a></li>
+                <li><a ng-click="GoTo('/genres')">Genre</a></li>
 
-            <form class="nav navbar-form navbar-right">
-                <!--Dropdown for creating new items-->
-                <div ng-if="loggedin == 1" class="btn-group" dropdown is-open="status.isopen">
-                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                        Skapa ny... <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" ng-click="createNewBook(4,4)">Bok</a></li>
-                        <li><a href="#" ng-click="createNewGenre(4,4)">Genre</a></li>
-                        <li><a href="#" ng-click="createNewAuthor(4,4)">Författare</a></li>
+                <!-- Dropdown för att ska olika objekt -->
+                <li ng-if="loggedin == 1" dropdown on-toggle="toggled(open)">
+                    <a class="dropdown" dropdown-toggle>Skapa ny <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a ng-click="createNewBook(4,4)">Bok</a></li>
+                        <li><a ng-click="createNewGenre(4,4)">Genre</a></li>
+                        <li><a ng-click="createNewAuthor(4,4)">Författare</a></li>
                     </ul>
-                </div>
+                </li>
+
                 <!-- Log in function in dropdown menu-->
-                <div class="btn-group" dropdown is-open="status2.isopen">
-                    <button type="button" class="btn btn-primary dropdown-toggle" dropdown-toggle ng-disabled="disabled">
-                        {{DDtext}} <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
+                <li dropdown on-toggle="toggled(open)">
+                    <a class="dropdown" dropdown-toggle> {{DDtext}} <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
                         <li><a ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</a></li>
                         <li><a ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</a></li>
                         <li><a ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</a></li>
                     </ul>
-                </div>
-                <!--    ----------------    -->
-            </form>
+                </li>
+            </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
