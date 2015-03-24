@@ -42,6 +42,12 @@
     <div class="modal-body">
         <div class="form-group"
              <p>{{author.Biography}}</p>
+            <label>Topp 10 böcker av {{author.Name}}</label>
+            <table>
+                <tr ng-repeat="book in author.TopRatedBooks">
+                    <td><a href="" ng-click="openBook(0, book, 0)">{{book.Title}}</a></td>
+                </tr>
+            </table>
         </div>
         <div class="modal-footer">
             <button class="btn btn-warning" ng-click="cancel()">Stäng</button>

@@ -1,4 +1,4 @@
-﻿app.controller("authorDetailController", ["$scope", "Authors", "$modalInstance", "param", function ($scope, Authors, $modalInstance, param) {
+﻿app.controller("authorDetailController", ["$scope", "Authors", "$modalInstance", "$modal","param", function ($scope, Authors, $modalInstance, $modal, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
@@ -23,6 +23,23 @@
     };
     //-------------------------//
 
+    $scope.openBook = function (view, book, action) {
+        var modalInstance = $modal.open({
+            templateUrl: 'partials/bookDetail.html',
+            controller: 'bookDetailController',
+            resolve: {
+                param: function () {
+                    params = {
+                        id: book.Id,
+                        view: view,
+                        action: action
+                    }
+                    console.log("param:", params)
+                    return params;
+                }
+            }
+        });
+    }
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
     $scope.text = "";
     $scope.text2 = "";
