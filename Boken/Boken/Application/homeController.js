@@ -1,70 +1,63 @@
-//"myAppName" controller.
-app.controller("homeController", ["$scope", "restService", "Books", function ($scope, restService, Books) {
-  console.log("I'm alive!");
+// controller for home.html
+app.controller("homeController", ["$scope", "Books", "Ratings", function ($scope, Books, Ratings) {
 
-  //using $rootScope.on to listen for new data from restCall .success()
-  $scope.$on("restSuccess", function(event, data) {
-    console.log("restSuccess triggered: ", data);
-    $scope.output = JSON.stringify(data, null, '\t');
-    $scope.books = data;
-  });
-      
-  //CRUD (POST, GET, PUT, DELETE)
-  $scope.restMethods = ["GET", "PUT", "POST", "DELETE"];
+    // lyssna på gotBooks
+    $scope.$on("gotBooks", function (event, data) {
+        $scope.books = data;
+        Ratings.get();
+    });
 
-  //click handler for our form in the vie
-  $scope.restCall = function() {
-    //data is a string (value of textarea)
-    var data = $scope.callData;
+    // lyssna på gotRatings
+    $scope.$on("gotRatings", function (event, data) {
+        $scope.ratings = data;
+        console.log(data);
+        var topThreeBooks = [];
+        for (var rating in data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3)) {
+            console.log("rating: ", rating, "avgrating: ", rating.AverageRating);
+            if (topThreeBooks.Length < 3) {
+                for (var book in Books) {
+                    if (book.Id == rating.Id) {
+                        topThreeBooks.push(Books.Id);
+                    }
+                }
 
-    //if user did not pick a url && method, abort
-    if (!$scope.callUrl || !$scope.callMethod) {
-      // if something is missing, notify user
-      $scope.restMessage = "Please fill in all required fields!";
-      return;
-    }
+            }
 
-    //send call and recieve true || false from restService method
-    var callSent = restService.restCall($scope.callUrl, $scope.callMethod, data);
+        }
 
-    //if callSent === true the request was sent with valid data
-    if (callSent) {
-      $scope.restMessage = false;
-    } else {
-      //else something must have been wrong with the data
-      $scope.restMessage = "Bad request data!";
-    }
+        //var topThreeRatings = data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3);
 
-  };
+        //topThreeRatings.forEach(function (rating) {
+        //    $scope.books.forEach(function (book) {
+        //        console.log("book: ", book, " rating: ", rating);
+        //        if (book.RatingId == rating.Id) {
+        //            console.log("kommer vi hit?", book.RatingId, rating.Id);
+        //            topThreeBooks.push(book);
+        //        }
+        //    });
+        //});
+        console.log(topThreeBooks);
+    });
 
-  var imagePath = '/Content/Image/';
 
-  var images = [imagePath + 'saganomringen.jpg', imagePath + 'anglarodemoner.jpg', imagePath + 'davinci.jpg', imagePath + 'Det.jpg'];
+    //var imagePath = '/Content/Image/';
 
-  
-      $scope.myInterval = 5000;
-      var slides = $scope.slides = [];
+    //var images = [imagePath + 'saganomringen.jpg', imagePath + 'anglarodemoner.jpg', imagePath + 'davinci.jpg', imagePath + 'Det.jpg'];
 
-      $scope.addSlide = function () {
-          var newWidth = slides.length + 1;
-          slides.push({
-              image: images[i] ,
 
-          });
-      };
-      for (var i = 0; i < 4; i++) {
-          $scope.addSlide();
-      }
-  
+    //$scope.myInterval = 5000;
+    //var slides = $scope.slides = [];
 
-  //we can make models accessible to the entire app using $rootScope!
-  //$scope.hello is set in restService helloWorld using $rootScope
-  //console.log("rootScope1: ", $scope.hello);
-  //restService.helloWorld();
-  //console.log("rootScope2: ", $scope.hello);
+    //$scope.addSlide = function () {
+    //    var newWidth = slides.length + 1;
+    //    slides.push({
+    //        image: images[i],
 
-  //a static GET request to see if our service is alive
-  //restService.restCall("books", "GET", {});
-  //replacing restService with Books (also a service)
-  Books.get();
+    //    });
+    //};
+    //for (var i = 0; i < 4; i++) {
+    //    $scope.addSlide();
+    //}
+
+    Books.get();
 }]);
