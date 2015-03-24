@@ -80,7 +80,7 @@
 
         <div>
             <img ng-src="{{book.ImagePath}}" width="150" />
-
+            
         </div>
         <div>
             <label>Sammanfattning:</label>
@@ -121,29 +121,42 @@
             <label for="bookSummary">Sammanfattning:</label>
             <textarea type="text" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
         </div>
-        <div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="authorlistController">
+        <!--<div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="authorlistController">
             <label for="bookGenre">Författare:</label>
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" ng-model="author.Name" dropdown-toggle ng-disabled="disabled"></span>
             <div id="addAuthorId">
-                <li ng-repeat="author in addAuthors">{{author}}&nbsp;</li>
+                <li ng-repeat="author in addAuthors">{{author.Name}}&nbsp;</li>
             </div>
             <ul class="dropdown-menu cursor" role="menu">
-                <li ng-repeat="author in authors" ng-click="addAuthor(author.Name)">{{author.Name}}&nbsp;</li>
+                <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
+            </ul>
+        </div>-->
+        <div class="form-group dropdown" dropdown is-open="status2.isopen">
+            <label for="bookAuthor">Författare:</label>
+            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
+            <div id="addAuthorId">
+                <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;</li>
+        </div>
+            <ul class="dropdown-menu cursor" role="menu">
+                <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
             </ul>
         </div>
 
-        <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
 
-        <div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="genrelistController">
-            <label for="bookGenre">Genre:</label>
-            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" ng-model="genre.Name" dropdown-toggle ng-disabled="disabled"></span>
-            <div id="addGenreId">
-                <li ng-repeat="genre in addGenres">{{genre}}&nbsp;</li>
-            </div>
+
+                <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
+
+        <div class="form-group dropdown" dropdown is-open="status.isopen">
+            <label for="bookGenre">Genre:</label>            
+            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled" ></span>
+            <ul id="addGenreId">
+                <li ng-repeat="genre in newGenres">{{genre.Name}}</li>
+            </ul>
             <ul class="dropdown-menu cursor" role="menu">
-                <li ng-repeat="genre in genres" ng-click="addGenre(genre.Name)">{{genre.Name}}&nbsp;</li>
+                <li ng-repeat="genre in genres" ng-click="addGenre(genre)">{{genre.Name}}</li>
             </ul>
         </div>
+
         <div class="form-group">
             <label for="bookYear">Utgivningsår:</label>
             <input type="text" placeholder="ÅÅÅÅ..." class="form-control" ng-model="book.Year" style="font-style:italic;" id="bookYear"></input>
@@ -159,6 +172,10 @@
         <div class="form-group">
             <label for="bookInStock">I lager:</label>
             <input type="text" placeholder="Antal..." class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock"></input>
+        </div>
+        <div class="form-group">
+            <label>Image path: </label>
+            <input type="text" placeholder="Path..." class="form-control" ng-model="book.ImagePath" style="font-style:italic;" id="bookImagePath"></input>
         </div>
     </div>
     <div class="modal-footer">
@@ -220,7 +237,7 @@
             </div>
             <div class="form-group">
                 <label>Författare:</label>
-                <pre>{{book.Authors}}</pre>
+                <pre ng-repeat="author in newAuthors">{{author.Name}}</pre>
             </div>
             <div class="form-group">
                 <label>Sammanfattning:</label>
@@ -228,7 +245,7 @@
             </div>
             <div class="form-group">
                 <label>Genre:</label>
-                <pre>{{book.Genres}}</pre>
+                <pre ng-repeat="genre in newGenres">{{genre.Name}}</pre>
             </div>
             <div class="form-group">
                 <label>Utgivninsår:</label>
@@ -246,6 +263,7 @@
                 <label>I lager:</label>
                 <pre>{{book.InStock}}</pre>
             </div>
+            
         </div>
     </div>
     <div class="modal-footer">
