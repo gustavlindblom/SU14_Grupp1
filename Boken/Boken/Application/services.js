@@ -176,7 +176,7 @@ app.service("Ratings", ["restService", function (restService) {
 
 app.service("Login", ["$rootScope", function ($rootScope) {
     $rootScope.DDtext = "Logga in";
-    $rootScope.loggedin = "0";
+    $rootScope.loggedin = "1";
     this.loginStatus = function (id) {
         if (id == 1) {
 
