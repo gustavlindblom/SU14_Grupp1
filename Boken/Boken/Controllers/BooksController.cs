@@ -132,7 +132,7 @@ namespace Boken.Controllers
             var rating = new Rating() { TotalRating = 0, Votes = 0 };
             db.Ratings.Add(rating);
             db.SaveChanges();
-            Book toAdd = new Book() { Title = book.Title, RatingId = rating.Id, Summary = book.Summary, Price = book.Price, InStock = book.InStock, ISBN = book.ISBN, Year = book.Year };
+            Book toAdd = new Book() { Title = book.Title, RatingId = rating.Id, Summary = book.Summary, Price = book.Price, InStock = book.InStock, ISBN = book.ISBN, Year = book.Year, ImagePath = book.ImagePath };
 
             db.Books.Add(toAdd);
             db.SaveChanges();

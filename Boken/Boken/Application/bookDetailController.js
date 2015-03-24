@@ -52,30 +52,30 @@
 
     //-------------------------//
 
-    $scope.addGenres = [];
+    $scope.newGenres = [];
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
     $scope.addGenre = function (genre) {
 
-        if ($scope.addGenres.indexOf(genre) >= 0) {
+        if ($scope.newGenres.indexOf(genre) >= 0) {
             return;
         }
         else {
-            $scope.addGenres.push(genre);
+            $scope.newGenres.push(genre);
         }
-        console.log($scope.addGenres);
+        console.log($scope.newGenres);
     };
 
-    $scope.addAuthors = [];
+    $scope.newAuthors = [];
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
     $scope.addAuthor = function (author) {
 
-        if ($scope.addAuthors.indexOf(author) >= 0) {
+        if ($scope.newAuthors.indexOf(author) >= 0) {
             return;
         }
         else {
-            $scope.addAuthors.push(author);
+            $scope.newAuthors.push(author);
         }
-        console.log($scope.addAuthors);
+        console.log($scope.newAuthors);
     };
 
 
@@ -101,8 +101,8 @@
 
     //---------skapa ny -------//
     $scope.create = function () {
-        $scope.book.Genres = $scope.addGenres;
-        $scope.book.Authors = $scope.addAuthors;
+        $scope.book.Genres = $scope.newGenres;
+        $scope.book.Authors = $scope.newAuthors;
         console.log("rewqrwq", $scope.book)
         Books.post($scope.book);
         $modalInstance.close();
