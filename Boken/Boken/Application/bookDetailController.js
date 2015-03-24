@@ -7,6 +7,8 @@
     $scope.$on("gotBook", function (event, data) {
         $scope.book = data;
         Ratings.get(data.Rating.Id);
+        $scope.newAuthors = $scope.book.Authors;
+        $scope.newGenres = $scope.book.Genres;
     });
     Books.get(param.id);
 
@@ -41,6 +43,10 @@
     //     stänger även ner modalen 
 
     $scope.save = function () {
+        console.log($scope.newAuthors);
+        console.log($scope.newGenres);
+        $scope.book.Genres = $scope.newGenres;
+        $scope.book.Authors = $scope.newAuthors;
         Books.put($scope.book.Id, $scope.book);
         $modalInstance.close();
     };
@@ -159,7 +165,7 @@
 
     $scope.editView = function (id) {
         if (id == 0) { $scope.view = [id]; }
-        if (id == 1) { $scope.view = [id]; }
+        if (id == 1) { $scope.view = [id]; $scope.action = 1; }
         if (id == 2) { $scope.view = [id]; }
         if (id == 3) { $scope.view = [id]; }
         if (id == 4) { $scope.view = [id]; }
