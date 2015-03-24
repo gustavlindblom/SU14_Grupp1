@@ -12,7 +12,6 @@
     <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </button>
-    </h3>
 </div>
 <!-- redigeringsläge -->
 <div ng-if="view == 1">
@@ -23,7 +22,7 @@
         </div>
         <div class="form-group">
             <label for="bookSummary">Sammanfattning:</label>
-            <textarea ng-if="loggedin == 1" type="text" style="height:100px;" class="form-control" ng-model="book.Summary" style="font-style:italic;" id="bookSummary"></textarea>
+            <textarea ng-if="loggedin == 1" type="text" class="form-control" ng-model="book.Summary" style="height:100px;font-style:italic;" id="bookSummary"></textarea>
             <div ng-if="loggedin == 2" class="well well-lg">{{book.Summary}}</div>
         </div>
 
@@ -31,10 +30,10 @@
         <div class="form-group dropdown" dropdown is-open="status3.isopen">
             <label for="bookAuthor">Författare:</label>
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-            <div id="addAuthorId">
+            <ul id="addAuthorId">
                 <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
                 <li ng-repeat="author in book.Authors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
-            </div>
+            </ul>
             <ul class="dropdown-menu cursor" role="menu">
                 <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
             </ul>
@@ -151,8 +150,9 @@
         <div class="form-group dropdown" dropdown is-open="status2.isopen">
             <label for="bookAuthor">Författare:</label>
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-            <div id="addAuthorId">
+            <ul id="addAuthorId">
                 <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
+            </ul>
         </div>
             <ul class="dropdown-menu cursor" role="menu">
                 <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>

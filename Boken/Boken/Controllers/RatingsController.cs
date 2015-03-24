@@ -22,7 +22,7 @@ namespace Boken.Controllers
             List<RatingDTO> ratings = new List<RatingDTO>();
 
             foreach (Rating rating in db.Ratings)
-                ratings.Add(new RatingDTO() { Id = rating.Id, Votes = rating.Votes, AverageRating = rating.TotalRating / rating.Votes, 2 });
+                ratings.Add(new RatingDTO() { Id = rating.Id, Votes = rating.Votes, AverageRating = rating.TotalRating / rating.Votes });
 
             return ratings.AsQueryable();
         }
