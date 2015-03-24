@@ -165,7 +165,7 @@
 
     $scope.editView = function (id) {
         if (id == 0) { $scope.view = [id]; }
-        if (id == 1) { $scope.view = [id]; }
+        if (id == 1) { $scope.view = [id]; $scope.action = 1; }
         if (id == 2) { $scope.view = [id]; }
         if (id == 3) { $scope.view = [id]; }
         if (id == 4) { $scope.view = [id]; }
