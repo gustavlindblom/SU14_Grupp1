@@ -79,6 +79,7 @@
         console.log($scope.newGenres);
     };
 
+
     $scope.newAuthors = [];
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
     $scope.addAuthor = function (author) {
