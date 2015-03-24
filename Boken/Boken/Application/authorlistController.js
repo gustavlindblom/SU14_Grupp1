@@ -30,6 +30,13 @@
     // --- slut på paginering ----------//
 
 
+    $scope.addAuthors = [];
+    $scope.addAuthor = function (Name) {
+
+        $scope.addAuthors.push(Name);
+    };
+
+
     // ----- Modal -------------------- //
 
     $scope.open = function (view, author, action) {

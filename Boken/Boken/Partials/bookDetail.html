@@ -118,28 +118,28 @@
             <label for="bookSummary">Sammanfattning:</label>
             <textarea type="text" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
         </div>
-        <div class="form-group">
-            <label for="bookAuthor">Författare:</label>
-            <span class="glyphicon glyphicon-plus listFocus" ng-click="addAuthor()"></span>
+        <div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="authorlistController">
+            <label for="bookGenre">Författare:</label>
+            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" ng-model="author.Name" dropdown-toggle ng-disabled="disabled"></span>
             <div id="addAuthorId">
-                <!--<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Authors" style="font-style:italic;" id="bookAuthor"></input>-->
-                <!--Här läggs till nya textboxes varje gång du trycker på plus(glyphicon)-->
+                <li ng-repeat="author in addAuthors">{{author}}&nbsp;</li>
             </div>
-
+            <ul class="dropdown-menu cursor" role="menu">
+                <li ng-repeat="author in authors" ng-click="addAuthor(author.Name)">{{author.Name}}&nbsp;</li>
+            </ul>
         </div>
+
+                <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
+
         <div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="genrelistController">
             <label for="bookGenre">Genre:</label>            
-            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled" ></span>
+            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" ng-model="genre.Name" dropdown-toggle ng-disabled="disabled" ></span>
             <div id="addGenreId">
-
+                <li ng-repeat="genre in addGenres">{{genre}}&nbsp;</li>
             </div>
-            <ul class="dropdown-menu cursor" role="menu" >
-                <li ng-repeat="genre in genres" ng-click="addGenre(genre.Name)">{{genre.Name}}&nbsp;</li>
+            <ul class="dropdown-menu cursor" role="menu">
+                <li ng-repeat="genre in genres" ng-click="addGenre(genre.Name)">{{genre.Name}}&nbsp;</li>           
             </ul>
-            <!--<div id="addGenreId">-->
-                <!--<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>-->
-                <!--Här läggs till nya textboxes varje gång du trycker på plus(glyphicon)-->
-            <!--</div>-->
         </div>
         <div class="form-group">
             <label for="bookYear">Utgivningsår:</label>
