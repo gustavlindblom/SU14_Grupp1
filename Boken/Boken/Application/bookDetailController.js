@@ -10,12 +10,19 @@
     });
     Books.get(param.id);
 
-    //$scope.$on("gotGenre", function (event, data) {
-    //    $scope.genre = data;
-    //});
+    $scope.$on("gotGenres", function (event, data) {
+        $scope.genres = data;
 
-    //Genres.get();
-    //console.log($scope.genre);
+        console.log("genres i boketail wowokwko", $scope.genres);
+    });
+
+    Genres.get();
+
+    $scope.$on("gotAuthors", function (event, data) {
+        $scope.authors = data;
+    });
+
+    Authors.get();
 
     $scope.$on("gotRating", function (event, data) {
         console.log("Rating: ", data);
@@ -45,6 +52,31 @@
 
     //-------------------------//
 
+    $scope.addGenres = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addGenre = function (genre) {
+
+        if ($scope.addGenres.indexOf(genre) >= 0) {
+            return;
+        }
+        else {
+            $scope.addGenres.push(genre);
+        }
+        console.log($scope.addGenres);
+    };
+
+    $scope.addAuthors = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addAuthor = function (author) {
+
+        if ($scope.addAuthors.indexOf(author) >= 0) {
+            return;
+        }
+        else {
+            $scope.addAuthors.push(author);
+        }
+        console.log($scope.addAuthors);
+    };
 
 
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
@@ -65,10 +97,13 @@
         $scope.text2 = text2;
         $scope.text = text;
     }
-    // ------------------------//
+    // ------------------------//   
 
     //---------skapa ny -------//
     $scope.create = function () {
+        $scope.book.Genres = $scope.addGenres;
+        $scope.book.Authors = $scope.addAuthors;
+        console.log("rewqrwq", $scope.book)
         Books.post($scope.book);
         $modalInstance.close();
     };
