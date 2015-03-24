@@ -30,6 +30,22 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
     }
     // --- slut på paginering ----------//
 
+    $scope.addGenres = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addGenre = function (Name) {
+
+        
+        if ($scope.addGenres.indexOf(Name) > 0)
+        {
+            return;
+        }
+        else
+        {
+            $scope.addGenres.push(Name);
+        }
+        console.log($scope.addGenres);
+    };
+
 
     // ----- Modal -------------------- //
 

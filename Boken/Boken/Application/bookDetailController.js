@@ -45,16 +45,7 @@
 
     //-------------------------//
 
-    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
-    $scope.addGenre = function (Name) {
-        
-        document.getElementById('addGenreId').innerHTML += ' <li> <span ng-repeat="genre in Genres">'+ Name + '&nbsp;</span></li>';
-        //document.getElementById('addGenreId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Genres" style="font-style:italic;" id="bookGenre"></input>';
-    };
 
-    $scope.addAuthor = function () {
-        document.getElementById('addAuthorId').innerHTML += '<input type="text" placeholder="Namn..." class="form-control" ng-model="book.Authors" style="font-style:italic;" id="bookAuthor"></input>';
-    };
 
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
     $scope.text = "";
