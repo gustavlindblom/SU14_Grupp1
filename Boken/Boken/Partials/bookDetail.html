@@ -147,14 +147,13 @@
         </div>
 
         <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
-        <div class="form-group dropdown" dropdown is-open="status2.isopen">
+        <div class="form-group dropdown" dropdown is-open="status6.isopen">
             <label for="bookAuthor">Författare:</label>
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
             <ul id="addAuthorId">
                 <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
             </ul>
-        </div>
-        <div>
+
             <ul class="dropdown-menu cursor" role="menu">
                 <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
             </ul>

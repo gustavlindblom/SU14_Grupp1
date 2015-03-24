@@ -59,18 +59,7 @@
 
     //-------------------------//
 
-    $scope.newGenres = [];
-    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
-    $scope.addGenre = function (genre) {
-
-        if ($scope.newGenres.indexOf(genre) >= 0) {
-            return;
-        }
-        else {
-            $scope.newGenres.push(genre);
-        }
-        console.log($scope.newGenres);
-    };
+   
 
     $scope.removeSelectGenre = function (selectedRemove) {
         console.log(selectedRemove);
@@ -87,6 +76,18 @@
         }
     };
 
+    $scope.newGenres = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addGenre = function (genre) {
+
+        if ($scope.newGenres.indexOf(genre) >= 0) {
+            return;
+        }
+        else {
+            $scope.newGenres.push(genre);
+        }
+        console.log($scope.newGenres);
+    };
 
     $scope.newAuthors = [];
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
