@@ -79,6 +79,21 @@
         console.log($scope.newGenres);
     };
 
+    $scope.removeSelectGenre = function (selectedRemove) {
+        console.log(selectedRemove);
+        var index = $scope.newGenres.indexOf(selectedRemove);
+        if (index > -1) {
+            $scope.newGenres.splice(index, 1);
+        }
+    };
+
+    $scope.removeSelectAuthor = function (selectedRemove) {
+        var index = $scope.newAuthors.indexOf(selectedRemove);
+        if (index > -1) {
+            $scope.newAuthors.splice(index, 1);
+        }
+    };
+
 
     $scope.newAuthors = [];
     // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
