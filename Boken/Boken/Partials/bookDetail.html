@@ -69,7 +69,7 @@
 
         <p>
             <label>Betyg:</label>
-            <rating ng-model="rating.AverageRating" max="maxRating" readonly="isReadonly"></rating><label ng-model="rating.AverageRating">{{rating.AverageRating}}/10</label> <span class="text-muted">Röster: {{rating.Votes}}</span>
+            <rating on-hover="hoveringOver(value)" ng-click="setRating()" ng-model="rate" max="maxRating" readonly="false"></rating><label ng-model="rating.AverageRating">{{rating.AverageRating}}/10</label> <span class="text-muted">Röster: {{rating.Votes}}</span>
         </p>
 
         <!-- ------------------->

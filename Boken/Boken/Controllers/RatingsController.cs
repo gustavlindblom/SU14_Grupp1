@@ -54,9 +54,10 @@ namespace Boken.Controllers
                 return BadRequest();
             }
 
-            db.Entry(rating).Entity.TotalRating = rating.TotalRating;
-            db.Entry(rating).Entity.Votes++;
-            db.Entry(rating).State = EntityState.Modified;
+            var modified = db.Ratings.FirstOrDefault(x => x.Id == rating.Id);
+            modified.TotalRating += rating.TotalRating;
+            modified.Votes++;
+            db.Entry(modified).State = EntityState.Modified;
 
             try
             {

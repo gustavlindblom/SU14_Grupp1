@@ -168,6 +168,10 @@ app.service("Ratings", ["restService", function (restService) {
             var restUrl = Id ? "ratings/" + Id : "ratings/";
             restService.restCall(restUrl, "GET", {}, broadcast);
         },
+        put: function (Id, data) {
+            var restUrl = "ratings/" + Id;
+            restService.restCall(restUrl, "PUT", data);
+        }
     };
 
     return ratingServant;

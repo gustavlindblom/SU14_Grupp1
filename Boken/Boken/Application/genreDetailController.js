@@ -7,7 +7,8 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.$on("gotGenre", function (event, data) {
         $scope.genre = data;
     });
-    Genres.get(param.id);
+    if (param.id) Genres.get(param.id);
+    console.log("testar vad genrecontroller:", $scope.genre)
     // --- slut ---------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //
