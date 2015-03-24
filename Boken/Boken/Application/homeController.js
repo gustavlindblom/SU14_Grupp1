@@ -1,6 +1,5 @@
 // controller for home.html
 app.controller("homeController", ["$scope", "Books", "Ratings", function ($scope, Books, Ratings) {
-
     // lyssna på gotBooks
     $scope.$on("gotBooks", function (event, data) {
         $scope.books = data;
@@ -10,32 +9,16 @@ app.controller("homeController", ["$scope", "Books", "Ratings", function ($scope
     // lyssna på gotRatings
     $scope.$on("gotRatings", function (event, data) {
         $scope.ratings = data;
-        console.log(data);
-        var topThreeBooks = [];
-        for (var rating in data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3)) {
-            console.log("rating: ", rating, "avgrating: ", rating.AverageRating);
-            if (topThreeBooks.Length < 3) {
-                for (var book in Books) {
-                    if (book.Id == rating.Id) {
-                        topThreeBooks.push(Books.Id);
-                    }
+        var topThreeRatings = data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3);
+        var topThreeBooks = []
+        topThreeRatings.forEach(function (rating) {
+            console.log(rating);
+            $scope.books.forEach(function (book) {
+                if (book.RatingId == rating.Id) {
+                    topThreeBooks.push(book);
                 }
-
-            }
-
-        }
-
-        //var topThreeRatings = data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3);
-
-        //topThreeRatings.forEach(function (rating) {
-        //    $scope.books.forEach(function (book) {
-        //        console.log("book: ", book, " rating: ", rating);
-        //        if (book.RatingId == rating.Id) {
-        //            console.log("kommer vi hit?", book.RatingId, rating.Id);
-        //            topThreeBooks.push(book);
-        //        }
-        //    });
-        //});
+            });
+        });
         console.log(topThreeBooks);
     });
 

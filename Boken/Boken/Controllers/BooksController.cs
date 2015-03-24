@@ -109,6 +109,19 @@ namespace Boken.Controllers
             modified.Year = book.Year;
             db.Entry(modified).State = EntityState.Modified;
 
+            // Being dumb, I can't get this to work any other way. So, right now
+            // I clear the DB of all genre/author couplings related to the book
+            // and then add all from the frontend.
+            // -Gustav
+            var genreCouplings = db.BookGenreCouplings.Where(x => x.BookId == book.Id);
+            var authorCouplings = db.BookAuthorCouplings.Where(x => x.BookId == book.Id);
+
+            foreach (BookGenreCoupling bgc in genreCouplings) db.BookGenreCouplings.Remove(bgc);
+            foreach (BookAuthorCoupling bac in authorCouplings) db.BookAuthorCouplings.Remove(bac);
+
+            foreach (Genre genre in book.Genres) db.BookGenreCouplings.Add(new BookGenreCoupling() { GenreId = genre.Id, BookId = book.Id });
+            foreach (Author author in book.Authors) db.BookAuthorCouplings.Add(new BookAuthorCoupling() { AuthorId = author.Id, BookId = book.Id });
+
             try
             {
                 db.SaveChanges();
