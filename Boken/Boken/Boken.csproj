@@ -264,6 +264,7 @@
     <Content Include="Partials\booklist.html" />
     <Content Include="Partials\createAuthor.html" />
     <Content Include="Partials\createBook.html" />
+    <Content Include="Partials\createGenre.html" />
     <Content Include="Partials\Error.html" />
     <Content Include="Partials\footer.html" />
     <Content Include="Partials\genrelist.html" />
@@ -327,7 +328,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\pageformController.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\services.js" />

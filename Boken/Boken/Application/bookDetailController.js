@@ -10,12 +10,19 @@
     });
     Books.get(param.id);
 
-    //$scope.$on("gotGenre", function (event, data) {
-    //    $scope.genre = data;
-    //});
+    $scope.$on("gotGenres", function (event, data) {
+        $scope.genres = data;
 
-    //Genres.get();
-    //console.log($scope.genre);
+        console.log("genres i boketail wowokwko", $scope.genres);
+    });
+
+    Genres.get();
+
+    $scope.$on("gotAuthors", function (event, data) {
+        $scope.authors = data;
+    });
+
+    Authors.get();
 
     $scope.$on("gotRating", function (event, data) {
         console.log("Rating: ", data);
@@ -59,6 +66,31 @@
 
     //-------------------------//
 
+    $scope.newGenres = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addGenre = function (genre) {
+
+        if ($scope.newGenres.indexOf(genre) >= 0) {
+            return;
+        }
+        else {
+            $scope.newGenres.push(genre);
+        }
+        console.log($scope.newGenres);
+    };
+
+    $scope.newAuthors = [];
+    // ---- lägg till en ny inputrad varje gång man trycker på "plus tecknet" ----- //
+    $scope.addAuthor = function (author) {
+
+        if ($scope.newAuthors.indexOf(author) >= 0) {
+            return;
+        }
+        else {
+            $scope.newAuthors.push(author);
+        }
+        console.log($scope.newAuthors);
+    };
 
 
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
@@ -83,6 +115,9 @@
 
     //---------skapa ny -------//
     $scope.create = function () {
+        $scope.book.Genres = $scope.newGenres;
+        $scope.book.Authors = $scope.newAuthors;
+        console.log("rewqrwq", $scope.book)
         Books.post($scope.book);
         $modalInstance.close();
     };
