@@ -1,9 +1,21 @@
-<div ng-controller="homeController">
+﻿<!--<div ng-controller="homeController">
     <div style="height: 305px; width:400px; margin-left:50vh;">
         <carousel interval="myInterval">
             <slide ng-repeat="slide in slides" active="slide.active">
                 <img ng-src="{{slide.image}}" style="margin:auto;">
             </slide>
         </carousel>
+    </div>
+</div>-->
+
+<div class="row">
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail" ng-click="open(0, book, 0)" ng-repeat="book in topThreeBooks">
+            <img src={{book.ImagePath}}>
+            <div class="caption">
+                <h5>{{book.Title}}</h5>
+                <p ng-repeat="author in book.Authors">{{author.Name}}</p> 
+            </div>
+        </div>
     </div>
 </div>

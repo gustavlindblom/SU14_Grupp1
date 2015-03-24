@@ -1,5 +1,5 @@
 // controller for home.html
-app.controller("homeController", ["$scope", "Books", "Ratings", function ($scope, Books, Ratings) {
+app.controller("homeController", ["$scope", "Books", "Ratings", "$modal", function ($scope, Books, Ratings, $modal) {
 
     // lyssna på gotBooks
     $scope.$on("gotBooks", function (event, data) {
@@ -11,35 +11,75 @@ app.controller("homeController", ["$scope", "Books", "Ratings", function ($scope
     $scope.$on("gotRatings", function (event, data) {
         $scope.ratings = data;
         console.log(data);
-        var topThreeBooks = [];
-        for (var rating in data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3)) {
-            console.log("rating: ", rating, "avgrating: ", rating.AverageRating);
-            if (topThreeBooks.Length < 3) {
-                for (var book in Books) {
-                    if (book.Id == rating.Id) {
-                        topThreeBooks.push(Books.Id);
-                    }
+        $scope.topThreeBooks = [];
+        var topThreeRatings = data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3);
+        // bygger arrayen 3 topratade books
+        topThreeRatings.forEach(function (rating) {
+            $scope.books.forEach(function (book) {
+                if (book.Rating.Id == rating.Id) {
+                    $scope.topThreeBooks.push(book);
                 }
+            });
+        });
+        console.log($scope.topThreeBooks);
 
-            }
-
-        }
-
-        //var topThreeRatings = data.sort(function (a, b) { return b.AverageRating - a.AverageRating; }).slice(0, 3);
-
-        //topThreeRatings.forEach(function (rating) {
-        //    $scope.books.forEach(function (book) {
-        //        console.log("book: ", book, " rating: ", rating);
-        //        if (book.RatingId == rating.Id) {
-        //            console.log("kommer vi hit?", book.RatingId, rating.Id);
-        //            topThreeBooks.push(book);
-        //        }
-        //    });
-        //});
-        console.log(topThreeBooks);
     });
 
+    $scope.open = function (view, book, action, size) {
+        console.log("book", book, "view", view);
 
+        if (book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            id: book.Id,
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+            modalInstance.result.then(function (selectedItem) {
+                //$route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+        if (!book) {
+            var modalInstance = $modal.open({
+                templateUrl: 'partials/bookDetail.html',
+                controller: 'bookDetailController',
+                //size: size,
+                resolve: {
+                    param: function () {
+                        params = {
+                            view: view,
+                            action: action
+                        }
+                        console.log("param:", params)
+                        return params;
+                    }
+                }
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+                console.log("Kommer vi hit någon  gång gång?");
+                $route.reload();
+                $scope.selected = selectedItem;
+            }, function () {
+
+            });
+        }
+
+
+    };
     //var imagePath = '/Content/Image/';
 
     //var images = [imagePath + 'saganomringen.jpg', imagePath + 'anglarodemoner.jpg', imagePath + 'davinci.jpg', imagePath + 'Det.jpg'];
