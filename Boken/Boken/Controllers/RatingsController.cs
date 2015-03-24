@@ -54,7 +54,10 @@ namespace Boken.Controllers
                 return BadRequest();
             }
 
-            db.Entry(rating).Entity.TotalRating = rating.TotalRating;
+            // We assume the rating object sent from the front end is a skeleton
+            // containing only the ID and last rating of the book, therefore
+            // we can increment both the total rating and votes respectively
+            db.Entry(rating).Entity.TotalRating += rating.TotalRating;
             db.Entry(rating).Entity.Votes++;
             db.Entry(rating).State = EntityState.Modified;
 

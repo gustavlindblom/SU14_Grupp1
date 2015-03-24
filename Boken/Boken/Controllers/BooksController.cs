@@ -122,14 +122,25 @@ namespace Boken.Controllers
 
         // POST: api/Books
         [ResponseType(typeof(Book))]
-        public IHttpActionResult PostBook(Book book)
+        public IHttpActionResult PostBook(BookDetailDTO book)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Books.Add(book);
+            var rating = new Rating() { TotalRating = 0, Votes = 0 };
+            db.Ratings.Add(rating);
+            db.SaveChanges();
+            Book toAdd = new Book() { Title = book.Title, RatingId = rating.Id, Summary = book.Summary, Price = book.Price, InStock = book.InStock, ISBN = book.ISBN, Year = book.Year };
+
+            db.Books.Add(toAdd);
+            db.SaveChanges();
+
+            foreach (Genre genre in book.Genres)
+                db.BookGenreCouplings.Add(new BookGenreCoupling() { BookId = toAdd.Id, GenreId = genre.Id });
+            foreach (Author author in book.Authors)
+                db.BookAuthorCouplings.Add(new BookAuthorCoupling() { BookId = toAdd.Id, AuthorId = author.Id });
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = book.Id }, book);
