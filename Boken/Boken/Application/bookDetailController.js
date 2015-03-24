@@ -30,19 +30,12 @@
     });
     // --- slut ---------------//
 
-    // --- Sätt ett betyg på en bok --- //
-    $scope.rate;
 
-    $scope.hoveringOver = function (value) {
-        $scope.overStar = value;
-        console.log("vad är värder?", $scope.overStar);
-    };
     $scope.setRating = function () {
-        newRating = { Id: $scope.rating.Id, TotalRating: $scope.rate };
+        newRating = { Id: $scope.rating.Id, TotalRating: $scope.rating.AverageRating };
         Ratings.put(newRating.Id, newRating);
         Ratings.get(newRating.Id);
     }
-
 
     // --- spara & Avbryt knapparnas funktioner -- //
     //     stänger även ner modalen 
