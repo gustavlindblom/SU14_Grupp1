@@ -81,7 +81,7 @@
         if (id == 2) { $scope.view = [id]; }
         if (id == 3) { $scope.view = [id]; }
         if (id == 4) { $scope.view = [id]; }
-        if (id == 5) { $scope.view = $scope.action; }
+        //if (id == 5) { $scope.view = $scope.action; }
     };
     // --- slut ---------------------//
 
