@@ -99,7 +99,15 @@ namespace Boken.Controllers
                 return BadRequest();
             }
 
-            db.Entry(book).State = EntityState.Modified;
+            var modified = db.Books.FirstOrDefault(x => x.Id == book.Id);
+            modified.ImagePath = book.ImagePath;
+            modified.InStock = book.InStock;
+            modified.ISBN = book.ISBN;
+            modified.Price = book.Price;
+            modified.Summary = book.Summary;
+            modified.Title = book.Title;
+            modified.Year = book.Year;
+            db.Entry(modified).State = EntityState.Modified;
 
             try
             {
