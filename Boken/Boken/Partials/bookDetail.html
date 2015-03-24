@@ -121,16 +121,8 @@
             <label for="bookSummary">Sammanfattning:</label>
             <textarea type="text" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
         </div>
-        <!--<div class="form-group dropdown" dropdown is-open="status.isopen" ng-controller="authorlistController">
-            <label for="bookGenre">Författare:</label>
-            <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" ng-model="author.Name" dropdown-toggle ng-disabled="disabled"></span>
-            <div id="addAuthorId">
-                <li ng-repeat="author in addAuthors">{{author.Name}}&nbsp;</li>
-            </div>
-            <ul class="dropdown-menu cursor" role="menu">
-                <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
-            </ul>
-        </div>-->
+
+        <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
         <div class="form-group dropdown" dropdown is-open="status2.isopen">
             <label for="bookAuthor">Författare:</label>
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
@@ -142,10 +134,8 @@
             </ul>
         </div>
 
-
-
-                <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
-
+               
+        <!--Här läggs till ny vald genre varje gång du trycker på plus(glyphicon)-->
         <div class="form-group dropdown" dropdown is-open="status.isopen">
             <label for="bookGenre">Genre:</label>            
             <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled" ></span>
