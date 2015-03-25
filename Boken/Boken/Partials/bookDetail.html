@@ -197,7 +197,7 @@
                     ISBN:
                     <span class="errorColor" ng-show="createForm.isbnField.$error.maxlength || createForm.isbnField.$invalid">Ange ett giltligt ISBN</span>
                 </label>
-                <input type="number" name="isbnField" placeholder="ISBN..." ng-minlength="10" ng-maxlength="20" class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
+                <input type="number" name="isbnField" placeholder="ISBN..." ng-minlength="13" ng-maxlength="13" class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
             </div>
 
             <div class="form-group">
@@ -222,7 +222,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button ng-disabled="!book.Summary || !book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
+            <button ng-disabled="newAuthors.length == 0 ||newGenres.length == 0 || !book.Summary || !book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
             <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
         </div>
     </div>
