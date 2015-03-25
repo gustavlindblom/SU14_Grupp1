@@ -148,6 +148,7 @@ footer {
     background-color: #abd3f6;
     max-height: 350px;
     min-height: 350px;
+    margin: 0 2px 0 2px;
 }
 
 .oneThumbnail {
