@@ -26,56 +26,44 @@ body {
 
 /* bakgrund och border på navbaren*/
 .navbar-default {
-  background-color: #fdfdfd;
-  border-color: #b0b0b0;
+    background-color: #fdfdfd;
+    border-color: #b0b0b0;
 }
-/* startsida objektet*/
-/*
-.navbar-default .navbar-brand {
-  color: #000000;
-  font-weight:700;
-  font-size:20px; 
-  height:50px;  
-} */
-/* huvudobjekten i navbar */
-.navbar-default .navbar-nav > li > a {
-    color: #000000;
+    /* startsida objektet*/
+
+    /* huvudobjekten i navbar */
+    .navbar-default .navbar-nav > li > a {
+        color: #000000;
         font-weight: 500;
+    }
+        /* Hover på rubrikerna*/
+        .navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+    background-color:#428bca;
+        }
+    /*skapa ny-knappen*/
+    .navbar-default .navbar-nav > .open > li,
+    .navbar-default .navbar-nav > .open > li:hover,
+    .navbar-default .navbar-nav > .open > li:focus {
+        background-color: #428bca;
+    }
+/* ändra färg på pilen i dropdownknapparna*/
+header .nav .caret{
+    border-top: 4px solid #000000;
 }
-/* sista objektet i navbaren
-.navbar-default .navbar-nav > li:last-child > a .caret{
-    
-    color:#000000;
-} */
-/* Hover på rubrikerna*/
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus
-/*.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus */ {
-            background-color: #428bca;
-}
-/*skapa ny-knappen*/
-.navbar-default .navbar-nav > .open > li, 
-.navbar-default .navbar-nav > .open > li:hover, 
-.navbar-default .navbar-nav > .open > li:focus {
-   background-color: #428bca; 
-} 
-/* radfokus i dropdownknappar
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  
-  background-color: #428bca;
-} */
-
 /* centrerar menyn på stor skärm */
+@media (min-width: 768px) {
 .navbar .navbar-nav {
-  display: inline-block;
-  float: none;
-  vertical-align: top;
+    display: inline-block;
+    float: none;
+    vertical-align: top;
 }
-
-.navbar .navbar-collapse { /*  Denna flyttar även texten i dropdown, behöver fixas */
-  text-align: center;
+    .navbar{ 
+    text-align: center;
+}
+    .navbar li {
+        text-align: left;
+    }
 }
 
 
@@ -85,20 +73,16 @@ body {
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
         color: #000000;
     }
-    /* Dropdown bakgrundsfärg vid hover */
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        background-color: #428bca;
-    }
-    /*huvudobjekten*/
-    .navbar-default .navbar-nav > li > a {
-        width: 200px; /*   för att göra objekten större för att lättare klicka på dem, behöver jobbas lite till*/
-    }
+        /* Dropdown bakgrundsfärg vid hover */
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+        .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+            background-color: #428bca;
+        }
     /*flyttar hamburgaren till vänster sida*/
     .navbar-toggle {
-	    float: left;
+        float: left;
         margin-left: 20px;
-	}
+    }
 }
 /*-----Header slut    -------*/
 
@@ -148,6 +132,7 @@ footer {
     background-color: #abd3f6;
     max-height: 350px;
     min-height: 350px;
+    margin: 0 2px 0 2px;
 }
 
 .oneThumbnail {
