@@ -13,13 +13,13 @@
             </p>
         </div>
         <div class="panel-body">
-            <div class="table-responsive">
+            <div class="">
                 <table class="table">
 
                     <thead>
                         <tr>
                             <th>Genre</th>
-                            <th>Utdrag</th>
+                            <th ng-class ="{true: 'hideWhenXs', false: ''}[loggedin == 1]">Utdrag</thng-class>
                             <th ng-show="loggedin == 1">Ändra</th>
                             <th ng-show="loggedin == 1">Ta bort</th>
                         </tr>
@@ -29,7 +29,7 @@
                             <td ng-click="open(0, genre, 0)">
                                 {{genre.Name}}
                             </td>
-                            <td ng-click="open(0, genre, 0)">
+                            <td ng-click="open(0, genre, 0)" ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">
                                 {{genre.Description | limitTo: 110}}...
                             </td>
 
