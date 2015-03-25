@@ -18,17 +18,17 @@
                 <thead>
                     <tr>
                         <th>Författare</th>
-                        <th>Biografi</th>
+                        <th ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">Biografi</th>
                         <th ng-show="loggedin == 1">Ändra</th>
                         <th ng-show="loggedin == 1">Ta bort</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr class="listFocus cursor" ng-repeat="author in pagArr">
-                        <td ng-click="open(0, author, 0)">
+                        <td ng-click="open(0, author, 0)" >
                             {{author.Name}}
                         </td>
-                        <td ng-click="open(0, author, 0)">
+                        <td ng-click="open(0, author, 0)" ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">
                             {{author.Biography | limitTo: 110}}...
                         </td>
                         <td class="" ng-show="loggedin == 1">

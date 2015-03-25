@@ -84,6 +84,11 @@ header .nav .caret{
         margin-left: 20px;
     }
 }
+@media  (max-width:480px) {
+    .hideWhenXs {
+        display: none;
+    }
+}
 /*-----Header slut    -------*/
 
 /*Main*/
@@ -149,11 +154,14 @@ footer {
 .thumbnailImg {
     width: 140px;
     border-radius: 5px;
+    height: 220px;
 }
 
 .errorColor{
     color:rgba(255,0,0,0.8);
 }
+
+
 
 .errorBackground{
     color:rgba(255,0,0,0.5);

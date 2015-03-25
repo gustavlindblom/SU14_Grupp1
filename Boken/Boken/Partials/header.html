@@ -2,7 +2,7 @@
     <div class="container-fluid ">
         <!-- Startsida och toggle-knapp -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+            <button type="button" class="navbar-toggle" ng-click="navCollapse()">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -12,9 +12,9 @@
         </div>
 
         <!-- Innehåll som blir togglat på små skärmar -->
-        <div class="navbar-collapse" ng-class="{collapse: isCollapsed}">
+        <div class="navbar-collapse" ng-class="{true: 'collapse', false: ''}[isCollapsed]">
             <ul class="nav navbar-nav cursor">
-                <li><a ng-click="GoTo('index.html')">Startsida</a></li>
+                <li class="bajs"><a ng-click="GoTo('index.html')">Startsida</a></li>
                 <li><a ng-click="GoTo('/authors')">Författare</a></li>
                 <li><a ng-click="GoTo('/books')">Böcker</a></li>
                 <li><a ng-click="GoTo('/genres')">Genre</a></li>
@@ -23,7 +23,7 @@
                 <li ng-if="loggedin == 1" dropdown on-toggle="toggled(open)">
                     <a class="dropdown" dropdown-toggle>Skapa ny <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-click="createNewBook(4,4)">Bok</a></li>
+                        <li><a ng-click="createNewBook(4,4)" ng-click="isCollapsed = !isCollapsed">Bok</a></li>
                         <li><a ng-click="createNewGenre(4,4)">Genre</a></li>
                         <li><a ng-click="createNewAuthor(4,4)">Författare</a></li>
                     </ul>
@@ -33,9 +33,9 @@
                 <li dropdown on-toggle="toggled(open)">
                     <a class="dropdown" dropdown-toggle> {{DDtext}} <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a ng-if="loggedin == 0" ng-click="loginStatus(1)">Admin</a></li>
-                        <li><a ng-if="loggedin == 0" ng-click="loginStatus(2)">Lager</a></li>
-                        <li><a ng-if="loggedin > 0" ng-click="loginStatus(0)">Logga ut</a></li>
+                        <li><a ng-if="loggedin == 0" ng-click="loginStatus(1); isCollapsed = !isCollapsed;">Admin</a></li>
+                        <li><a ng-if="loggedin == 0" ng-click="loginStatus(2); isCollapsed = !isCollapsed;">Lager</a></li>
+                        <li><a ng-if="loggedin > 0" ng-click="loginStatus(0); isCollapsed = !isCollapsed;">Logga ut</a></li>
                     </ul>
                 </li>
             </ul>

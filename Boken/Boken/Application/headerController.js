@@ -1,8 +1,17 @@
 ﻿app.controller('headerController', ['$scope', '$location', 'Login', '$modal', "Genres", "Authors", "Books", function ($scope, $location, Login, $modal, Genres, Authors, Books) {
-    $scope.loginStatus = Login.loginStatus;
+    $scope.isCollapsed = true;
+    $scope.loginStatus = function (status) {
+        Login.loginStatus(status);
+        $scope.navCollapse();
+    };
+
+    $scope.navCollapse = function () {
+        $scope.isCollapsed = !$scope.isCollapsed;
+    }
 
     $scope.GoTo = function (url) {
         $location.url(url);
+        $scope.navCollapse();
     }
 
     $scope.open = function (id) {
@@ -19,7 +28,7 @@
 
             }
         });
-        }
+                }
         else if (id == "author")
         {
             var modalInstance = $modal.open({
@@ -49,6 +58,7 @@
         }, function () {
 
         });
+        $scope.navCollapse();
     };
     // --------------------------------------//
    
@@ -80,6 +90,7 @@
         }, function () {
 
         });
+        $scope.navCollapse();
     };
     //---------Slut ---- -------------------//
 
@@ -109,6 +120,7 @@
         }, function () {
 
         });
+        $scope.navCollapse();
     };
     //------------ slut ------------------//
 
@@ -138,14 +150,15 @@
         }, function () {
 
         });
+        $scope.navCollapse();
     };
     //------------ slut ------------------//
 
-    function HeaderController($scope, $location) {
-        $scope.isActive = function (viewLocation) {
-            return viewLocation === $location.path();
-        };
-    }
+    // function HeaderController($scope, $location) {
+    //    $scope.isActive = function (viewLocation) {
+    //        return viewLocation === $location.path();
+    //    };
+    //} 
 
 
 
