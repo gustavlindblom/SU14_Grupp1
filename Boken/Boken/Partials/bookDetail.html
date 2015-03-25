@@ -143,8 +143,11 @@
                 <input type="text" name="titleField" ng-minlength="1" ng-maxlength="50" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" />
             </div>
             <div class="form-group">
-                <label for="bookSummary">Sammanfattning:</label>
-                <textarea type="text" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
+                <label for="bookSummary">
+                    Sammanfattning:
+                    <span class="errorColor" ng-show="createForm.summaryField.$error.maxlength || createForm.summaryField.$invalid">Ange en giltlig beskrivning</span>
+                </label>
+                <textarea type="text" name="summaryField" ng-maxlength="255" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
             </div>
 
             <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
@@ -211,7 +214,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button ng-disabled="!book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
+            <button ng-disabled="!book.Summary || !book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
             <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
         </div>
     </div>
