@@ -65,6 +65,27 @@
 
     //-------------------------//
 
+    $scope.currDate = new Date().getFullYear();
+
+
+    //--------testar validation--------//
+   
+
+    $scope.validationYear = function (data) {
+        var _thisYear = new Date().getFullYear();
+
+        console.log(data);
+
+        if (data.length != 4) return "This is not valid!";
+        if (!data.match(/\d{4}/)) return "This is not valid!";
+        if (parseInt(data) > _thisYear || parseInt(data) < 1600)
+            return "Not valid!";
+        return "This is valid!";
+    };
+
+
+    //-------------------------//
+
    
 
     $scope.removeSelectGenre = function (selectedRemove) {

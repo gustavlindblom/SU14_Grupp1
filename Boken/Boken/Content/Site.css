@@ -146,3 +146,11 @@ footer{
    left:50%;
 
 }
+
+.errorColor{
+    color:rgba(255,0,0,0.8);
+}
+
+.errorBackground{
+    color:rgba(255,0,0,0.5);
+}
