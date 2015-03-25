@@ -9,13 +9,14 @@
         Ratings.get(data.Rating.Id);
         $scope.newAuthors = $scope.book.Authors;
         $scope.newGenres = $scope.book.Genres;
+
+        console.log("ewqe", $scope.book);
     });
     Books.get(param.id);
 
     $scope.$on("gotGenres", function (event, data) {
         $scope.genres = data;
 
-        console.log("genres i boketail wowokwko", $scope.genres);
     });
 
     Genres.get();
@@ -69,7 +70,7 @@
 
 
     //--------testar validation--------//
-   
+
 
     $scope.validationYear = function (data) {
         var _thisYear = new Date().getFullYear();
