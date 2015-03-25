@@ -9,6 +9,7 @@
     </h3>
 
 </div>
+
 <!-- redigerings- & skapa nytt läge -->
 <div ng-if="view == 1 || view == 4">
 
@@ -17,16 +18,16 @@
             <form name="form" novalidate>
                 <label for="genreName">
                     Titel
-                    <span style="color:red" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
-                    <span class="error" ng-show="form.N.$error.minlength"> (Titeln måste vara minst 4 tecken.)</span>
+                    <span class="text-danger" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
+                    <span class="text-warning" ng-show="form.N.$error.minlength ||form.N.$error.maxlength "> Titeln måste vara mellan 4 och 50 tecken!</span>
                 </label>
-                <input type="text" class="form-control" name="N" ng-model="genre.Name" required ng-minlength="4" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+                <input type="text"  class="form-control" name="N" ng-model="genre.Name" ng-required="true" ng-minlength="4" ng-maxlength="75" placeholder="Titel..." style="font-style:italic;" id="genreName" />
 
                 <label for="genreDescription">
                     Beskrivning
-                    <span style="color:red" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
+                    <span class="text-warning" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
                 </label>
-                <textarea type="text " class="form-control" style="resize:none; font-style:italic; " ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
+                <textarea type="text" rows="4" class="form-control" style="resize:none; font-style:italic;" ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
             </form>
         </div>
     </div>
