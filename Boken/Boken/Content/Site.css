@@ -54,20 +54,21 @@ header .nav .caret{
 }
 /* centrerar menyn på stor skärm */
 @media (min-width: 768px) {
-    .navbar .navbar-nav {
-        display: inline-block;
-        float: none;
-        vertical-align: top;
-    }
+.navbar .navbar-nav {
+  display: inline-block;
+  float: none;
+  vertical-align: top;
+}
     .navbar{ 
-        text-align: center;
-    }
+  text-align: center;
+}
     .navbar li {
         text-align: left;
     }
 }
 
-/* anpassat utseende vid lite skärm*/
+
+/* anpassat utseende vid liten skärm*/
 @media (max-width: 767px) {
     /* Dropdown text */
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -126,3 +127,26 @@ footer{
    left:50%;
 
 }
+/* Thumbnails (används bara på home.html */
+.thumbnail {
+    border-color: black;
+    display: inline-block;
+    width: 150px;
+    background-color: #abd3f6;
+}
+.oneThumbnail {
+    display: inline;
+    border-color: black;
+    width: 20px;
+}
+
+.caption {
+    text-align:center;
+    text-wrap: normal;
+}
+
+.thumbnailImg {
+    width: 140px;
+    border-radius: 5px;
+}
+/* Slut thumbnails */
