@@ -22,14 +22,14 @@
             <div class="form-group">
                 <label ng-if="loggedin == 1" for="bookTitle">
                     Titel:
-                    <span class="errorColor" ng-show="editForm.titleField.$error.maxlength || editForm.titleField.$error.required">Ange en giltlig titel</span>
+                    <span class="text-danger" ng-show="editForm.titleField.$error.maxlength || editForm.titleField.$error.required">Ange en giltlig titel</span>
                 </label>
                 <input ng-if="loggedin == 1" name="titleField" ng-maxlength="75" type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" ng-required="true" />
             </div>
             <div class="form-group">
                 <label for="bookSummary">
                     Sammanfattning:
-                    <span class="errorColor" ng-show="editForm.summaryField.$error.maxlength">Max 255 tecken</span>
+                    <span class="text-danger" ng-show="editForm.summaryField.$error.maxlength">Max 255 tecken</span>
                 </label>
                 <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="255" type="text" class="form-control" ng-model="book.Summary" style="height:100px;font-style:italic; resize:none;" id="bookSummary"></textarea>
                 <div ng-if="loggedin == 2" class="well well-lg">{{book.Summary}}</div>
@@ -39,7 +39,7 @@
             <div class="form-group dropdown" dropdown is-open="status3.isopen">
                 <label for="bookAuthor">Författare:</label>
                 <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-                <span class="errorColor" ng-if="authors.length == 0 || newAuthors.length == 0">Ange minst en författare</span>
+                <span class="text-danger" ng-if="authors.length == 0 || newAuthors.length == 0">Ange minst en författare</span>
                 <ul id="addAuthorId">
                     <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
                 </ul>
@@ -52,7 +52,7 @@
             <div class="form-group dropdown" dropdown is-open="status4.isopen">
                 <label for="bookGenre">Genre:</label>
                 <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-                <span class="errorColor" ng-if="genres.length == 0 || newGenres.length == 0">Ange minst en genre</span>
+                <span class="text-danger" ng-if="genres.length == 0 || newGenres.length == 0">Ange minst en genre</span>
                 <ul id="addGenreId">
                     <li ng-repeat="genre in newGenres">{{genre.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectGenre(genre)"></span></li>
                 </ul>
@@ -68,7 +68,7 @@
             <div class="form-group">
                 <label for="bookYear">
                     Utgivningsår:
-                    <span class="errorColor" ng-show="editForm.yearField.$error.maxlength || editForm.yearField.$invalid">Ange ett giltligt år</span>
+                    <span class="text-danger" ng-show="editForm.yearField.$error.maxlength || editForm.yearField.$invalid">Ange ett giltligt år</span>
                 </label>
                 <input ng-if="loggedin == 1" name="yearField" type="number" ng-minlength="1" ng-maxlength="4" max="{{currDate}}" placeholder="ÅÅÅÅ" class="form-control" min="0" ng-model="book.Year" style="font-style:italic; width:200px;" id="bookYear" />
                 <p ng-if="loggedin == 2">{{book.Year}}</p>
@@ -77,16 +77,16 @@
             <div class="form-group">
                 <label for="bookISBN">
                     ISBN:
-                    <span class="errorColor" ng-show="editForm.isbnField.$error.maxlength || editForm.isbnField.$invalid">Ange ett giltligt ISBN</span>
+                    <span class="text-danger" ng-show="editForm.isbnField.$error.maxlength || editForm.isbnField.$invalid">Ange ett giltligt ISBN</span>
                 </label>
-                <input ng-if="loggedin == 1" name="isbnField" type="text" ng-maxlength="13" ng-minlength="13" min="0" placeholder="ISBN" class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
+                <input ng-if="loggedin == 1" name="isbnField" type="text" ng-maxlength="13" ng-minlength="13" min="0" placeholder="13 siffror..." class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
                 <p ng-if="loggedin == 2">{{book.ISBN}}</p>
             </div>
 
             <div class="form-group">
                 <label for="bookPrice">
                     Pris:
-                    <span class="errorColor" ng-show="editForm.priceField.$error.maxlength || editForm.priceField.$invalid">Ange ett giltligt Pris</span>
+                    <span class="text-danger" ng-show="editForm.priceField.$error.maxlength || editForm.priceField.$invalid">Ange ett giltligt Pris</span>
                 </label>
                 <input ng-if="loggedin == 1" type="number" name="priceField" placeholder="SEK..." class="form-control" ng-minlength="1" ng-maxlength="4" min="0" ng-model="book.Price" style="font-style:italic;" id="bookPrice" />
                 <p ng-if="loggedin == 2">{{book.Price}}</p>
@@ -95,7 +95,7 @@
             <div class="form-group">
                 <label for="bookInStock">
                     I lager:
-                    <span class="errorColor" ng-show="editForm.stockField.$error.maxlength || editForm.stockField.$invalid">Du angav fel</span>
+                    <span class="text-danger" ng-show="editForm.stockField.$error.maxlength || editForm.stockField.$invalid">Du angav fel</span>
                 </label>
                 <input type="number" name="stockField" ng-minlength="1" ng-maxlength="5" min="0" placeholder="Antal..." class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock" />
             </div>
