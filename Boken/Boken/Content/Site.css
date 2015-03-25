@@ -127,8 +127,6 @@ footer {
 /* Thumbnails (används bara på home.html */
 .thumbnail {
     border-color: black;
-    display: inline-block;
-    width: 150px;
     background-color: #abd3f6;
     max-height: 350px;
     min-height: 350px;
@@ -136,12 +134,15 @@ footer {
 }
 
 .oneThumbnail {
-    display: inline;
+    width: 90%;
+    min-width: 150px;
+    margin: 0 auto;
     border-color: black;
+    
+    text-align: center;
 }
 
 .caption {
-    text-align: center;
     text-wrap: normal;
 }
 

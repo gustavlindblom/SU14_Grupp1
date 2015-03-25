@@ -7,14 +7,17 @@
         </carousel>
     </div>
 </div>-->
-
-<div class="row col-md-offset-3">
-    <div class="thumbnail col-sm-6 col-md-2" ng-click="open(0, book, 0)" ng-repeat="book in topThreeBooks">
-        <div class="oneThumbnail">
-            <img class="thumbnailImg" src={{book.ImagePath}}>
-            <div class="caption">
-                <h5><strong>{{book.Title}}</strong></h5>
-                <p ng-repeat="author in book.Authors">{{author.Name}}</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-offset-4 col-sm-offset-0 col-md-offset-3">
+            <div class="thumbnail  col-xs-6 col-sm-3 col-md-3" ng-click="open(0, book, 0)" ng-repeat="book in topThreeBooks">
+                <div class="oneThumbnail">
+                    <img class="thumbnailImg" src={{book.ImagePath}}>
+                    <div class="caption">
+                        <h5><strong>{{book.Title}}</strong></h5>
+                        <p ng-repeat="author in book.Authors">{{author.Name}}</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
