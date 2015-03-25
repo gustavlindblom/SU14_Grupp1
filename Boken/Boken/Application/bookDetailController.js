@@ -69,7 +69,7 @@
 
 
     //--------testar validation--------//
-   
+
 
     $scope.validationYear = function (data) {
         var _thisYear = new Date().getFullYear();
