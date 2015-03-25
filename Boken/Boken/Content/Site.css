@@ -80,7 +80,7 @@ body{
 }
 
 
-/* anpassat utseende vid lite skärm*/
+/* anpassat utseende vid liten skärm*/
 @media (max-width: 767px) {
     /* Dropdown text */
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -146,3 +146,26 @@ footer{
    left:50%;
 
 }
+/* Thumbnails (används bara på home.html */
+.thumbnail {
+    border-color: black;
+    display: inline-block;
+    width: 150px;
+    background-color: #abd3f6;
+}
+.oneThumbnail {
+    display: inline;
+    border-color: black;
+    width: 20px;
+}
+
+.caption {
+    text-align:center;
+    text-wrap: normal;
+}
+
+.thumbnailImg {
+    width: 140px;
+    border-radius: 5px;
+}
+/* Slut thumbnails */
