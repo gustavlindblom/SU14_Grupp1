@@ -7,15 +7,14 @@ html {
 /*------------*/
 
 /*Body*/
-body{
+body {
     min-height: 100%;
     padding-top: 60px;
     margin-bottom: 60px;
-    background-image:url("/Content/Image/bakgrund.jpeg");
+    background-image: url("/Content/Image/bakgrund.jpeg");
     background-size: 400px;
-    background-repeat:no-repeat;
-    background-position:left;
-
+    background-repeat: no-repeat;
+    background-position: left;
 }
 
 /*------------*/
@@ -41,7 +40,7 @@ body{
 /* huvudobjekten i navbar */
 .navbar-default .navbar-nav > li > a {
     color: #000000;
-    font-weight:500;
+        font-weight: 500;
 }
 /* sista objektet i navbaren
 .navbar-default .navbar-nav > li:last-child > a .caret{
@@ -52,9 +51,8 @@ body{
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus
 /*.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus */
- {
-    background-color:#428bca;
+.navbar-default .navbar-brand:focus */ {
+            background-color: #428bca;
 }
 /*skapa ny-knappen*/
 .navbar-default .navbar-nav > .open > li, 
@@ -75,12 +73,13 @@ body{
   float: none;
   vertical-align: top;
 }
-.navbar   .navbar-collapse {  /*  Denna flyttar även texten i dropdown, behöver fixas */
+
+.navbar .navbar-collapse { /*  Denna flyttar även texten i dropdown, behöver fixas */
   text-align: center;
 }
 
 
-/* anpassat utseende vid lite skärm*/
+/* anpassat utseende vid liten skärm*/
 @media (max-width: 767px) {
     /* Dropdown text */
     .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -90,61 +89,80 @@ body{
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
         background-color: #428bca;
-        
-        
     }
     /*huvudobjekten*/
     .navbar-default .navbar-nav > li > a {
-    
-        width:200px;  /*   för att göra objekten större för att lättare klicka på dem, behöver jobbas lite till*/
+        width: 200px; /*   för att göra objekten större för att lättare klicka på dem, behöver jobbas lite till*/
     }
     /*flyttar hamburgaren till vänster sida*/
     .navbar-toggle {
 	    float: left;
-        margin-left:20px;
+        margin-left: 20px;
 	}
 }
 /*-----Header slut    -------*/
 
 /*Main*/
-.mainbody{
-    margin-top:50px;
+.mainbody {
+    margin-top: 50px;
 }
 
 /*------------*/
 
 /*Footer*/
-footer{
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:50px;
-    background-color:black;
-    display:block;
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50px;
+    background-color: black;
+    display: block;
 }
 
-#footerText{
-    
-    color:white;
+#footerText {
+    color: white;
 }
 
 /*------------*/
 
 /*Övrigt*/
 .listFocus:hover {
-    background-color:ButtonFace;
+    background-color: ButtonFace;
 }
 
 .cursor {
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.center{ 
-   position:fixed;
-   top:50%;
-   left:50%;
+.center {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+/* Thumbnails (används bara på home.html */
+.thumbnail {
+    border-color: black;
+    display: inline-block;
+    width: 150px;
+    background-color: #abd3f6;
+    max-height: 350px;
+    min-height: 350px;
+}
 
+.oneThumbnail {
+    display: inline;
+    border-color: black;
+}
+
+.caption {
+    text-align: center;
+    text-wrap: normal;
+}
+
+.thumbnailImg {
+    width: 140px;
+    border-radius: 5px;
 }
 
 .errorColor{
