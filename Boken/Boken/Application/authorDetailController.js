@@ -1,4 +1,4 @@
-﻿app.controller("authorDetailController", ["$scope", "Authors", "$modalInstance", "$modal","param", function ($scope, Authors, $modalInstance, $modal, param) {
+﻿app.controller("authorDetailController", ["$scope", "Authors", "$modalInstance", "$modal", "param", function ($scope, Authors, $modalInstance, $modal, param) {
 
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
@@ -15,7 +15,9 @@
 
     $scope.save = function () {
         Authors.put($scope.author.Id, $scope.author);
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
 
     $scope.cancel = function () {
@@ -64,7 +66,9 @@
     $scope.create = function () {
         Authors.post($scope.author);
         console.log("kommer detta före total items?");
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
     // ----------slut ------------------//
 
@@ -73,6 +77,10 @@
     $scope.delete = function () {
         try {
             Authors.delete($scope.author.Id);
+            $scope.$on("reloadList", function () {
+                $modalInstance.close();
+            });
+
         }
         catch (err) {
         }
@@ -98,7 +106,6 @@
         if (id == 2) { $scope.view = [id]; }
         if (id == 3) { $scope.view = [id]; }
         if (id == 4) { $scope.view = [id]; }
-        //if (id == 5) { $scope.view = $scope.action; }
     };
     // --- slut ---------------------//
 

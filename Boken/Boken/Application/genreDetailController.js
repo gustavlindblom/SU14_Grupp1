@@ -34,7 +34,9 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
 
     $scope.save = function () {
         Genres.put($scope.genre.Id, $scope.genre);
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
 
     $scope.cancel = function () {
@@ -65,7 +67,9 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     //---------skapa ny -------//
     $scope.create = function () {
         Genres.post($scope.genre);
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
     // ----------slut ------------------//
 
@@ -74,6 +78,9 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.delete = function () {
         try {
             Genres.delete($scope.genre.Id);
+            $scope.$on("reloadList", function () {
+                $modalInstance.close();
+            });
         }
         catch (err) {
         }

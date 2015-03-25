@@ -96,10 +96,16 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
-        <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
-        <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
-        <button class="btn btn-warning" ng-click="editView(action)">Nej</button>
+        <div ng-show="msg">
+            <alert ng-show="msg" type="danger" close="msg = ''">Någonting gick fel. Errorcode {{thrownError}}: {{msg}}</alert>
+            <button class="btn btn-warning" ng-click="editView(action)">Tillbaka</button>
+        </div>
+        <div ng-show="!msg">
+            <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
+            <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
+            <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
+            <button class="btn btn-warning" ng-click="editView(action)">Nej</button>
+        </div>
     </div>
 </div>
 <!-- ------------------------------------------->
