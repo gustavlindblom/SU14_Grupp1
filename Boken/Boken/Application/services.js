@@ -37,7 +37,8 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 data: data,
                 responseType: "json"
             }).success(function (data) {
-
+                $rootScope.thrownError = "";
+                $rootScope.msg = "";
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
@@ -46,6 +47,10 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 // (all "listeners" have now recieved our stringified data)
             }).error(function (data, thrownError) {
                 console.log("Errormessage: ", data, thrownError);
+                if (method == "GET") {
+                    $location.url('/error');
+                }
+
                 var msg = "";
                 if (thrownError == 401) {
                     msg = "unauthorized";
@@ -71,8 +76,10 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
 
                 $rootScope.thrownError = thrownError;
                 $rootScope.msg = msg;
-                console.log(msg);
-                $location.path('/error');
+
+                setTimeout(function () {
+                    $rootScope.$broadcast("gotError");
+                }, 200);
             });
 
             //return true for logical purposes in the controller

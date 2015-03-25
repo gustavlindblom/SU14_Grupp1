@@ -13,8 +13,10 @@
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </button>
 </div>
+
 <!-- redigeringsläge -->
 <form name="editForm" novalidate>
+
     <div ng-if="view == 1 || view == 4">
         <div class="modal-body">
             <div class="form-group">
@@ -163,95 +165,6 @@
     </div>
 </div>
 <!-- ------------------->
-<!-- Skapa nyttläge -->
-<!--<form name="createForm" novalidate>
-    <div ng-if="view == 4">
-        <div class="modal-body">
-            <div class="form-group">
-                <label for="bookTitle">
-                    Titel:
-                    <span class="errorColor" ng-show="createForm.titleField.$error.maxlength || createForm.titleField.$invalid">Ange en giltlig titel</span>
-                </label>
-                <input type="text" name="titleField" ng-minlength="1" ng-maxlength="50" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" />
-            </div>
-            <div class="form-group">
-                <label for="bookSummary">
-                    Sammanfattning:
-                    <span class="errorColor" ng-show="createForm.summaryField.$error.maxlength || createForm.summaryField.$invalid">Ange en giltlig beskrivning</span>
-                </label>
-                <textarea type="text" name="summaryField" ng-maxlength="255" placeholder="Sammanfattning..." style="height:100px; font-style:italic;" class="form-control" ng-model="book.Summary" id="bookSummary"></textarea>
-            </div>-->
-
-            <!--Här läggs till ny vald author varje gång du trycker på plus(glyphicon)-->
-            <!--<div class="form-group dropdown" dropdown is-open="status6.isopen">
-                <label for="bookAuthor">Författare:</label>
-                <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-                <ul id="addAuthorId">
-                    <li ng-repeat="author in newAuthors">{{author.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectAuthor(author)"></span></li>
-                </ul>
-
-                <ul class="dropdown-menu cursor" role="menu">
-                    <li ng-repeat="author in authors" ng-click="addAuthor(author)">{{author.Name}}&nbsp;</li>
-                </ul>
-            </div>-->
-
-
-            <!--Här läggs till ny vald genre varje gång du trycker på plus(glyphicon)-->
-            <!--<div class="form-group dropdown" dropdown is-open="status.isopen">
-                <label for="bookGenre">Genre:</label>
-                <span class="dropdown-toggle glyphicon glyphicon-plus listFocus" dropdown-toggle ng-disabled="disabled"></span>
-                <ul id="addGenreId">
-                    <li ng-repeat="genre in newGenres">{{genre.Name}}&nbsp;<span class="glyphicon glyphicon-minus listFocus" ng-click="removeSelectGenre(genre)"></span></li>
-                </ul>
-                <ul class="dropdown-menu cursor" role="menu">
-                    <li ng-repeat="genre in genres" ng-click="addGenre(genre)">{{genre.Name}}</li>
-                </ul>
-            </div>
-
-            <div class="form-group">
-                <label for="bookYear">
-                    Utgivningsår:
-                    <span class="errorColor" ng-show="createForm.yearField.$error.maxlength || createForm.yearField.$invalid">Ange ett giltligt år</span>
-                </label>
-                <input type="number" name="yearField" max="{{currDate}}" style="width:200px;" ng-maxlength="4" min="0" placeholder="ÅÅÅÅ" ng-model="book.Year" class="form-control" style="font-style:italic;" id="bookYear" />
-            </div>
-
-            <div class="form-group">
-                <label for="bookISBN">
-                    ISBN:
-                    <span class="errorColor" ng-show="createForm.isbnField.$error.maxlength || createForm.isbnField.$invalid">Ange ett giltligt ISBN</span>
-                </label>
-                <input type="number" name="isbnField" placeholder="ISBN..." ng-minlength="13" ng-maxlength="13" class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
-            </div>
-
-            <div class="form-group">
-                <label for="bookPrice">
-                    Pris:
-                    <span class="errorColor" ng-show="createForm.priceField.$error.maxlength || createForm.priceField.$invalid">Ange ett giltligt Pris</span>
-                </label>
-                <input type="number" name="priceField" placeholder="SEK..." class="form-control" ng-minlength="1" ng-maxlength="4" ng-model="book.Price" style="font-style:italic;" id="bookPrice" />
-            </div>
-            <div class="form-group">
-                <label for="bookInStock">
-                    I lager:
-                    <span class="errorColor" ng-show="createForm.stockField.$error.maxlength || createForm.stockField.$invalid">Du angav fel</span>
-                </label>
-                <input type="number" name="stockField" ng-minlength="1" ng-maxlength="5" placeholder="Antal..." class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock" />
-            </div>
-            <div class="form-group">
-                <label>
-                    Image path:
-                </label>
-                <input type="text" placeholder="Path..." class="form-control" ng-model="book.ImagePath" style="font-style:italic;" id="bookImagePath" />
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button ng-disabled="newAuthors.length == 0 ||newGenres.length == 0 || !book.Summary || !book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
-            <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
-        </div>
-    </div>
-</form>-->
-<!-- ------------------->
 <!-- ----- Delete ------->
 
 <div ng-if="view == 3">
@@ -335,10 +248,16 @@
         </div>
     </div>
     <div class="modal-footer">
-        <button ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
-        <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
-        <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
-        <button class="btn btn-warning" ng-click="editView(action)">Nej</button>
+        <div ng-show="msg">
+            <alert ng-show="msg" type="danger" close="msg = ''">Någonting gick fel. Errorcode {{thrownError}}: {{msg}}</alert>
+            <button class="btn btn-warning" ng-click="editView(action)">Tillbaka</button>
+        </div>
+        <div ng-show="!msg">
+            <button ng-disable="!msg" ng-if="action == 1" class="btn btn-primary" ng-click="save()">Ja</button>
+            <button ng-if="action == 3" class="btn btn-primary" ng-click="delete()">Ja</button>
+            <button ng-if="action == 4" class="btn btn-primary" ng-click="create()">Ja</button>
+            <button class="btn btn-warning" ng-click="editView(action)">Nej</button>
+        </div>
     </div>
 </div>
 <!-- ------------------------------------------->

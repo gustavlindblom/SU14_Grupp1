@@ -38,7 +38,6 @@ app.config(["$routeProvider", "$locationProvider", function($routeProvider, $loc
       })
       .when("/error", {
           templateUrl: "partials/error.html",
-          //controller: "headerController"
       })
     .otherwise({
       redirectTo: "/"

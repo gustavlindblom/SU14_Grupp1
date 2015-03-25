@@ -1,5 +1,4 @@
 ﻿app.controller("bookDetailController", ["$scope", "Books", "Authors", "Genres", "Ratings", "$modalInstance", "param", function ($scope, Books, Authors, Genres, Ratings, $modalInstance, param) {
-
     $scope.view = param.view; // sätter viken vy som ska visas.
     $scope.action = param.view; // talar om vilken handling användaren vill utföra i modalen
     $scope.book = {};
@@ -49,7 +48,9 @@
         $scope.book.Genres = $scope.newGenres;
         $scope.book.Authors = $scope.newAuthors;
         Books.put($scope.book.Id, $scope.book);
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
 
     $scope.cancel = function () {
@@ -157,7 +158,9 @@
         $scope.book.Authors = $scope.newAuthors;
         console.log("rewqrwq", $scope.book)
         Books.post($scope.book);
-        $modalInstance.close();
+        $scope.$on("reloadList", function () {
+            $modalInstance.close();
+        });
     };
     // ----------slut ------------------//
 
@@ -166,6 +169,9 @@
     $scope.delete = function () {
         try {
             Books.delete($scope.book.Id);
+            $scope.$on("reloadList", function () {
+                $modalInstance.close();
+            });
         }
         catch (err) {
         }
