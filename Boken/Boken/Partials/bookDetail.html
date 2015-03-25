@@ -178,7 +178,7 @@
                     Utgivningsår:
                     <span class="errorColor" ng-show="createForm.yearField.$error.maxlength || createForm.yearField.$invalid">Ange ett giltligt år</span>
                 </label>
-                <input type="number" name="yearField" max="{{currDate}}" ng-maxlength="4" min="0" placeholder="ÅÅÅÅ" ng-model="book.Year" class="form-control" style="font-style:italic;" id="bookYear" />
+                <input type="number" name="yearField" max="{{currDate}}" style="width:200px;" ng-maxlength="4" min="0" placeholder="ÅÅÅÅ" ng-model="book.Year" class="form-control" style="font-style:italic;" id="bookYear" />
             </div>
 
             <div class="form-group">
@@ -211,7 +211,7 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
+            <button ng-disabled="!book.Year || !book.InStock || !book.Price || !book.Title" class="btn btn-primary" ng-click="editView(2); editText()">Skapa</button>
             <button class="btn btn-warning" ng-click="cancel()">Avbryt</button>
         </div>
     </div>
