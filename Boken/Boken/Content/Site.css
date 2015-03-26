@@ -144,3 +144,7 @@ footer {
     border-radius: 5px;
     height: 220px;
 }
+/* sätter storlek på + i listorna */
+.glyphicon-plus {
+    font-size: 15px;
+}
