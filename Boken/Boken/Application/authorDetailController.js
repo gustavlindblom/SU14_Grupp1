@@ -5,7 +5,6 @@
 
     // Fetch author information from the database
     $scope.$on("gotAuthor", function (event, data) {
-        console.log("Got author: ", data)
         $scope.author = data;
     });
     if ($scope.view != 4) Authors.get(param.id); // Fetch data only if we're not in Create-mode
