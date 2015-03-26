@@ -2,20 +2,18 @@
 <div class="center" ng-if="!genres"><span us-spinner></span></div>
 <!-- ----------- -->
 
-
 <div class="container-fluid ">
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
         <div class="panel-heading">
+            <h2>Genre</h2>
             <p>
-                Genre
                 <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
             </p>
         </div>
         <div class="panel-body">
             <div class="">
                 <table class="table">
-
                     <thead>
                         <tr>
                             <th>Genre</th>
@@ -45,14 +43,15 @@
                 </table>
             </div>
         </div>
-        <!-- Panel footer -->
 
+        <!-- Panel footer -->
         <div class="panel-footer">
             <div class="col-md-12 text-center">
                 <pagination total-items="totalItems" ng-model="bigCurrentPage" ng-change="pageChanged(this)" max-size="5" class="pagination-sm" boundary-links="true" rotate="true" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" items-per-page="itemsPP"></pagination>
             </div>
         </div>
         <!-- footer slut -->
+
     </div>
 </div>
 

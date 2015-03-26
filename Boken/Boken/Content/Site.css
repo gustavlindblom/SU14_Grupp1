@@ -17,31 +17,19 @@ body {
     background-position: left;
 }
 
-/*------------*/
-
-/* --- Header --- 
-.header {
-   height:50px;
-}*/
-
-/* bakgrund och border på navbaren*/
 .navbar-default {
     background-color: #fdfdfd;
     border-color: #b0b0b0;
 }
-    /* startsida objektet*/
 
-    /* huvudobjekten i navbar */
-    .navbar-default .navbar-nav > li > a {
-        color: #000000;
-        font-weight: 500;
-    }
-        /* Hover på rubrikerna*/
-        .navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
+.navbar-default .navbar-nav > li > a {
+    color: #000000;
+    font-weight: 500;
+}
+.navbar-default .navbar-nav > li > a:hover,
+    .navbar-default .navbar-nav > li > a:focus {
     background-color:#428bca;
-        }
-    /*skapa ny-knappen*/
+}
     .navbar-default .navbar-nav > .open > li,
     .navbar-default .navbar-nav > .open > li:hover,
     .navbar-default .navbar-nav > .open > li:focus {
@@ -90,6 +78,10 @@ header .nav .caret{
     }
 }
 /*-----Header slut    -------*/
+
+.panel-heading {
+    height: 120px;
+}
 
 /*Main*/
 .mainbody {
