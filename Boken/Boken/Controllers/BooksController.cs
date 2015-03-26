@@ -180,6 +180,7 @@ namespace Boken.Controllers
             foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id)) db.BookGenreCouplings.Remove(bgc);
             foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id)) db.BookAuthorCouplings.Remove(bac);
 
+            db.Ratings.Remove(db.Ratings.Find(book.RatingId));
             db.Books.Remove(book);
             db.SaveChanges();
 
