@@ -31,7 +31,7 @@
                     Sammanfattning:
                     <span class="text-danger" ng-show="editForm.summaryField.$error.maxlength">Max 255 tecken</span>
                 </label>
-                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="255" type="text" class="form-control" ng-model="book.Summary" style="height:100px;font-style:italic; resize:none;" id="bookSummary"></textarea>
+                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="500" type="text" class="form-control" ng-model="book.Summary" style="height:100px;font-style:italic; resize:none;" id="bookSummary"></textarea>
                 <div ng-if="loggedin == 2" class="well well-lg">{{book.Summary}}</div>
             </div>
 
