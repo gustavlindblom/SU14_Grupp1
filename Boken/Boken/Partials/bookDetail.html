@@ -3,9 +3,6 @@
     <span ng-if=" view == 4"><strong>Skapa en ny Bok</strong></span>
     <span ng-if=" view == 3">Vill du radera <strong>{{book.Title}}</strong>?</span>
 
-    <button class="btn btn-default pull-right" ng-click="cancel()">
-        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-    </button>
     <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
         <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
     </button>

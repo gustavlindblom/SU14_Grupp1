@@ -1,13 +1,13 @@
-// controller for home.html
+ï»¿// controller for home.html
 app.controller("homeController", ["$scope", "Books", "Ratings", "$modal", function ($scope, Books, Ratings, $modal) {
 
-    // lyssna på gotBooks
+    // lyssna pÃ¥ gotBooks
     $scope.$on("gotBooks", function (event, data) {
         $scope.books = data;
         Ratings.get();
     });
 
-    // lyssna på gotRatings
+    // lyssna pÃ¥ gotRatings
     $scope.$on("gotRatings", function (event, data) {
         $scope.ratings = data;
         $scope.topThreeBooks = [];

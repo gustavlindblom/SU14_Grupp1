@@ -68,7 +68,7 @@
     // Toggle between different views
     $scope.editView = function (id) {
         if (id == 0) { $scope.view = [id]; } // Read
-        if (id == 1) { $scope.view = [id]; } // Edit
+        if (id == 1) { $scope.view = [id]; $scope.action = 1; } // Edit
         if (id == 2) { $scope.view = [id]; } // Confirmation
         if (id == 3) { $scope.view = [id]; } // Delete
         if (id == 4) { $scope.view = [id]; } // Create

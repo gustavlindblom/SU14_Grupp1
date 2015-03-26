@@ -1,4 +1,4 @@
-app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "$modal", "param", function ($scope, Genres, $modalInstance, $modal, param) {
+ï»¿app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "$modal", "param", function ($scope, Genres, $modalInstance, $modal, param) {
     $scope.view = param.view; // Set which CRUD-based view will be shown in  the modal
     $scope.action = param.view; // Only changes if the user changes what s/he wants to do in the modal
     $scope.genre = {};
@@ -56,7 +56,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         text += "genren "
 
         var text2 = "";
-        if (a != 3) text2 = "med följande innehåll?"
+        if (a != 3) text2 = "med fÃ¶ljande innehÃ¥ll?"
         if (a == 3) text2 = "och alla dess referenser permanent?";
         if (a == 4) text2 = "med dessa uppgifter?";
         $scope.text2 = text2;
@@ -66,7 +66,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     // Toggle between different views
     $scope.editView = function (id) {
         if (id == 0) { $scope.view = [id]; } // Read
-        if (id == 1) { $scope.view = [id]; } // Edit
+        if (id == 1) { $scope.view = [id]; $scope.action = 1; } // Edit
         if (id == 2) { $scope.view = [id]; } // Confirmation
         if (id == 3) { $scope.view = [id]; } // Delete
         if (id == 4) { $scope.view = [id]; } // Create
