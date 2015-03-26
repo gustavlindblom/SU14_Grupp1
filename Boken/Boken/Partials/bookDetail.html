@@ -22,7 +22,7 @@
             <div class="form-group">
                 <label ng-if="loggedin == 1" for="bookTitle">
                     Titel:
-                    <span class="text-danger" ng-show="editForm.titleField.$error.maxlength || editForm.titleField.$error.required">Ange en giltlig titel</span>
+                    <span class="text-danger" ng-show="editForm.titleField.$error.maxlength || editForm.titleField.$error.required"><span ng-show="editForm.titleField.$dirty || editForm.titleField.$error.invalid">Ange en giltlig titel</span></span>
                 </label>
                 <input ng-if="loggedin == 1" name="titleField" ng-maxlength="75" type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" ng-required="true" />
             </div>

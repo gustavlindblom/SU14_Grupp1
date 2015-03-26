@@ -19,9 +19,9 @@
                 <label for="genreName">
                     Titel
                     <span class="text-danger" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
-                    <span class="text-danger" ng-show="form.N.$error.minlength ||form.N.$error.maxlength "> Titeln måste vara mellan 4 och 50 tecken!</span>
+                    <span class="text-danger" ng-show="form.N.$error.minlength ||form.N.$error.maxlength "> Titeln måste vara mellan 4 och 25 tecken!</span>
                 </label>
-                <input type="text"  class="form-control" name="N" ng-model="genre.Name" ng-required="true" ng-minlength="4" ng-maxlength="75" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+                <input type="text"  class="form-control" name="N" ng-model="genre.Name" ng-required="true" ng-minlength="4" ng-maxlength="25" placeholder="Titel..." style="font-style:italic;" id="genreName" />
 
                 <label for="genreDescription">
                     Beskrivning
