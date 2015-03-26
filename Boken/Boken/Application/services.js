@@ -1,20 +1,6 @@
 
 app.service("restService", ["$http", "$rootScope", "$location", function ($http, $rootScope, $location) {
 
-    function checkData(data) {
-        console.log("typeof", typeof data);
-        if (typeof data == "String") {
-            try {
-                //try to convert string to JSON (JS object)
-                eval("data=" + data);
-                return data;
-            } catch (ee) {
-                //and if we fail, notify user
-                return false;
-            }
-        }
-    }
-
     var restServant = {
 
         restCall: function (url, method, data, broadcastName) {
