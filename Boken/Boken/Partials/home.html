@@ -17,7 +17,7 @@
                     <img class="thumbnailImg" src="{{topThreeBooks[1].ImagePath}}">
                     <div class="caption">
                         <h5><strong>{{topThreeBooks[1].Title}}</strong></h5>
-                        <p ng-repeat="author in topThreeBooks[1].book.Authors">{{topThreeBooks[1].Name}}</p>
+                        <p ng-repeat="author in topThreeBooks[1].Authors">{{author.Name}}</p>
                     </div>
                 </div>
             </div>
@@ -26,7 +26,7 @@
                     <img class="thumbnailImg" src="{{topThreeBooks[2].ImagePath}}">
                     <div class="caption">
                         <h5><strong>{{topThreeBooks[2].Title}}</strong></h5>
-                        <p ng-repeat="author in topThreeBooks[1].book.Authors">{{author.Name}}</p>
+                        <p ng-repeat="author in topThreeBooks[2].Authors">{{author.Name}}</p>
                     </div>
                 </div>
             </div>
