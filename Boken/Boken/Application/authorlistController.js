@@ -1,6 +1,12 @@
 ﻿app.controller("authorlistController", ["$scope", "Authors", "$modal", "$log", "$route", function ($scope, Authors, $modal, $log, $route) {
+    // Pagination properties
+    $scope.pagArr = [];
+    $scope.bigCurrentPage = 1;
+    $scope.itemsPP = 5;
+    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
+    $scope.endshow = ($scope.startshow + $scope.itemsPP);
 
-    // -- Hämtar lista med författare -- //
+    // Fetch authors data from database
     $scope.$on("gotAuthors", function (event, data) {
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.authors = data;
@@ -8,31 +14,24 @@
         $scope.pagArr = $scope.authors.slice($scope.startshow, $scope.endshow);
     });
     Authors.get();
-    // --- slut ------------------------//
+
+    // Reload list when changes occur
     $scope.$on("reloadList", function (event, data) {
         $route.reload();
     });
 
-    //--- Början på paginering ---------//
-    $scope.pagArr = [];
-    $scope.bigCurrentPage = 1;
-    $scope.itemsPP = 5;
-    $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
-    $scope.endshow = ($scope.startshow + $scope.itemsPP);
-
+    // Slice the complete array and display only the ones
+    // in the current page
     $scope.pageChanged = function (currScope) {
         $scope.bigCurrentPage = currScope.bigCurrentPage;
         $scope.startshow = ($scope.bigCurrentPage - 1) * $scope.itemsPP;
         $scope.endshow = ($scope.startshow + $scope.itemsPP);
         $scope.pagArr = $scope.authors.slice($scope.startshow, $scope.endshow);
     }
-    // --- slut på paginering ----------//
 
-    // ----- Modal -------------------- //
-
+    // Open a detail view of an author
     $scope.open = function (view, author, action) {
-        console.log("author", author, "view", view);
-
+        // The user pressed on an exisiting author, either to view edit or delete
         if (author) {
             var modalInstance = $modal.open({
                 templateUrl: 'partials/authorDetail.html',
@@ -44,7 +43,6 @@
                             view: view,
                             action: action
                         }
-                        console.log("param:", params)
                         return params;
                     }
                 }
@@ -56,6 +54,7 @@
 
             });
         }
+        // The user wants to add a new author
         if (!author) {
             var modalInstance = $modal.open({
                 templateUrl: 'partials/authorDetail.html',
@@ -79,11 +78,7 @@
 
             });
         }
-
-
     };
-    //---------Slut Modal -------------------//
-
 }]);
 
 
