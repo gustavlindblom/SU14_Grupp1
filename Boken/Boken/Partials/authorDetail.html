@@ -60,14 +60,16 @@
 
 <div ng-if="view == 3">
     <div class="modal-body">
-        <div class="form-group">
-            <label for="authorName">Titel</label>
-            <span type="text" class="form-control" style="font-style:italic;" id="authorName">{{author.Name}}</span>
+        <div>
+            <label>Namn &nbsp;</label>
+            <span type="text">{{author.Name}}</span>
         </div>
-        <div class="form-group">
-            <label for="authorBiography">Biografi</label>
-            <span type="text " class="form-control" style="font-style:italic;" id="authorBiography">{{author.Biography}}</span>
+
+        <div>
+            <label>Sammanfattning:</label>
+            <div class="well well-lg">{{author.Biography}}</div>
         </div>
+
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" ng-click="editView(2); editText() ">Ja</button>
