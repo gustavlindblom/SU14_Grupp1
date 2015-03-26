@@ -117,6 +117,11 @@ footer {
     top: 50%;
     left: 50%;
 }
+input,
+textarea{
+    font-style:italic;
+}
+
 /* Thumbnails (används bara på home.html */
 .thumbnail {
     border-color: black;

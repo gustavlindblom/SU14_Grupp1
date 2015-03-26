@@ -15,8 +15,8 @@
             <!--Filter-->
             <div class="btn-group" style="display:inline-block; ">
                 <ul class="nav navbar-nav">
-                    <li><input type="text" ng-model="author" class="form-control" typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..." style="font-style:italic;  "></li>
-                    <li><input type="text" ng-model="genre" class="form-control" typeahead="genre.Name for genre in genres | filter:$viewValue | limitTo:8" placeholder="Skriv genre här..." style="font-style:italic;  "></li>
+                    <li><input type="text" ng-model="author" class="form-control " typeahead="author.Name for author in authors | filter:$viewValue | limitTo:8" placeholder="Sök på författare här..."></li>
+                    <li><input type="text" ng-model="genre" class="form-control" typeahead="genre.Name for genre in genres | filter:$viewValue | limitTo:8" placeholder="Skriv genre här..."></li>
                     <li><button type="button" class="btn btn-default" ng-click="filterBooks(author,genre)"><span class="glyphicon glyphicon-search"></span> </button></li>
                 </ul>
             </div>

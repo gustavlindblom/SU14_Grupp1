@@ -21,14 +21,14 @@
                     <span class="text-danger" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Det måste finnas en titel</span></span>
                     <span class="text-danger" ng-show="form.N.$error.minlength ||form.N.$error.maxlength "> Titeln måste vara mellan 4 och 25 tecken!</span>
                 </label>
-                <input type="text"  class="form-control" name="N" ng-model="genre.Name" ng-required="true" ng-minlength="4" ng-maxlength="25" placeholder="Titel..." style="font-style:italic;" id="genreName" />
+                <input type="text"  class="form-control" name="N" ng-model="genre.Name" ng-required="true" ng-minlength="4" ng-maxlength="25" placeholder="Titel..."  id="genreName" />
 
                 <label for="genreDescription">
                     Beskrivning
                     <span class="text-danger" ng-show="form.D.$dirty && form.D.$invalid"><span ng-show="form.N.$error.required">Beskrivning är för lång/ogiltlig</span></span>
                     <span class="text-danger" ng-show="form.D.$error.minlength ||form.D.$error.maxlength ">Det måste finnas en beskrivning</span>
                 </label>
-                <textarea type="text" rows="4" class="form-control" ng-minlength="1" ng-maxlength="255" style="resize:none; font-style:italic;" ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
+                <textarea type="text" rows="4" class="form-control" ng-minlength="1" ng-maxlength="255" style="resize:none;" ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
             </form>
         </div>
     </div>
