@@ -6,9 +6,11 @@
     <div class="panel panel-primary" ng-if="genres">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h2>Genre</h2>
             <p>
-                <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
+                <h2>
+                    Genre
+                    <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
+                </h2>
             </p>
         </div>
         <div class="panel-body">
@@ -17,7 +19,7 @@
                     <thead>
                         <tr>
                             <th>Genre</th>
-                            <th ng-class ="{true: 'hideWhenXs', false: ''}[loggedin == 1]">Utdrag</thng-class>
+                            <th ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">Utdrag</thng-class>
                             <th ng-show="loggedin == 1">Ändra</th>
                             <th ng-show="loggedin == 1">Ta bort</th>
                         </tr>

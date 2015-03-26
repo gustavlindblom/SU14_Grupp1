@@ -6,8 +6,12 @@
     <div class="panel panel-primary" ng-if="authors">
         <!-- Default panel contents -->
         <div class="panel-heading">
-            <h2>Författare</h2>
-            <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
+            <p>
+                <h2>
+                    Författare
+                    <span class="glyphicon glyphicon-plus cursor navbar-right" ng-show="loggedin == 1" ng-click="open(4); editText()" aria-hidden="true" />
+                </h2>
+            </p>
         </div>
         <div class="panel-body">
             <table class="table">
@@ -21,7 +25,7 @@
                 </thead>
                 <tbody>
                     <tr class="listFocus cursor" ng-repeat="author in pagArr">
-                        <td ng-click="open(0, author, 0)" >
+                        <td ng-click="open(0, author, 0)">
                             {{author.Name}}
                         </td>
                         <td ng-click="open(0, author, 0)" ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">
