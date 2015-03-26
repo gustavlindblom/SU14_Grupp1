@@ -55,7 +55,6 @@ app.controller("homeController", ["$scope", "Books", "Ratings", "$modal", functi
                             view: view,
                             action: action
                         }
-                        console.log("param:", params)
                         return params;
                     }
                 }
@@ -65,12 +64,8 @@ app.controller("homeController", ["$scope", "Books", "Ratings", "$modal", functi
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
-
             });
         }
-
-
     };
-
     Books.get();
 }]);

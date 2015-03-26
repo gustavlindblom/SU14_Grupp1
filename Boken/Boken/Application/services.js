@@ -19,18 +19,11 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
 
         restCall: function (url, method, data, broadcastName) {
             if (method != "GET" && method != "DELETE") {
-                //using a function only accessible INSIDE our service
-                //to check if data is valid
-                //data = checkData(data);             // kommenterade in detta (ns)
             }
             if (data === false) {
-                //if data is not valid (FALSE), return false
-                //$http({ url: "/partials/error.html"})
-                //$rootScope.GoTo("'/error'");
                 return false;
             }
 
-            //if data passed inspection, send our AJAX REST request
             $http({
                 url: "/api/" + url,
                 method: method,
@@ -42,11 +35,8 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
 
                 //om broadcastName har ett namn, använd det, annars "restSuccess"
                 broadcastName = broadcastName ? broadcastName : "restSuccess";
-                //console.log("restCall success: ", data, " now broadcasting on: ", broadcastName);
                 $rootScope.$broadcast(broadcastName, data);
-                // (all "listeners" have now recieved our stringified data)
             }).error(function (data, thrownError) {
-                console.log("Errormessage: ", data, thrownError);
                 if (method == "GET") {
                     $location.url('/error');
                 }
@@ -81,14 +71,9 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                     $rootScope.$broadcast("gotError");
                 }, 200);
             });
-
-            //return true for logical purposes in the controller
             return true;
         }
     };
-
-    //AngularJS services MUST return objects,
-    //which is why we had to build restServant
     return restServant;
 }]);
 
@@ -193,20 +178,17 @@ app.service("Login", ["$rootScope", function ($rootScope) {
 
             $rootScope.loggedin = [id];
             $rootScope.DDtext = "Admin";
-            console.log("Admin: " + $rootScope.loggedin);
             return $rootScope.loggedin;
         }
         else if (id == 2) {
 
             $rootScope.loggedin = [id];
             $rootScope.DDtext = "Lager"
-            console.log("Lager: " + $rootScope.loggedin);
             return $rootScope.loggedin;
         }
         else if (id == 0) {
             $rootScope.DDtext = "Logga in";
             $rootScope.loggedin = [id];
-            console.log("Logged out!");
             return $rootScope.loggedin;
         }
     };

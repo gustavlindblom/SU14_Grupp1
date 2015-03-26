@@ -25,6 +25,7 @@
     };
     //-------------------------//
 
+ 
     $scope.openBook = function (view, book, action) {
         var modalInstance = $modal.open({
             templateUrl: 'partials/bookDetail.html',
@@ -42,7 +43,8 @@
             }
         });
     }
-    // --- logik för att bestämma vad som skrivs ut i bekräftelse
+
+    // --- logik för att bestämma vad som skrivs ut i bekräftelse ---//
     $scope.text = "";
     $scope.text2 = "";
     $scope.editText = function () {
@@ -65,7 +67,6 @@
     //---------skapa ny -------//
     $scope.create = function () {
         Authors.post($scope.author);
-        console.log("kommer detta före total items?");
         $scope.$on("reloadList", function () {
             $modalInstance.close();
         });

@@ -6,11 +6,10 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.genres = data;
         $scope.totalItems = $scope.genres.length;
-        console.log("gotGenres rapporterar totalItems: ", $scope.totalItems);
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     });
     Genres.get();
-    // --- slut ------------------------//
+
     $scope.$on("reloadList", function (event, data) {
         $route.reload();
     });
@@ -28,21 +27,13 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
         $scope.endshow = ($scope.startshow + $scope.itemsPP);
         $scope.pagArr = $scope.genres.slice($scope.startshow, $scope.endshow);
     }
-    // --- slut på paginering ----------//
-
-
-
 
     // ----- Modal -------------------- //
-
     $scope.open = function ( view,  genre, action ) {
-        console.log("genre", genre, "view", view);
-
         if (genre) {
             var modalInstance = $modal.open({
                 templateUrl: 'partials/genreDetail.html',
                 controller: 'genreDetailController',
-                //size: size,
                 resolve: {
                     param: function () {
                         params = {
@@ -50,47 +41,35 @@ app.controller("genrelistController", ["$scope", "Genres", "$modal", "$log", "$r
                             view: view,
                             action: action
                         }
-                        console.log("param:", params)
                         return params;
                     }
                 }
             });
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon  gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
-
             });
         }
         if (!genre) {
              var modalInstance = $modal.open({
                     templateUrl: 'partials/genreDetail.html',
                     controller: 'genreDetailController',
-                    //size: size,
                     resolve: {
                         param: function () {
                             params = {
                                 view: view,
                                 action: action
                             }
-                            console.log("param:", params)
                             return params;
                         }
                     }
-                });
-            
+                });            
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon  gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
-
             });
         }
-
-
     };
-    //---------Slut Modal -------------------//
-
 }]);

@@ -8,8 +8,7 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         $scope.genre = data;
     });
     if (param.id) Genres.get(param.id);
-    console.log("testar vad genrecontroller:", $scope.genre)
-    // --- slut ---------------//
+    // ---------------------//
 
     // --- spara & Avbryt knapparnas funktioner -- //
     //     stänger även ner modalen 
@@ -25,7 +24,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
                         view: view,
                         action: action
                     }
-                    console.log("param:", params)
                     return params;
                 }
             }
@@ -42,7 +40,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
     };
-    //-------------------------//
 
     // --- logik för att bestämma vad som skrivs ut i bekräftelse
     $scope.text = "";
@@ -62,7 +59,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         $scope.text2 = text2;
         $scope.text = text;
     }
-    // ------------------------//
     
     //---------skapa ny -------//
     $scope.create = function () {
@@ -71,10 +67,8 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
             $modalInstance.close();
         });
     };
-    // ----------slut ------------------//
 
     // ----- Delete ------------------- //
-
     $scope.delete = function () {
         try {
             Genres.delete($scope.genre.Id);
@@ -86,8 +80,6 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         }
         $modalInstance.close();
     };
-
-    //---------Slut delete -------------//
 
     // --- togglar mellan olika vyer ---//
     /*
@@ -108,6 +100,4 @@ app.controller("genreDetailController", ["$scope", "Genres", "$modalInstance", "
         if (id == 4) { $scope.view = [id]; }
         //if (id == 5) { $scope.view = $scope.action; }
     };
-    // --- slut ---------------------//
-
 }]);

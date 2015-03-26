@@ -65,7 +65,6 @@
     }
 
     $scope.$on("gotAuthors", function (event, data) {
-        console.log("gotAuthors triggered : ", data);
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.authors = data;
     });
@@ -79,7 +78,6 @@
     };
 
     $scope.$on("gotGenres", function (event, data) {
-        console.log("gotGenres triggered: ", data);
         $scope.output = JSON.stringify(data, null, '\t'); 
         $scope.genres = data;
     });
@@ -101,30 +99,24 @@
             $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
             return;
         }
-        console.log("kommer in");
         $scope.books = allBooks;
         newBooksArr = [];
         var dataArr = $scope.books;
 
-
         for (var i = 0; i < dataArr.length; i++) 
         {
-            //console.log(dataArr[i]);
-            filter(dataArr[i], author, genre);
-    
+            filter(dataArr[i], author, genre);    
         }
-        console.log("den nya arr ", newBooksArr)
       
         $scope.books = newBooksArr;
-                // -- spara --- //
-                $scope.currentPage = 1;
-                $scope.totalItems = $scope.books.length;
-                $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
-                // --- ---- --- //
+        // -- spara --- //
+        $scope.currentPage = 1;
+        $scope.totalItems = $scope.books.length;
+        $scope.pagArr = $scope.books.slice(($scope.currentPage - 1) * $scope.numPerPage, $scope.currentPage * $scope.numPerPage);
+        // --- ---- --- //
     }
 
-    var filter = function (objekt, authorName, genreName) 
-            {
+    var filter = function (objekt, authorName, genreName) {
         if (authorName && genreName) {
             objekt.Authors.forEach(function (author) {
                 objekt.Genres.forEach(function (genre) {
@@ -148,8 +140,6 @@
     // ----- Modal -------------------- //
 
     $scope.open = function (view, book, action, size) {
-        console.log("book", book, "view", view);
-
         if (book) {
             var modalInstance = $modal.open({
                 templateUrl: 'partials/bookDetail.html',
@@ -162,17 +152,14 @@
                             view: view,
                             action: action
                         }
-                        console.log("param:", params)
                         return params;
                     }
                 }
             });
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
-
             });
         }
         if (!book) {
@@ -193,15 +180,12 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon  gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
 
             });
         }
-
-
     };
     //---------Slut Modal -------------------//
     Books.get();

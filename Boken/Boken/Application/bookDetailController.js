@@ -8,14 +8,11 @@
         Ratings.get(data.Rating.Id);
         $scope.newAuthors = $scope.book.Authors;
         $scope.newGenres = $scope.book.Genres;
-
-        console.log("ewqe", $scope.book);
     });
     Books.get(param.id);
 
     $scope.$on("gotGenres", function (event, data) {
         $scope.genres = data;
-
     });
 
     Genres.get();
@@ -27,7 +24,6 @@
     Authors.get();
 
     $scope.$on("gotRating", function (event, data) {
-        console.log("Rating: ", data);
         $scope.rating = data;
     });
     // --- slut ---------------//
@@ -43,8 +39,6 @@
     //     stänger även ner modalen 
 
     $scope.save = function () {
-        console.log($scope.newAuthors);
-        console.log($scope.newGenres);
         $scope.book.Genres = $scope.newGenres;
         $scope.book.Authors = $scope.newAuthors;
         Books.put($scope.book.Id, $scope.book);
@@ -76,8 +70,6 @@
     $scope.validationYear = function (data) {
         var _thisYear = new Date().getFullYear();
 
-        console.log(data);
-
         if (data.length != 4) return "This is not valid!";
         if (!data.match(/\d{4}/)) return "This is not valid!";
         if (parseInt(data) > _thisYear || parseInt(data) < 1600)
@@ -91,7 +83,6 @@
    
 
     $scope.removeSelectGenre = function (selectedRemove) {
-        console.log(selectedRemove);
         var index = $scope.newGenres.indexOf(selectedRemove);
         if (index > -1) {
             $scope.newGenres.splice(index, 1);
@@ -128,7 +119,6 @@
         else {
             $scope.newAuthors.push(author);
         }
-        console.log($scope.newAuthors);
     };
 
 
@@ -156,7 +146,6 @@
     $scope.create = function () {
         $scope.book.Genres = $scope.newGenres;
         $scope.book.Authors = $scope.newAuthors;
-        console.log("rewqrwq", $scope.book)
         Books.post($scope.book);
         $scope.$on("reloadList", function () {
             $modalInstance.close();

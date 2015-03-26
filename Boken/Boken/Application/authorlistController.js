@@ -5,7 +5,6 @@
         $scope.output = JSON.stringify(data, null, '\t');
         $scope.authors = data;
         $scope.totalItems = $scope.authors.length;
-        console.log("gotAuthors rapporterar totalItems: ", $scope.totalItems);
         $scope.pagArr = $scope.authors.slice($scope.startshow, $scope.endshow);
     });
     Authors.get();
@@ -38,7 +37,6 @@
             var modalInstance = $modal.open({
                 templateUrl: 'partials/authorDetail.html',
                 controller: 'authorDetailController',
-                //size: size,
                 resolve: {
                     param: function () {
                         params = {
@@ -52,7 +50,6 @@
                 }
             });
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
@@ -63,7 +60,6 @@
             var modalInstance = $modal.open({
                 templateUrl: 'partials/authorDetail.html',
                 controller: 'authorDetailController',
-                //size: size,
                 resolve: {
                     param: function () {
                         params = {
@@ -77,7 +73,6 @@
             });
 
             modalInstance.result.then(function (selectedItem) {
-                console.log("Kommer vi hit någon  gång gång?");
                 $route.reload();
                 $scope.selected = selectedItem;
             }, function () {
