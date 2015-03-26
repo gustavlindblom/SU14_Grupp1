@@ -30,8 +30,11 @@ namespace Boken.Migrations
                                 "är vid tidpunkten mycket känd för läsaren, och på detta sätt får läsaren en inlevelsefull känsla av hur fruktansvärt och mäktigt monstret är." },
                     new Author() { Id = 4, Name = "Niklas Gustavsson", Biography = "En av de absolut bästa författare någonsin, med sina inspirerande böcker så som: Ölrövhönans äventyr i vattnadalen,"+
                                 "Vilken öl i röven?. Niklas Gustavsson slutar aldrig förbrylla sina läsare med djupa, känslosamma berättelser om kärlek, BDSM och öl." },
-                    new Author() { Id = 5, Name = "Mikael Filipsson", Biography = "Skriver skitböcker. Vem köper dom?? Bränn möget." },
-                    new Author() { Id = 6, Name = "Lena PH", Biography = "Lena syr sina egna kläder." }
+                    new Author() { Id = 5, Name = "Lewis Carroll", Biography = "Född 27 januari 1832 i Daresbury." },
+                    new Author() { Id = 6, Name = "Miguel Cervantes", Biography = "Spansk, född 1547. Hans mest kända verk, Don Quixote är världskänd som en kultbok." },
+                    new Author() { Id = 7, Name = "George R.R. Martin", Biography = "George Raymond Richard Martin (även kallad GRRM), född 20 september 1948 i Bayonne, New Jersey, USA, är en amerikansk producent, manus-, fantasy- och science fiction-författare. 1979 belönades han med Nebulapriset för Sandkings och 1985 för Portraits of His Children." },
+                    new Author() { Id = 8, Name = "William Shakespeare", Biography = "William Shakespeare, född 1564 i Stratford-upon-Avon, Warwickshire, död 23 april 1616 i Stratford-upon-Avon, var en engelsk dramatiker, poet och skådespelare" },
+                    new Author() { Id = 9, Name = "Herman Melville", Biography = "Herman Melville, född 1 augusti 1819 i New York i New York, död 28 september 1891 i New York i New York, var en amerikansk romanförfattare och poet. Han är mest känd för sin roman Moby Dick (1851)." }
                 );
 
             // Genres
@@ -40,7 +43,7 @@ namespace Boken.Migrations
                     new Genre() { Id = 2, Name = "Thriller", Description = "Nagelbitare. Läs med vita silkeshandskar." },
                     new Genre() { Id = 3, Name = "Fantasy", Description = "Drakar, riddare och troll!" },
                     new Genre() { Id = 4, Name = "Historia", Description = "Faktaböcker om historia." },
-                    new Genre() { Id = 5, Name = "Asian Horror", Description = "scary"}
+                    new Genre() { Id = 5, Name = "Roman", Description = "Böcker som är bra, viktiga och tänder en gnista i kistan."}
                 );
 
             context.Ratings.AddOrUpdate(
@@ -59,46 +62,45 @@ namespace Boken.Migrations
 
             // Books
             context.Books.AddOrUpdate(
-                    new Book() { Id = 1, RatingId = 1, Title = "Sagan om Ringen", Year = 1948, Price = 49.9m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Sagan om ringen eller Härskarringen, i nyöversättning Ringarnas herre (originaltitel The Lord of the Rings), är en fantasyroman av J.R.R. Tolkien. Den utgavs på engelska för första gången 1954–1955 uppdelad i tre volymer med titlarna The Fellowship of the Ring, The Two Towers och The Return of the King. Tolkien hade redan 1937 i Bilbo, en hobbits äventyr, introducerat både härskarringen, och flera av huvudfigurerna i trilogin." },
-                    new Book() { Id = 2, RatingId = 2, Title = "Skånes Historia", Year = 1999, Price = 79.9m, ISBN = "345-371-251-121", InStock = 12, ImagePath = "http://www.esff.se/dok/dok_info/skane.gif", Summary = "Jäevlett vikte bog ti å läesa. Ellår iallafall glo på bildårna." },
-                    new Book() { Id = 3, RatingId = 3, Title = "Da Vinci Kodden", Year = 2006, Price = 69.9m, ISBN = "123-762-33-1274", InStock = 67, ImagePath = "/Content/Image/davinci.jpg", Summary = "Da Vinci-koden är en roman av den amerikanske författaren Dan Brown. Den följer en professor i religionssymbolik, Robert Langdon, som blir indragen i en mordutredning i Paris och upptäcker en kamp mellan Prieuré de Sion och Opus Dei över huruvida Jesus från Nasaret var gift och hade barn med Maria Magdalena." },
-                    new Book() { Id = 4, RatingId = 4, Title = "Änglar och Demoner", Year = 1004, Price = 69.9m, ISBN = "373-37-4532-136", InStock = 247, ImagePath = "/Content/Image/anglarodemoner.jpg", Summary = "Änglar och demoner är en bestseller-roman av den amerikanske författaren Dan Brown, utgiven 2000. Den handlar om Harvard-professorn Robert Langdon och dennes ständiga kamp mot klockan under jakten på en mördare tillhörande Illuminati" },
-                    new Book() { Id = 5, RatingId = 5, Title = "Det", Year = 1986, Price = 99.9m, ISBN = "532-234-137-1251", InStock = 12, ImagePath = "/Content/Image/Det.jpg", Summary = "Det (engelsk originaltitel It) är en roman från 1986 av Stephen King. Den gavs ut i svensk översättning 1987.[1] Boken har även filmatiserats." },
-                    new Book() { Id = 6, RatingId = 6, Title = "Att Filla eller att Fjonka", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." },
-                    new Book() { Id = 7, RatingId = 7, Title = "Angular pagination - eller, Hur jag fick min hjärnblödning", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." },
-                    new Book() { Id = 8, RatingId = 8, Title = "Filtrering är nog bara 1/2 scrum-poäng", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." },
-                    new Book() { Id = 9, RatingId = 9, Title = "Scrum-master är envåldshärskare, och hör sen!", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." },
-                    new Book() { Id = 10, RatingId = 10, Title = "Man äter aldrig kålrabbi, för han är inte b-juden", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." },
-                    new Book() { Id = 11, RatingId = 11, Title = "Vad fan är kålrabbi?", Year = 1948, Price = 9.99m, ISBN = "123-234-643-12", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Hobbitar är bara små på utsidan." }
+                    new Book() { Id = 1, RatingId = 1, Title = "Sagan om Ringen", Year = 1948, Price = 199m, ISBN = "1232346431254", InStock = 46, ImagePath = "/Content/Image/saganomringen.jpg", Summary = "Sagan om ringen eller Härskarringen, i nyöversättning Ringarnas herre (originaltitel The Lord of the Rings), är en fantasyroman av J.R.R. Tolkien. Den utgavs på engelska för första gången 1954–1955 uppdelad i tre volymer med titlarna The Fellowship of the Ring, The Two Towers och The Return of the King. Tolkien hade redan 1937 i Bilbo, en hobbits äventyr, introducerat både härskarringen, och flera av huvudfigurerna i trilogin." },
+                    new Book() { Id = 2, RatingId = 2, Title = "Skånes Historia", Year = 1999, Price = 69m, ISBN = "3453712511215", InStock = 12, ImagePath = "http://www.esff.se/dok/dok_info/skane.gif", Summary = "Jäevlett vikte bog ti å läesa. Ellår iallafall glo på bildårna." },
+                    new Book() { Id = 3, RatingId = 3, Title = "Da Vinci Kodden", Year = 2006, Price = 255m, ISBN = "1237623312744", InStock = 67, ImagePath = "/Content/Image/davinci.jpg", Summary = "Da Vinci-koden är en roman av den amerikanske författaren Dan Brown. Den följer en professor i religionssymbolik, Robert Langdon, som blir indragen i en mordutredning i Paris och upptäcker en kamp mellan Prieuré de Sion och Opus Dei över huruvida Jesus från Nasaret var gift och hade barn med Maria Magdalena." },
+                    new Book() { Id = 4, RatingId = 4, Title = "Änglar och Demoner", Year = 1004, Price = 209m, ISBN = "3733745321369", InStock = 247, ImagePath = "/Content/Image/anglarodemoner.jpg", Summary = "Änglar och demoner är en bestseller-roman av den amerikanske författaren Dan Brown, utgiven 2000. Den handlar om Harvard-professorn Robert Langdon och dennes ständiga kamp mot klockan under jakten på en mördare tillhörande Illuminati" },
+                    new Book() { Id = 5, RatingId = 5, Title = "Det", Year = 1986, Price = 99m, ISBN = "5322341371251", InStock = 12, ImagePath = "/Content/Image/Det.jpg", Summary = "Det (engelsk originaltitel It) är en roman från 1986 av Stephen King. Den gavs ut i svensk översättning 1987.[1] Boken har även filmatiserats." },
+                    new Book() { Id = 6, RatingId = 6, Title = "Alice i underlandet", Year = 1948, Price = 79m, ISBN = "1234323464312", InStock = 46, ImagePath = "/Content/Image/aliceinwonderland.jpg", Summary = "Alice i Underlandet, publicerad 1865. Boken handlar om den lilla flickan Alices äventyr i en värld som strider mot all logik. Den är Lewis Carrolls mest kända bok." },
+                    new Book() { Id = 7, RatingId = 7, Title = "Don Quixote", Year = 1948, Price = 9.99m, ISBN = "1235623464312", InStock = 46, ImagePath = "/Content/Image/donquixote.jpg", Summary = "Romanen är uppkallad efter sin huvudperson, en fattig adelsman som förläser sig på ärofyllda riddarromaner och därför drar ut i världen för att upprätthålla romanernas ideal. Han reser på sin hingst Rosinante, med sin väpnare, bonden Sancho Panza med målet att vinna kärleken av sin älskade Dulcinea. Dulcinea är det namn Don Quijote inbillat sig att hon bär; hennes riktiga namn är Aldonza. Detta är en ordvits; ett gammalt spanskt talesätt lyder, vilket skämtsamt antyder att hon blir vald till hjärtas dam för att ingen annan finns att få." },
+                    new Book() { Id = 8, RatingId = 8, Title = "Hamlet", Year = 1948, Price = 9.99m, ISBN = "1232653464312", InStock = 46, ImagePath = "/Content/Image/hamlet.jpg", Summary = "Prins Hamlet är son till den avlidne kungen och får snart höra av en vålnad att den nuvarande kungen, Claudius, har mördat fadern. Hamlet är osäker på om vålnaden har talat sanning och testar kungen genom att låtsas vara sinnessjuk och sätta upp en pjäs där mordet rekonstrueras. Kungens reaktion på pjäsen tolkar Hamlet som att denne är skyldig och beslutar sig för att hämnas." },
+                    new Book() { Id = 9, RatingId = 9, Title = "Moby Dick", Year = 1948, Price = 9.99m, ISBN = "1232433464312", InStock = 46, ImagePath = "/Content/Image/mobydick.jpg", Summary = "Romanen handlar om kapten Ahab, som blivit besatt av att jaga en vit kaskelot kallad Moby Dick. Kaptenen saknar ett ben, som han fick avslitet tidigare i sitt liv av samma val. Ahab är kapten ombord på Pequod, ett valfångstfartyg från ön Nantucket." },
+                    new Book() { Id = 10, RatingId = 10, Title = "The Hobbit", Year = 1948, Price = 9.99m, ISBN = "1234523464312", InStock = 46, ImagePath = "/Content/Image/The-hobbit.jpg", Summary = "Bokens huvudperson är den välbärgade hoben Bilbo Bagger, som bor i en hemtrevlig hoberhåla i jorden. Hober är 'små varelser, mindre än dvärgarna (och utan skägg) men betydligt större än lilleputtarna'. De flesta hober ogillar äventyr, och Bilbo är inget undantag." },
+                    new Book() { Id = 11, RatingId = 11, Title = "Game of Thrones", Year = 1948, Price = 9.99m, ISBN = "1232663464312", InStock = 46, ImagePath = "/Content/Image/gameofthrones.jpg", Summary = "Sju mäktiga dynastier kämpar för kontrollen över det mytiska landet Västeros. Robert Baratheon, kung över de sju konungarikena, rider till Vinterhed för att be sin gamle vän Lord Eddard Stark, tjäna som kungens hand, eller högsta tjänsteman." }
                 );
 
             // Book-Author couplings
             context.BookAuthorCouplings.AddOrUpdate(
                 new BookAuthorCoupling() { Id = 1, AuthorId = 3, BookId = 1 },
-                new BookAuthorCoupling() { Id = 3, AuthorId = 5, BookId = 2 },
+                new BookAuthorCoupling() { Id = 3, AuthorId = 4, BookId = 2 },
                 new BookAuthorCoupling() { Id = 4, AuthorId = 2, BookId = 3 },
                 new BookAuthorCoupling() { Id = 5, AuthorId = 2, BookId = 4 },
                 new BookAuthorCoupling() { Id = 6, AuthorId = 1, BookId = 5 },
-                new BookAuthorCoupling() { Id = 9, AuthorId = 3, BookId = 6 },
-                new BookAuthorCoupling() { Id = 10, AuthorId = 3, BookId = 7 },
-                new BookAuthorCoupling() { Id = 11, AuthorId = 3, BookId = 8 },
-                new BookAuthorCoupling() { Id = 12, AuthorId = 5, BookId = 9 },
-                new BookAuthorCoupling() { Id = 13, AuthorId = 4, BookId = 10 },
-                new BookAuthorCoupling() { Id = 14, AuthorId = 5, BookId = 11 },
-                new BookAuthorCoupling() { Id = 15, AuthorId = 3, BookId = 11 }
+                new BookAuthorCoupling() { Id = 9, AuthorId = 5, BookId = 6 },
+                new BookAuthorCoupling() { Id = 10, AuthorId = 6, BookId = 7 },
+                new BookAuthorCoupling() { Id = 11, AuthorId = 8, BookId = 8 },
+                new BookAuthorCoupling() { Id = 12, AuthorId = 9, BookId = 9 },
+                new BookAuthorCoupling() { Id = 13, AuthorId = 3, BookId = 10 },
+                new BookAuthorCoupling() { Id = 14, AuthorId = 7, BookId = 11 }
                 );
 
             // Book-Genre couplings
             context.BookGenreCouplings.AddOrUpdate(
                 new BookGenreCoupling() { Id = 1, GenreId = 3, BookId = 1 },
-                new BookGenreCoupling() { Id = 3, GenreId = 3, BookId = 2 },
+                new BookGenreCoupling() { Id = 3, GenreId = 4, BookId = 2 },
                 new BookGenreCoupling() { Id = 4, GenreId = 2, BookId = 3 },
-                new BookGenreCoupling() { Id = 5, GenreId = 3, BookId = 4 },
+                new BookGenreCoupling() { Id = 5, GenreId = 2, BookId = 4 },
                 new BookGenreCoupling() { Id = 6, GenreId = 1, BookId = 5 },
                 new BookGenreCoupling() { Id = 9, GenreId = 3, BookId = 6 },
-                new BookGenreCoupling() { Id = 10, GenreId = 3, BookId = 7 },
-                new BookGenreCoupling() { Id = 11, GenreId = 3, BookId = 8 },
-                new BookGenreCoupling() { Id = 12, GenreId = 3, BookId = 9 },
+                new BookGenreCoupling() { Id = 10, GenreId = 5, BookId = 7 },
+                new BookGenreCoupling() { Id = 11, GenreId = 5, BookId = 8 },
+                new BookGenreCoupling() { Id = 12, GenreId = 5, BookId = 9 },
                 new BookGenreCoupling() { Id = 13, GenreId = 3, BookId = 10 },
                 new BookGenreCoupling() { Id = 14, GenreId = 3, BookId = 11 },
                 new BookGenreCoupling() { Id = 15, GenreId = 2, BookId = 11 }
