@@ -101,7 +101,8 @@
                 <label>
                     Image path:
                 </label>
-                <input type="text" placeholder="sökväg..." class="form-control" ng-model="book.ImagePath" style="font-style:italic;" id="bookImagePath" />
+                <input ng-if="loggedin == 1" type="text" placeholder="sökväg..." class="form-control" ng-model="book.ImagePath" style="font-style:italic;" id="bookImagePath" />
+                <p ng-if="loggedin == 2">{{book.ImagePath}}</p>
             </div>
 
         </div>
