@@ -1,14 +1,16 @@
 <div class="modal-header">
-    <span ng-if=" view == 0 || view == 1 || view == 2">{{book.Title}} </span>
-    <span ng-if=" view == 4"><strong>Skapa en ny Bok</strong></span>
-    <span ng-if=" view == 3">Vill du radera <strong>{{book.Title}}</strong>?</span>
+    <h3>
+        <span ng-if=" view == 0 || view == 1 || view == 2">{{book.Title}} </span>
+        <span ng-if=" view == 4"><strong>Skapa en ny Bok</strong></span>
+        <span ng-if=" view == 3">Vill du radera <strong>{{book.Title}}</strong>?</span>
 
-    <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
-        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-    </button>
-    <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
-        <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-    </button>
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 0" ng-click="editView(1)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+        <button class="btn btn-default pull-right" ng-if="loggedin == 1 && view == 1" ng-click="editView(0)">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </button>
+    </h3>
 </div>
 
 <!-- redigeringsläge -->
@@ -26,9 +28,9 @@
             <div class="form-group">
                 <label for="bookSummary">
                     Sammanfattning:
-                    <span class="text-danger" ng-show="editForm.summaryField.$error.maxlength">Max 255 tecken</span>
+                    <span class="text-danger" ng-show="editForm.summaryField.$error.maxlength">Max 5000 tecken</span>
                 </label>
-                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="500" type="text" class="form-control" ng-model="book.Summary" rows="4"  style="resize:none;" id="bookSummary"></textarea>
+                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="5000" type="text" class="form-control" ng-model="book.Summary" rows="4"  style="resize:none;" id="bookSummary"></textarea>
                 <div ng-if="loggedin == 2" class="well well-lg">{{book.Summary}}</div>
             </div>
 
@@ -71,7 +73,7 @@
                     Utgivningsår:
                     <span class="text-danger" ng-show="editForm.yearField.$error.maxlength || editForm.yearField.$invalid">Ange ett giltligt år</span>
                 </label>
-                <input ng-if="loggedin == 1" name="yearField" type="number" ng-minlength="1" ng-maxlength="4" max="{{currDate}}" placeholder="ÅÅÅÅ" class="form-control" min="0" ng-model="book.Year"  width:200px;" id="bookYear" />
+                <input ng-if="loggedin == 1" name="yearField" type="number" ng-minlength="1" ng-maxlength="4" max="{{currDate}}" placeholder="ÅÅÅÅ" class="form-control" min="1000" ng-model="book.Year"  width:200px;" id="bookYear" />
                 <p ng-if="loggedin == 2">{{book.Year}}</p>
             </div>
 
