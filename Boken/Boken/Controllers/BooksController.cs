@@ -23,15 +23,15 @@ namespace Boken.Controllers
             
             List<Author> authors = new List<Author>();
             List<Genre> genres = new List<Genre>();
-            foreach (Book b in db.Books)
+            foreach (Book b in db.Books.ToList())
             {
                 authors.Clear();
                 genres.Clear();
 
-                foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == b.Id))
+                foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == b.Id).ToList())
                     authors.Add(db.Authors.FirstOrDefault(a => a.Id == bac.AuthorId));
 
-                foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == b.Id))
+                foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == b.Id).ToList())
                     genres.Add(db.Genres.FirstOrDefault(g => g.Id == bgc.GenreId));
 
                 books.Add(new BookDTO()
@@ -59,11 +59,11 @@ namespace Boken.Controllers
             }
 
             List<Author> authors = new List<Author>();
-            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id))
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id).ToList())
                 authors.Add(db.Authors.FirstOrDefault(a => a.Id == bac.AuthorId));
 
             List<Genre> genres = new List<Genre>();
-            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id))
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id).ToList())
                 genres.Add(db.Genres.FirstOrDefault(g => g.Id == bgc.GenreId));
 
             BookDetailDTO bookDetail = new BookDetailDTO()
@@ -113,8 +113,8 @@ namespace Boken.Controllers
             // I clear the DB of all genre/author couplings related to the book
             // and then add all from the frontend.
             // -Gustav
-            var genreCouplings = db.BookGenreCouplings.Where(x => x.BookId == book.Id);
-            var authorCouplings = db.BookAuthorCouplings.Where(x => x.BookId == book.Id);
+            var genreCouplings = db.BookGenreCouplings.Where(x => x.BookId == book.Id).ToList();
+            var authorCouplings = db.BookAuthorCouplings.Where(x => x.BookId == book.Id).ToList();
 
             foreach (BookGenreCoupling bgc in genreCouplings) db.BookGenreCouplings.Remove(bgc);
             foreach (BookAuthorCoupling bac in authorCouplings) db.BookAuthorCouplings.Remove(bac);
@@ -177,8 +177,8 @@ namespace Boken.Controllers
                 return NotFound();
             }
 
-            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id)) db.BookGenreCouplings.Remove(bgc);
-            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id)) db.BookAuthorCouplings.Remove(bac);
+            foreach (BookGenreCoupling bgc in db.BookGenreCouplings.Where(x => x.BookId == book.Id).ToList()) db.BookGenreCouplings.Remove(bgc);
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.BookId == book.Id).ToList()) db.BookAuthorCouplings.Remove(bac);
 
             db.Ratings.Remove(db.Ratings.Find(book.RatingId));
             db.Books.Remove(book);

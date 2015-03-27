@@ -10,6 +10,17 @@ app.service("restService", ["$http", "$rootScope", "$location", function ($http,
                 return false;
             }
 
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", "file:///data/books.json", false);
+            rawFile.onreadystatechange = function () {
+                if (rawFile.readyState == 4) {
+                    if (rawFile.status == 200 || rawFile.status == 0) {
+                        var allText = rawFile.responseText;
+                        console.log("From file read: ", JSON.parse(allText));
+                    };
+                };
+            };
+
             $http({
                 url: "/api/" + url,
                 method: method,

@@ -317,6 +317,13 @@
     <Content Include="Scripts\angular-spin\CHANGELOG.md" />
     <Content Include="Scripts\angular-spin\package.json" />
     <Content Include="Scripts\angular-spin\README.md" />
+    <Content Include="Data\authors.json" />
+    <Content Include="Data\bac.json" />
+    <Content Include="Data\bgc.json" />
+    <Content Include="Data\books.json" />
+    <Content Include="Data\genres.json" />
+    <Content Include="Data\ratings.json" />
+    <None Include="Properties\PublishProfiles\SU14Grupp1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\homeController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -345,6 +352,10 @@
     <Content Include="Scripts\_references.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
