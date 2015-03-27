@@ -9,11 +9,16 @@ html {
 /*Body*/
 body {
     min-height: 100%;
-    padding-top: 60px;
-    background-image: url("/Content/Image/bakgrund.jpeg");
-    background-size: 400px;
+
     background-repeat: no-repeat;
     background-position: left;
+}
+
+body > .container{
+    padding-top: 50px;
+}
+main{
+    padding-bottom: 50px;
 }
 
 .navbar-default {
@@ -79,10 +84,12 @@ header .nav .caret{
 /*-----Header slut    -------*/
 
 /*Main*/
-.mainbody {
-    margin-top: 50px;
+@media (min-width:1000px) {
+    body {
+        background-image: url("/Content/Image/bakgrund.jpeg");
+        background-size: 400px;
+    }
 }
-
 /*------------*/
 
 /*Footer*/
@@ -122,6 +129,12 @@ textarea{
 }
 
 /* Thumbnails (används bara på home.html */
+.topp3{
+    width:200px;
+    height:350px;
+    
+    
+}
 .thumbnail {
     border-color: black;
     background-color: #abd3f6;

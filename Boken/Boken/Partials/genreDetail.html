@@ -25,10 +25,10 @@
 
                 <label for="genreDescription">
                     Beskrivning
-                    <span class="text-danger" ng-show="form.D.$dirty && form.D.$invalid"><span ng-show="form.N.$error.required">Beskrivning är för lång/ogiltlig</span></span>
-                    <span class="text-danger" ng-show="form.D.$error.minlength ||form.D.$error.maxlength ">Det måste finnas en beskrivning</span>
+                    <span class="text-danger" ng-show="form.D.$dirty && form.D.$invalid"><span ng-show="form.D.$error.required">Det måste finnas en beskrivning</span></span>
+                    <span class="text-danger" ng-show="form.D.$error.minlength ||form.D.$error.maxlength ">Beskrivning är för lång/ogiltlig</span>
                 </label>
-                <textarea type="text" rows="4" class="form-control" ng-minlength="1" ng-maxlength="255" style="resize:none;" ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
+                <textarea type="text" rows="4" class="form-control" ng-minlength="1" ng-maxlength="5000" style="resize:none;" ng-model="genre.Description" name="D" required id="genreDescription" placeholder="Skriv en beskrivning av genren..."></textarea>
             </form>
         </div>
     </div>
