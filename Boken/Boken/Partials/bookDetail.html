@@ -21,14 +21,14 @@
                     Titel:
                     <span class="text-danger" ng-show="editForm.titleField.$error.maxlength || editForm.titleField.$error.required"><span ng-show="editForm.titleField.$dirty || editForm.titleField.$error.invalid">Ange en giltlig titel</span></span>
                 </label>
-                <input ng-if="loggedin == 1" name="titleField" ng-maxlength="75" type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." style="font-style:italic;" id="bookTitle" ng-required="true" />
+                <input ng-if="loggedin == 1" name="titleField" ng-maxlength="75" type="text" class="form-control" ng-model="book.Title" placeholder="Namn..." id="bookTitle" ng-required="true" />
             </div>
             <div class="form-group">
                 <label for="bookSummary">
                     Sammanfattning:
                     <span class="text-danger" ng-show="editForm.summaryField.$error.maxlength">Max 255 tecken</span>
                 </label>
-                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="500" type="text" class="form-control" ng-model="book.Summary" rows="4" style="font-style:italic; resize:none;" id="bookSummary"></textarea>
+                <textarea ng-if="loggedin == 1" name="summaryField" ng-maxlength="500" type="text" class="form-control" ng-model="book.Summary" rows="4"  style="resize:none;" id="bookSummary"></textarea>
                 <div ng-if="loggedin == 2" class="well well-lg">{{book.Summary}}</div>
             </div>
 
@@ -71,7 +71,7 @@
                     Utgivningsår:
                     <span class="text-danger" ng-show="editForm.yearField.$error.maxlength || editForm.yearField.$invalid">Ange ett giltligt år</span>
                 </label>
-                <input ng-if="loggedin == 1" name="yearField" type="number" ng-minlength="1" ng-maxlength="4" max="{{currDate}}" placeholder="ÅÅÅÅ" class="form-control" min="0" ng-model="book.Year" style="font-style:italic; width:200px;" id="bookYear" />
+                <input ng-if="loggedin == 1" name="yearField" type="number" ng-minlength="1" ng-maxlength="4" max="{{currDate}}" placeholder="ÅÅÅÅ" class="form-control" min="0" ng-model="book.Year"  width:200px;" id="bookYear" />
                 <p ng-if="loggedin == 2">{{book.Year}}</p>
             </div>
 
@@ -80,7 +80,7 @@
                     ISBN:
                     <span class="text-danger" ng-show="editForm.isbnField.$error.maxlength || editForm.isbnField.$invalid">Ange ett giltligt ISBN</span>
                 </label>
-                <input ng-if="loggedin == 1" name="isbnField" type="text" ng-maxlength="13" ng-minlength="13" min="0" placeholder="13 siffror..." class="form-control" ng-model="book.ISBN" style="font-style:italic;" id="bookISBN" />
+                <input ng-if="loggedin == 1" name="isbnField" type="text" ng-maxlength="13" ng-minlength="13" min="0" placeholder="13 siffror..." class="form-control" ng-model="book.ISBN"  id="bookISBN" />
                 <p ng-if="loggedin == 2">{{book.ISBN}}</p>
             </div>
 
@@ -89,7 +89,7 @@
                     Pris:
                     <span class="text-danger" ng-show="editForm.priceField.$error.maxlength || editForm.priceField.$invalid">Ange ett giltligt Pris</span>
                 </label>
-                <input ng-if="loggedin == 1" type="number" name="priceField" placeholder="SEK..." class="form-control" ng-minlength="1" ng-maxlength="4" min="0" ng-model="book.Price" style="font-style:italic;" id="bookPrice" />
+                <input ng-if="loggedin == 1" type="number" name="priceField" placeholder="SEK..." class="form-control" ng-minlength="1" ng-maxlength="4" min="0" ng-model="book.Price"  id="bookPrice" />
                 <p ng-if="loggedin == 2">{{book.Price}}</p>
             </div>
 
@@ -98,14 +98,14 @@
                     I lager:
                     <span class="text-danger" ng-show="editForm.stockField.$error.maxlength || editForm.stockField.$invalid">Du angav fel</span>
                 </label>
-                <input type="number" name="stockField" ng-minlength="1" ng-maxlength="5" min="0" placeholder="Antal..." class="form-control" ng-model="book.InStock" style="font-style:italic;" id="bookInStock" />
+                <input type="number" name="stockField" ng-minlength="1" ng-maxlength="5" min="0" placeholder="Antal..." class="form-control" ng-model="book.InStock"  id="bookInStock" />
             </div>
 
             <div class="form-group">
                 <label>
                     Image path:
                 </label>
-                <input ng-if="loggedin == 1" type="text" placeholder="sökväg..." class="form-control" ng-model="book.ImagePath" style="font-style:italic;" id="bookImagePath" />
+                <input ng-if="loggedin == 1" type="text" placeholder="sökväg..." class="form-control" ng-model="book.ImagePath" id="bookImagePath" />
                 <p ng-if="loggedin == 2">{{book.ImagePath}}</p>
             </div>
 

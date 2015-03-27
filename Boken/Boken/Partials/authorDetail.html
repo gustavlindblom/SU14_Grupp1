@@ -20,13 +20,13 @@
                     <span class="text-danger" ng-show="form.N.$dirty && form.N.$invalid"><span ng-show="form.N.$error.required">Författaren måste ha ett namn</span></span>
                     <span class="error" ng-show="form.N.$error.minlength"> (Namnet måste vara minst 3 tecken.)</span>
                 </label>
-                <input type="text" class="form-control" name="N" ng-model="author.Name" required ng-minlength="3" placeholder="Namn..." style="font-style:italic;" id="authorName" />
+                <input type="text" class="form-control" name="N" ng-model="author.Name" required ng-minlength="3" placeholder="Namn..."  id="authorName" />
 
                 <label for="authorBiography">
                     Biografi
                     <span class="text-danger" ng-show="form.D.$dirty && form.D.$invalid"> <span ng-show="form.D.$error.required">Författaren behöver ha en biografi</span></span>
                 </label>
-                <textarea type="text " rows="4" class="form-control" style="resize:none; font-style:italic; " ng-model="author.Biography" name="D" required id="authorBiography" placeholder="Plats för författarens biografi..."></textarea>
+                <textarea type="text " rows="4" class="form-control" style="resize:none;  " ng-model="author.Biography" name="D" required id="authorBiography" placeholder="Plats för författarens biografi..."></textarea>
             </form>
         </div>
     </div>

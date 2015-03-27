@@ -3,12 +3,30 @@
     <div class="row">
         <h2 style="text-align: center">Våra mest populära böcker just nu</h2>
         <div class="col-xs-offset-4 col-sm-offset-0 col-md-offset-3">
-            <div class="thumbnail cursor col-xs-6 col-sm-3 col-md-3" ng-click="open(0, book, 0)" ng-repeat="book in topThreeBooks">
+            <div class="thumbnail cursor col-xs-6 col-sm-3 col-md-3" ng-click="open(0, book, 0)" >
                 <div class="oneThumbnail">
-                    <img class="thumbnailImg" src={{book.ImagePath}}>
+                    <img class="thumbnailImg" src="{{topThreeBooks[0].ImagePath}}">
                     <div class="caption">
-                        <h5><strong>{{book.Title}}</strong></h5>
-                        <p ng-repeat="author in book.Authors">{{author.Name}}</p>
+                        <h5><strong>{{topThreeBooks[0].Title}}</strong></h5>
+                        <p ng-repeat="author in topThreeBooks[0].Authors">{{author.Name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="thumbnail cursor col-xs-6 col-sm-3 col-md-3" ng-click="open(0, book, 0)" >
+                <div class="oneThumbnail">
+                    <img class="thumbnailImg" src="{{topThreeBooks[1].ImagePath}}">
+                    <div class="caption">
+                        <h5><strong>{{topThreeBooks[1].Title}}</strong></h5>
+                        <p ng-repeat="author in topThreeBooks[1].Authors">{{author.Name}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="thumbnail cursor col-xs-6 col-sm-3 col-md-3" ng-click="open(0, book, 0)">
+                <div class="oneThumbnail">
+                    <img class="thumbnailImg" src="{{topThreeBooks[2].ImagePath}}">
+                    <div class="caption">
+                        <h5><strong>{{topThreeBooks[2].Title}}</strong></h5>
+                        <p ng-repeat="author in topThreeBooks[2].Authors">{{author.Name}}</p>
                     </div>
                 </div>
             </div>
