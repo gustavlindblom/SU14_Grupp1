@@ -34,7 +34,7 @@ namespace Boken.Controllers
 
             // Perform Linq magic to retrieve the top rated books of the author
             List<KeyValuePair<Book, Rating>> bookRatingPairs = new List<KeyValuePair<Book, Rating>>();
-            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.AuthorId == author.Id))
+            foreach (BookAuthorCoupling bac in db.BookAuthorCouplings.Where(x => x.AuthorId == author.Id).ToList())
             {
                 var book = db.Books.FirstOrDefault(b => b.Id == bac.BookId);
                 var rating = db.Ratings.FirstOrDefault(r => r.Id == book.RatingId);
