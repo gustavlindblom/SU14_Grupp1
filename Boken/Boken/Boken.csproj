@@ -260,7 +260,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="index.html" />
     <Content Include="Partials\authorlist.html" />
     <Content Include="Partials\authorDetail.html" />
     <Content Include="Partials\bookDetail.html" />
@@ -315,12 +314,6 @@
     <Content Include="Scripts\angular-spin\CHANGELOG.md" />
     <Content Include="Scripts\angular-spin\package.json" />
     <Content Include="Scripts\angular-spin\README.md" />
-    <Content Include="Data\authors.json" />
-    <Content Include="Data\bac.json" />
-    <Content Include="Data\bgc.json" />
-    <Content Include="Data\books.json" />
-    <Content Include="Data\genres.json" />
-    <Content Include="Data\ratings.json" />
     <None Include="Properties\PublishProfiles\SU14Grupp1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
