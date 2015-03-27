@@ -123,6 +123,12 @@ textarea{
 }
 
 /* Thumbnails (används bara på home.html */
+.topp3{
+    width:200px;
+    height:350px;
+    
+    
+}
 .thumbnail {
     border-color: black;
     background-color: #abd3f6;
