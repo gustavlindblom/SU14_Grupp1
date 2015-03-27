@@ -32,13 +32,13 @@
     $scope.$on("gotGenres", function (event, data) {
         $scope.genres = data;
     });
-    if ($scope.view == 1 || $scope.view == 4) Genres.get(); // Fetch genres only if the user is in create/edit modes
+    Genres.get(); 
 
     // Fetch authors from the database
     $scope.$on("gotAuthors", function (event, data) {
         $scope.authors = data;
     });
-    if ($scope.view == 1 || $scope.view == 4) Authors.get(); // Fetch authors only if the user is in create/edit modes
+    Authors.get(); 
 
     // Fetch book rating from the database
     $scope.$on("gotRating", function (event, data) {

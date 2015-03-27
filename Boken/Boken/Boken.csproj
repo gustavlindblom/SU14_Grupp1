@@ -283,8 +283,6 @@
     <Content Include="Scripts\angular-spin\tests.js" />
     <Content Include="Scripts\angular.js" />
     <Content Include="Scripts\angular.min.js" />
-    <Content Include="Scripts\app.js" />
-    <Content Include="Scripts\bookformController.js" />
     <Content Include="Application\booklistController.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -325,7 +323,6 @@
     <Content Include="Data\ratings.json" />
     <None Include="Properties\PublishProfiles\SU14Grupp1.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\homeController.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -333,11 +330,9 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\services.js" />
     <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\ui-bootstrap-tpls-0.12.1.js" />
     <Content Include="Web.config" />
