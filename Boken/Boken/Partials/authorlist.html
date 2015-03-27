@@ -29,7 +29,7 @@
                             {{author.Name}}
                         </td>
                         <td ng-click="open(0, author, 0)" ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">
-                            {{author.Biography | limitTo: 110}}...
+                            {{author.Biography | limitTo: 90}}...
                         </td>
                         <td class="" ng-show="loggedin == 1">
                             <span popover="Ändra: {{author.Name}} " popover-trigger="mouseenter" class="glyphicon glyphicon-edit" ng-click="open(1, author, 1)" aria-hidden="true"></span>

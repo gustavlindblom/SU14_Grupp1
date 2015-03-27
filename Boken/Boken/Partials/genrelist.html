@@ -30,7 +30,7 @@
                                 {{genre.Name}}
                             </td>
                             <td ng-click="open(0, genre, 0)" ng-class="{true: 'hideWhenXs', false: ''}[loggedin == 1]">
-                                {{genre.Description | limitTo: 110}}...
+                                {{genre.Description | limitTo: 90}}...
                             </td>
 
                             <td class="" ng-show="loggedin == 1">
